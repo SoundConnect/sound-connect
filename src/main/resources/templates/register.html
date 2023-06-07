@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,6 +9,7 @@
     <div class="container grow justify-center">
       <div class="row justify-center">
         <div class="column shrink">
+          <nav th:replace="~{partials/nav.html :: nav}"></nav>
           <h1>Create Your Account!</h1>
           <p>Start your SoundConnect Journey Today!</p>
           <form th:method="post" th:action="@{/register}">
