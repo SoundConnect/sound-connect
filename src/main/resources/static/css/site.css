@@ -92,6 +92,24 @@ nav a{
     width: 50px;
     margin: 0 10px;
 }
+
+.footer-desc{
+    font-weight: 100;
+}
+.newsletter-input{
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+a{
+    text-decoration: none;
+    color: var(--secondary);
+}
 /*****************************Landing Page********************************/
 
 /*****************************End Landing Page********************************/
