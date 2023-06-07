@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+img {
+    max-width: 100%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+}
+ul {
+    list-style: none;
+    padding: unset;
+}
+li {
+    list-style: none;
+}
+
+fieldset {
+    display: unset;
+    margin-inline-start: unset;
+    margin-inline-end: unset;
+    padding-block-start: unset;
+    padding-inline-start: unset;
+    padding-inline-end: unset;
+    padding-block-end: unset;
+    min-inline-size: unset;
+    border-width: unset;
+    border-style: unset;
+    border-color: unset;
+    border-image: unset;
+}
