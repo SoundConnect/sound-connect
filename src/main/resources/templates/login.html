@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SoundConnect Login</title>
+    <style>
+        body {
+            background-image: url("/images/login-background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .overlay-form {
+            background-color: rgba(255, 255, 255, .2);  /* Semi-transparent white */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 2.0);  /* A bit of shadow */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/resets.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="container grow justify-center">
+        <div class="container login-page">
+            <div class="row justify-center full-width"></div>
+        </div>
+        <div class="row justify-center">
+            <div class="column shrink overlay-form">
+                <h1>SoundConnect</h1>
+                <form action="/login" method="post">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <button type="submit" class="button btn primary">Log In</button>
+                </form>
+                <div>
+                    <p class="account">Don't have an account? <a href="/register">Register here</a></p>
+                    <p class="join">Join us in creating a harmonious world, where every note matters,
+                        every song connects, and every melody brings us closer. Welcome to SoundConnect
+                        - where music meets community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
