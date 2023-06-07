@@ -84,6 +84,14 @@ nav a{
     margin: 0px 5px;
     cursor: pointer;
 }
+.footer{
+    margin-top: 150px;
+}
+.footer-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
 /*****************************Landing Page********************************/
 
 /*****************************End Landing Page********************************/
