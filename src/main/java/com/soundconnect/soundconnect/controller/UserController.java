@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
-//    LOGIN MAPPING
-
+    // show login form
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
     }
 
-//    REGISTER MAPPING
+    // show registration form
     @GetMapping("/register")
     public String showRegisterForm() {
         return "register";
     }
 
+    // register a user
     @PostMapping("/register")
     public String register(@RequestParam(name = "username") String username,
                            @RequestParam(name = "email") String email,
@@ -34,12 +34,13 @@ public class UserController {
         return "redirect:/profile";
     }
 
-//    USER PROFILE MAPPING
+    // show profile page
     @GetMapping("/profile")
     public String showProfile(){
         return "profile";
     }
 
+    // edit profile
     @PostMapping("/profile")
     public String changeProfile(@RequestParam(name="email") String email) {
         System.out.println("Post mapping hit");
