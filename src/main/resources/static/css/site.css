@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Roboto:ital,wght@0,100;1,100&display=swap');
+
 :root{
     --primary:#060429;
     --secondary:#f5f5f5;
@@ -10,6 +11,7 @@ body{
     color: var(--secondary);
     font-family: Anton, sans-serif;
 }
+/*****************************Landing Page********************************/
 .logo{
     background: linear-gradient(to right, var(--tertiary), var(--secondary));
     -webkit-background-clip: text;
@@ -132,6 +134,121 @@ a{
     color: blue;
 }
 
-/*****************************Landing Page********************************/
 
 /*****************************End Landing Page********************************/
+
+
+:root{
+    --primary:#060429;
+    --secondary:#f5f5f5;
+    --tertiary:#10068C;
+}
+
+.page-wrapper {
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*
+======Forms Styles For Login Page======
+*/
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 400px;
+}
+form > * {
+    width: 60%;
+}
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.input-wrapper[split="1/2"] {
+    width: calc(50% - 5px);
+}
+
+text-input, text-area{
+    background-color: #f5f5f5;
+    outline: unset;
+    border: unset;
+    display: flex;
+    flex-direction: column;
+    min-height: 40px;
+    border-radius: 3px;
+    color: inherit;
+    font-family: inherit;
+    padding:10px;
+}
+input:focus {
+    outline: unset;
+}
+textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+label {
+    font-size: 0.8rem;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button.btn.primary {
+    background-color: #060429;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 5px;
+    color: #f5f5f5;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: unset;
+    border: unset;
+}
+/*======Items Below login page======*/
+
+.account {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    font-size: 10px;
+    color: #f5f5f5;
+}
+.join {
+    display: flex;
+    flex-direction: column;
+    /*gap: 10px;*/
+    align-items: center;
+    justify-content: center;
+    /*min-height: 10vh;*/
+    font-size: 10px;
+    color: #f5f5f5;
+}
+/*====== SoundConnect Title======*/
+.title{
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    font-size: 50px;
+    text-shadow: 50px 50px 50px yellow;
+}
+
