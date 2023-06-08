@@ -99,10 +99,10 @@ button.btn.primary {
 .join {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    /*gap: 10px;*/
     align-items: center;
     justify-content: center;
-    min-height: 10vh;
+    /*min-height: 10vh;*/
     font-size: 10px;
 }
 /*====== SoundConnect Title======*/
