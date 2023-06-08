@@ -92,7 +92,6 @@ nav a:hover::before, .footer-links:hover::before {
     padding: 10px;
     margin: 0px 5px;
     transition: ease-in-out .3s;
-    text-align: center;
 }
 .login-button:hover, .sign-up-button:hover{
     background-color: var(--primary);
@@ -205,17 +204,6 @@ a {
 /*
 ======Forms Styles For Login Page======
 */
-.body {
-    background-image: url("/images/login-background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.overlay-form {
-    background-color: rgba(255, 255, 255, .1);  /* Semi-transparent white */
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 10px 10px 10px rgba(2.0, 2.0, 2.0, 2.0);  /* A bit of shadow */
-}
 form {
     display: flex;
     flex-wrap: wrap;
