@@ -18,9 +18,16 @@ public class Artist {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
     private List<Genre> genres;
 
-    @ManyToOne
-    @JoinColumn(name = "track_id")
-    private Track track;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
+    private List<Album> albums;
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
 
     public List<Genre> getGenres() {
         return genres;
@@ -30,13 +37,7 @@ public class Artist {
         this.genres = genres;
     }
 
-    public Track getTrack() {
-        return track;
-    }
 
-    public void setTrack(Track track) {
-        this.track = track;
-    }
 
     public long getId() {
         return id;

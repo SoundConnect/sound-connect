@@ -25,10 +25,8 @@ public class Track {
     @JoinColumn(name = "playlist_id")
     private Playlist playlist;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "track")
-    private List<Artist> artists;
-
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "album_id")
     private Album album;
 
     public Playlist getPlaylist() {
@@ -37,14 +35,6 @@ public class Track {
 
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
-    }
-
-    public List<Artist> getArtists() {
-        return artists;
-    }
-
-    public void setArtists(List<Artist> artists) {
-        this.artists = artists;
     }
 
     public Album getAlbum() {
