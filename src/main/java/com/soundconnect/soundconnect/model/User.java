@@ -2,6 +2,8 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -18,6 +20,17 @@ public class User {
 
     @Column(nullable = false, length = 25)
     private String password;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    private List<Playlist> playlist;
+
+    public List<Playlist> getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(List<Playlist> playlist) {
+        this.playlist = playlist;
+    }
 
     public long getId() {
         return id;
@@ -54,9 +67,26 @@ public class User {
     public User() {
     }
 
+
+//    ============== Constructors ==============
+
+
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(String username, String email, String password, List<Playlist> playlist) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.playlist = playlist;
+    }
+
+    public User(long id, List<Playlist> playlist) {
+        this.id = id;
+        this.playlist = playlist;
     }
 }
