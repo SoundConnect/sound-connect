@@ -1,27 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:replace="partials/head :: head(title='SoundConnect - Login')">
     <meta charset="UTF-8">
     <title>SoundConnect Login</title>
-    <style>
-        body {
-            background-image: url("/images/login-background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .overlay-form {
-            background-color: rgba(255, 255, 255, .1);  /* Semi-transparent white */
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 10px 10px 10px rgba(2.0, 2.0, 2.0, 2.0);  /* A bit of shadow */
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="/static/css/resets.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/site.css" />
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper body">
     <div class="container grow justify-center">
         <div class="container login-page">
             <div class="row justify-center full-width"></div>

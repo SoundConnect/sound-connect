@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="partials/head :: head(title='SoundConnect - Register')"></head>
 <body>
-  <div class="page-wrapper">
+  <div class="page-wrapper body">
+    <div th:replace="partials/navbar :: navbar"></div>
     <div class="container grow justify-center">
       <div class="row justify-center">
-        <div class="column shrink">
-          <nav th:replace="~{partials/nav.html :: nav}"></nav>
-          <h1>Create Your Account!</h1>
-          <p>Start your SoundConnect Journey Today!</p>
-          <form th:method="post" th:action="@{/register}">
-            <label for="username">Username:</label>
+        <div class="column shrink overlay-form">
+          <h1 class="title">Create Your Account!</h1>
+          <p class="join">Start your SoundConnect Journey Today!</p>
+          <form class="register-form" th:method="post" th:action="@{/register}">
+            <label class="register_label" for="username">Username:</label>
             <input placeholder="Enter Username" type="text" id="username" name="username"  class="username_input"><br>
-            <label for="email">Email:</label>
+            <label class="register_label" for="email">Email:</label>
             <input type="email" placeholder="Enter Email" id="email" name="email" class="email_input"><br>
-            <label for="password">Password:</label>
+            <label class="register_label" for="password">Password:</label>
             <input type="password" placeholder="Enter Password" name="password" id="password" class="password_input"><br>
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirmPassword_input"><br>
-            <button type="submit" value="Submit">Register</button>
+            <label class="register_label" for="confirmPassword">Confirm Password:</label>
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
+            <button class="register-button" type="submit" value="Submit">Register</button>
           </form>
         </div>
       </div>

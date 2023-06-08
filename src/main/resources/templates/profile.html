@@ -1,23 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+<head th:replace="partials/head :: head(title='SoundConnect - Profile')">
     <meta charset="UTF-8">
-    <title>SoundConnect Profile</title>
-    <style>
-        body {
-            background-image: url("/images/login-background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-    </style>
-    <link rel="stylesheet" type="text/css" href="/static/css/resets.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/site.css" />
+    <title>SoundConnect Login</title>
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper body">
+
+
     <div class="container grow justify-center">
         <h1 class="title-profile">Sound Connect</h1>
         <!-- Sidebar and Profile Sections-->
@@ -89,6 +79,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
