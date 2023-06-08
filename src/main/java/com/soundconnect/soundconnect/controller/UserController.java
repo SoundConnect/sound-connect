@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
-
+  
     // show login form
     @GetMapping("/login")
     public String showLoginForm() {
