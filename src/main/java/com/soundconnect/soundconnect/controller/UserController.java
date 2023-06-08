@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
+    @GetMapping("/")
+    public String showHome() {
+        return "index";
+    }
+
 //    LOGIN MAPPING
 
     @GetMapping("/login")

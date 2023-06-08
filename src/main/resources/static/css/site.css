@@ -92,6 +92,7 @@ nav a:hover::before, .footer-links:hover::before {
     padding: 10px;
     margin: 0px 5px;
     transition: ease-in-out .3s;
+    text-align: center;
 }
 .login-button:hover, .sign-up-button:hover{
     background-color: var(--primary);
@@ -136,7 +137,50 @@ a{
 
 
 /*****************************End Landing Page********************************/
-
+/*****************************Register Page********************************/
+.register-form{
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: center;
+}
+.username_input, .password_input, .email_input, .confirm_password_input{
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+.register_label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.register-button{
+    background-color: var(--secondary);
+    color: var(--primary);
+    width: 85px;
+    border: unset;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0px 5px;
+    transition: ease-in-out .3s;
+    text-align: center;
+    cursor: pointer;
+}
+.register-button:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+/*****************************End Register Page********************************/
 
 :root{
     --primary:#060429;
@@ -156,6 +200,17 @@ a {
 /*
 ======Forms Styles For Login Page======
 */
+.body {
+    background-image: url("/images/login-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.overlay-form {
+    background-color: rgba(255, 255, 255, .1);  /* Semi-transparent white */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(2.0, 2.0, 2.0, 2.0);  /* A bit of shadow */
+}
 form {
     display: flex;
     flex-wrap: wrap;
