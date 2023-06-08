@@ -2,6 +2,8 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "albums")
 public class Album {
@@ -15,6 +17,29 @@ public class Album {
 
     @Column(nullable = false, length = 1000)
     private String albumArt;
+
+    @ManyToOne
+    @JoinColumn(name = "artist_id")
+    private Artist artist;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "album")
+    private List<Track> tracks;
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
 
     public long getId() {
         return id;
