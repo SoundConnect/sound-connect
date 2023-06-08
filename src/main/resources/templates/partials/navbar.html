@@ -1,35 +1,23 @@
-<header th:fragment="navbar" class="container">
-  <div class="row grow">
-    <div class="column shrink justify-center">
-      SoundConnect
+<head>
+    <link rel="stylesheet" href="/static/css/resets.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/site.css">
+</head>
+<nav th:fragment="navbar">
+    <div class="container grow navbar">
+        <div class="row nav-row">
+            <div class="column shrink nav-col">
+                <a class="nav-link" th:href=""><p>Home</p></a>
+                <a class="nav-link" th:href=""><p>Profile</p></a>
+                <a class="nav-link" th:href=""><p>Create Post</p></a>
+                <form th:method="post" th:action="@{/logout}">
+                    <input type="text" placeholder="Search" class="search_input">
+                </form>
+            </div>
+            <div class="column login-col shrink">
+                <a class="nav-link" th:href=""><p>Login</p></a>
+                <a class="nav-link" th:href=""><p>Sign Up</p></a>
+            </div>
+        </div>
     </div>
-    <div class="column align-right">
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Login</a>
-          </li>
-          <li>
-            <form th:action="@{/logout}" th:method="post">
-              <button>Logout</button>
-            </form>
-          </li>
-          <li>
-            <a href="/playlists">Playlists</a>
-            <ul>
-              <li>
-                <a href="/playlists">View All</a>
-              </li>
-              <li>
-                <a href="#"></a>
-              </li>
-              <li>
-                <a href="/create/playlists">Create Playlist</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+</nav>
