@@ -21,6 +21,20 @@ public class UserController {
         return "login";
     }
 
+    // login a user
+    @PostMapping("/login")
+    public String login(@RequestParam(name = "username") String username,
+                        @RequestParam(name = "password") String password) {
+        User user = userDao.findByUsername(username);
+        if (user == null) {
+            return "redirect:/login";
+        } else if (!password.equals(user.getPassword())) {
+            return "redirect:/login";
+        } else {
+            return "redirect:/profile";
+        }
+    }
+
     // show registration form
     @GetMapping("/register")
     public String showRegisterForm() {
