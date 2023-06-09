@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="partials/head :: head(title='SoundConnect - Explore')">
+<body>
+  <div class="page-wrapper">
+    <header th:replace="partials/navbar :: navbar"></header>
+    <div class="container hero-scene">
+      <div class="row justify-center full-width">
+        <img src="/images/hero-image.jpg" alt="hero image">
+      </div>
+      <div class="overlay-text3">
+        <h1>Explore New Music</h1>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="column ">
+          <div class="row">
+            <h1>Tracks</h1>
+          </div>
+          <div class="explore-playlist"></div>
+          <div class="row">
+            <h1>Artists</h1>
+          </div>
+          <div class="explore-artists"></div>
+            <div class="row">
+                <h1>Albums</h1>
+            </div>
+            <div class="explore-albums"></div>
+        </div>
+        <div class="column align-center">
+          <input type="text" placeholder="Search.." class="explore-search">
+      </div>
+
+  </div>
+    <footer th:replace="partials/footer :: footer"></footer>
+  </div>
+  </div>
+<script type="module" src="/js/explore.js">
+  (async () => {
+    let playlist = await displayPlaylist();
+    console.log(playlist)
+  })();
+</script>
+
+</body>
+</html>

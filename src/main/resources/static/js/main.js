@@ -1,7 +1,6 @@
 // Get API token from Spotify
 // import {KEYS} from "./keys";
-
-const getToken = async () => {
+export const getToken = async () => {
 	try {
 		const result = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'POST',
@@ -12,8 +11,10 @@ const getToken = async () => {
 			body: 'grant_type=client_credentials'
 		});
 		const data = await result.json();
+
+		KEYS.accessCode = data.access_token;
 		return data.access_token;
-		// KEYS.accessCode = data.access_token;
+
 
 	} catch (error) {
 		console.log("Error retrieving API access code: " + error);
@@ -21,7 +22,7 @@ const getToken = async () => {
 }
 
 // Get song data from song name
-const getSongData = async (token, songName) => {
+export const getSongData = async (token, songName) => {
 	try {
 		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=5`, {
 			method: 'GET',
@@ -34,7 +35,7 @@ const getSongData = async (token, songName) => {
 }
 
 // Get artist data from artist name
-const getArtistData = async (token, artistName) => {
+export const getArtistData = async (token, artistName) => {
 	try {
 		const result = await fetch(`https://api.spotify.com/v1/search?query=${artistName}&type=artist&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=5`, {
 			method: 'GET',
@@ -47,7 +48,7 @@ const getArtistData = async (token, artistName) => {
 }
 
 // Get album data from album name
-const getAlbumData = async (token, albumName) => {
+export const getAlbumData = async (token, albumName) => {
 	try {
 		const result = await fetch(`https://api.spotify.com/v1/search?query=${albumName}&type=album&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=5`, {
 			method: 'GET',
@@ -61,7 +62,7 @@ const getAlbumData = async (token, albumName) => {
 }
 
 // Search for any type of data (song, artist, album)
-const searchAnything = async (token, query) => {
+export const searchAnything = async (token, query) => {
 	let songData = await getSongData(KEYS.accessCode, query);
 	let artistData = await getArtistData(KEYS.accessCode, query);
 	let albumData = await getAlbumData(KEYS.accessCode, query);
@@ -78,7 +79,7 @@ const searchAnything = async (token, query) => {
 }
 
 // filter search results to only show results where the result name matches the query
-const filterSearchResults = (searchResults, query) => {
+export const filterSearchResults = (searchResults, query) => {
 	let filteredResults = {
 		tracks: [],
 		artists: [],
@@ -113,7 +114,7 @@ const filterSearchResults = (searchResults, query) => {
 }
 
 // sort search results by popularity
-const sortSearchResults = async (searchResults) => {
+export const sortSearchResults = async (searchResults) => {
 	let sortedResults = {
 		tracks: [],
 		artists: [],
@@ -146,7 +147,7 @@ const sortSearchResults = async (searchResults) => {
 }
 
 // get album data from album ID (gives album popularity unlike album data from query)
-const getBetterAlbumData = async (albums) => {
+export const getBetterAlbumData = async (albums) => {
 	let newAlbumData = [];
 	for await (const album of albums){
 		try {
@@ -172,6 +173,7 @@ const getBetterAlbumData = async (albums) => {
 if (KEYS.accessCode === ""){
 	console.log("New token generated!");
 	await getToken();
+
 }
 
 let token = await getToken();
