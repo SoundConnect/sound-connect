@@ -264,7 +264,6 @@ nav a:hover::before, .footer-links:hover::before {
 }
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
-    width: 300px;
     background-color: transparent;
     border-radius: 10px;
     border: 1px solid var(--secondary);
@@ -298,6 +297,16 @@ nav a:hover::before, .footer-links:hover::before {
     font-size: 15px;
     padding: 10px;
     cursor: pointer;
+}
+
+.register-submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.register-submit .register-button{
+    width: 200px;
 }
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
@@ -403,7 +412,7 @@ button.btn.primary {
     border: #1304d2 1px solid;
 }
 
-.register-submit{
+.login-submit{
     display: flex;
     justify-content: center;
     margin-top: 5px;
