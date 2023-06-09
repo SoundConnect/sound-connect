@@ -4,25 +4,27 @@
 <body>
     <div class="page-wrapper">
         <nav th:replace="partials/navbar :: navbar"></nav>
-        <div class="container">
-            <div class="row justify-center">
-                <div class="column align-center">
+        <header class="container feed-header-container">
+            <div class="row justify-center feed-header-row">
+                <div class="column align-center feed-header-col">
                     <h1>View Posts</h1>
                 </div>
             </div>
-        </div>
-        <div class="container grow">
-            <div class="row">
-                <div class="column">
-                    <ul>
-                        <li th:each="playlist : ${playlists}">
-                            <h2 th:text="${playlist.name}"></h2>
-                            <p th:text="${playlist.description}"></p>
+        </header>
+        <div class="container grow feed-container justify-center">
+            <div class="row feed-row justify-center">
+                <div class="column feed-col">
+                    <ul class="feed-ul">
+                        <li class="feed-posts" th:each="playlist : ${playlists}">
+                            <h2 class="feed-post-header" th:text="${playlist.name}"></h2>
+                            <p class="feed-post-body" th:text="${playlist.description}"></p>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
+<script type="module" th:src="@{/js/main.js}"></script>
 </body>
 </html>

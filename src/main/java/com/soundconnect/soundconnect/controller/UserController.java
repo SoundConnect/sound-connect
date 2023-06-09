@@ -67,9 +67,22 @@ public class UserController {
     }
 
     // edit profile
-    @PostMapping("/profile")
-    public String changeProfile(@RequestParam(name="email") String email) {
+    @PostMapping("/profile/edit")
+    public String changeProfile(@RequestParam(name="email") String email,
+                                @RequestParam(name="password") String password,
+                                @RequestParam(name="confirmPassword") String confirmPassword,
+                                @RequestParam(name="username") String username) {
         System.out.println("Post mapping hit");
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        long userId = user.getId();
+//        user = userDao.findUserById(userId);
+//        if(!password.equals(confirmPassword)) {
+//            return "redirect:/profile/edit";
+//        }
+//        user.setEmail(email);
+//        user.setPassword(password);
+//        user.setUsername(username);
+//        userDao.save(user);
         return "redirect:/profile";
     }
 }
