@@ -1,6 +1,8 @@
 // Get API token from Spotify
-import {KEYS} from "./keys";
-
+// import {KEYS} from "./keys";
+const KEYS ={
+	clientID: "ce45f68184154033b71a753b12af825c", clientSecret :"a820a46f42714a9e9f885ed8e8433e10"
+}
 const getToken = async () => {
 	try {
 		const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -12,7 +14,8 @@ const getToken = async () => {
 			body: 'grant_type=client_credentials'
 		});
 		const data = await result.json();
-		KEYS.accessCode = data.access_token;
+		return data.access_token;
+		// KEYS.accessCode = data.access_token;
 
 	} catch (error) {
 		console.log("Error retrieving API access code: " + error);
@@ -173,9 +176,11 @@ if (KEYS.accessCode === ""){
 	await getToken();
 }
 
-// display search results
-let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
-console.log(searchData);
+let token = await getToken();
+
+// // display search results
+// let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
+// console.log(searchData);
 
 
 
