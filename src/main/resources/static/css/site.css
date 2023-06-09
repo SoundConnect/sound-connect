@@ -61,7 +61,6 @@ body{
     height: 400px;
 }
 
-<<<<<<< explore
 .login-button, .sign-up-button{
     background-color: var(--secondary);
     color: var(--primary);
@@ -86,8 +85,7 @@ body{
     margin: 0px 5px;
     cursor: pointer;
 }
-=======
->>>>>>> safeplace
+
 .footer{
     margin-top: 150px;
 }
@@ -349,11 +347,8 @@ form {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    /*min-width: 400px;*/
-    /*border: #1304d2 1px solid;*/
     border-radius: 10px;
     padding: 20px;
-    /*margin: -40px;*/
 }
 
 form > * {
@@ -488,7 +483,6 @@ button.btn.primary {
 
 .playlist-separation-line {
     border: 1px solid var(--secondary);
-    /*margin: 20px 0;*/
     max-width: 1px;
 }
 
