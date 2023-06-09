@@ -61,7 +61,6 @@ body{
     height: 400px;
 }
 
-
 .login-button, .sign-up-button{
     background-color: var(--secondary);
     color: var(--primary);
@@ -142,7 +141,7 @@ a{
     padding: 0 10px;
     color: var(--secondary);
 }
-.playlist-row, .artist-row{
+.playlist-row, .artist-row, .album-row{
     height: 150px;
     width: 100%;
     border-radius: 10px;
@@ -181,7 +180,10 @@ a{
     height: 100%;
     padding: 10px;
 }
-
+.album-image{
+    height: 100%;
+    width: 180px;
+}
 /*****************************End Explore Page********************************/
 /*****************************NAV BAR********************************/
 

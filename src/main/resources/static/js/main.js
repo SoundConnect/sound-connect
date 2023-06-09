@@ -1,5 +1,6 @@
 // Get API token from Spotify
 // import {KEYS} from "./keys";
+
 export const getToken = async () => {
 	try {
 		const result = await fetch('https://accounts.spotify.com/api/token', {

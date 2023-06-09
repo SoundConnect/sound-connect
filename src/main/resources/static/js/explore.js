@@ -122,7 +122,7 @@ async function getAlbums(token) {
         const data = await response.json();
         console.log(data)
         const albumContainer = document.querySelector('.explore-albums');
-        const albums = data.tracks.album;
+        const albums = data.tracks;
         albums.forEach(album => {
             const albumRow = document.createElement('div');
             albumRow.className = 'row album-row';
@@ -132,7 +132,7 @@ async function getAlbums(token) {
 
             const albumImage = document.createElement('img');
             albumImage.className = 'album-image';
-            albumImage.src = album.images[0].url;
+            albumImage.src = album.album.images[0].url;
             albumImage.alt = 'album image';
             column1.appendChild(albumImage);
 
