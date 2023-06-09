@@ -10,7 +10,7 @@ public class PlaylistController {
     // show form for creating a playlist
     @GetMapping("/create")
     public String showCreatePlaylistForm(){
-        return "create";
+        return "createPlaylist";
     }
 
     // get form data and create playlist
