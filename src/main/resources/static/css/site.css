@@ -309,6 +309,84 @@ button.btn.primary {
     font-size: 50px;
     text-shadow: 50px 50px 50px yellow;
 }
+/*
+======Forms Styles For Playlist Creation Page======
+*/
+.playlist-box {
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--secondary);
+}
+.playlist-details-box, .playlist-song-box {
+    padding: 20px 10px;
+}
+.playlist-pic-wrapper {
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    height: 15rem;
+    width: 15rem;
+}
+.playlist-pic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.playlist-title-box {
+    flex: 1 0 auto;
+}
+.playlist-title {
+    font-size: 35px;
+    font-weight: bold;
+}
+.playlist-description-box {
+    flex: 6 0 auto;
+}
+
+.playlist-separation-line {
+    border: 1px solid var(--secondary);
+    /*margin: 20px 0;*/
+    max-width: 1px;
+}
+
+.playlist-song-box {
+    flex: 2 0 auto;
+}
+.song-card {
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    padding: 4px 8px;
+    height: 40px;
+}
+.song-pic-wrapper {
+    height: 2rem;
+    width: 2rem;
+}
+.song-pic {
+    object-fit: cover;
+}
+.song-duration, .song-album-name {
+    flex-grow: 2;
+}
+.song-artist {
+    opacity: 75%;
+    font-size: 10px;
+}
+.create-page-search {
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 4px 8px;
+    color: var(--secondary);
+}
+.results-box {
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+}
+
 
 /*====== Profile Page Styles======*/
 .page-wrapper {
