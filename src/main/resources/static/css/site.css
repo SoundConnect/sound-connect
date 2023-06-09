@@ -237,9 +237,10 @@ form {
     flex-wrap: wrap;
     gap: 10px;
     min-width: 400px;
-    border: #1304d2 1px solid;
+    /*border: #1304d2 1px solid;*/
     border-radius: 10px;
     padding: 20px;
+    margin: -40px;
 }
 form > * {
     width: 50%;
@@ -259,7 +260,7 @@ form > * {
     border: unset;
     display: flex;
     flex-direction: column;
-    min-height: 40px;
+    min-height: 30px;
     border-radius: 3px;
     color: inherit;
     font-family: inherit;
@@ -311,13 +312,13 @@ button.btn.primary {
 .join {
     display: flex;
     flex-direction: column;
-    /*gap: 10px;*/
     align-items: center;
     justify-content: center;
-    /*min-height: 10vh;*/
-    font-size: 10px;
+    min-height: 20vh;
+    font-size: 20px;
     color: #f5f5f5;
 }
+
 /*====== SoundConnect Title======*/
 .title{
     color: #f5f5f5;
@@ -363,6 +364,7 @@ button.btn.primary {
 .playlist-description-box {
     flex: 6 0 auto;
 }
+
 
 .playlist-separation-line {
     border: 1px solid var(--secondary);
@@ -427,9 +429,8 @@ button.btn.primary {
     flex-direction: column;
     flex: 1;
     padding: 10px;
-    height: 250px;
-    width: 200px;
-    border: 1px solid #ccc;
+    height: 50px;
+    width: 900px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -444,7 +445,7 @@ button.btn.primary {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border: 1px solid #1304d2;
+    border-top: 1px solid #1304d2;
 }
 
 .player-section, .columns-section {
@@ -472,10 +473,8 @@ button.btn.primary {
 .music-player {
     width: 100%;
     max-width: 600px;
-    margin: 20px 0px 20px 0px;
+    margin: 10px 0px 20px 0px;
     padding: 20px;
-    background-color: #060429;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, .1);
     border-radius: 5px;
 }
 
@@ -528,3 +527,4 @@ button.btn.primary {
 .volume-control {
     margin-top: 10px;
 }
+
