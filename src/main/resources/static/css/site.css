@@ -202,16 +202,26 @@ a {
 }
 
 /*
-======Forms Styles For Login Page======
-*/
+======Forms Styles For Login Page======*/
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Image will be behind the content */
+}
+
 form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     min-width: 400px;
+    border: #1304d2 1px solid;
+    border-radius: 10px;
+    padding: 20px;
 }
 form > * {
-    width: 60%;
+    width: 50%;
 }
 .input-wrapper {
     display: flex;
@@ -263,7 +273,7 @@ button.btn.primary {
     text-transform: uppercase;
     letter-spacing: 1px;
     outline: unset;
-    border: unset;
+    border: #1304d2 1px solid;
 }
 /*======Items Below login page======*/
 
@@ -299,4 +309,277 @@ button.btn.primary {
     font-size: 50px;
     text-shadow: 50px 50px 50px yellow;
 }
+
+/*====== Profile Page Styles======*/
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    margin-top: 40px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+    height: 250px;
+    width: 200px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    flex: 3;
+    padding-left: 20px;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #1304d2;
+}
+
+.player-section, .columns-section {
+    width: 100%;
+}
+
+.columns-section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.column-boxes{
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow: auto;  /* If content exceeds the column height, it will be scrollable */
+    margin-bottom: 10px;
+}
+
+/*====== Profile/Music Player Styles======*/
+
+.music-player {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    background-color: #060429;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.album-art img {
+    width: 100%;
+    height: auto;
+}
+
+.track-info {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.track-info p {
+    margin: 0;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.player-controls button {
+    padding: 5px 10px;
+    background-color: #1304d2;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color:  #1304d2;
+    margin: 10px 0;
+}
+
+.progress-bar #progress {
+    height: 100%;
+    background-color:  #1304d2;
+}
+
+.time-stamp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.volume-control {
+    margin-top: 10px;
+}
+
+
+
+/*!*====== Profile Page Styles======*!*/
+
+/*.top-row .profile {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: flex-start;*/
+/*    align-items: flex-start;*/
+/*    flex-grow: 1;*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ccc;*/
+/*    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.sidebar {*/
+/*    display: flex;*/
+/*    flex: 1;*/
+/*    padding: 10px;*/
+/*    height: auto;*/
+/*    width: 200px;*/
+/*    border: 1px solid #ccc;*/
+/*    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.profile {*/
+/*    flex: 3;*/
+/*    padding-left: 20px;*/
+/*}*/
+
+
+/*.row {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 10px;*/
+/*}*/
+/*.container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*.content {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-start;*/
+/*    align-items: center;*/
+/*        padding: 10px;*/
+/*    border: 1px solid hotpink;*/
+
+/*}*/
+/*.player-section, .columns-section {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.columns-section {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+
+/*.column-boxes{*/
+/*    flex: 1;*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ccc;*/
+/*    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);*/
+/*    height: 75px;*/
+/*    overflow: auto;  !* If content exceeds the column height, it will be scrollable *!*/
+/*    margin-bottom: 10px;*/
+/*}*/
+
+/*!*====== Profile/Music Player Styles======*!*/
+
+/*.music-player {*/
+/*    width: 100%;*/
+/*    max-width: 600px;*/
+/*    margin: 0 auto;*/
+/*    padding: 20px;*/
+/*    background-color: #fff;*/
+/*    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.album-art img {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*}*/
+
+/*.track-info {*/
+/*    margin: 10px 0;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.track-info p {*/
+/*    margin: 0;*/
+/*}*/
+
+/*.player-controls {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.player-controls button {*/
+/*    padding: 5px 10px;*/
+/*    background-color: hotpink;*/
+/*    border: none;*/
+/*    border-radius: 50px;*/
+/*    color: #fff;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.progress-bar {*/
+/*    width: 100%;*/
+/*    height: 10px;*/
+/*    background-color: #ddd;*/
+/*    margin: 10px 0;*/
+/*}*/
+
+/*.progress-bar #progress {*/
+/*    height: 100%;*/
+/*    background-color: hotpink;*/
+/*}*/
+
+/*.time-stamp {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+/*.volume-control {*/
+/*    margin-top: 10px;*/
+/*}*/
+
 

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
 <body>
-<div class="page-wrapper body">
-    <div class="container grow justify-center">
+<div class="page-wrapper">
+<!--    <header th:replace="partials/navbar :: navbar"></header>-->
+    <div class="container login-background">
+        <img src="../images/login-background.jpg" alt="login background" class="background">
         <div class="container login-page">
-            <div class="row justify-center full-width"></div>
-        </div>
-          <div class="row justify-center">
-            <div class="column shrink overlay-form">
                 <h1 class="title">SoundConnect</h1>
                 <p class="join">SoundConnect... where music, culture, and community come together.</p>
                 <br>
@@ -16,7 +14,7 @@
                     <label class="text-area" for="username">Username:</label>
                     <input class="text-input" type="text" id="username" name="username">
                     <label class="text-area" for="password">Password:</label>
-                    <input class=text-input type="password" id="password" name="password">
+                    <input class="text-input" type="password" id="password" name="password">
                     <div>
                         <button type="submit" class="button btn primary">Log In</button>
                     </div>
@@ -27,6 +25,5 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
