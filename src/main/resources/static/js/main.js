@@ -12,8 +12,10 @@ export const getToken = async () => {
 			body: 'grant_type=client_credentials'
 		});
 		const data = await result.json();
+
 		KEYS.accessCode = data.access_token;
 		return data.access_token;
+
 
 	} catch (error) {
 		console.log("Error retrieving API access code: " + error);
@@ -175,9 +177,11 @@ if (KEYS.accessCode === ""){
 
 }
 
-// display search results
-let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
-console.log(searchData);
+let token = await getToken();
+
+// // display search results
+// let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
+// console.log(searchData);
 
 
 
