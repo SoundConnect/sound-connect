@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head(title='SoundConnect - Post Feed')"></head>
+<body>
+    <div class="page-wrapper">
+        <nav th:replace="partials/navbar :: navbar"></nav>
+        <div class="container">
+            <div class="row justify-center">
+                <div class="column align-center">
+                    <h1>View Posts</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container grow">
+            <div class="row">
+                <div class="column">
+                    <ul>
+                        <li th:each="playlist : ${playlists}">
+                            <h2 th:text="${playlist.name}"></h2>
+                            <p th:text="${playlist.description}"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
