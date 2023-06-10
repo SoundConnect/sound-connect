@@ -36,7 +36,10 @@
     <footer th:replace="partials/footer :: footer"></footer>
   </div>
   </div>
-<script type="module" src="/js/explore.js">
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="/js/spotifyPlayer.js"></script>
+
+  <script type="module" src="/js/explore.js">
   (async () => {
     let playlist = await displayPlaylist();
     console.log(playlist)
