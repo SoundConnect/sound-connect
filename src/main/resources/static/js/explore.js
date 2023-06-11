@@ -64,7 +64,7 @@ async function displayPlaylist(token) {
             songRow.id = `song${index + 1}`;
 
             const songTitle = document.createElement('span');
-            songTitle.textContent = playlist.name;
+            // songTitle.textContent = playlist.name;
 
             const playButton = document.createElement('button');
             playButton.className = 'play-button';
