@@ -14,7 +14,7 @@
                 <div class="sidebar">
                     <ul>
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/search">Search</a></li>
+                        <li><a href="/explore">Search</a></li>
                         <li><a href="/Your Library">Settings</a></li>
                         <li><a href="/logout">Log Out</a></li>
                     </ul>
@@ -59,19 +59,20 @@
                 <!-- Columns -->
                 <div class="columns-section">
                     <div class="row">
-                        <div class="column-boxes overlay-form">
+                        ...
+                        <div class="column-boxes overlay-form profile-playlists">
                             <h3>My Playlists</h3>
                             <p>{Content 1}</p>
                         </div>
-                        <div class="column-boxes overlay-form">
+                        <div class="column-boxes overlay-form profile-artists">
                             <h3>New Playlists</h3>
                             <p>{Content 4}</p>
                         </div>
-                        <div class="column-boxes overlay-form">
+                        <div class="column-boxes overlay-form profile-albums">
                             <h3>Followers</h3>
                             <p>{Content 2}</p>
                         </div>
-                        <div class="column-boxes overlay-form">
+                        <div class="column-boxes overlay-form profile-tracks">
                             <h3>New Music</h3>
                             <p>{Content 3}</p>
                         </div>
@@ -80,5 +81,13 @@
             </div>
         </div>
     </div>
+<script>
+    <script type="module" src="/js/profile.js">
+        (async () => {
+        let result = await musicPlayer();
+        console.log(result);
+        })();
+</script>
 </body>
 </html>
+
