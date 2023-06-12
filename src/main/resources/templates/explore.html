@@ -13,37 +13,50 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row explore-row-bg">
         <div class="column ">
           <div class="row">
-            <h1>Tracks</h1>
+            <h1>Recommended Tracks</h1>
           </div>
-          <div class="explore-playlist"></div>
+          <div class="explore-playlist row">
+
+          </div>
           <div class="row">
-            <h1>Artists</h1>
+            <h1>Recommended Artists</h1>
           </div>
-          <div class="explore-artists"></div>
+          <div class=" row explore-artists"></div>
             <div class="row">
-                <h1>Albums</h1>
+                <h1>Recommended Albums</h1>
             </div>
-            <div class="explore-albums"></div>
+            <div class="row explore-albums"></div>
         </div>
-        <div class="column align-center">
-          <input type="text" placeholder="Search.." class="explore-search">
-      </div>
+<!--        <div class="column align-center">-->
+<!--          <input type="text" placeholder="Search.." class="explore-search">-->
+<!--      </div>-->
 
   </div>
     <footer th:replace="partials/footer :: footer"></footer>
   </div>
   </div>
-  <script src="https://sdk.scdn.co/spotify-player.js"></script>
-  <script src="/js/spotifyPlayer.js"></script>
+  <script type="module" src="/js/spotifyPlayer.js"></script>
 
   <script type="module" src="/js/explore.js">
   (async () => {
     let playlist = await displayPlaylist();
     console.log(playlist)
   })();
+</script>
+  <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+<script>
+  window.onSpotifyIframeApiReady = (IFrameAPI) => {
+    const element = document.getElementById('embed-iframe');
+    const options = {
+      uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+    };
+    const callback = (EmbedController) => {};
+    IFrameAPI.createController(element, options, callback);
+  };
+
 </script>
 
 </body>

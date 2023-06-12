@@ -162,6 +162,7 @@ a{
 }
 .explore-playlist{
     height: 100%;
+    width: 100%;
     padding: 10px;
 }
 .artist-image{
@@ -183,6 +184,13 @@ a{
 .album-image{
     height: 100%;
     width: 180px;
+}
+.explore-row-bg{
+    background-color: #070646;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px var(--secondary);
+    padding: 10px;
 }
 /*****************************End Explore Page********************************/
 /*****************************NAV BAR********************************/
