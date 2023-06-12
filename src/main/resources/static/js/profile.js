@@ -28,6 +28,17 @@ console.log(
             `${name} by ${artists.map(artist => artist.name).join(', ')}`
     )
 );
+function createPlaylistIframe(trackId) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
+    iframe.width = '300';
+    iframe.height = '80';
+    iframe.frameborder = '0';
+    iframe.allowtransparency = 'true';
+    iframe.allow = 'encrypted-media';
+    let artistContainer = document.getElementById('artist-container');
+    artistContainer.appendChild(iframe);
+}
 
 
 // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
@@ -61,6 +72,7 @@ console.log(
             `${name} by ${artists.map(artist => artist.name).join(', ')}`
     )
 );
+
 
 // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
 const token = 'BQBvNN4AulmPKbSgOAiwet2wN_9msGSqBbQMdYWH-tjTKbuBnam5Xe3GCxCxbrVKRkB60FbmJ57cGZDf8HCzHkhLxcUpHhKP5tsIF3pY5QRIpZMhtGh-3fhlPDM5y6esQZCCZ3050u9ug3MCejxGpAs2E6hyFZWUbVJN2_MDTz7hBXo-hXLbYDZek8h1caKpQxTy55_pvwRj2Rg0-rk3DKyj7E1wDezixFbWiwY1KY_NOVyEPUJbGAVhE--qwy7Z99AnNoW6YDzFvAdxnwEbNgVb';
@@ -99,8 +111,6 @@ async function createPlaylist(tracksUri){
 
 const createdPlaylist = await createPlaylist(tracksUri);
 console.log(createdPlaylist.name, createdPlaylist.id);
-
-
 
 
 

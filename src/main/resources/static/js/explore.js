@@ -164,7 +164,6 @@ async function getAlbums(token) {
 }
 
 
-
 (async () => {
     let playlist = await displayPlaylist(token);
     let artists = await getArtists(artistToken);

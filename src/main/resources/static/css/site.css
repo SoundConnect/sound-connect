@@ -573,7 +573,8 @@ button.btn.primary {
     border: 1px solid #ccc;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     height: 300px;
-    overflow: auto;  /* If content exceeds the column height, it will be scrollable */
+    width: 300px;
+    /*overflow: auto;  !* If content exceeds the column height, it will be scrollable *!*/
     margin-bottom: 10px;
 }
 
