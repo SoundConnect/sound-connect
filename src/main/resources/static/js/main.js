@@ -1,5 +1,10 @@
 // Get API token from Spotify
 // import {KEYS} from "./keys";
+export const KEYS = {
+	clientID: "6b14de4df2be4965a8c7675f7314f326",
+	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
+	accessCode: ""
+}
 
 export const getToken = async () => {
 	try {
