@@ -98,7 +98,7 @@ async function getAlbums(token) {
         function createAlbumIframe(albumId) {
             const iframe = document.createElement('iframe');
             iframe.style.borderRadius = '12px';
-            iframe.src = `https://open.spotify.com/embed/album/${albumId}?utm_source=generator`;
+            iframe.src = `https://open.spotify.com/embed/album/${albumId}`;
             iframe.width = '100%';
             iframe.height = '352';
             iframe.frameBorder = '0';
