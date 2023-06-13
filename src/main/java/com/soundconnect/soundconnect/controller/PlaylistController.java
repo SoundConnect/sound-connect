@@ -3,11 +3,14 @@ package com.soundconnect.soundconnect.controller;
 import com.soundconnect.soundconnect.model.Album;
 import com.soundconnect.soundconnect.model.Artist;
 import com.soundconnect.soundconnect.model.Playlist;
+import com.soundconnect.soundconnect.model.User;
+
 import com.soundconnect.soundconnect.model.Track;
 import com.soundconnect.soundconnect.repositories.AlbumRepository;
 import com.soundconnect.soundconnect.repositories.ArtistRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.TrackRepository;
+import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +22,17 @@ public class PlaylistController {
 
     private final PlaylistRepository playlistsDao;
     private final TrackRepository tracksDao;
+
     private final AlbumRepository albumsDao;
     private final ArtistRepository artistsDao;
+    private final UserRepository usersDao;
 
     public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao){
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
         this.albumsDao = albumsDao;
         this.artistsDao = artistsDao;
+        this.usersDao = usersDao;
     }
 
     // show form for creating a playlist
@@ -37,6 +43,7 @@ public class PlaylistController {
 
     // get form data and create playlist
     @PostMapping("/create")
+
     public String createPlaylist(@RequestBody Playlist playlist){
         Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
         playlistsDao.save(savePlaylist);
@@ -77,5 +84,13 @@ public class PlaylistController {
         List<Playlist> playlists = playlistsDao.findAll();
         model.addAttribute("playlists", playlists);
         return "feed";
+    }
+
+    // delete playlist from account
+    @PostMapping("/delete")
+    public String deletePlaylist(){
+//        User user = (User) usersDao.findAll();
+//        Playlist playlist = playlistsDao.findByUser(user);
+        return "redirect:/profile";
     }
 }
