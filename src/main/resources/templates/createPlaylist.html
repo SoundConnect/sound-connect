@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{partials/head :: head(title='SoundConnect - Create a Playlist')}"></head>
+<body>
+<div class="page-wrapper gap-25">
+    <nav th:replace="~{partials/navbar :: navbar}"></nav>
+    <!-- Search input -->
+    <section class="container">
+        <div class="row justify-space-between align-center no-padding">
+            <div class="d-flex gap-10">
+                <h1>Find songs for your playlist</h1>
+                <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
+            </div>
+            <a class="create-playlist-btn" href="/feed" title="Feed">Create Playlist</a>
+        </div>
+    </section>
+
+    <!-- Search results -->
+    <section class="container search-results-container"></section>
+
+    <!-- Playlist / form card -->
+    <section class="container justify-center grow">
+        <div class="row grow no-padding no-gap playlist-box">
+            <!-- Left Column: Playlist pic, title, desc -->
+            <div class="column gap-10 playlist-details-box">
+                <div class="row justify-center align-center playlist-pic-box">
+                    <div class="playlist-pic-wrapper">
+                        <img src="/images/default-playlist-logo.png" alt="Playlist Picture" class="playlist-pic">
+                    </div>
+                </div>
+                <div class="row align-center justify-center text-center playlist-title-box">
+                    <input class="playlist-title" type="text" name="playlistTitle" placeholder="Title">
+                </div>
+                <div class="row playlist-description-box">
+                    <textarea class="playlist-description" name="playlistDescription" placeholder="Description"></textarea>
+                </div>
+            </div>
+
+            <!-- Line separating left and right column -->
+            <div class="column playlist-separation-line"></div>
+
+            <!-- Right Column: List of songs added to the playlist -->
+            <div class="column playlist-song-box"></div>
+        </div>
+    </section>
+</div>
+
+<script src="/js/createPlaylist.js" type="module"></script>
+</body>
+</html>

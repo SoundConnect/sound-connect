@@ -1,23 +1,16 @@
-<head>
-    <link rel="stylesheet" href="/static/css/resets.css">
-    <link rel="stylesheet" href="/static/css/layout.css">
-    <link rel="stylesheet" href="/static/css/site.css">
-</head>
 <nav th:fragment="navbar">
-    <div class="container grow navbar">
-        <div class="row nav-row">
-            <div class="column shrink nav-col">
-                <a class="nav-link" th:href=""><p>Home</p></a>
-                <a class="nav-link" th:href=""><p>Profile</p></a>
-                <a class="nav-link" th:href=""><p>Create Post</p></a>
-                <form th:method="post" th:action="@{/logout}">
-                    <input type="text" placeholder="Search" class="search_input">
-                </form>
-            </div>
-            <div class="column login-col shrink">
-                <a class="nav-link" th:href=""><p>Login</p></a>
-                <a class="nav-link" th:href=""><p>Sign Up</p></a>
-            </div>
-        </div>
+  <div class="container grow nav-container">
+    <div class="row nav-row">
+      <div class="column gap-15 nav-col shrink">
+        <a href="/"><h1 class="logo">Sound Connect</h1></a>
+        <div><a href="/about" title="About">About</a></div>
+        <div><a href="/contact" title="About">Contact</a></div>
+        <div><a href="/explore" title="About">Explore</a></div>
+      </div>
+      <div class="column shrink login-col">
+        <a href="login" class="login-button">Login</a>
+        <a href="register" class="sign-up-button">Sign Up</a>
+      </div>
     </div>
+  </div>
 </nav>
