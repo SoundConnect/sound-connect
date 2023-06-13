@@ -6,41 +6,48 @@
     <nav th:replace="~{partials/navbar :: navbar}"></nav>
     <!-- Search input -->
     <section class="container">
-        <div class="row justify-space-between align-center no-padding">
+        <div class="row justify-space-between align-center create-top-box">
             <div class="d-flex gap-10">
                 <h1>Find songs for your playlist</h1>
                 <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
             </div>
-            <a class="create-playlist-btn" href="/feed" title="Feed">Create Playlist</a>
+            <div class="create-playlist-btn" title="Feed">Create Playlist</div>
         </div>
     </section>
 
     <!-- Search results -->
-    <section class="container search-results-container"></section>
+    <section class="container gap-20 search-results-container"></section>
 
     <!-- Playlist / form card -->
     <section class="container justify-center grow">
         <div class="row grow no-padding no-gap playlist-box">
             <!-- Left Column: Playlist pic, title, desc -->
             <div class="column gap-10 playlist-details-box">
-                <div class="row justify-center align-center playlist-pic-box">
+                <div class="row justify-center align-center no-padding playlist-pic-box">
                     <div class="playlist-pic-wrapper">
                         <img src="/images/default-playlist-logo.png" alt="Playlist Picture" class="playlist-pic">
                     </div>
                 </div>
-                <div class="row align-center justify-center text-center playlist-title-box">
+                <div class="row justify-center align-center text-center no-padding playlist-title-box">
                     <input class="playlist-title" type="text" name="playlistTitle" placeholder="Title">
                 </div>
-                <div class="row playlist-description-box">
+                <div class="row justify-center align-center no-padding playlist-description-box">
                     <textarea class="playlist-description" name="playlistDescription" placeholder="Description"></textarea>
                 </div>
             </div>
 
-            <!-- Line separating left and right column -->
-            <div class="column playlist-separation-line"></div>
-
             <!-- Right Column: List of songs added to the playlist -->
-            <div class="column playlist-song-box"></div>
+            <div class="column gap-20 playlist-song-box">
+                <!-- Header -->
+                <div class="row align-center no-padding song-box-header">
+                    <div class="column song-title no-gap">
+                        <div class="song-name">Title</div>
+                    </div>
+                    <div class="song-pic-wrapper"></div>
+                    <div class="column song-album-name">Album</div>
+                    <div class="column align-right song-duration">Duration</div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

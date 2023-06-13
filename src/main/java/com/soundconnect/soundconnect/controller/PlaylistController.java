@@ -45,37 +45,43 @@ public class PlaylistController {
     @PostMapping("/create")
 
     public String createPlaylist(@RequestBody Playlist playlist){
-        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-        playlistsDao.save(savePlaylist);
+        System.out.println(playlist.getName());
+        System.out.println(playlist.getName().isEmpty());
+        if (playlist.getName().isEmpty()){
+            return "redirect:/create/error";
+        } else {
+            Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
+            playlistsDao.save(savePlaylist);
 
-        // save all tracks, albums, and artists to database
-        for(Track track : playlist.getTracks()){
-            Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
-            tracksDao.save(saveTrack);
+            // save all tracks, albums, and artists to database
+            for (Track track : playlist.getTracks()) {
+                Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
+                tracksDao.save(saveTrack);
 
-            Artist saveArtist;
-            if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null){
-                saveArtist = artistsDao.findByName(track.getAlbum().getArtist().getName());
-            } else {
-                saveArtist = new Artist(track.getAlbum().getArtist().getName());
-                artistsDao.save(saveArtist);
+                Artist saveArtist;
+                if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null) {
+                    saveArtist = artistsDao.findByName(track.getAlbum().getArtist().getName());
+                } else {
+                    saveArtist = new Artist(track.getAlbum().getArtist().getName());
+                    artistsDao.save(saveArtist);
+                }
+
+                Album saveAlbum;
+                if (albumsDao.findByName(track.getAlbum().getName()) != null) {
+                    saveAlbum = albumsDao.findByName(track.getAlbum().getName());
+                } else {
+                    saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt());
+                    saveAlbum.setArtist(saveArtist);
+                    albumsDao.save(saveAlbum);
+                }
+
+                saveTrack.setAlbum(saveAlbum);
+                saveTrack.setPlaylist(savePlaylist);
+                tracksDao.save(saveTrack);
             }
 
-            Album saveAlbum;
-            if (albumsDao.findByName(track.getAlbum().getName()) != null){
-                saveAlbum = albumsDao.findByName(track.getAlbum().getName());
-            } else {
-                saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt());
-                saveAlbum.setArtist(saveArtist);
-                albumsDao.save(saveAlbum);
-            }
-
-            saveTrack.setAlbum(saveAlbum);
-            saveTrack.setPlaylist(savePlaylist);
-            tracksDao.save(saveTrack);
+            return "redirect:/profile";
         }
-
-        return "redirect:/profile";
     }
 
     // show feed for all shared playlists

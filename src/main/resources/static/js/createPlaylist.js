@@ -8,7 +8,6 @@ export const KEYS = {
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
 let searchResultsParent = document.querySelector('.search-results-container');
-let addSongBtns = document.querySelectorAll('.add-song-btn');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
 
@@ -16,7 +15,13 @@ let songList = [];
 
 // Sends a POST request to the server with playlist info
 submitButton.addEventListener('click', () => {
+	let playlistTitleValue = document.querySelector('.playlist-title').value;
+	if (playlistTitleValue.trim() === '') {
+		playlistTitleError();
+		return;
+	}
 	sendHttpRequest();
+	window.location.href = '/feed';
 });
 function sendHttpRequest() {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
@@ -49,6 +54,12 @@ function sendHttpRequest() {
 	console.log(playlistData);
 
 	xhr.send(JSON.stringify(playlistData));
+}
+
+// display error message for empty playlist title
+const playlistTitleError = () => {
+	let title = document.querySelector('input.playlist-title');
+	title.style.borderColor = 'red';
 }
 
 // Get API token from Spotify
@@ -95,51 +106,62 @@ const sortSongData = (songData) => {
 search.addEventListener('keyup', async () => {
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
-	console.log(searchResults);
 	searchResultsParent.innerHTML = '';
 	searchResults.forEach(song => {
 		displaySearchResults(song);
 	});
+});
 
-	// event listener for add song button
-	addSongBtns = document.querySelectorAll('.add-song-btn');
-	addSongBtns.forEach(btn => {
-		btn.addEventListener('click', (e) => {
-			let songData = btn.querySelector('span').innerText;
-			let songDataArr = songData.split('~');
-			songList.push(
-				{
-					"name": songDataArr[0],
-					"spotifyId": songDataArr[1],
-					"duration": songDataArr[2],
-					"album": {
-						"name": songDataArr[3],
-						"albumArt": songDataArr[4],
-						"artist": {
-							"name": songDataArr[5]
-						}
+// event listener for add song button
+searchResultsParent.addEventListener('click', (e) => {
+	let clickedBtn = e.target;
+	if (clickedBtn.nodeName === 'BUTTON') {
+		let songData = clickedBtn.querySelector('span').innerText.split('~');
+		songList.push(
+			{
+				"name": songData[0],
+				"spotifyId": songData[1],
+				"duration": songData[2],
+				"album": {
+					"name": songData[3],
+					"albumArt": songData[4],
+					"artist": {
+						"name": songData[5]
 					}
 				}
-			);
-			let addedSongCard = e.target.parentElement;
-			addedSongCard.children[3].style.visibility = 'hidden';
+			}
+		);
+		let addedSongCard = clickedBtn.parentElement;
+		addedSongCard.children[3].style.visibility = 'hidden';
 
-			let newCard = document.createElement('div');
-			newCard.classList.add('row', 'align-center');
-			newCard.innerHTML = addedSongCard.innerHTML;
-			newCard.innerHTML += `<div class="song-duration">${songDataArr[2]}</div>`;
+		let newCard = document.createElement('div');
+		newCard.classList.add('row', 'align-center', 'no-padding');
+		newCard.innerHTML = addedSongCard.innerHTML;
+		newCard.children[3].remove();
+		newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
 
-			playlistBody.innerHTML += newCard.outerHTML;
-		});
-	});
+		playlistBody.innerHTML += newCard.outerHTML;
+	}
 });
+
+// Format song duration (milliseconds to minutes:seconds)
+const formatSongDuration = duration => {
+	const totalSeconds = Math.floor(duration / 1000);
+	const minutes = Math.floor(totalSeconds / 60);
+	const seconds = totalSeconds % 60;
+
+	const formattedMinutes = String(minutes).padStart(2, '0');
+	const formattedSeconds = String(seconds).padStart(2, '0');
+
+	return `${formattedMinutes}:${formattedSeconds}`;
+}
 
 // Display search results
 const displaySearchResults = song => {
 	let features = song.artists.map(artist => artist.name).join(', ');
 
 	searchResultsParent.innerHTML += `
-		<div class="row align-center">
+		<div class="row align-center no-padding">
 			<div class="column shrink song-pic-wrapper">
 				<img src="${song.album.images[2].url}" alt="Song Picture" class="song-pic" >
 			</div>
