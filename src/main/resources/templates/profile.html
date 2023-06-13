@@ -7,12 +7,11 @@
 <body>
 <div class="page-wrapper">
     <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container login-background">
+    <div class="container">
         <img src="../images/login-background.jpg" alt="login background" class="background">
-        <div class="container grow justify-center">
             <!-- Sidebar and Profile Sections-->
-            <div class="row top-row">
-                <div class="sidebar column">
+            <div class="row">
+                <div class="sidebar">
                     <ul>
                         <li><a href="/home">Home</a></li>
                         <li><a href="/search">Search</a></li>
@@ -34,11 +33,11 @@
                 <div class="player-section">
                     <div class="music-player overlay-form">
                         <div class="album-art">
-                            <img id="album-art" src="placeholder.jpg" alt="Album Art">
+                            <img id="albumArt" src="placeholder.jpg" alt="Album Art">
                         </div>
                         <div class="track-info">
-                            <p id="track-name">Track Name</p>
-                            <p id="artist-name">Artist Name</p>
+                            <p id="trackName">Track Name</p>
+                            <p id="artistName">Artist Name</p>
                         </div>
                         <div class="player-controls">
                             <button id="prev-track">Previous</button>
@@ -81,99 +80,5 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--&lt;!&ndash;<html xmlns:th="http://www.thymeleaf.org" lang="en">&ndash;&gt;-->
-<!--<head th:replace="partials/head :: head(title='SoundConnect - Profile')">-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>SoundConnect Login</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="page-wrapper">-->
-<!--        <header th:replace="partials/navbar :: navbar"></header>-->
-<!--    <div class="container login-background">-->
-<!--        <img src="../images/login-background.jpg" alt="login background" class="background">-->
-<!--        <div class="container grow justify-center">-->
-
-<!--        <h1 class="title-profile">Sound Connect</h1>-->
-<!--        &lt;!&ndash; Sidebar and Profile Sections&ndash;&gt;-->
-<!--        <div class="row top-row">-->
-<!--            <div class="sidebar">-->
-<!--                <ul>-->
-<!--                    <li><a href="/home">Home</a></li>-->
-<!--                    <li><a href="/search">Search</a></li>-->
-<!--                    <li><a href="/Your Library">Settings</a></li>-->
-<!--                    <li><a href="/logout">Log Out</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-
-<!--            &lt;!&ndash; Profile Row &ndash;&gt;-->
-<!--            <div class="profile">-->
-<!--                <h3>Profile</h3>-->
-<!--                <p>{User Name}</p>-->
-<!--                <img src="login.html">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Content &ndash;&gt;-->
-<!--        <div class="content">-->
-<!--        &lt;!&ndash; Columns &ndash;&gt;-->
-<!--        <div class="row">-->
-<!--        <div class="column-boxes overlay-form">-->
-<!--        <h3>My Playlists</h3>-->
-<!--        <p>{Content 1}</p>-->
-<!--        </div>-->
-<!--        <div class="column-boxes overlay-form">-->
-<!--        <h3>New Playlists</h3>-->
-<!--        <p>{Content 4}</p>-->
-<!--        </div>-->
-<!--        <div class="column-boxes overlay-form">-->
-<!--        <h3>Followers</h3>-->
-<!--        <p>{Content 2}</p>-->
-<!--        </div>-->
-<!--        <div class="column-boxes overlay-form">-->
-<!--        <h3>New Music</h3>-->
-<!--        <p>{Content 3}</p>-->
-<!--        </div>-->
-<!--&lt;!&ndash;Music Player&ndash;&gt;-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<div class="music-player overlay-form">-->
-<!--<div class="album-art">-->
-<!--<img id="album-art" src="placeholder.jpg" alt="Album Art">-->
-<!--</div>-->
-<!--<div class="track-info">-->
-<!--<p id="track-name">Track Name</p>-->
-<!--<p id="artist-name">Artist Name</p>-->
-<!--</div>-->
-<!--<div class="player-controls">-->
-<!--<button id="prev-track">Previous</button>-->
-<!--<button id="play-pause">Play/Pause</button>-->
-<!--<button id="next-track">Next</button>-->
-<!--</div>-->
-<!--<div class="progress-bar">-->
-<!--<div id="progress" style="width: 0%"></div>-->
-<!--</div>-->
-<!--<div class="time-stamp">-->
-<!--<p id="current-time">0:00</p>-->
-<!--<p id="total-time">0:00</p>-->
-<!--</div>-->
-<!--<div class="volume-control">-->
-<!--<input type="range" id="volume" min="0" max="1" step="0.1">-->
-<!--</div>-->
-<!--                </div>-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
