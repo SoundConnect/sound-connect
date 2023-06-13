@@ -83,6 +83,20 @@ public class PlaylistController {
         }
     }
 
+    // show form for editing a playlist
+    @GetMapping("/edit/{id}")
+    public String showEditPlaylistForm(@PathVariable long id, Model model){
+        Playlist playlist = playlistsDao.findById(id);
+        model.addAttribute("playlist", playlist);
+        return "editPlaylist";
+    }
+
+    // edit playlist
+    @PostMapping("/edit/{id}")
+    public String editPlaylist(){
+        return "redirect:/profile";
+    }
+
     // show feed for all shared playlists
     @GetMapping("/feed")
     public String showFeed(Model model){
