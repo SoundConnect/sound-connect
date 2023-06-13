@@ -1,59 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
+    <link rel="stylesheet" href="/css/site.css">
     <meta charset="UTF-8">
     <title>SoundConnect Profile</title>
 </head>
+
 <body>
 <div class="page-wrapper">
-    <header th:replace="partials/navbar :: navbar"></header>
+<!--    <header class="fixed-top">SoundConnect</header>-->
+    <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container">
-        <img src="../images/login-background.jpg" alt="login background" class="background">
-        <!-- Sidebar and Profile Sections-->
-        <div class="row">
-            <div class="sidebar">
-                <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/explore">Search</a></li>
-                    <li><a href="/Your Library">Settings</a></li>
-                    <li><a href="/logout">Log Out</a></li>
-                </ul>
-            </div>
-            <!-- Profile Row -->
-            <div class="profile">
-                <h3>Profile</h3>
-                <p>{User Name}</p>
-                <img src="login.html">
-            </div>
+        <div class="sidebar fixed-top">
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/explore">Playlist Search</a></li>
+                <li><a href="/playlists">Add Playlists</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
         </div>
-        <!-- Content -->
-        <div class="content">
-            My favorite Playlists
-        </div>
-
-        <div class="columns-section">
-            <div class="row">
-                <div class="column-boxes overlay-form profile-playlists">
-                    <h3>My Playlists</h3>
-                    <div id="playlists"></div>
-                </div>
-                <div class="column-boxes overlay-form profile-artists">
-                    <h3>My Artists</h3>
-                    <div id="artists"></div>
-                </div>
-                <div class="column-boxes overlay-form profile-albums">
-                    <h3>My Albums</h3>
-                    <div id="albums"></div>
-                </div>
-            </div>
+        <div class="content-section row">
+            <main class="profile">
+                <section class="profile-info profile-section">
+                    <h2>User Name</h2>
+                    <img src="user_profile_picture.png" alt="User Profile">
+                </section>
+                <div class="container playlists">
+                    <div class="column">
+                        <div class="row ">
+                                <h1>My Playlists</h1>
+                            </div>
+                            <div class="profile-playlists column">
+                            </div>
+                            <div class="row">
+                                <h1>Artist Playlists</h1>
+                            </div>
+                            <div class="profile-artists column">
+                            </div>
+                            <div class="row">
+                                <h1>Suggested Playlists</h1>
+                            </div>
+                            <div class="profile-albums column">
+                            </div>
+            </main>
         </div>
     </div>
+</div>
+<div>
     <footer th:replace="partials/footer :: footer"></footer>
 </div>
-
 <script type="module" src="/js/profile.js">
     (async () => {
-        let playlist = await displayProfilePlaylists();
+        let playlist = await displayPlaylist();
         console.log(playlist)
     })();
 </script>
@@ -67,73 +65,21 @@
         const callback = (EmbedController) => {};
         IFrameAPI.createController(element, options, callback);
     };
-
 </script>
 </body>
 </html>
 
 
 
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
-<!--<head th:replace="partials/head :: head(title='SoundConnect - Profile')">-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>SoundConnect Profile</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="page-wrapper">-->
-<!--    <header th:replace="partials/navbar :: navbar"></header>-->
-<!--    <div class="container">-->
-<!--        <img src="../images/login-background.jpg" alt="login background" class="background">-->
-<!--            &lt;!&ndash; Sidebar and Profile Sections&ndash;&gt;-->
-<!--            <div class="row">-->
-<!--                <div class="sidebar">-->
-<!--                    <ul>-->
-<!--                        <li><a href="/home">Home</a></li>-->
-<!--                        <li><a href="/explore">Search</a></li>-->
-<!--                        <li><a href="/Your Library">Settings</a></li>-->
-<!--                        <li><a href="/logout">Log Out</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--                &lt;!&ndash; Profile Row &ndash;&gt;-->
-<!--                <div class="profile">-->
-<!--                    <h3>Profile</h3>-->
-<!--                    <p>{User Name}</p>-->
-<!--                    <img src="login.html">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Content &ndash;&gt;-->
-<!--            <div class="content">-->
-<!--                My favorite Playlists-->
-<!--             </div>-->
-
-<!--        <div class="columns-section">-->
-<!--        <div class="row">-->
-<!--        <div class="column-boxes overlay-form profile-playlists">-->
-<!--            <div><-->
-<!--          <h3>My Country</h3>-->
-<!--          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYnwbYQ5HnZU?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
-<!--        </div>-->
-<!--        <div class="column-boxes overlay-form profile-artists">-->
-<!--         <h3>Recommendations</h3>-->
-<!--         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0kPeZAyIhIfeZNrtfjJGDB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>&lt;!&ndash;                        <div class="column-boxes overlay-form profile-albums">&ndash;&gt;-->
-<!--        </div>-->
-<!--            <div class="column-boxes overlay-form profile-albums">-->
-<!--                <h3>My Fav</h3>-->
-<!--                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4UtSsGT1Sbe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
-<!--        </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--<script>-->
-<!--<script src="/js/profile.js">-->
-
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
-
+<!--                <section class="profile-playlists profile-section row">-->
+<!--                    <h3>My Playlists</h3>-->
+<!--                    <div id="playlists"></div>-->
+<!--                </section>-->
+<!--                <section class="profile-artists profile-section row">-->
+<!--                    <h3>My Artists</h3>-->
+<!--                    <div id="artists"></div>-->
+<!--                </section>-->
+<!--                <section class="profile-albums profile-section row">-->
+<!--                    <h3>My Albums</h3>-->
+<!--                    <div id="albums"></div>-->
+<!--                </section>-->

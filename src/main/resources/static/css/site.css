@@ -599,120 +599,220 @@ form.create-form {
 
 
 /*====== Profile Page Styles======*/
-.top-row {
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-grow: 1;
-    margin-top: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
-
-.sidebar {
+.container {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    padding: 10px;
-    height: 50px;
-    width: 900px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.profile {
-    flex: 3;
-    padding-left: 20px;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-top: 1px solid #1304d2;
+    justify-content: center;
 }
-
-.player-section, .columns-section {
+.fixed-top{
+    position: fixed;
+    top: 50px;
+    left: 25px;
     width: 100%;
-}
-
-.columns-section {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.column-boxes{
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    height: 300px;
-    width: 300px;
-    /*overflow: auto;  !* If content exceeds the column height, it will be scrollable *!*/
-    margin-bottom: 10px;
-}
-
-/*====== Profile/Music Player Styles======*/
-
-.music-player {
-    width: 100%;
-    max-width: 600px;
-    margin: 10px 0px 20px 0px;
+    height: calc(100% - 80px);
     padding: 20px;
-    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: auto;
+    z-index: 1;
+}
+.sidebar {
+    background-color: #070646;
+    color: white;
+    height: calc(70vh - 80px); /* Subtracting the header's height */
+    width: 100px; /* You can adjust this value as per your design */
+    padding: 15px;
 }
 
-.album-art img {
-    width: 100%;
-    height: auto;
-}
-
-.track-info {
-    margin: 10px 0;
-    text-align: center;
-}
-
-.track-info p {
+.sidebar ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.player-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.player-controls button {
-    padding: 5px 10px;
-    background-color: #1304d2;
-    border: none;
-    border-radius: 50px;
+.sidebar ul li a {
     color: #fff;
-    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color:  #1304d2;
-    margin: 10px 0;
+.content-section {
+    width: calc(100% - 200px);
+    margin-top: 50px;
+    margin-left: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
 }
-
-.progress-bar #progress {
-    height: 100%;
-    background-color: #1304d2;
-}
-
-.time-stamp {
+.profile .row {
     display: flex;
     justify-content: space-between;
 }
 
-.volume-control {
-    margin-top: 10px;
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 15%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
+.profile-playlists, .profile-artists, .profile-albums {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+.profile-section {
+    width: 200px;
+    height: 175px;
+    background-color: #f5f5f5; /* A light grey background */
+    margin: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-info h2 {
+    margin-bottom: 10px;
+}
+
+.profile-info img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile .row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.profile .row h1 {
+    margin-bottom: 10px;
+}
+
+
+
+/*.profile-playlists, .profile-artists, .profile-albums {*/
+/*    height: 150px;*/
+/*    width: 100%;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 2px 2px 10px var(--secondary);*/
+/*    border: 1px solid var(--secondary);*/
+/*    background-color: #a8a8a8;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.profile-row-bg{*/
+/*    background-color: #070646;*/
+/*    backdrop-filter: blur(10px);*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 1px 1px 5px var(--secondary);*/
+/*    padding: 10px;*/
+/*}*/
+
+/* CSS */
+/*.fixed-top {*/
+/*    position: fixed;*/
+/*    top: 100px;*/
+/*    left: 250px;*/
+/*    width: 100%;*/
+/*    z-index: 1; !* To ensure these elements stay on top *!*/
+/*}*/
+
+/*header.fixed-top {*/
+/*    height: 80px; !* You can adjust this value as per your design *!*/
+/*    background-color: #333;*/
+/*    color: white;*/
+/*    line-height: 80px; !* To vertically center the text *!*/
+/*    text-indent: 15px;*/
+/*}*/
+
+
+/*.sidebar ul {*/
+/*    list-style-type: none;*/
+/*    padding: 0;*/
+/*}*/
+
+/*.sidebar ul li a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*}*/
+
+
+
+/*.profile-section h2, .profile-section h3 {*/
+/*    margin: 0 0 15px;*/
+/*}*/
+
+/*.profile-section img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*}*/
+
+
+/*}*/
+/*.playlists-image{*/
+/*    height: 100%;*/
+/*    width: 180px;*/
+/*}*/
+/*.playlists-info{*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.profile-playlists{*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*}*/
+/*.artists-image{*/
+/*    height: 100%;*/
+/*    width: 180px;*/
+/*    object-fit: cover;*/
+/*}*/
+/*.artists-name{*/
+/*    height: 100%;*/
+/*    width: 210px;*/
+/*    word-wrap: break-word;*/
+/*    padding: 10px;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.artists-info{*/
+/*    height: 100%;*/
+/*    padding: 10px;*/
+/*}*/
+/*.albums-image{*/
+/*    height: 100%;*/
+/*    width: 180px;*/
+/*}*/
+
+
+/*header, footer {*/
+/*    background: #333;*/
+/*    color: #fff;*/
+/*    padding: 20px;*/
+/*    text-align: center;*/
+/*}*/
