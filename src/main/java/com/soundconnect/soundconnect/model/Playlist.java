@@ -86,6 +86,15 @@ public class Playlist {
         this.user = user;
     }
 
+
+    public Playlist(String name, String description, List<Track> tracks) {
+        this.name = name;
+        this.description = description;
+        this.tracks = tracks;
+    }
+
+
+
     public Playlist(String name, String description, User user, List<Track> tracks) {
         this.name = name;
         this.description = description;

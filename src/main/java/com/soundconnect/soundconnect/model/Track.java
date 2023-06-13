@@ -12,11 +12,11 @@ public class Track {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = false)
     private String name;
 
     @Column(nullable = false)
-    private double tempo;
+    private String spotifyId;
 
     @Column(nullable = false)
     private long duration;
@@ -61,14 +61,6 @@ public class Track {
         this.name = name;
     }
 
-    public double getTempo() {
-        return tempo;
-    }
-
-    public void setTempo(double tempo) {
-        this.tempo = tempo;
-    }
-
     public long getDuration() {
         return duration;
     }
@@ -77,17 +69,29 @@ public class Track {
         this.duration = duration;
     }
 
-    public Track() {
-
+    public String getSpotifyId() {
+        return spotifyId;
     }
 
-    public Track(String name, double tempo, long duration) {
-            this.name = name;
-            this.tempo = tempo;
-            this.duration = duration;
-        }
+    public void setSpotifyId(String spotifyId) {
+        this.spotifyId = spotifyId;
+    }
 
+    public Track() {}
+    public Track(String name, String spotifyId, long duration){
+            this.name = name;
+            this.spotifyId = spotifyId;
+            this.duration = duration;
+    }
     public Track(Playlist playlist) {
         this.playlist = playlist;
+    }
+
+    public Track(String name, String spotifyId, long duration, Playlist playlist, Album album) {
+        this.name = name;
+        this.spotifyId = spotifyId;
+        this.duration = duration;
+        this.playlist = playlist;
+        this.album = album;
     }
 }
