@@ -27,7 +27,7 @@ public class PlaylistController {
     private final ArtistRepository artistsDao;
     private final UserRepository usersDao;
 
-    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao){
+    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao){
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
         this.albumsDao = albumsDao;
