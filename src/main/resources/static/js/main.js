@@ -1,7 +1,12 @@
-// Get API token from Spotify
-import {KEYS} from "./keys";
+// import {KEYS} from "./keys";
+export const KEYS = {
+	clientID: "6b14de4df2be4965a8c7675f7314f326",
+	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
+	accessCode: ""
+}
 
-const getToken = async () => {
+// Get API token from Spotify
+export const getToken = async () => {
 	try {
 		const result = await fetch('https://accounts.spotify.com/api/token', {
 			method: 'POST',
@@ -12,7 +17,7 @@ const getToken = async () => {
 			body: 'grant_type=client_credentials'
 		});
 		const data = await result.json();
-		KEYS.accessCode = data.access_token;
+		return data.access_token;
 
 	} catch (error) {
 		console.log("Error retrieving API access code: " + error);
@@ -20,17 +25,26 @@ const getToken = async () => {
 }
 
 // Get song data from song name
-const getSongData = async (token, songName) => {
+export const getSongData = async (token, songName) => {
 	try {
-		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=5`, {
+		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=10`, {
 			method: 'GET',
 			headers: {'Authorization': 'Bearer ' + token}
 		});
-		return await result.json();
+		let data = await result.json();
+		return sortSongData(data.tracks.items);
 	} catch (error) {
 		console.log("Error retrieving song data: " + error);
 	}
 }
+// Sort song data by popularity
+const sortSongData = (songData) => {
+	songData.sort((a, b) => {
+		return b.popularity - a.popularity;
+	});
+	return songData;
+}
+
 
 // Get artist data from artist name
 const getArtistData = async (token, artistName) => {
@@ -173,9 +187,9 @@ if (KEYS.accessCode === ""){
 	await getToken();
 }
 
-// display search results
-let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
-console.log(searchData);
+// // display search results
+// let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
+// console.log(searchData);
 
 
 

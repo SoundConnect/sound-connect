@@ -4,29 +4,19 @@
 <body>
 <div class="page-wrapper gap-25">
     <nav th:replace="~{partials/navbar :: navbar}"></nav>
-
     <!-- Search input -->
     <section class="container">
-        <div class="row align-center no-padding">
-            <h1>Find songs for your playlist</h1>
-            <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
+        <div class="row justify-space-between align-center no-padding">
+            <div class="d-flex gap-10">
+                <h1>Find songs for your playlist</h1>
+                <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
+            </div>
+            <a class="create-playlist-btn" href="/feed" title="Feed">Create Playlist</a>
         </div>
     </section>
 
     <!-- Search results -->
-    <section class="container">
-<!--        <div class="row">-->
-<!--            <div class="column shrink song-pic-wrapper">-->
-<!--                <img src="" alt="Song Picture" class="song-pic" >-->
-<!--            </div>-->
-<!--            <div class="column song-title no-gap">-->
-<!--                <p>Song Title (FEAT. features)</p>-->
-<!--                <p class="song-artist">Artist Name</p>-->
-<!--            </div>-->
-<!--            <div class="column song-album-name">Album</div>-->
-<!--            <button>Add</button>-->
-<!--        </div>-->
-    </section>
+    <section class="container search-results-container"></section>
 
     <!-- Playlist / form card -->
     <section class="container justify-center grow">
@@ -39,12 +29,10 @@
                     </div>
                 </div>
                 <div class="row align-center justify-center text-center playlist-title-box">
-                    <h2 class="playlist-title">Playlist Title</h2>
+                    <input class="playlist-title" type="text" name="playlistTitle" placeholder="Title">
                 </div>
                 <div class="row playlist-description-box">
-                    <p class="playlist-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dicta nobis recusandae totam voluptate. Corporis error molestias tempora. Enim impedit ipsum nesciunt quis ratione sit. Aliquid cumque dicta possimus provident!
-                    </p>
+                    <textarea class="playlist-description" name="playlistDescription" placeholder="Description"></textarea>
                 </div>
             </div>
 
@@ -52,20 +40,7 @@
             <div class="column playlist-separation-line"></div>
 
             <!-- Right Column: List of songs added to the playlist -->
-            <div class="column playlist-song-box">
-                <div class="row align-center song-card">
-                    <div class="column shrink song-number">1</div>
-                    <div class="column shrink song-pic-wrapper">
-                        <img src="" alt="Song Picture" class="song-pic" >
-                    </div>
-                    <div class="column shrink song-title no-gap">
-                        <p>Song Title (FEAT. features)</p>
-                        <p class="song-artist">Artist Name</p>
-                    </div>
-                    <div class="column align-right song-album-name">Album</div>
-                    <div class="column align-right song-duration">Song Duration</div>
-                </div>
-            </div>
+            <div class="column playlist-song-box"></div>
         </div>
     </section>
 </div>
