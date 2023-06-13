@@ -1,4 +1,3 @@
-// Get API token from Spotify
 // import {KEYS} from "./keys";
 const KEYS ={
 	clientID: "ce45f68184154033b71a753b12af825c", clientSecret :"a820a46f42714a9e9f885ed8e8433e10"
@@ -10,6 +9,7 @@ const KEYS ={
 // >>>>>>> 00086f8392c2bc3445469da88f77e53da1f6f758
 }
 
+// Get API token from Spotify
 export const getToken = async () => {
 	try {
 		const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -21,11 +21,8 @@ export const getToken = async () => {
 			body: 'grant_type=client_credentials'
 		});
 		const data = await result.json();
-
-		KEYS.accessCode = data.access_token;
+    KEYS.accessCode = data.access_token;
 		return data.access_token;
-
-
 	} catch (error) {
 		console.log("Error retrieving API access code: " + error);
 	}
@@ -34,15 +31,24 @@ export const getToken = async () => {
 // Get song data from song name
 export const getSongData = async (token, songName) => {
 	try {
-		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=5`, {
+		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=10`, {
 			method: 'GET',
 			headers: {'Authorization': 'Bearer ' + token}
 		});
-		return await result.json();
+		let data = await result.json();
+		return sortSongData(data.tracks.items);
 	} catch (error) {
 		console.log("Error retrieving song data: " + error);
 	}
 }
+// Sort song data by popularity
+const sortSongData = (songData) => {
+	songData.sort((a, b) => {
+		return b.popularity - a.popularity;
+	});
+	return songData;
+}
+
 
 // Get artist data from artist name
 export const getArtistData = async (token, artistName) => {
@@ -187,10 +193,6 @@ if (KEYS.accessCode === ""){
 }
 
 let token = await getToken();
-
-// // display search results
-// let searchData = await searchAnything(KEYS.accessCode, "DUCKWORTH");
-// console.log(searchData);
 
 
 
