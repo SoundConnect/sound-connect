@@ -16,8 +16,11 @@
                 <div class="column feed-col">
                     <ul class="feed-ul">
                         <li class="feed-posts" th:each="playlist : ${playlists}">
-                            <h2 class="feed-post-header" th:text="${playlist.name}"></h2>
-                            <p class="feed-post-body" th:text="${playlist.description}"></p>
+                            <form th:action="@{/feed}" th:method="post">
+                                <h2 class="feed-post-header" th:text="${playlist.name}"></h2>
+                                <p class="feed-post-body" th:text="${playlist.description}"></p>
+                                <button type="submit" name="delete-playlist" th:value="${playlist.id}">DELETE</button>
+                            </form>
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,7 @@
 package com.soundconnect.soundconnect.repositories;
 
 import com.soundconnect.soundconnect.model.Playlist;
+import com.soundconnect.soundconnect.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
@@ -10,4 +11,5 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
 
     Playlist findByDescription(String description);
 
+    Playlist findByUser(User user);
 }

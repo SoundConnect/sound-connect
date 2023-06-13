@@ -374,6 +374,7 @@ form {
 form > * {
     width: 50%;
 }
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -396,6 +397,7 @@ form > * {
     font-family: inherit;
     padding:10px;
 }
+
 input:focus {
     outline: unset;
     color: #060429;
