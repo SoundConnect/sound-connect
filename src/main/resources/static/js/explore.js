@@ -9,7 +9,7 @@ let albumToken = await getToken();
 
 export async function displayPlaylist() {
     try {
-        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=4&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA', {
+        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=4&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=hip-hop%2Cr-n-b&seed_tracks=0c6xIDDpzE81m2q797ordA', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token
