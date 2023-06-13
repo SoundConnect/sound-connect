@@ -4,7 +4,6 @@ import com.soundconnect.soundconnect.model.Album;
 import com.soundconnect.soundconnect.model.Artist;
 import com.soundconnect.soundconnect.model.Playlist;
 import com.soundconnect.soundconnect.model.User;
-
 import com.soundconnect.soundconnect.model.Track;
 import com.soundconnect.soundconnect.repositories.AlbumRepository;
 import com.soundconnect.soundconnect.repositories.ArtistRepository;
