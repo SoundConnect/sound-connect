@@ -134,12 +134,13 @@ a{
 .explore-search{
     height: 50px;
     width: 300px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
     padding: 0 10px;
     color: var(--secondary);
+    caret-color: var(--secondary);
 }
 .playlist-row, .artist-row, .album-row{
     height: 150px;
@@ -198,7 +199,7 @@ a{
     top: 0;
     right: -100%;
     width: 100%;
-    height: 100vh;
+    height: 150vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
     transition: right 0.3s ease-in-out;
@@ -206,8 +207,8 @@ a{
 
 .overlayContent {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 60px;
+    left: 175px;
     transform: translate(-50%, -50%);
     color: #fff;
     padding: 20px;
@@ -226,6 +227,21 @@ a{
 .openOverlayButton:hover{
     background-color: #a8a8a8;
     color: var(--primary);
+}
+.search-tracks{
+   position: absolute;
+    top: 120px;
+    left: 0;
+}
+.search-artists{
+    position: absolute;
+    top: 490px;
+    left: 0;
+}
+.search-albums{
+    position: absolute;
+    top: 850px;
+    left: 0;
 }
 /*****************************End Explore Page********************************/
 /*****************************NAV BAR********************************/
