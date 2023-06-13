@@ -11,6 +11,14 @@ body{
     color: var(--secondary);
     font-family: Roboto, sans-serif;
 }
+
+/*****************************Contact Page ********************************/
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
@@ -87,8 +95,10 @@ body{
 }
 
 .footer{
-    margin-top: 150px;
+    /*margin-top: 150px;*/
+    margin-bottom: 15px;
 }
+
 .footer-img-wrapper{
     height: 50px;
     width: 50px;
