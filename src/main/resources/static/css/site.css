@@ -23,12 +23,14 @@ body{
 .hero-scene{
     position: relative;
 }
+
 .overlay-text1{
     position: absolute;
     top: 230px;
     left: 229px;
     font-size: 35px;
 }
+
 .overlay-text2{
     position: absolute;
     top: 325px;
@@ -95,7 +97,7 @@ body{
 }
 
 .footer{
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 .footer-img-wrapper{
@@ -334,7 +336,7 @@ nav a:hover::before, .footer-links:hover::before {
 }
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
-    background-color: transparent;
+    background-color: var(--primary);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
@@ -403,10 +405,6 @@ a {
     flex-direction: column;
 }
 
-login-page-col{
-    flex-direction: row;
-}
-
 .background {
     position: fixed;
     width: 100%;
@@ -450,11 +448,11 @@ form > * {
     padding:10px;
 }
 
-input:focus {
-    outline: unset;
-    color: #060429;
+/*input:focus {*/
+/*    outline: unset;*/
+/*    color: #060429;*/
 
-}
+/*}*/
 textarea {
     min-height: 100px;
     resize: none;
@@ -767,4 +765,3 @@ form.create-form {
 .volume-control {
     margin-top: 10px;
 }
-
