@@ -661,7 +661,8 @@ form.create-form {
 }
 .create-top-box {
     border-radius: 10px;
-    border: 1px solid var(--secondary);
+    border-bottom: 1px solid var(--secondary);
+    border-top: 1px solid var(--secondary);
     padding: 10px;
 }
 .song-box-header {
@@ -673,6 +674,9 @@ form.create-form {
     align-self: center;
     max-height: 20rem;
     overflow: scroll;
+}
+.create-top-container {
+    margin-top: 2rem;
 }
 
 
