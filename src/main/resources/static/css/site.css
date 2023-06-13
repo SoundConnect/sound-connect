@@ -95,7 +95,7 @@ body{
 }
 
 .footer{
-    /*margin-top: 150px;*/
+    margin-top: 100px;
     margin-bottom: 15px;
 }
 
@@ -144,12 +144,13 @@ a{
 .explore-search{
     height: 50px;
     width: 300px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
     padding: 0 10px;
     color: var(--secondary);
+    caret-color: var(--secondary);
 }
 .playlist-row, .artist-row, .album-row{
     height: 150px;
@@ -201,6 +202,57 @@ a{
     border-radius: 10px;
     box-shadow: 1px 1px 5px var(--secondary);
     padding: 10px;
+}
+.overlayContainer {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 150vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    transition: right 0.3s ease-in-out;
+}
+
+.overlayContent {
+    position: absolute;
+    top: 60px;
+    left: 175px;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 20px;
+}
+
+.overlayContainer.open {
+    display: block;
+    right: 0;
+}
+.openOverlayButton{
+    border-radius: 10px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    background-color: #c9c9c9;
+    color: var(--primary);
+}
+.openOverlayButton:hover{
+    background-color: #a8a8a8;
+    color: var(--primary);
+}
+.search-tracks{
+   position: absolute;
+    top: 120px;
+    left: 0;
+}
+.search-artists{
+    position: absolute;
+    top: 490px;
+    left: 0;
+}
+.search-albums{
+    position: absolute;
+    top: 850px;
+    left: 0;
 }
 /*****************************End Explore Page********************************/
 /*****************************NAV BAR********************************/
@@ -261,7 +313,7 @@ nav a {
     text-decoration: none;
 }
 
-nav a::before {
+nav .underline::before {
     content: "";
     position: absolute;
     left: 0;
@@ -375,6 +427,7 @@ form {
 form > * {
     width: 50%;
 }
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -397,6 +450,7 @@ form > * {
     font-family: inherit;
     padding:10px;
 }
+
 input:focus {
     outline: unset;
     color: #060429;
@@ -462,18 +516,17 @@ button.btn.primary {
 /*
 ======Styles For Playlist Creation Page======
 */
-.playlist-box {
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-}
+
 .playlist-details-box, .playlist-song-box {
     padding: 20px 10px;
+}
+.playlist-pic-box {
+    width: 20rem;
 }
 .playlist-pic-wrapper {
     border: 1px solid rgba(245, 245, 245, .5);
     border-radius: 10px;
-    height: 15rem;
-    width: 15rem;
+    height: 20rem;
 }
 .playlist-pic-wrapper:focus {
     border: 1px solid rgba(245, 245, 245, 1);
@@ -486,42 +539,45 @@ button.btn.primary {
 }
 .playlist-title-box {
     flex: 1 0 auto;
+    width: 20rem;
 }
 input.playlist-title {
     border: 1px solid rgba(245, 245, 245, .5);
     border-radius: 10px;
     background-color: transparent;
     color: var(--secondary);
-    font-size: 35px;
+    font-size: 25px;
     padding: 4px 8px;
+    height: 100%;
+    width: 100%;
 }
 input.playlist-title:focus {
     border: 1px solid rgba(245, 245, 245, 1);
 }
 .playlist-description-box {
     flex: 6 0 auto;
+    width: 20rem;
 }
 .playlist-description {
     border: 1px solid rgba(245, 245, 245, .5);
     border-radius: 10px;
     background-color: transparent;
     color: var(--secondary);
-    font-size: 15px;
+    font-size: 16px;
     padding: 4px 8px;
     height: 100%;
     width: 100%;
     outline: none;
 }
+.playlist-description::placeholder {
+    font-size: 25px;
+}
 .playlist-description:focus {
     border: 1px solid rgba(245, 245, 245, 1);
 }
-
-
-.playlist-separation-line {
-    border: 1px solid var(--secondary);
-    max-width: 1px;
+.playlist-description:focus::placeholder, input.playlist-title:focus::placeholder {
+    color: var(--primary);
 }
-
 .playlist-song-box {
     flex: 2 0 auto;
     overflow-y: scroll;
@@ -539,7 +595,13 @@ input.playlist-title:focus {
 .song-pic {
     object-fit: cover;
 }
-.song-duration, .song-album-name {
+.song-title {
+    flex-grow: 4;
+}
+.song-album-name {
+    flex-grow: 3;
+}
+.song-duration {
     flex-grow: 2;
 }
 .song-name {
@@ -566,12 +628,14 @@ input.playlist-title:focus {
 .create-page-search {
     height: 40px;
     width: 300px;
-    background-color: transparent;
+    color: var(--primary);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
     padding: 4px 8px;
-    color: var(--secondary);
+}
+.create-page-search::placeholder {
+    color: rgba(6, 4, 41, .5);
 }
 .results-box {
     border: 1px solid var(--secondary);
@@ -595,6 +659,25 @@ form.create-form {
     background-color: var(--primary);
     color: var(--secondary);
     cursor: pointer;
+}
+.create-top-box {
+    border-radius: 10px;
+    border-bottom: 1px solid var(--secondary);
+    border-top: 1px solid var(--secondary);
+    padding: 10px;
+}
+.song-box-header {
+    border-bottom: 1px solid rgba(245, 245, 245, .5);
+    color: rgba(245, 245, 245, .5);
+}
+.search-results-container{
+    width: 1100px;
+    align-self: center;
+    max-height: 20rem;
+    overflow: scroll;
+}
+.create-top-container {
+    margin-top: 2rem;
 }
 
 

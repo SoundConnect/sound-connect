@@ -2,60 +2,80 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Explore')">
 <body>
-  <div class="page-wrapper">
+<div class="page-wrapper">
     <header th:replace="partials/navbar :: navbar"></header>
     <div class="container hero-scene">
-      <div class="row justify-center full-width">
-        <img src="/images/hero-image.jpg" alt="hero image">
-      </div>
-      <div class="overlay-text3">
-        <h1>Explore New Music</h1>
-      </div>
+        <div class="row justify-center full-width">
+            <img src="/images/hero-image.jpg" alt="hero image">
+        </div>
+        <div class="overlay-text3">
+            <h1>Explore New Music</h1>
+        </div>
     </div>
     <div class="container">
-      <div class="row explore-row-bg">
-        <div class="column ">
-          <div class="row">
-            <h1>Recommended Tracks</h1>
-          </div>
-          <div class="explore-playlist row">
+        <div class="row explore-row-bg">
+            <div class="column ">
+                <div class="row">
+                    <h1>Recommended Tracks</h1>
+                </div>
+                <div class="explore-playlist row">
 
-          </div>
-          <div class="row">
-            <h1>Recommended Artists</h1>
-          </div>
-          <div class=" row explore-artists"></div>
-            <div class="row">
-                <h1>Recommended Albums</h1>
+                </div>
+                <div class="row">
+                    <h1>Recommended Artists</h1>
+                </div>
+                <div class=" row explore-artists"></div>
+                <div class="row">
+                    <h1>Recommended Albums</h1>
+                </div>
+                <div class="row explore-albums"></div>
             </div>
-            <div class="row explore-albums"></div>
+            <button class="openOverlayButton">Search Music</button>
+
+            <div class="overlayContainer">
+                    <div class="overlayContent">
+                        <!-- Add your overlay content here -->
+                        <div class="column align-center">
+                            <input type="text" placeholder="Search.." class="explore-search">
+                        </div>
+                        <div class="explore-search-results row"></div>
+                        <button class="closeOverlayButton">Close</button>
+                    </div>
+                </div>
         </div>
-<!--        <div class="column align-center">-->
-<!--          <input type="text" placeholder="Search.." class="explore-search">-->
-<!--      </div>-->
+        <footer th:replace="partials/footer :: footer"></footer>
+    </div>
+</div>
+<script type="module" src="/js/spotifyPlayer.js"></script>
 
-  </div>
-    <footer th:replace="partials/footer :: footer"></footer>
-  </div>
-  </div>
-  <script type="module" src="/js/spotifyPlayer.js"></script>
-
-  <script type="module" src="/js/explore.js">
-  (async () => {
-    let playlist = await displayPlaylist();
-    console.log(playlist)
-  })();
+<script type="module" src="/js/explore.js">
+    (async () => {
+        let playlist = await displayPlaylist();
+        console.log(playlist)
+    })();
 </script>
-  <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+<script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
 <script>
-  window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    const element = document.getElementById('embed-iframe');
-    const options = {
-      uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const element = document.getElementById('embed-iframe');
+        const options = {
+            uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+        };
+        const callback = (EmbedController) => {
+        };
+        IFrameAPI.createController(element, options, callback);
     };
-    const callback = (EmbedController) => {};
-    IFrameAPI.createController(element, options, callback);
-  };
+    const openOverlayButton = document.querySelector('.openOverlayButton');
+    const closeOverlayButton = document.querySelector('.closeOverlayButton');
+    const overlayContainer = document.querySelector('.overlayContainer');
+
+    openOverlayButton.addEventListener('click', () => {
+        overlayContainer.classList.add('open');
+    });
+
+    closeOverlayButton.addEventListener('click', () => {
+        overlayContainer.classList.remove('open');
+    });
 
 </script>
 
