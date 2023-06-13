@@ -25,7 +25,7 @@ export async function displayPlaylist() {
             iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
             iframe.width = '250';
             iframe.height = '80';
-            iframe.frameborder = '0';
+            iframe.frameBorder = '0';
             iframe.allowtransparency = 'true';
             iframe.allow = 'encrypted-media';
 
