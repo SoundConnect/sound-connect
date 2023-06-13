@@ -95,7 +95,6 @@ body{
 }
 
 .footer{
-    /*margin-top: 150px;*/
     margin-bottom: 15px;
 }
 
@@ -261,7 +260,7 @@ nav a {
     text-decoration: none;
 }
 
-nav a::before {
+nav .underline::before {
     content: "";
     position: absolute;
     left: 0;
