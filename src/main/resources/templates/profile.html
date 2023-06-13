@@ -9,50 +9,131 @@
     <header th:replace="partials/navbar :: navbar"></header>
     <div class="container">
         <img src="../images/login-background.jpg" alt="login background" class="background">
-            <!-- Sidebar and Profile Sections-->
-            <div class="row">
-                <div class="sidebar">
-                    <ul>
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="/explore">Search</a></li>
-                        <li><a href="/Your Library">Settings</a></li>
-                        <li><a href="/logout">Log Out</a></li>
-                    </ul>
-                </div>
-                <!-- Profile Row -->
-                <div class="profile">
-                    <h3>Profile</h3>
-                    <p>{User Name}</p>
-                    <img src="login.html">
-                </div>
+        <!-- Sidebar and Profile Sections-->
+        <div class="row">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/explore">Search</a></li>
+                    <li><a href="/Your Library">Settings</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                </ul>
             </div>
-            <!-- Content -->
-            <div class="content">
-                My favorite Playlists
-             </div>
+            <!-- Profile Row -->
+            <div class="profile">
+                <h3>Profile</h3>
+                <p>{User Name}</p>
+                <img src="login.html">
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="content">
+            My favorite Playlists
+        </div>
 
         <div class="columns-section">
-        <div class="row">
-        <div class="column-boxes overlay-form profile-playlists">
-            <div><
-          <h3>My Country</h3>
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYnwbYQ5HnZU?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="column-boxes overlay-form profile-artists">
-         <h3>Recommendations</h3>
-         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0kPeZAyIhIfeZNrtfjJGDB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe><!--                        <div class="column-boxes overlay-form profile-albums">-->
-        </div>
-            <div class="column-boxes overlay-form profile-albums">
-                <h3>My Fav</h3>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4UtSsGT1Sbe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+            <div class="row">
+                <div class="column-boxes overlay-form profile-playlists">
+                    <h3>My Playlists</h3>
+                    <div id="playlists"></div>
+                </div>
+                <div class="column-boxes overlay-form profile-artists">
+                    <h3>My Artists</h3>
+                    <div id="artists"></div>
+                </div>
+                <div class="column-boxes overlay-form profile-albums">
+                    <h3>My Albums</h3>
+                    <div id="albums"></div>
+                </div>
             </div>
         </div>
     </div>
+    <footer th:replace="partials/footer :: footer"></footer>
+</div>
+
+<script type="module" src="/js/profile.js">
+    (async () => {
+        let playlist = await displayProfilePlaylists();
+        console.log(playlist)
+    })();
+</script>
+<script src="https://open.spotify.com/embed-playlist/iframe-api/v1" async></script>
 <script>
-<script src="/js/profile.js">
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const element = document.getElementById('embed-iframe');
+        const options = {
+            uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+        };
+        const callback = (EmbedController) => {};
+        IFrameAPI.createController(element, options, callback);
+    };
 
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+<!--<head th:replace="partials/head :: head(title='SoundConnect - Profile')">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>SoundConnect Profile</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="page-wrapper">-->
+<!--    <header th:replace="partials/navbar :: navbar"></header>-->
+<!--    <div class="container">-->
+<!--        <img src="../images/login-background.jpg" alt="login background" class="background">-->
+<!--            &lt;!&ndash; Sidebar and Profile Sections&ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="sidebar">-->
+<!--                    <ul>-->
+<!--                        <li><a href="/home">Home</a></li>-->
+<!--                        <li><a href="/explore">Search</a></li>-->
+<!--                        <li><a href="/Your Library">Settings</a></li>-->
+<!--                        <li><a href="/logout">Log Out</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; Profile Row &ndash;&gt;-->
+<!--                <div class="profile">-->
+<!--                    <h3>Profile</h3>-->
+<!--                    <p>{User Name}</p>-->
+<!--                    <img src="login.html">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; Content &ndash;&gt;-->
+<!--            <div class="content">-->
+<!--                My favorite Playlists-->
+<!--             </div>-->
+
+<!--        <div class="columns-section">-->
+<!--        <div class="row">-->
+<!--        <div class="column-boxes overlay-form profile-playlists">-->
+<!--            <div><-->
+<!--          <h3>My Country</h3>-->
+<!--          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYnwbYQ5HnZU?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
+<!--        </div>-->
+<!--        <div class="column-boxes overlay-form profile-artists">-->
+<!--         <h3>Recommendations</h3>-->
+<!--         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0kPeZAyIhIfeZNrtfjJGDB?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>&lt;!&ndash;                        <div class="column-boxes overlay-form profile-albums">&ndash;&gt;-->
+<!--        </div>-->
+<!--            <div class="column-boxes overlay-form profile-albums">-->
+<!--                <h3>My Fav</h3>-->
+<!--                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4UtSsGT1Sbe?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>-->
+<!--        </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--<script>-->
+<!--<script src="/js/profile.js">-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
 
