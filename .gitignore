@@ -21,6 +21,7 @@ application.properties
 *.iws
 *.iml
 *.ipr
+keys.js
 
 ### NetBeans ###
 /nbproject/private/
