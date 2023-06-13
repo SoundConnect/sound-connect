@@ -95,7 +95,6 @@ body{
 }
 
 .footer{
-    /*margin-top: 150px;*/
     margin-bottom: 15px;
 }
 
@@ -313,7 +312,7 @@ nav a {
     text-decoration: none;
 }
 
-nav a::before {
+nav .underline::before {
     content: "";
     position: absolute;
     left: 0;
@@ -427,6 +426,7 @@ form {
 form > * {
     width: 50%;
 }
+
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -449,6 +449,7 @@ form > * {
     font-family: inherit;
     padding:10px;
 }
+
 input:focus {
     outline: unset;
     color: #060429;

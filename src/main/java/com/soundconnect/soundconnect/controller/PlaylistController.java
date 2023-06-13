@@ -43,7 +43,6 @@ public class PlaylistController {
 
     // get form data and create playlist
     @PostMapping("/create")
-
     public String createPlaylist(@RequestBody Playlist playlist){
         Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
         playlistsDao.save(savePlaylist);
@@ -87,10 +86,11 @@ public class PlaylistController {
     }
 
     // delete playlist from account
-    @PostMapping("/delete")
+    @PostMapping("/feed")
     public String deletePlaylist(){
-//        User user = (User) usersDao.findAll();
-//        Playlist playlist = playlistsDao.findByUser(user);
-        return "redirect:/profile";
+        User user = usersDao.findById(1L);
+        Playlist playlist = playlistsDao.findByUser(user);
+        playlistsDao.delete(playlist);
+        return "redirect:/feed";
     }
 }
