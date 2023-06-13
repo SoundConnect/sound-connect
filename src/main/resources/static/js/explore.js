@@ -9,7 +9,7 @@ let albumToken = await getToken();
 
 export async function displayPlaylist() {
     try {
-        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=4&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA', {
+        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=4&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=hip-hop%2Cr-n-b&seed_tracks=0c6xIDDpzE81m2q797ordA', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -117,6 +117,103 @@ async function getAlbums(token) {
         console.error('Error:', error);
     }
 }
+const input = document.querySelector('.explore-search'); // Replace with the correct selector for your input element
+
+input.addEventListener('keyup', async function(e) {
+    let value = input.value;
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(value)}&type=track,album,artist&limit=3`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+        const searchContainer = document.querySelector('.explore-search-results');
+        const trackrow = document.createElement('div');
+        trackrow.classList.add('row');
+        trackrow.classList.add('search-tracks');
+        const artistrow = document.createElement('div');
+        artistrow.classList.add('row');
+        artistrow.classList.add('search-artists');
+        const albumrow = document.createElement('div');
+        albumrow.classList.add('row');
+        albumrow.classList.add('search-albums');
+
+        const tracks = data.tracks.items;
+        const artists = data.artists.items;
+        const albums = data.albums.items;
+        const ids = []
+        tracks.forEach((track) => {
+            ids.push(track.id);
+        })
+        function createTrackIframe(trackId) {
+            const iframe = document.createElement('iframe');
+            iframe.style.borderRadius = '12px';
+            iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
+            iframe.width = '100%';
+            iframe.height = '352';
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = '';
+            iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+            iframe.loading = 'lazy';
+
+            trackrow.appendChild(iframe);
+            searchContainer.appendChild(trackrow);
+        }
+        tracks.forEach((track, index) => {
+            const trackId = ids[index];
+            createTrackIframe(trackId);
+        });
+        const artistIds = []
+        artists.forEach((artist) => {
+            artistIds.push(artist.id);
+        })
+        function createArtistIframe(artistId) {
+            const iframe = document.createElement('iframe');
+            iframe.style.borderRadius = '12px';
+            iframe.src = `https://open.spotify.com/embed/artist/${artistId}`;
+            iframe.width = '100%';
+            iframe.height = '352';
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = '';
+            iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+            iframe.loading = 'lazy';
+
+            artistrow.appendChild(iframe);
+            searchContainer.appendChild(artistrow);
+        }
+        artists.forEach((artist, index) => {
+            const artistId = artistIds[index];
+            createArtistIframe(artistId);
+        });
+        const albumIds = []
+        albums.forEach((album) => {
+            albumIds.push(album.id);
+        })
+        function createAlbumIframe(albumId) {
+            const iframe = document.createElement('iframe');
+            iframe.style.borderRadius = '12px';
+            iframe.src = `https://open.spotify.com/embed/album/${albumId}`;
+            iframe.width = '100%';
+            iframe.height = '352';
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = '';
+            iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+            iframe.loading = 'lazy';
+
+            albumrow.appendChild(iframe);
+            searchContainer.appendChild(albumrow);
+        }
+        albums.forEach((album, index) => {
+            const albumId = albumIds[index];
+            createAlbumIframe(albumId);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
 
 
 
