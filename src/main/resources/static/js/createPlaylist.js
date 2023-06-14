@@ -124,6 +124,7 @@ searchResultsParent.addEventListener('click', (e) => {
 	let clickedBtn = e.target;
 	if (clickedBtn.nodeName === 'BUTTON') {
 		let songData = clickedBtn.querySelector('span').innerText.split('~');
+		console.log(songData);
 		songList.push(
 			{
 				"name": songData[0],

@@ -12,14 +12,14 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 250)
     private String name;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
 
-    @Column(name = "album_art")
+    @Column(name = "album_art", nullable = false, length = 2500)
     private String albumArt;
 
     @OneToMany(cascade = CascadeType.PERSIST ,mappedBy = "album")

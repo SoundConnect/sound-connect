@@ -33,6 +33,14 @@ public class Track {
     @Column(nullable = false, length = 2500)
     private String spotifyId;
 
+    public Track(String name, String spotifyId, String duration) {
+        this.name = name;
+        this.spotifyId = spotifyId;
+        this.duration = duration;
+    }
+
+
+
     public Long getId() {
         return id;
     }
