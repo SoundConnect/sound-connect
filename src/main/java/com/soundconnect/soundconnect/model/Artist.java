@@ -26,6 +26,10 @@ public class Artist {
     @ManyToMany(mappedBy = "artists")
     private List<Track> tracks;
 
+    public Artist(String name) {
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }

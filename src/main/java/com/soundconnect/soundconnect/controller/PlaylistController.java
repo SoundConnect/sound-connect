@@ -43,12 +43,16 @@ public class PlaylistController {
     // get form data and create playlist
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist){
+        System.out.println(playlist.getName());
+        System.out.println(playlist.getDescription());
+        System.out.println(playlist.getTracks().get(0).getAlbum().getAlbumArt());
+        System.out.println(playlist.getTracks().get(0).getAlbum().getName());
+
        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
        playlistsDao.save(savePlaylist);
             // save all tracks, albums, and artists to database
             for (Track track : playlist.getTracks()) {
                 Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
-                tracksDao.save(saveTrack);
 
                 Artist saveArtist;
                 if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null) {
@@ -68,13 +72,12 @@ public class PlaylistController {
                 }
 
                 saveTrack.setAlbum(saveAlbum);
-                saveTrack.setPlaylist(savePlaylist);
+//                saveTrack.setPlaylist(savePlaylist);
                 tracksDao.save(saveTrack);
             }
 
             return "redirect:/profile";
         }
-    }
 
     // show form for editing a playlist
     @GetMapping("/feed/{id}/edit")
