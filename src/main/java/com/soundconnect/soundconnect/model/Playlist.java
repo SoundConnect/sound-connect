@@ -82,14 +82,15 @@ public class Playlist {
         this.name = name;
         this.description = description;
     }
-
-
-
-
-
     public Playlist(long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Playlist(String name, String description, Set<Track> tracks) {
+        this.name = name;
+        this.description = description;
+        this.tracks = tracks;
     }
 }

@@ -34,13 +34,6 @@ public class Track {
     @Column(nullable = false, length = 2500)
     private String spotifyId;
 
-    public Track(String name, String spotifyId, String duration) {
-        this.name = name;
-        this.spotifyId = spotifyId;
-        this.duration = duration;
-    }
-
-
 
     public Long getId() {
         return id;
@@ -90,6 +83,18 @@ public class Track {
         this.spotifyId = spotifyId;
     }
 
-    public Track() {
+    public Track() {}
+    public Track(String name, String spotifyId, String duration) {
+        this.name = name;
+        this.spotifyId = spotifyId;
+        this.duration = duration;
+    }
+
+    public Track(String name, Album album, Set<Artist> artists, String duration, String spotifyId) {
+        this.name = name;
+        this.album = album;
+        this.artists = artists;
+        this.duration = duration;
+        this.spotifyId = spotifyId;
     }
 }
