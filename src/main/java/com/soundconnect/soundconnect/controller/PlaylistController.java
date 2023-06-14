@@ -7,22 +7,17 @@ import com.soundconnect.soundconnect.repositories.ArtistRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.TrackRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class PlaylistController {
 
     private final PlaylistRepository playlistsDao;
     private final TrackRepository tracksDao;
-
     private final AlbumRepository albumsDao;
     private final ArtistRepository artistsDao;
     private final UserRepository usersDao;
@@ -44,38 +39,7 @@ public class PlaylistController {
     // get form data and create playlist
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist){
-        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-        savePlaylist.setTracks(playlist.getTracks());
-
-        // save all tracks, albums, and artists to database
-        for (Track track : playlist.getTracks()) {
-            Track saveTrack;
-            Set<Artist> artists = track.getArtists();
-
-            // tracks
-            if (tracksDao.findByName(track.getName()) == null) {
-                saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
-                saveTrack.setAlbum(track.getAlbum());
-                saveTrack.setArtists(artists);
-                tracksDao.save(saveTrack);
-
-                for (Artist artist : artists) {
-                    if (artistsDao.findByName(artist.getName()) == null) {
-                        Artist saveArtist = new Artist(artist.getName());
-                        artistsDao.save(saveArtist);
-                    }
-                }
-            }
-
-            // albums
-            Album saveAlbum;
-            if (albumsDao.findByName(track.getAlbum().getName()) == null) {
-                saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt(), track.getAlbum().getArtist());
-                albumsDao.save(saveAlbum);
-            }
-        }
-
-        playlistsDao.save(savePlaylist);
+        playlistsDao.save(playlist);
         return "redirect:/profile";
     }
 
@@ -93,19 +57,11 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
-
-
-        // edit playlist
-        @PostMapping("/edit/{id}")
-        public String editPlaylist () {
-            return "redirect:/profile";
-        }
-
 //     show feed for all shared playlists
         @GetMapping("/feed")
         public String showFeed (Model model){
-//        List<Playlist> playlists = playlistsDao.findAll();
-//        model.addAttribute("playlists", playlists);
+        List<Playlist> playlists = playlistsDao.findAll();
+        model.addAttribute("playlists", playlists);
             return "feed";
         }
 
