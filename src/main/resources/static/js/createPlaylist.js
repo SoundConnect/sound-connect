@@ -1,5 +1,3 @@
-// import {getSongData, getToken} from '/main.js';
-
 export const KEYS = {
 	clientID: "6b14de4df2be4965a8c7675f7314f326",
 	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
@@ -7,6 +5,7 @@ export const KEYS = {
 }
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
+const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
 let searchResultsParent = document.querySelector('.search-results-box');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
@@ -105,12 +104,19 @@ const sortSongData = (songData) => {
 
 // Get search results data for create page
 search.addEventListener('keyup', async () => {
+	if (search.value === '') {
+		searchResultsParent.innerHTML = '';
+		searchResultsHeader.style.display = 'none';
+		return;
+	}
+
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
 	searchResultsParent.innerHTML = '';
 	searchResults.forEach(song => {
 		displaySearchResults(song);
 	});
+	searchResultsHeader.style.display = 'flex';
 });
 
 // event listener for add song button
