@@ -636,7 +636,7 @@ input.playlist-title:focus {
 .add-song-btn span {
     display: none;
 }
-.create-page-search {
+.create-page-search, .edit-page-search {
     height: 40px;
     width: 300px;
     color: var(--primary);
@@ -645,7 +645,7 @@ input.playlist-title:focus {
     outline: unset;
     padding: 4px 8px;
 }
-.create-page-search::placeholder {
+.create-page-search::placeholder, .edit-page-search::placeholder {
     color: rgba(6, 4, 41, .5);
 }
 .results-box {
@@ -656,7 +656,7 @@ form.create-form {
     border: none;
     padding: 0;
 }
-.create-playlist-btn{
+.create-playlist-btn, .edit-playlist-btn{
     background-color: var(--secondary);
     color: var(--primary);
     border: 2px solid var(--secondary);
@@ -666,7 +666,7 @@ form.create-form {
     padding: 10px;
     transition: ease-in-out .3s;
 }
-.create-playlist-btn:hover{
+.create-playlist-btn:hover, .edit-playlist-btn:hover {
     background-color: var(--primary);
     color: var(--secondary);
     cursor: pointer;
@@ -681,14 +681,22 @@ form.create-form {
     border-bottom: 1px solid rgba(245, 245, 245, .5);
     color: rgba(245, 245, 245, .5);
 }
-.search-results-container{
+.search-results-container, .search-results-box{
     width: 1100px;
     align-self: center;
     max-height: 20rem;
-    overflow: scroll;
 }
 .create-top-container {
     margin-top: 2rem;
+}
+.search-results-box {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.search-results-container .song-box-header {
+    display: none ;
 }
 
 

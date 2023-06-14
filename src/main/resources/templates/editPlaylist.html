@@ -4,8 +4,79 @@
 <body>
 <div class="page-wrapper">
     <nav th:replace="~{partials/navbar :: navbar}"></nav>
+    <!-- Search input -->
+    <section class="container create-top-container">
+        <div class="row justify-space-between align-center create-top-box">
+            <div class="d-flex gap-10">
+                <h1>Find songs in your playlist</h1>
+                <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
+            </div>
+            <div class="edit-playlist-btn" title="Feed">Save</div>
+        </div>
+    </section>
 
+    <!-- Search results -->
+    <section class="container gap-20 search-results-container">
+        <div class="row align-center no-padding song-box-header">
+            <div class="column song-title no-gap">
+                <div class="song-name">Title</div>
+            </div>
+            <div class="song-pic-wrapper"></div>
+            <div class="column song-album-name">Album</div>
+            <div class="column align-right song-duration">Duration</div>
+        </div>
+        <div class="search-results-box"></div>
+    </section>
+
+    <!-- Playlist / form card -->
+    <section class="container justify-center grow">
+        <div class="row grow no-padding no-gap playlist-box">
+            <!-- Left Column: Playlist pic, title, desc -->
+            <div class="column gap-10 playlist-details-box">
+                <div class="row justify-center align-center no-padding playlist-pic-box">
+                    <div class="playlist-pic-wrapper">
+                        <img src="/images/default-playlist-logo.png" alt="Playlist Picture" class="playlist-pic">
+                    </div>
+                </div>
+                <div class="row justify-center align-center text-center no-padding playlist-title-box">
+                    <input th:value="${playlist.name}" class="playlist-title" type="text" name="playlistTitle" placeholder="Title">
+                </div>
+                <div class="row justify-center align-center no-padding playlist-description-box">
+                    <textarea th:text="${playlist.description}" class="playlist-description" name="playlistDescription" placeholder="Description"></textarea>
+                </div>
+            </div>
+
+            <!-- Right Column: List of songs added to the playlist -->
+            <div class="column gap-20 playlist-song-box">
+                <!-- Header -->
+                <div class="row align-center no-padding song-box-header">
+                    <div class="column song-title no-gap">
+                        <div class="song-name">Title</div>
+                    </div>
+                    <div class="song-pic-wrapper"></div>
+                    <div class="column song-album-name">Album</div>
+                    <div class="column align-right song-duration">Duration</div>
+                </div>
+
+                <!-- songs -->
+                <div th:each="track : ${playlist.tracks}">
+                    <div class="row align-center no-padding">
+                        <div class="column shrink song-pic-wrapper">
+                            <img th:src="${track.album.albumArt}" alt="Song Picture" class="song-pic" >
+                        </div>
+                        <div class="column song-title no-gap">
+                            <p class="song-name" th:text="${track.name}"></p>
+                            <p class="song-artist" th:text="${track.album.artist.name}"></p>
+                        </div>
+                        <div class="column song-album-name" th:text="${track.album.name}"></div>
+                        <div class="column align-right song-duration" th:text="${track.duration}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
+<script src="/js/createPlaylist.js" type="module"></script>
 </body>
 </html>
