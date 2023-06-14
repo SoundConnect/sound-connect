@@ -15,28 +15,16 @@ public class Artist {
     @Column(nullable = false, length = 250)
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "artist_genre",
+            joinColumns = @JoinColumn(name = "artist_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
     private List<Genre> genres;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
-    private List<Album> albums;
-
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
+    @ManyToMany(mappedBy = "artists")
+    private List<Track> tracks;
 
     public long getId() {
         return id;
@@ -54,10 +42,40 @@ public class Artist {
         this.name = name;
     }
 
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
+
     public Artist() {
     }
 
-    public Artist(String name) {
+    public Artist(long id, String name, List<Genre> genres, List<Track> tracks) {
+        this.id = id;
         this.name = name;
+        this.genres = genres;
+        this.tracks = tracks;
+    }
+
+    public Artist(String name, List<Genre> genres, List<Track> tracks) {
+        this.name = name;
+        this.genres = genres;
+        this.tracks = tracks;
+    }
+
+    public Artist(String name, List<Genre> genres) {
+        this.name = name;
+        this.genres = genres;
     }
 }
