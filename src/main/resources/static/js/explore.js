@@ -216,7 +216,6 @@ input.addEventListener('keyup', async function(e) {
 });
 
 
-
 (async () => {
     let playlist = await displayPlaylist(token);
     let artists = await getArtists(artistToken);
