@@ -8,7 +8,6 @@
 
 <body>
 <div class="page-wrapper">
-<!--    <header class="fixed-top">SoundConnect</header>-->
     <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container">
         <div class="sidebar fixed-top">
@@ -20,7 +19,7 @@
             </ul>
         </div>
         <div class="content-section row">
-            <main class="profile">
+            <div class="profile">
                 <section class="profile-info profile-section">
                     <h2>User Name</h2>
                     <img src="user_profile_picture.png" alt="User Profile">
@@ -28,21 +27,25 @@
                 <div class="container playlists">
                     <div class="column">
                         <div class="row ">
-                                <h1>My Playlists</h1>
-                            </div>
-                            <div class="profile-playlists column">
-                            </div>
-                            <div class="row">
-                                <h1>Artist Playlists</h1>
-                            </div>
-                            <div class="profile-artists column">
-                            </div>
-                            <div class="row">
-                                <h1>Suggested Playlists</h1>
-                            </div>
-                            <div class="profile-albums column">
-                            </div>
-            </main>
+                            <h1>Featured Playlists</h1>
+                        </div>
+                        <div class="profile-playlists row">
+                        </div>
+
+                        <div class="row">
+                            <h1>Category Playlists</h1>
+                        </div>
+                        <div class="profile-category column">
+                        </div>
+
+                        <div class="row">
+                            <h1>Albums Playlists</h1>
+                        </div>
+                        <div class="profile-albums column">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -62,13 +65,13 @@
         const options = {
             uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
         };
-        const callback = (EmbedController) => {};
+        const callback = (EmbedController) => {
+        };
         IFrameAPI.createController(element, options, callback);
     };
 </script>
 </body>
 </html>
-
 
 
 <!--                <section class="profile-playlists profile-section row">-->

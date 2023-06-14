@@ -2,38 +2,42 @@ import {getToken} from './main.js';
 
 
 let token = await getToken();
-let artistToken = await getToken();
+let categoryToken = await getToken();
+// let artistToken = await getToken();
 let albumToken = await getToken();
 
 
 
 export async function displayPlaylist() {
     try {
-        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=4&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA', {
+        const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=US&timestamp=2023-06-14T15%3A00%3A40&offset=0&limit=3', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         });
         const data = await response.json();
+        console.log(data);
 
-        const trackContainer = document.querySelector('.profile-playlists');
-        const tracks = data.tracks;
-        const ids = tracks.map(track => track.id);
-        function createPlaylistIframe(trackId) {
+        const playlistContainer = document.querySelector('.profile-playlists');
+        const playlists = data.playlists.items;
+        console.log(playlists);
+        const ids = playlists.map(playlist => playlist.id);
+        function createPlaylistIframe(playlist) {
             const iframe = document.createElement('iframe');
-            iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
+            iframe.src = `https://open.spotify.com/embed/playlist/${playlist}`;
             iframe.width = '250';
             iframe.height = '80';
             iframe.frameBorder = '0';
             iframe.allowtransparency = 'true';
             iframe.allow = 'encrypted-media';
 
-            trackContainer.appendChild(iframe);
+            playlistContainer.appendChild(iframe);
         }
-        tracks.forEach((track, index) => {
-            const trackId = ids[index];
-            createPlaylistIframe(trackId);
+
+        playlists.forEach((playlist, index) => {
+            const playlist_id = ids[index];
+            createPlaylistIframe(playlist_id);
         });
 
     } catch (error) {
@@ -41,27 +45,44 @@ export async function displayPlaylist() {
     }
 }
 
-async function getArtists(artistToken) {
+async function getCategory(categoryToken) {
     try {
-        const response = await fetch('https://api.spotify.com/v1/recommendations?limit=3&seed_artists=3TVXtAsR1Inumwj472S9r4&seed_genres=hip-hop%2Cclassical%2Ccountry&seed_tracks=59nOXPmaKlBfGMDeOVGrIK', {
+        const response = await fetch('https://api.spotify.com/v1/browse/categories?country=US&timestamp=2023-06-14T15%3A00%3A40&offset=0&limit=3', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         });
 
+        if (!response.ok) {
+            console.error('HTTP error', response.status, response.statusText);
+            throw new Error('HTTP error ' + response.status);
+        }
+
         const data = await response.json();
-        const artistContainer = document.querySelector('.profile-artists');
-        const artists = data.tracks;
-        console.log(artists);
-        const ids = []
-        artists.forEach((artist) => {
-            ids.push(artist.artists[0].id);
-        })
-        function createArtistIframe(artistId) {
+        const categoryContainer = document.querySelector('.profile-category');
+        const categories = data.categories.items;
+
+        categories.forEach(async (category) => {
+            const categoryResponse = await fetch(`https://api.spotify.com/v1/browse/categories/${category.id}/playlists?limit=1`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+            if (!categoryResponse.ok) {
+                console.error('HTTP error', categoryResponse.status, categoryResponse.statusText);
+                throw new Error('HTTP error ' + categoryResponse.status);
+            }
+            const categoryData = await categoryResponse.json();
+            const playlist = categoryData.playlists.items[0];
+            createCategoryIframe(playlist.id);
+        });
+
+        function createCategoryIframe(playlistId) {
             const iframe = document.createElement('iframe');
             iframe.style.borderRadius = '12px';
-            iframe.src = `https://open.spotify.com/embed/artist/${artistId}`;
+            iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}`;
             iframe.width = '250';
             iframe.height = '80';
             iframe.frameBorder = '0';
@@ -69,16 +90,14 @@ async function getArtists(artistToken) {
             iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
             iframe.loading = 'lazy';
 
-            artistContainer.appendChild(iframe);
+            categoryContainer.appendChild(iframe);
         }
-        artists.forEach((artist, index) => {
-            const artistId = ids[index];
-            createArtistIframe(artistId);
-        });
+
     } catch (error) {
         console.error('Error:', error);
     }
 }
+
 
 async function getAlbums(token) {
     try {
@@ -120,7 +139,8 @@ async function getAlbums(token) {
 
 (async () => {
     let playlist = await displayPlaylist(token);
-    let artists = await getArtists(artistToken);
+    let category = await getCategory(categoryToken);
+    // let artists = await getArtists(artistToken);
     let albums = await getAlbums(albumToken);
     window.onSpotifyWebPlaybackSDKReady = () => {
         const player = new Spotify.Player({
