@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "playlists")
@@ -19,7 +20,7 @@ public class Playlist {
     private String description;
 
     @ManyToMany(mappedBy = "playlists")
-    private List<User> users;
+    private Set<User> users;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
@@ -27,7 +28,7 @@ public class Playlist {
             joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "track_id")
     )
-    private List<Track> tracks;
+    private Set<Track> tracks;
 
     public Long getId() {
         return id;
@@ -53,19 +54,19 @@ public class Playlist {
         this.description = description;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
-    public List<Track> getTracks() {
+    public Set<Track> getTracks() {
         return tracks;
     }
 
-    public void setTracks(List<Track> tracks) {
+    public void setTracks(Set<Track> tracks) {
         this.tracks = tracks;
     }
 
@@ -84,19 +85,7 @@ public class Playlist {
 
 
 
-    public Playlist(String name, String description, List<Track> tracks) {
-        this.name = name;
-        this.description = description;
-        this.tracks = tracks;
-    }
 
-
-    public Playlist(String name, String description, List<User> users, List<Track> tracks) {
-        this.name = name;
-        this.description = description;
-        this.users = users;
-        this.tracks = tracks;
-    }
 
     public Playlist(long id, String name, String description) {
         this.id = id;

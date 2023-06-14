@@ -45,8 +45,8 @@ public class PlaylistController {
     public String createPlaylist(@RequestBody Playlist playlist){
         System.out.println(playlist.getName());
         System.out.println(playlist.getDescription());
-        System.out.println(playlist.getTracks().get(0).getAlbum().getAlbumArt());
-        System.out.println(playlist.getTracks().get(0).getAlbum().getName());
+//        System.out.println(playlist.getTracks().get(0).getAlbum().getAlbumArt());
+//        System.out.println(playlist.getTracks().get(0).getAlbum().getName());
 
        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
        playlistsDao.save(savePlaylist);

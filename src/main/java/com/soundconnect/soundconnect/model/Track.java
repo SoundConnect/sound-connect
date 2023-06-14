@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tracks")
@@ -25,7 +26,7 @@ public class Track {
             joinColumns = @JoinColumn(name = "track_id"),
             inverseJoinColumns = @JoinColumn(name = "artist_id")
     )
-    private List<Artist> artists;
+    private Set<Artist> artists;
 
     @Column(nullable = false, length = 250)
     private String duration;
@@ -65,11 +66,11 @@ public class Track {
         this.album = album;
     }
 
-    public List<Artist> getArtists() {
+    public Set<Artist> getArtists() {
         return artists;
     }
 
-    public void setArtists(List<Artist> artists) {
+    public void setArtists(Set<Artist> artists) {
         this.artists = artists;
     }
 
