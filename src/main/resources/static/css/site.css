@@ -670,14 +670,19 @@ form.create-form {
     border-bottom: 1px solid rgba(245, 245, 245, .5);
     color: rgba(245, 245, 245, .5);
 }
-.search-results-container{
+.search-results-container, .search-results-box{
     width: 1100px;
     align-self: center;
     max-height: 20rem;
-    overflow: scroll;
 }
 .create-top-container {
     margin-top: 2rem;
+}
+.search-results-box {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 

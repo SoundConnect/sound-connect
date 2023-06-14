@@ -21,6 +21,7 @@
                                 <p class="feed-post-body" th:text="${playlist.description}"></p>
                                 <button type="submit" name="delete-playlist" th:value="${playlist.id}">DELETE</button>
                             </form>
+                            <a class="submit-btn" th:href="@{/feed/{id}/edit(id=${playlist.id})}">EDIT</a>
                         </li>
                     </ul>
                 </div>

@@ -7,7 +7,7 @@ export const KEYS = {
 }
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
-let searchResultsParent = document.querySelector('.search-results-container');
+let searchResultsParent = document.querySelector('.search-results-box');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
 
@@ -94,6 +94,7 @@ const getSongData = async (token, songName) => {
 		console.log("Error retrieving song data: " + error);
 	}
 }
+
 // Sort song data by popularity
 const sortSongData = (songData) => {
 	songData.sort((a, b) => {
@@ -102,7 +103,7 @@ const sortSongData = (songData) => {
 	return songData;
 }
 
-// Get search results data
+// Get search results data for create page
 search.addEventListener('keyup', async () => {
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
@@ -121,7 +122,7 @@ searchResultsParent.addEventListener('click', (e) => {
 			{
 				"name": songData[0],
 				"spotifyId": songData[1],
-				"duration": songData[2],
+				"duration": formatSongDuration(songData[2]),
 				"album": {
 					"name": songData[3],
 					"albumArt": songData[4],
@@ -159,6 +160,14 @@ const formatSongDuration = duration => {
 // Display search results
 const displaySearchResults = song => {
 	let features = song.artists.map(artist => artist.name).join(', ');
+	let songName = song.name;
+	let albumName = song.album.name;
+	if (songName.length > 40) {
+		songName = songName.slice(0, 40) + '...';
+	}
+	if (albumName.length > 40) {
+		albumName = albumName.slice(0, 40) + '...';
+	}
 
 	searchResultsParent.innerHTML += `
 		<div class="row align-center no-padding">
@@ -166,10 +175,10 @@ const displaySearchResults = song => {
 				<img src="${song.album.images[2].url}" alt="Song Picture" class="song-pic" >
 			</div>
 			<div class="column song-title no-gap">
-				<p class="song-name">${song.name}</p>
+				<p class="song-name">${songName}</p>
 				<p class="song-artist">${features}</p>
 			</div>
-			<div class="column song-album-name">${song.album.name}</div>
+			<div class="column song-album-name">${albumName}</div>
 			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${song.album.artists[0].name}</span></button>
 		</div>`;
 }

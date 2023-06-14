@@ -19,7 +19,7 @@ public class Track {
     private String spotifyId;
 
     @Column(nullable = false)
-    private long duration;
+    private String duration;
 
     @ManyToOne
     @JoinColumn(name = "playlist_id")
@@ -61,11 +61,11 @@ public class Track {
         this.name = name;
     }
 
-    public long getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -78,7 +78,7 @@ public class Track {
     }
 
     public Track() {}
-    public Track(String name, String spotifyId, long duration){
+    public Track(String name, String spotifyId, String duration){
             this.name = name;
             this.spotifyId = spotifyId;
             this.duration = duration;
@@ -87,7 +87,7 @@ public class Track {
         this.playlist = playlist;
     }
 
-    public Track(String name, String spotifyId, long duration, Playlist playlist, Album album) {
+    public Track(String name, String spotifyId, String duration, Playlist playlist, Album album) {
         this.name = name;
         this.spotifyId = spotifyId;
         this.duration = duration;
