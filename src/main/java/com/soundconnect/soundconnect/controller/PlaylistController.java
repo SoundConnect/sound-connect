@@ -1,16 +1,10 @@
 package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.*;
-
-import com.soundconnect.soundconnect.repositories.AlbumRepository;
-import com.soundconnect.soundconnect.repositories.ArtistRepository;
-import com.soundconnect.soundconnect.repositories.PlaylistRepository;
-import com.soundconnect.soundconnect.repositories.TrackRepository;
-import com.soundconnect.soundconnect.repositories.UserRepository;
+import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
