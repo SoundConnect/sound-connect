@@ -2,6 +2,9 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "genres")
 public class Genre {
@@ -13,9 +16,8 @@ public class Genre {
     @Column(nullable = false, length = 250)
     private String genre;
 
-    @ManyToOne
-    @JoinColumn(name = "artist_id")
-    private Artist artist;
+    @ManyToMany(mappedBy = "genres")
+    private Set<Artist> artists;
 
     public long getId() {
         return id;
@@ -33,10 +35,16 @@ public class Genre {
         this.genre = genre;
     }
 
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
+    }
+
     public Genre() {
     }
 
-    public Genre(String genre) {
-        this.genre = genre;
-    }
+
 }

@@ -27,7 +27,7 @@ export async function displayPlaylist() {
             const iframe = document.createElement('iframe');
             iframe.src = `https://open.spotify.com/embed/playlist/${playlist}`;
             iframe.width = '250';
-            iframe.height = '80';
+            iframe.height = '152';
             iframe.frameBorder = '0';
             iframe.allowtransparency = 'true';
             iframe.allow = 'encrypted-media';
@@ -84,7 +84,7 @@ async function getCategory(categoryToken) {
             iframe.style.borderRadius = '12px';
             iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}`;
             iframe.width = '250';
-            iframe.height = '80';
+            iframe.height = '152';
             iframe.frameBorder = '0';
             iframe.allowFullscreen = '';
             iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
@@ -119,7 +119,7 @@ async function getAlbums(token) {
             iframe.style.borderRadius = '12px';
             iframe.src = `https://open.spotify.com/embed/album/${albumId}`;
             iframe.width = '250';
-            iframe.height = '80';
+            iframe.height = '152';
             iframe.frameBorder = '0';
             iframe.allowFullscreen = '';
             iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';

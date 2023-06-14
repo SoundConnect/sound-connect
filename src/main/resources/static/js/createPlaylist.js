@@ -1,5 +1,3 @@
-// import {getSongData, getToken} from '/main.js';
-
 export const KEYS = {
 	clientID: "6b14de4df2be4965a8c7675f7314f326",
 	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
@@ -7,7 +5,8 @@ export const KEYS = {
 }
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
-let searchResultsParent = document.querySelector('.search-results-container');
+const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
+let searchResultsParent = document.querySelector('.search-results-box');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
 
@@ -94,6 +93,7 @@ const getSongData = async (token, songName) => {
 		console.log("Error retrieving song data: " + error);
 	}
 }
+
 // Sort song data by popularity
 const sortSongData = (songData) => {
 	songData.sort((a, b) => {
@@ -102,14 +102,21 @@ const sortSongData = (songData) => {
 	return songData;
 }
 
-// Get search results data
+// Get search results data for create page
 search.addEventListener('keyup', async () => {
+	if (search.value === '') {
+		searchResultsParent.innerHTML = '';
+		searchResultsHeader.style.display = 'none';
+		return;
+	}
+
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
 	searchResultsParent.innerHTML = '';
 	searchResults.forEach(song => {
 		displaySearchResults(song);
 	});
+	searchResultsHeader.style.display = 'flex';
 });
 
 // event listener for add song button
@@ -117,11 +124,12 @@ searchResultsParent.addEventListener('click', (e) => {
 	let clickedBtn = e.target;
 	if (clickedBtn.nodeName === 'BUTTON') {
 		let songData = clickedBtn.querySelector('span').innerText.split('~');
+		console.log(songData);
 		songList.push(
 			{
 				"name": songData[0],
 				"spotifyId": songData[1],
-				"duration": songData[2],
+				"duration": formatSongDuration(songData[2]),
 				"album": {
 					"name": songData[3],
 					"albumArt": songData[4],
@@ -159,6 +167,14 @@ const formatSongDuration = duration => {
 // Display search results
 const displaySearchResults = song => {
 	let features = song.artists.map(artist => artist.name).join(', ');
+	let songName = song.name;
+	let albumName = song.album.name;
+	if (songName.length > 40) {
+		songName = songName.slice(0, 40) + '...';
+	}
+	if (albumName.length > 40) {
+		albumName = albumName.slice(0, 40) + '...';
+	}
 
 	searchResultsParent.innerHTML += `
 		<div class="row align-center no-padding">
@@ -166,10 +182,10 @@ const displaySearchResults = song => {
 				<img src="${song.album.images[2].url}" alt="Song Picture" class="song-pic" >
 			</div>
 			<div class="column song-title no-gap">
-				<p class="song-name">${song.name}</p>
+				<p class="song-name">${songName}</p>
 				<p class="song-artist">${features}</p>
 			</div>
-			<div class="column song-album-name">${song.album.name}</div>
+			<div class="column song-album-name">${albumName}</div>
 			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${song.album.artists[0].name}</span></button>
 		</div>`;
 }

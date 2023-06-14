@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "artists")
@@ -15,28 +16,20 @@ public class Artist {
     @Column(nullable = false, length = 250)
     private String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
-    private List<Genre> genres;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "artist_genre",
+            joinColumns = @JoinColumn(name = "artist_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
-    private List<Album> albums;
+    @ManyToMany(mappedBy = "artists")
+    private Set<Track> tracks;
 
-    public List<Album> getAlbums() {
-        return albums;
+    public Artist(String name) {
+        this.name = name;
     }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
 
     public long getId() {
         return id;
@@ -54,10 +47,24 @@ public class Artist {
         this.name = name;
     }
 
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
+    }
+
     public Artist() {
     }
 
-    public Artist(String name) {
-        this.name = name;
-    }
+
 }

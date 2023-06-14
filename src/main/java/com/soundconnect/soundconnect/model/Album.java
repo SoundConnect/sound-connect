@@ -10,19 +10,19 @@ public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 250)
     private String name;
 
-    @Column(nullable = false, length = 1000)
-    private String albumArt;
-
-    @ManyToOne
-    @JoinColumn(name = "artist_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "album")
+    @Column(name = "album_art", nullable = false, length = 2500)
+    private String albumArt;
+
+    @OneToMany(cascade = CascadeType.PERSIST ,mappedBy = "album")
     private List<Track> tracks;
 
     public Artist getArtist() {

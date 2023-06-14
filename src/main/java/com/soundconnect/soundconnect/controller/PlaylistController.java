@@ -3,18 +3,14 @@ package com.soundconnect.soundconnect.controller;
 import com.soundconnect.soundconnect.model.Album;
 import com.soundconnect.soundconnect.model.Artist;
 import com.soundconnect.soundconnect.model.Playlist;
-import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.model.Track;
-import com.soundconnect.soundconnect.repositories.AlbumRepository;
-import com.soundconnect.soundconnect.repositories.ArtistRepository;
-import com.soundconnect.soundconnect.repositories.PlaylistRepository;
-import com.soundconnect.soundconnect.repositories.TrackRepository;
-import com.soundconnect.soundconnect.repositories.UserRepository;
+import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class PlaylistController {
@@ -26,7 +22,7 @@ public class PlaylistController {
     private final ArtistRepository artistsDao;
     private final UserRepository usersDao;
 
-    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao){
+    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao) {
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
         this.albumsDao = albumsDao;
@@ -36,7 +32,7 @@ public class PlaylistController {
 
     // show form for creating a playlist
     @GetMapping("/create")
-    public String showCreatePlaylistForm(){
+    public String showCreatePlaylistForm() {
         return "createPlaylist";
     }
 
@@ -44,17 +40,15 @@ public class PlaylistController {
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist){
         System.out.println(playlist.getName());
-        System.out.println(playlist.getName().isEmpty());
-        if (playlist.getName().isEmpty()){
-            return "redirect:/create/error";
-        } else {
-            Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-            playlistsDao.save(savePlaylist);
+        System.out.println(playlist.getDescription());
+//        System.out.println(playlist.getTracks().get(0).getAlbum().getAlbumArt());
+//        System.out.println(playlist.getTracks().get(0).getAlbum().getName());
 
+       Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
+       playlistsDao.save(savePlaylist);
             // save all tracks, albums, and artists to database
             for (Track track : playlist.getTracks()) {
                 Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
-                tracksDao.save(saveTrack);
 
                 Artist saveArtist;
                 if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null) {
@@ -74,16 +68,15 @@ public class PlaylistController {
                 }
 
                 saveTrack.setAlbum(saveAlbum);
-                saveTrack.setPlaylist(savePlaylist);
+//                saveTrack.setPlaylist(savePlaylist);
                 tracksDao.save(saveTrack);
             }
 
             return "redirect:/profile";
         }
-    }
 
     // show form for editing a playlist
-    @GetMapping("/edit/{id}")
+    @GetMapping("/feed/{id}/edit")
     public String showEditPlaylistForm(@PathVariable long id, Model model){
         Playlist playlist = playlistsDao.findById(id);
         model.addAttribute("playlist", playlist);
@@ -91,25 +84,32 @@ public class PlaylistController {
     }
 
     // edit playlist
-    @PostMapping("/edit/{id}")
-    public String editPlaylist(){
+    @PostMapping("/feed/{id}/edit")
+    public String editPlaylist(@PathVariable long id, @RequestBody Playlist playlist){
         return "redirect:/profile";
     }
 
-    // show feed for all shared playlists
-    @GetMapping("/feed")
-    public String showFeed(Model model){
-        List<Playlist> playlists = playlistsDao.findAll();
-        model.addAttribute("playlists", playlists);
-        return "feed";
+
+
+        // edit playlist
+        @PostMapping("/edit/{id}")
+        public String editPlaylist () {
+            return "redirect:/profile";
+        }
+
+//     show feed for all shared playlists
+        @GetMapping("/feed")
+        public String showFeed (Model model){
+//        List<Playlist> playlists = playlistsDao.findAll();
+//        model.addAttribute("playlists", playlists);
+            return "feed";
+        }
+
+//     delete playlist from account
+        @PostMapping("/feed")
+        public String deletePlaylist () {
+
+            return "redirect:/feed";
+        }
     }
 
-    // delete playlist from account
-    @PostMapping("/feed")
-    public String deletePlaylist(){
-        User user = usersDao.findById(1L);
-        Playlist playlist = playlistsDao.findByUser(user);
-        playlistsDao.delete(playlist);
-        return "redirect:/feed";
-    }
-}
