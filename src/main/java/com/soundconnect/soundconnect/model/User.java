@@ -21,15 +21,20 @@ public class User {
     @Column(nullable = false, length = 25)
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
-    private List<Playlist> playlist;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "user_playlist",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "playlist_id")
+    )
+    private List<Playlist> playlists;
 
-    public List<Playlist> getPlaylist() {
-        return playlist;
+    public List<Playlist> getPlaylists() {
+        return playlists;
     }
 
-    public void setPlaylist(List<Playlist> playlist) {
-        this.playlist = playlist;
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
     }
 
     public long getId() {
@@ -78,15 +83,6 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String email, String password, List<Playlist> playlist) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.playlist = playlist;
-    }
 
-    public User(long id, List<Playlist> playlist) {
-        this.id = id;
-        this.playlist = playlist;
-    }
+
 }

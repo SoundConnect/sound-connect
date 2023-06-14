@@ -16,10 +16,10 @@
                 <div class="column feed-col">
                     <ul class="feed-ul">
                         <li class="feed-posts" th:each="playlist : ${playlists}">
-                            <form th:action="@{/feed}" th:method="post">
+                            <form th:action="${playlist.id} ? @{/feed} : @{/feed/{id}/edit(id=${playlist.id})}" th:method="post">
                                 <h2 class="feed-post-header" th:text="${playlist.name}"></h2>
                                 <p class="feed-post-body" th:text="${playlist.description}"></p>
-                                <button type="submit" name="delete-playlist" th:value="${playlist.id}">DELETE</button>
+                                <button type="submit" name="delete_playlist" th:value="${playlist.id}">DELETE</button>
                             </form>
                             <a class="submit-btn" th:href="@{/feed/{id}/edit(id=${playlist.id})}">EDIT</a>
                         </li>

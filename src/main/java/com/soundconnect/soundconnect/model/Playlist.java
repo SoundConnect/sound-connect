@@ -10,44 +10,30 @@ public class Playlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 250)
     private String name;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false, length = 1500)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToMany(mappedBy = "playlists")
+    private List<User> users;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "playlist")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "playlist_track",
+            joinColumns = @JoinColumn(name = "playlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "track_id")
+    )
     private List<Track> tracks;
 
-
-
-    public List<Track> getTracks() {
-        return tracks;
-    }
-
-    public void setTracks(List<Track> tracks) {
-        this.tracks = tracks;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,6 +53,22 @@ public class Playlist {
         this.description = description;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
+
     public Playlist() {
     }
 
@@ -80,11 +82,6 @@ public class Playlist {
         this.description = description;
     }
 
-    public Playlist(String name, String description, User user) {
-        this.name = name;
-        this.description = description;
-        this.user = user;
-    }
 
 
     public Playlist(String name, String description, List<Track> tracks) {
@@ -94,11 +91,16 @@ public class Playlist {
     }
 
 
-
-    public Playlist(String name, String description, User user, List<Track> tracks) {
+    public Playlist(String name, String description, List<User> users, List<Track> tracks) {
         this.name = name;
         this.description = description;
-        this.user = user;
+        this.users = users;
         this.tracks = tracks;
+    }
+
+    public Playlist(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 }

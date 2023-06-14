@@ -1,16 +1,15 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.Album;
-import com.soundconnect.soundconnect.model.Artist;
-import com.soundconnect.soundconnect.model.Playlist;
-import com.soundconnect.soundconnect.model.User;
+import com.soundconnect.soundconnect.model.*;
 
-import com.soundconnect.soundconnect.model.Track;
 import com.soundconnect.soundconnect.repositories.AlbumRepository;
 import com.soundconnect.soundconnect.repositories.ArtistRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.TrackRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,14 +43,8 @@ public class PlaylistController {
     // get form data and create playlist
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist){
-        System.out.println(playlist.getName());
-        System.out.println(playlist.getName().isEmpty());
-        if (playlist.getName().isEmpty()){
-            return "redirect:/create/error";
-        } else {
-            Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-            playlistsDao.save(savePlaylist);
-
+       Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
+       playlistsDao.save(savePlaylist);
             // save all tracks, albums, and artists to database
             for (Track track : playlist.getTracks()) {
                 Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
@@ -97,20 +90,26 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
-    // show feed for all shared playlists
+//     show feed for all shared playlists
     @GetMapping("/feed")
     public String showFeed(Model model){
-        List<Playlist> playlists = playlistsDao.findAll();
-        model.addAttribute("playlists", playlists);
+//        List<Playlist> playlists = playlistsDao.findAll();
+//        model.addAttribute("playlists", playlists);
         return "feed";
     }
 
-    // delete playlist from account
-    @PostMapping("/feed")
-    public String deletePlaylist(){
-        User user = usersDao.findById(1L);
-        Playlist playlist = playlistsDao.findByUser(user);
-        playlistsDao.delete(playlist);
-        return "redirect:/feed";
-    }
+//     delete playlist from account
+//    @PostMapping("/feed")
+//    public String deletePlaylist(@RequestParam(name = "delete_playlist") long id){
+//
+////        Playlist playlist = playlistsDao.findById(id);
+//////        long userPlaylist = playlist.getId();
+////        System.out.println("playlist id: " + playlist);
+////
+////        Track track = tracksDao.getReferenceById(playlist.getTracks().get(0).getId());
+////        System.out.println("track id: " + track.getId());
+////        playlistsDao.delete(playlist);
+////        System.out.println("are we reaching this point?");
+//        return "redirect:/feed";
+////    }
 }
