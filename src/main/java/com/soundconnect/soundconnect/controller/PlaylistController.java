@@ -7,10 +7,9 @@ import com.soundconnect.soundconnect.model.Track;
 import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PlaylistController {
@@ -39,41 +38,40 @@ public class PlaylistController {
     // get form data and create playlist
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist){
-        System.out.println(playlist.getName());
-        System.out.println(playlist.getDescription());
-//        System.out.println(playlist.getTracks().get(0).getAlbum().getAlbumArt());
-//        System.out.println(playlist.getTracks().get(0).getAlbum().getName());
+        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
+        savePlaylist.setTracks(playlist.getTracks());
 
-       Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-       playlistsDao.save(savePlaylist);
-            // save all tracks, albums, and artists to database
-            for (Track track : playlist.getTracks()) {
-                Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
+        // save all tracks, albums, and artists to database
+        for (Track track : playlist.getTracks()) {
+            Track saveTrack;
+            Set<Artist> artists = track.getArtists();
 
-                Artist saveArtist;
-                if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null) {
-                    saveArtist = artistsDao.findByName(track.getAlbum().getArtist().getName());
-                } else {
-                    saveArtist = new Artist(track.getAlbum().getArtist().getName());
-                    artistsDao.save(saveArtist);
-                }
-
-                Album saveAlbum;
-                if (albumsDao.findByName(track.getAlbum().getName()) != null) {
-                    saveAlbum = albumsDao.findByName(track.getAlbum().getName());
-                } else {
-                    saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt());
-                    saveAlbum.setArtist(saveArtist);
-                    albumsDao.save(saveAlbum);
-                }
-
-                saveTrack.setAlbum(saveAlbum);
-//                saveTrack.setPlaylist(savePlaylist);
+            // tracks
+            if (tracksDao.findByName(track.getName()) == null) {
+                saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
+                saveTrack.setAlbum(track.getAlbum());
+                saveTrack.setArtists(artists);
                 tracksDao.save(saveTrack);
+
+                for (Artist artist : artists) {
+                    if (artistsDao.findByName(artist.getName()) == null) {
+                        Artist saveArtist = new Artist(artist.getName());
+                        artistsDao.save(saveArtist);
+                    }
+                }
             }
 
-            return "redirect:/profile";
+            // albums
+            Album saveAlbum;
+            if (albumsDao.findByName(track.getAlbum().getName()) == null) {
+                saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt(), track.getAlbum().getArtist());
+                albumsDao.save(saveAlbum);
+            }
         }
+
+        playlistsDao.save(savePlaylist);
+        return "redirect:/profile";
+    }
 
     // show form for editing a playlist
     @GetMapping("/feed/{id}/edit")
