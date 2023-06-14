@@ -18,6 +18,7 @@ public class Track {
     @JoinColumn(name = "album_id", nullable = false)
     private Album album;
 
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "track_artist",

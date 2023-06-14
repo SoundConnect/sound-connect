@@ -42,36 +42,51 @@ public class PlaylistController {
 
     // get form data and create playlist
     @PostMapping("/create")
-    public String createPlaylist(@RequestBody Playlist playlist) {
-//        Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
-//        playlistsDao.save(savePlaylist);
-//
-//        // save all tracks, albums, and artists to database
-//        for(Track track : playlist.getTracks()){
-//            Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
-//            tracksDao.save(saveTrack);
-//
-//            Artist saveArtist;
-//            if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null){
-//                saveArtist = artistsDao.findByName(track.getAlbum().getArtist().getName());
-//            } else {
-//                saveArtist = new Artist(track.getAlbum().getArtist().getName());
-//                artistsDao.save(saveArtist);
-//            }
-//
-//            Album saveAlbum;
-//            if (albumsDao.findByName(track.getAlbum().getName()) != null){
-//                saveAlbum = albumsDao.findByName(track.getAlbum().getName());
-//            } else {
-//                saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt());
-//                saveAlbum.setArtist(saveArtist);
-//                albumsDao.save(saveAlbum);
-//            }
-//
-//            saveTrack.setAlbum(saveAlbum);
-//            saveTrack.setPlaylist(savePlaylist);
-//            tracksDao.save(saveTrack);
-//        }
+    public String createPlaylist(@RequestBody Playlist playlist){
+       Playlist savePlaylist = new Playlist(playlist.getName(), playlist.getDescription());
+       playlistsDao.save(savePlaylist);
+            // save all tracks, albums, and artists to database
+            for (Track track : playlist.getTracks()) {
+                Track saveTrack = new Track(track.getName(), track.getSpotifyId(), track.getDuration());
+                tracksDao.save(saveTrack);
+
+                Artist saveArtist;
+                if (artistsDao.findByName(track.getAlbum().getArtist().getName()) != null) {
+                    saveArtist = artistsDao.findByName(track.getAlbum().getArtist().getName());
+                } else {
+                    saveArtist = new Artist(track.getAlbum().getArtist().getName());
+                    artistsDao.save(saveArtist);
+                }
+
+                Album saveAlbum;
+                if (albumsDao.findByName(track.getAlbum().getName()) != null) {
+                    saveAlbum = albumsDao.findByName(track.getAlbum().getName());
+                } else {
+                    saveAlbum = new Album(track.getAlbum().getName(), track.getAlbum().getAlbumArt());
+                    saveAlbum.setArtist(saveArtist);
+                    albumsDao.save(saveAlbum);
+                }
+
+                saveTrack.setAlbum(saveAlbum);
+                saveTrack.setPlaylist(savePlaylist);
+                tracksDao.save(saveTrack);
+            }
+
+            return "redirect:/profile";
+        }
+    }
+
+    // show form for editing a playlist
+    @GetMapping("/feed/{id}/edit")
+    public String showEditPlaylistForm(@PathVariable long id, Model model){
+        Playlist playlist = playlistsDao.findById(id);
+        model.addAttribute("playlist", playlist);
+        return "editPlaylist";
+    }
+
+    // edit playlist
+    @PostMapping("/feed/{id}/edit")
+    public String editPlaylist(@PathVariable long id, @RequestBody Playlist playlist){
         return "redirect:/profile";
     }
 
