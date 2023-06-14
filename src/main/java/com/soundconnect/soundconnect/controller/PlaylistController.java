@@ -26,7 +26,7 @@ public class PlaylistController {
     private final ArtistRepository artistsDao;
     private final UserRepository usersDao;
 
-    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao){
+    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao) {
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
         this.albumsDao = albumsDao;
@@ -36,7 +36,7 @@ public class PlaylistController {
 
     // show form for creating a playlist
     @GetMapping("/create")
-    public String showCreatePlaylistForm(){
+    public String showCreatePlaylistForm() {
         return "createPlaylist";
     }
 
@@ -90,26 +90,27 @@ public class PlaylistController {
         return "redirect:/profile";
     }
 
+
+
+        // edit playlist
+        @PostMapping("/edit/{id}")
+        public String editPlaylist () {
+            return "redirect:/profile";
+        }
+
 //     show feed for all shared playlists
-    @GetMapping("/feed")
-    public String showFeed(Model model){
+        @GetMapping("/feed")
+        public String showFeed (Model model){
 //        List<Playlist> playlists = playlistsDao.findAll();
 //        model.addAttribute("playlists", playlists);
-        return "feed";
-    }
+            return "feed";
+        }
 
 //     delete playlist from account
-//    @PostMapping("/feed")
-//    public String deletePlaylist(@RequestParam(name = "delete_playlist") long id){
-//
-////        Playlist playlist = playlistsDao.findById(id);
-//////        long userPlaylist = playlist.getId();
-////        System.out.println("playlist id: " + playlist);
-////
-////        Track track = tracksDao.getReferenceById(playlist.getTracks().get(0).getId());
-////        System.out.println("track id: " + track.getId());
-////        playlistsDao.delete(playlist);
-////        System.out.println("are we reaching this point?");
-//        return "redirect:/feed";
-////    }
-}
+        @PostMapping("/feed")
+        public String deletePlaylist () {
+
+            return "redirect:/feed";
+        }
+    }
+
