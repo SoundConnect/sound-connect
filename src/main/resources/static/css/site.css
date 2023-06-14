@@ -49,7 +49,7 @@ body{
     border-radius: 10px;
     box-shadow: 2px 2px 10px var(--secondary);
     border: 1px solid var(--secondary);
-    background-color: var(--primary);
+    background-color: #202033;
 }
 .service-card{
     height: 100%;
@@ -240,6 +240,7 @@ a{
 .openOverlayButton:hover{
     background-color: #a8a8a8;
     color: var(--primary);
+    cursor: pointer;
 }
 .search-tracks{
    position: absolute;
@@ -256,6 +257,13 @@ a{
     top: 850px;
     left: 0;
 }
+.closeOverlayButton{
+    width: 100px;
+    border-radius: 10px;
+    background-color: #c9c9c9;
+    color: var(--primary);
+    cursor: pointer;
+}
 /*****************************End Explore Page********************************/
 /*****************************NAV BAR********************************/
 
@@ -263,7 +271,12 @@ a{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    background-color: rgba(0, 8, 30, 0.6);
 }
 
 .nav-row{
@@ -322,7 +335,7 @@ nav .underline::before {
     bottom: -2px;
     width: 0;
     height: 2px;
-    background-color: var(--secondary); /* Replace with your desired underline color */
+    background-color: var(--secondary);
     transition: width 0.3s ease;
 }
 
