@@ -73,6 +73,10 @@ public class PlaylistController {
 //            tracksDao.save(saveTrack);
 //        }
 
+
+    // edit playlist
+    @PostMapping("/edit/{id}")
+    public String editPlaylist(){
         return "redirect:/profile";
     }
 
