@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -27,13 +28,13 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "playlist_id")
     )
-    private List<Playlist> playlists;
+    private Set<Playlist> playlists;
 
-    public List<Playlist> getPlaylists() {
+    public Set<Playlist> getPlaylists() {
         return playlists;
     }
 
-    public void setPlaylists(List<Playlist> playlists) {
+    public void setPlaylists(Set<Playlist> playlists) {
         this.playlists = playlists;
     }
 

@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "artists")
@@ -21,10 +22,10 @@ public class Artist {
             joinColumns = @JoinColumn(name = "artist_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private List<Genre> genres;
+    private Set<Genre> genres;
 
     @ManyToMany(mappedBy = "artists")
-    private List<Track> tracks;
+    private Set<Track> tracks;
 
     public Artist(String name) {
         this.name = name;
@@ -46,40 +47,24 @@ public class Artist {
         this.name = name;
     }
 
-    public List<Genre> getGenres() {
+    public Set<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(Set<Genre> genres) {
         this.genres = genres;
     }
 
-    public List<Track> getTracks() {
+    public Set<Track> getTracks() {
         return tracks;
     }
 
-    public void setTracks(List<Track> tracks) {
+    public void setTracks(Set<Track> tracks) {
         this.tracks = tracks;
     }
 
     public Artist() {
     }
 
-    public Artist(long id, String name, List<Genre> genres, List<Track> tracks) {
-        this.id = id;
-        this.name = name;
-        this.genres = genres;
-        this.tracks = tracks;
-    }
 
-    public Artist(String name, List<Genre> genres, List<Track> tracks) {
-        this.name = name;
-        this.genres = genres;
-        this.tracks = tracks;
-    }
-
-    public Artist(String name, List<Genre> genres) {
-        this.name = name;
-        this.genres = genres;
-    }
 }
