@@ -18,10 +18,10 @@ public class Album {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "artist_id", nullable = true)
     private Artist artist;
-
     @Column(name = "album_art", nullable = false, length = 2500)
     private String albumArt;
-
+    @Column(name = "spotify_id", nullable = false, length = 2500)
+    private String spotifyId;
     @OneToMany(cascade = CascadeType.PERSIST ,mappedBy = "album")
     private List<Track> tracks;
 
@@ -57,14 +57,24 @@ public class Album {
     public void setAlbumArt(String albumArt) {
         this.albumArt = albumArt;
     }
-
+    public String getSpotifyId() {
+        return spotifyId;
+    }
+    public void setSpotifyId(String spotifyId) {
+        this.spotifyId = spotifyId;
+    }
 
     public Album() {}
     public Album(String name, String albumArt) {
         this.name = name;
         this.albumArt = albumArt;
     }
-//    public Album(String name, String albumArt, Artist artist) {
+    public Album(String name, String albumArt, String spotifyId) {
+        this.name = name;
+        this.albumArt = albumArt;
+        this.spotifyId = spotifyId;
+    }
+    //    public Album(String name, String albumArt, Artist artist) {
 //        this.name = name;
 //        this.albumArt = albumArt;
 //        this.artist = artist;
