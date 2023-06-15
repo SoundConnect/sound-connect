@@ -16,7 +16,7 @@ public class Album {
     private String name;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "artist_id", nullable = false)
+    @JoinColumn(name = "artist_id", nullable = true)
     private Artist artist;
 
     @Column(name = "album_art", nullable = false, length = 2500)
@@ -64,9 +64,9 @@ public class Album {
         this.name = name;
         this.albumArt = albumArt;
     }
-    public Album(String name, String albumArt, Artist artist) {
-        this.name = name;
-        this.albumArt = albumArt;
-        this.artist = artist;
-    }
+//    public Album(String name, String albumArt, Artist artist) {
+//        this.name = name;
+//        this.albumArt = albumArt;
+//        this.artist = artist;
+//    }
 }

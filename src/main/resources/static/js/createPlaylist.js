@@ -121,12 +121,16 @@ searchResultsParent.addEventListener('click', (e) => {
 	if (clickedBtn.nodeName === 'BUTTON') {
 		let songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
-		songData[5].split(',').forEach(artist => {
+		let artistNames = songData[5].split(',');
+		let artistSpotifyIds = songData[6].split(',');
+		for (let i = 0; i < artistNames.length; i++) {
 			artists.push(
 				{
-				"name": artist
-			});
-		});
+					"name": artistNames[i],
+					"spotifyId": artistSpotifyIds[i]
+				}
+			);
+		}
 		console.log(artists);
 
 		songList.push(
@@ -138,7 +142,7 @@ searchResultsParent.addEventListener('click', (e) => {
 				"album": {
 					"name": songData[3],
 					"albumArt": songData[4],
-					"artist": songData[6]
+
 				}
 			}
 		);
@@ -170,6 +174,7 @@ const formatSongDuration = duration => {
 // Display search results
 const displaySearchResults = song => {
 	let artists = song.artists.map(artist => artist.name).join(', ');
+	let artistSpotifyIds = song.artists.map(artist => artist.id).join(',');
 	let songName = song.name;
 	let albumName = song.album.name;
 	if (songName.length > 40) {
@@ -189,7 +194,7 @@ const displaySearchResults = song => {
 				<p class="song-artist">${artists}</p>
 			</div>
 			<div class="column song-album-name">${albumName}</div>
-			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${song.album.artists[0].name}</span></button>
+			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}</span></button>
 		</div>`;
 }
 
