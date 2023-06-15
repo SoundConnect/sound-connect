@@ -13,8 +13,8 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 250)
-    private String genre;
+    @Column(nullable = false, length = 250, unique = true)
+    private String name;
 
     @ManyToMany(mappedBy = "genres")
     private Set<Artist> artists;
@@ -28,11 +28,11 @@ public class Genre {
     }
 
     public String getGenre() {
-        return genre;
+        return name;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenre(String name) {
+        this.name = name;
     }
 
     public Set<Artist> getArtists() {
