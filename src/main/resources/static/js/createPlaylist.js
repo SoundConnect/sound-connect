@@ -142,6 +142,7 @@ searchResultsParent.addEventListener('click', (e) => {
 				"album": {
 					"name": songData[3],
 					"albumArt": songData[4],
+					"spotifyId": songData[7]
 				}
 			}
 		);
@@ -193,7 +194,7 @@ const displaySearchResults = song => {
 				<p class="song-artist">${artists}</p>
 			</div>
 			<div class="column song-album-name">${albumName}</div>
-			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}</span></button>
+			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}~${song.album.id}</span></button>
 		</div>`;
 }
 
