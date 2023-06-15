@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
-    <link rel="stylesheet" href="/css/site.css">
     <meta charset="UTF-8">
     <title>SoundConnect Profile</title>
 </head>
 
 <body>
 <img src="/images/login-background.jpg" alt="login background" class="background">
-<div class="page-wrapper">
+<div class="page-wrapper profile">
     <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container">
-        <div class="sidebar fixed-top">
+    <div class="container-profile">
+        <div class="sidebar-fixed">
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/explore">Recommended Playlists</a></li>
@@ -28,7 +27,7 @@
                     <h2>User Name</h2>
                     <img src="user_profile_picture.png" alt="User Profile">
                 </section>
-                <div class="container playlists">
+                <div class="container-playlists">
                     <div class="column">
                         <div class="row ">
                             <h1>Featured Playlists</h1>
@@ -77,16 +76,3 @@
 </body>
 </html>
 
-
-<!--                <section class="profile-playlists profile-section row">-->
-<!--                    <h3>My Playlists</h3>-->
-<!--                    <div id="playlists"></div>-->
-<!--                </section>-->
-<!--                <section class="profile-artists profile-section row">-->
-<!--                    <h3>My Artists</h3>-->
-<!--                    <div id="artists"></div>-->
-<!--                </section>-->
-<!--                <section class="profile-albums profile-section row">-->
-<!--                    <h3>My Albums</h3>-->
-<!--                    <div id="albums"></div>-->
-<!--                </section>-->

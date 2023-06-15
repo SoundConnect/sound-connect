@@ -477,15 +477,9 @@ form > * {
     padding:10px;
 }
 
-/*input:focus {*/
-/*    outline: unset;*/
-/*    color: #060429;*/
-
-/*}*/
 textarea {
     min-height: 100px;
     resize: none;
-
 }
 
 label {
@@ -713,26 +707,16 @@ form.create-form {
 .search-results-container .song-box-header {
     display: none ;
 }
-
-
 /*====== Profile Page Styles======*/
-.page-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sidebar {
+.sidebar-fixed {
     width: 250px;
     height: 100vh;
     position: fixed;
-    left: 0;
+    left: 60px;
     top: 75px;
     background: transparent;
     padding: 20px;
-    color: #fff;
+    color: White;
 }
 
 .sidebar ul {
@@ -746,7 +730,6 @@ form.create-form {
 }
 
 .profile {
-    /*margin-left: 200px;*/
     padding: 20px;
 }
 
@@ -772,26 +755,23 @@ form.create-form {
     border: white 1px solid;
 
 }
-.container{
+.container-profile{
     margin-top: 50px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.container .column .row h1 {
+.container-playlists .column .row h1 {
     color: white;
     margin: 20px 0;
 }
 
 .profile-playlists, .profile-category, .profile-albums {
-    /*display: grid;*/
     display: flex;
     padding: 10px;
-    /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
-    gap: 10px;
+    gap: 30px;
 }
 
 .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
@@ -800,5 +780,4 @@ form.create-form {
     border-radius: 10px;
     gap: 10px;
     max-width: 100%;
-    /*overflow-x: hidden;*/
 }
