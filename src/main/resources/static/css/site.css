@@ -332,6 +332,11 @@ a{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.logo-header{
+    background: linear-gradient(to right, var(--tertiary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 nav a {
     color: var(--secondary);
     position: relative;
