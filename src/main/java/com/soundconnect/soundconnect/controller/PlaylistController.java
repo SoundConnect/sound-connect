@@ -44,20 +44,37 @@ public class PlaylistController {
                 Set<Artist> artists = track.getArtists();
                 Set<Artist> filteredArtists = new HashSet<>();
 
+                Album album = track.getAlbum();
+                Album filteredAlbum = new Album();
+                if (albumsDao.existsBySpotifyId(album.getSpotifyId())){
+                    filteredAlbum = albumsDao.findBySpotifyId(album.getSpotifyId());
+                } else {
+                    filteredAlbum = album;
+                    albumsDao.save(filteredAlbum);
+                }
+                track.setAlbum(filteredAlbum);
+
                 for (Artist artist : artists) {
-                    System.out.println("Artist Before: " + artist.getName());
                     if (artistsDao.existsBySpotifyId(artist.getSpotifyId())) {
-                        System.out.println("Spotify ID: " + artist.getSpotifyId());
                         artist = artistsDao.findBySpotifyId(artist.getSpotifyId());
                         filteredArtists.add(artist);
                     } else {
                         filteredArtists.add(artist);
                         artistsDao.save(artist);
                     }
-                    System.out.println("Artist After: " + artist.getName());
                 }
+                Artist firstArtist = filteredArtists.iterator().next();
+                track.getAlbum().setArtist(firstArtist);
                 track.setArtists(filteredArtists);
-                filteredTracks.add(track);
+
+                Track filteredTrack = new Track();
+                if (tracksDao.existsBySpotifyId(track.getSpotifyId())){
+                    filteredTrack = tracksDao.findBySpotifyId(track.getSpotifyId());
+                } else {
+                    filteredTrack = track;
+                    tracksDao.save(filteredTrack);
+                }
+                filteredTracks.add(filteredTrack);
             }
             playlist.setTracks(filteredTracks);
             playlistsDao.save(playlist);
