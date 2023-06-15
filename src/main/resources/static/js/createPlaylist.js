@@ -32,16 +32,12 @@ function sendHttpRequest() {
 
 	xhr.onload = function() {
 		if (xhr.status === 200) {
-			// Request succeeded
-			// Handle the response
 		} else {
-			// Request failed
 			throw new Error('Request failed');
 		}
 	};
 
 	xhr.onerror = function() {
-		// Request failed
 		throw new Error('Request failed');
 	};
 
@@ -131,6 +127,7 @@ searchResultsParent.addEventListener('click', (e) => {
 				"name": artist
 			});
 		});
+		console.log(artists);
 
 		songList.push(
 			{
