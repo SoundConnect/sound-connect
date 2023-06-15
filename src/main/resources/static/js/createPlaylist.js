@@ -142,7 +142,6 @@ searchResultsParent.addEventListener('click', (e) => {
 				"album": {
 					"name": songData[3],
 					"albumArt": songData[4],
-
 				}
 			}
 		);

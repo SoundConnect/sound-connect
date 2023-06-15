@@ -92,8 +92,8 @@ public class PlaylistController {
 
 //     delete playlist from account
         @PostMapping("/feed")
-        public String deletePlaylist () {
-
+        public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
+            playlistsDao.deleteById(id);
             return "redirect:/feed";
         }
     }
