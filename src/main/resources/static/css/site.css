@@ -707,4 +707,77 @@ form.create-form {
 .search-results-container .song-box-header {
     display: none ;
 }
+/*====== Profile Page Styles======*/
+.sidebar-fixed {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 60px;
+    top: 75px;
+    background: transparent;
+    padding: 20px;
+    color: White;
+}
 
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile {
+    padding: 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 75px;
+    padding: 20px;
+
+}
+
+.profile-info h2 {
+    margin-bottom: 10px;
+}
+
+.profile-info img {
+    background-color: #1304d2;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: white 1px solid;
+
+}
+.container-profile{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-playlists .column .row h1 {
+    color: white;
+    margin: 20px 0;
+}
+
+.profile-playlists, .profile-category, .profile-albums {
+    display: flex;
+    padding: 10px;
+    gap: 30px;
+}
+
+.profile-playlists .playlist, .profile-category .category, .profile-albums .album {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+    max-width: 100%;
+}
