@@ -12,8 +12,10 @@ public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 250, unique = true)
     private String name;
+    @Column(nullable = false)
+    private String spotifyId;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "artist")
     private List<Album> albums;
     @ManyToMany(cascade = CascadeType.PERSIST)
@@ -57,12 +59,20 @@ public class Artist {
     public void setTracks(Set<Track> tracks) {
         this.tracks = tracks;
     }
-
+    public String getSpotifyId() {
+        return spotifyId;
+    }
+    public void setSpotifyId(String spotifyId) {
+        this.spotifyId = spotifyId;
+    }
 
     public Artist() {}
     public Artist(String name) {
         this.name = name;
     }
 
-
+    public Artist(String name, String spotifyId) {
+        this.name = name;
+        this.spotifyId = spotifyId;
+    }
 }

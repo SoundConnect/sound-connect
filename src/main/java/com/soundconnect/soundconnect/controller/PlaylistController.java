@@ -1,11 +1,14 @@
 package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.*;
+import java.util.HashSet;
+import org.springframework.dao.DataIntegrityViolationException;
 import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PlaylistController {
@@ -32,8 +35,36 @@ public class PlaylistController {
 
     // get form data and create playlist
     @PostMapping("/create")
-    public String createPlaylist(@RequestBody Playlist playlist){
-        playlistsDao.save(playlist);
+    public String createPlaylist(@RequestBody Playlist playlist) {
+        try {
+            Set<Track> tracks = playlist.getTracks();
+            Set<Track> filteredTracks = new HashSet<>();
+
+            for (Track track : tracks) {
+                Set<Artist> artists = track.getArtists();
+                Set<Artist> filteredArtists = new HashSet<>();
+
+                for (Artist artist : artists) {
+                    System.out.println("Artist Before: " + artist.getName());
+                    if (artistsDao.existsBySpotifyId(artist.getSpotifyId())) {
+                        System.out.println("Spotify ID: " + artist.getSpotifyId());
+                        artist = artistsDao.findBySpotifyId(artist.getSpotifyId());
+                        filteredArtists.add(artist);
+                    } else {
+                        filteredArtists.add(artist);
+                        artistsDao.save(artist);
+                    }
+                    System.out.println("Artist After: " + artist.getName());
+                }
+                track.setArtists(filteredArtists);
+                filteredTracks.add(track);
+            }
+            playlist.setTracks(filteredTracks);
+            playlistsDao.save(playlist);
+
+        } catch (DataIntegrityViolationException e) {
+            e.getCause().printStackTrace();
+        }
         return "redirect:/profile";
     }
 
