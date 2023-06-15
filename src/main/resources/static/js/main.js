@@ -1,8 +1,12 @@
 // import {KEYS} from "./keys";
-export const KEYS = {
-	clientID: "6b14de4df2be4965a8c7675f7314f326",
-	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
-	accessCode: ""
+const KEYS ={
+	clientID: "ce45f68184154033b71a753b12af825c", clientSecret :"a820a46f42714a9e9f885ed8e8433e10"
+
+// export const KEYS = {
+// 	clientID: "6b14de4df2be4965a8c7675f7314f326",
+// 	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
+// 	accessCode: ""
+// >>>>>>> 00086f8392c2bc3445469da88f77e53da1f6f758
 }
 
 // Get API token from Spotify

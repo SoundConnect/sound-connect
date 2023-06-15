@@ -44,8 +44,8 @@ body{
     font-size: 45px;
 }
 .service-card-wrapper{
-    height: 400px;
-    width: 300px;
+    height: 321px;
+    width: 317px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px var(--secondary);
     border: 1px solid var(--secondary);
@@ -58,7 +58,7 @@ body{
 .service-card-icon{
     height: 100px;
     width: 100px;
-    margin:7px auto 24px auto;
+    margin:7px auto -75px auto;
     padding-top: 20px;
 }
 .button{
@@ -129,7 +129,17 @@ a{
 .footer-links:hover{
     color: blue;
 }
-
+.info{
+    margin-top: 170px;
+}
+.info-title{
+    font-size: 35px;
+}
+.info-desc{
+    font-size: 20px;
+    font-weight: 100;
+    width: 500px;
+}
 
 /*****************************End Landing Page********************************/
 
@@ -318,6 +328,11 @@ a{
 }
 
 .logo{
+    background: linear-gradient(to right, var(--tertiary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.logo-header{
     background: linear-gradient(to right, var(--tertiary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -701,118 +716,89 @@ form.create-form {
 
 
 /*====== Profile Page Styles======*/
-.top-row {
+.page-wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-grow: 1;
-    margin-top: 40px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 10px;
-    height: 50px;
-    width: 900px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 75px;
+    background: transparent;
+    padding: 20px;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .profile {
-    flex: 3;
-    padding-left: 20px;
+    /*margin-left: 200px;*/
+    padding: 20px;
 }
 
-.content {
+.profile-info {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-top: 1px solid #1304d2;
-}
-
-.player-section, .columns-section {
-    width: 100%;
-}
-
-.columns-section {
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
+    margin-top: 75px;
+    padding: 20px;
+
 }
 
-.column-boxes{
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    height: 300px;
-    overflow: auto;  /* If content exceeds the column height, it will be scrollable */
+.profile-info h2 {
     margin-bottom: 10px;
 }
 
-/*====== Profile/Music Player Styles======*/
+.profile-info img {
+    background-color: #1304d2;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: white 1px solid;
 
-.music-player {
-    width: 100%;
-    max-width: 600px;
-    margin: 10px 0px 20px 0px;
-    padding: 20px;
-    border-radius: 5px;
 }
-
-.album-art img {
-    width: 100%;
-    height: auto;
-}
-
-.track-info {
-    margin: 10px 0;
-    text-align: center;
-}
-
-.track-info p {
-    margin: 0;
-}
-
-.player-controls {
+.container{
+    margin-top: 50px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.container .column .row h1 {
+    color: white;
+    margin: 20px 0;
+}
+
+.profile-playlists, .profile-category, .profile-albums {
+    /*display: grid;*/
+    display: flex;
+    padding: 10px;
+    /*grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));*/
     gap: 10px;
 }
 
-.player-controls button {
-    padding: 5px 10px;
-    background-color: #1304d2;
-    border: none;
-    border-radius: 50px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color:  #1304d2;
-    margin: 10px 0;
-}
-
-.progress-bar #progress {
-    height: 100%;
-    background-color: #1304d2;
-}
-
-.time-stamp {
-    display: flex;
-    justify-content: space-between;
-}
-
-.volume-control {
-    margin-top: 10px;
+.profile-playlists .playlist, .profile-category .category, .profile-albums .album {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+    max-width: 100%;
+    /*overflow-x: hidden;*/
 }
