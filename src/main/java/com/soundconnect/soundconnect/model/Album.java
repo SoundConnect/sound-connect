@@ -74,6 +74,7 @@ public class Album {
         this.albumArt = albumArt;
         this.spotifyId = spotifyId;
     }
+
     //    public Album(String name, String albumArt, Artist artist) {
 //        this.name = name;
 //        this.albumArt = albumArt;
