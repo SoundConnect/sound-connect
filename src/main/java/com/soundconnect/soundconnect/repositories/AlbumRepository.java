@@ -7,4 +7,6 @@ public interface AlbumRepository extends JpaRepository<Album, Long> {
 
     Album findById(long id);
     Album findByName(String name);
+    boolean existsBySpotifyId(String spotifyId);
+    Album findBySpotifyId(String spotifyId);
 }

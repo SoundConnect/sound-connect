@@ -3,53 +3,42 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tracks")
 public class Track {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false, length = 100, unique = false)
+    @Column(nullable = false, length = 250)
     private String name;
 
-    @Column(nullable = false)
-    private String spotifyId;
-
-    @Column(nullable = false)
-    private long duration;
-
-    @ManyToOne
-    @JoinColumn(name = "playlist_id")
-    private Playlist playlist;
-
-    @ManyToOne
-    @JoinColumn(name = "album_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "album_id", nullable = false)
     private Album album;
 
-    public Playlist getPlaylist() {
-        return playlist;
-    }
 
-    public void setPlaylist(Playlist playlist) {
-        this.playlist = playlist;
-    }
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "track_artist",
+            joinColumns = @JoinColumn(name = "track_id"),
+            inverseJoinColumns = @JoinColumn(name = "artist_id")
+    )
+    private Set<Artist> artists;
 
-    public Album getAlbum() {
-        return album;
-    }
+    @Column(nullable = false, length = 250)
+    private String duration;
 
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
+    @Column(nullable = false, length = 2500)
+    private String spotifyId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +50,27 @@ public class Track {
         this.name = name;
     }
 
-    public long getDuration() {
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+
+    public Set<Artist> getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Set<Artist> artists) {
+        this.artists = artists;
+    }
+
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -78,20 +83,23 @@ public class Track {
     }
 
     public Track() {}
-    public Track(String name, String spotifyId, long duration){
-            this.name = name;
-            this.spotifyId = spotifyId;
-            this.duration = duration;
-    }
-    public Track(Playlist playlist) {
-        this.playlist = playlist;
-    }
-
-    public Track(String name, String spotifyId, long duration, Playlist playlist, Album album) {
+    public Track(String name, String spotifyId, String duration) {
         this.name = name;
         this.spotifyId = spotifyId;
         this.duration = duration;
-        this.playlist = playlist;
+    }
+
+    public Track(String name, Album album, Set<Artist> artists, String duration, String spotifyId) {
+        this.name = name;
+        this.album = album;
+        this.artists = artists;
+        this.duration = duration;
+        this.spotifyId = spotifyId;
+    }
+    public Track(String name, String duration, String spotifyId, Album album) {
+        this.name = name;
+        this.duration = duration;
+        this.spotifyId = spotifyId;
         this.album = album;
     }
 }

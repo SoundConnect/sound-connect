@@ -1,5 +1,3 @@
-// import {getSongData, getToken} from '/main.js';
-
 export const KEYS = {
 	clientID: "6b14de4df2be4965a8c7675f7314f326",
 	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
@@ -7,8 +5,8 @@ export const KEYS = {
 }
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
-let searchResultsParent = document.querySelector('.search-results-container');
-let addSongBtns = document.querySelectorAll('.add-song-btn');
+const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
+let searchResultsParent = document.querySelector('.search-results-box');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
 
@@ -16,7 +14,13 @@ let songList = [];
 
 // Sends a POST request to the server with playlist info
 submitButton.addEventListener('click', () => {
+	let playlistTitleValue = document.querySelector('.playlist-title').value;
+	if (playlistTitleValue.trim() === '') {
+		playlistTitleError();
+		return;
+	}
 	sendHttpRequest();
+	window.location.href = '/feed';
 });
 function sendHttpRequest() {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
@@ -28,16 +32,12 @@ function sendHttpRequest() {
 
 	xhr.onload = function() {
 		if (xhr.status === 200) {
-			// Request succeeded
-			// Handle the response
 		} else {
-			// Request failed
 			throw new Error('Request failed');
 		}
 	};
 
 	xhr.onerror = function() {
-		// Request failed
 		throw new Error('Request failed');
 	};
 
@@ -49,6 +49,12 @@ function sendHttpRequest() {
 	console.log(playlistData);
 
 	xhr.send(JSON.stringify(playlistData));
+}
+
+// display error message for empty playlist title
+const playlistTitleError = () => {
+	let title = document.querySelector('input.playlist-title');
+	title.style.borderColor = 'red';
 }
 
 // Get API token from Spotify
@@ -83,6 +89,7 @@ const getSongData = async (token, songName) => {
 		console.log("Error retrieving song data: " + error);
 	}
 }
+
 // Sort song data by popularity
 const sortSongData = (songData) => {
 	songData.sort((a, b) => {
@@ -91,64 +98,103 @@ const sortSongData = (songData) => {
 	return songData;
 }
 
-// Get search results data
+// Get search results data for create page
 search.addEventListener('keyup', async () => {
+	if (search.value === '') {
+		searchResultsParent.innerHTML = '';
+		searchResultsHeader.style.display = 'none';
+		return;
+	}
+
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
-	console.log(searchResults);
 	searchResultsParent.innerHTML = '';
 	searchResults.forEach(song => {
 		displaySearchResults(song);
 	});
+	searchResultsHeader.style.display = 'flex';
+});
 
-	// event listener for add song button
-	addSongBtns = document.querySelectorAll('.add-song-btn');
-	addSongBtns.forEach(btn => {
-		btn.addEventListener('click', (e) => {
-			let songData = btn.querySelector('span').innerText;
-			let songDataArr = songData.split('~');
-			songList.push(
+// event listener for add song button
+searchResultsParent.addEventListener('click', (e) => {
+	let clickedBtn = e.target;
+	if (clickedBtn.nodeName === 'BUTTON') {
+		let songData = clickedBtn.querySelector('span').innerText.split('~');
+		let artists = [];
+		let artistNames = songData[5].split(',');
+		let artistSpotifyIds = songData[6].split(',');
+		for (let i = 0; i < artistNames.length; i++) {
+			artists.push(
 				{
-					"name": songDataArr[0],
-					"spotifyId": songDataArr[1],
-					"duration": songDataArr[2],
-					"album": {
-						"name": songDataArr[3],
-						"albumArt": songDataArr[4],
-						"artist": {
-							"name": songDataArr[5]
-						}
-					}
+					"name": artistNames[i],
+					"spotifyId": artistSpotifyIds[i]
 				}
 			);
-			let addedSongCard = e.target.parentElement;
-			addedSongCard.children[3].style.visibility = 'hidden';
+		}
+		console.log(artists);
 
-			let newCard = document.createElement('div');
-			newCard.classList.add('row', 'align-center');
-			newCard.innerHTML = addedSongCard.innerHTML;
-			newCard.innerHTML += `<div class="song-duration">${songDataArr[2]}</div>`;
+		songList.push(
+			{
+				"name": songData[0],
+				"spotifyId": songData[1],
+				"duration": formatSongDuration(songData[2]),
+				"artists": artists,
+				"album": {
+					"name": songData[3],
+					"albumArt": songData[4],
+					"spotifyId": songData[7]
+				}
+			}
+		);
+		let addedSongCard = clickedBtn.parentElement;
+		addedSongCard.children[3].style.visibility = 'hidden';
 
-			playlistBody.innerHTML += newCard.outerHTML;
-		});
-	});
+		let newCard = document.createElement('div');
+		newCard.classList.add('row', 'align-center', 'no-padding');
+		newCard.innerHTML = addedSongCard.innerHTML;
+		newCard.children[3].remove();
+		newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
+
+		playlistBody.innerHTML += newCard.outerHTML;
+	}
 });
+
+// Format song duration (milliseconds to minutes:seconds)
+const formatSongDuration = duration => {
+	const totalSeconds = Math.floor(duration / 1000);
+	const minutes = Math.floor(totalSeconds / 60);
+	const seconds = totalSeconds % 60;
+
+	const formattedMinutes = String(minutes).padStart(2, '0');
+	const formattedSeconds = String(seconds).padStart(2, '0');
+
+	return `${formattedMinutes}:${formattedSeconds}`;
+}
 
 // Display search results
 const displaySearchResults = song => {
-	let features = song.artists.map(artist => artist.name).join(', ');
+	let artists = song.artists.map(artist => artist.name).join(', ');
+	let artistSpotifyIds = song.artists.map(artist => artist.id).join(',');
+	let songName = song.name;
+	let albumName = song.album.name;
+	if (songName.length > 40) {
+		songName = songName.slice(0, 40) + '...';
+	}
+	if (albumName.length > 40) {
+		albumName = albumName.slice(0, 40) + '...';
+	}
 
 	searchResultsParent.innerHTML += `
-		<div class="row align-center">
+		<div class="row align-center no-padding">
 			<div class="column shrink song-pic-wrapper">
 				<img src="${song.album.images[2].url}" alt="Song Picture" class="song-pic" >
 			</div>
 			<div class="column song-title no-gap">
-				<p class="song-name">${song.name}</p>
-				<p class="song-artist">${features}</p>
+				<p class="song-name">${songName}</p>
+				<p class="song-artist">${artists}</p>
 			</div>
-			<div class="column song-album-name">${song.album.name}</div>
-			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${song.album.artists[0].name}</span></button>
+			<div class="column song-album-name">${albumName}</div>
+			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}~${song.album.id}</span></button>
 		</div>`;
 }
 

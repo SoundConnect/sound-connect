@@ -4,81 +4,75 @@
     <meta charset="UTF-8">
     <title>SoundConnect Profile</title>
 </head>
-<body>
-<div class="page-wrapper">
-    <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container">
-        <img src="../images/login-background.jpg" alt="login background" class="background">
-            <!-- Sidebar and Profile Sections-->
-            <div class="row">
-                <div class="sidebar">
-                    <ul>
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href="/Your Library">Settings</a></li>
-                        <li><a href="/logout">Log Out</a></li>
-                    </ul>
-                </div>
 
-                <!-- Profile Row -->
-                <div class="profile">
-                    <h3>Profile</h3>
-                    <p>{User Name}</p>
-                    <img src="login.html">
-                </div>
-            </div>
-            <!-- Content -->
-            <div class="content">
-                <!-- Music Player-->
-                <div class="player-section">
-                    <div class="music-player overlay-form">
-                        <div class="album-art">
-                            <img id="albumArt" src="placeholder.jpg" alt="Album Art">
+<body>
+<img src="/images/login-background.jpg" alt="login background" class="background">
+<div class="page-wrapper profile">
+    <header th:replace="partials/navbar :: navbar"></header>
+    <div class="container-profile">
+        <div class="sidebar-fixed">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Recommended Playlists</a></li>
+                <li><a href="/playlists">Add Playlists</a></li>
+                <li><a href="/create">Create Playlists</a></li>
+                <li><a href="/editplaylist">Edit Playlists</a></li>
+                <li><a href="/feed">View Posts</a></li>
+                <li><a href="/">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="content-section row">
+            <div class="profile">
+                <section class="profile-info profile-section">
+                    <h2>User Name</h2>
+                    <img src="user_profile_picture.png" alt="User Profile">
+                </section>
+                <div class="container-playlists">
+                    <div class="column">
+                        <div class="row ">
+                            <h1>Featured Playlists</h1>
                         </div>
-                        <div class="track-info">
-                            <p id="trackName">Track Name</p>
-                            <p id="artistName">Artist Name</p>
+                        <div class="profile-playlists row">
                         </div>
-                        <div class="player-controls">
-                            <button id="prev-track">Previous</button>
-                            <button id="play-pause">Play/Pause</button>
-                            <button id="next-track">Next</button>
+
+                        <div class="row">
+                            <h1>Category Playlists</h1>
                         </div>
-                        <div class="progress-bar">
-                            <div id="progress" style="width: 0%"></div>
+                        <div class="profile-category row">
                         </div>
-                        <div class="time-stamp">
-                            <p id="current-time">0:00</p>
-                            <p id="total-time">0:00</p>
+
+                        <div class="row">
+                            <h1>Albums Playlists</h1>
                         </div>
-                        <div class="volume-control">
-                            <input type="range" id="volume" min="0" max="1" step="0.1">
-                        </div>
-                    </div>
-                </div>
-                <!-- Columns -->
-                <div class="columns-section">
-                    <div class="row">
-                        <div class="column-boxes overlay-form">
-                            <h3>My Playlists</h3>
-                            <p>{Content 1}</p>
-                        </div>
-                        <div class="column-boxes overlay-form">
-                            <h3>New Playlists</h3>
-                            <p>{Content 4}</p>
-                        </div>
-                        <div class="column-boxes overlay-form">
-                            <h3>Followers</h3>
-                            <p>{Content 2}</p>
-                        </div>
-                        <div class="column-boxes overlay-form">
-                            <h3>New Music</h3>
-                            <p>{Content 3}</p>
+                        <div class="profile-albums row">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div>
+    <footer th:replace="partials/footer :: footer"></footer>
+</div>
+<script type="module" src="/js/profile.js">
+    (async () => {
+        let playlist = await displayPlaylist();
+        console.log(playlist)
+    })();
+</script>
+<script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+<script>
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        const element = document.getElementById('embed-iframe');
+        const options = {
+            uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
+        };
+        const callback = (EmbedController) => {
+        };
+        IFrameAPI.createController(element, options, callback);
+    };
+</script>
 </body>
 </html>
+

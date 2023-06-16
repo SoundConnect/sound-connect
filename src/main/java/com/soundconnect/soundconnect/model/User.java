@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -12,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
     @Column(nullable = false, length = 100)
@@ -21,15 +22,20 @@ public class User {
     @Column(nullable = false, length = 25)
     private String password;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
-    private List<Playlist> playlist;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "user_playlist",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "playlist_id")
+    )
+    private Set<Playlist> playlists;
 
-    public List<Playlist> getPlaylist() {
-        return playlist;
+    public Set<Playlist> getPlaylists() {
+        return playlists;
     }
 
-    public void setPlaylist(List<Playlist> playlist) {
-        this.playlist = playlist;
+    public void setPlaylists(Set<Playlist> playlists) {
+        this.playlists = playlists;
     }
 
     public long getId() {
@@ -78,15 +84,6 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String email, String password, List<Playlist> playlist) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.playlist = playlist;
-    }
 
-    public User(long id, List<Playlist> playlist) {
-        this.id = id;
-        this.playlist = playlist;
-    }
+
 }

@@ -3,6 +3,7 @@ package com.soundconnect.soundconnect.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "playlists")
@@ -10,44 +11,30 @@ public class Playlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 250)
     private String name;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false, length = 1500)
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToMany(mappedBy = "playlists")
+    private Set<User> users;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "playlist")
-    private List<Track> tracks;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "playlist_track",
+            joinColumns = @JoinColumn(name = "playlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "track_id")
+    )
+    private Set<Track> tracks;
 
-
-
-    public List<Track> getTracks() {
-        return tracks;
-    }
-
-    public void setTracks(List<Track> tracks) {
-        this.tracks = tracks;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,6 +54,22 @@ public class Playlist {
         this.description = description;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
+    }
+
     public Playlist() {
     }
 
@@ -79,26 +82,15 @@ public class Playlist {
         this.name = name;
         this.description = description;
     }
-
-    public Playlist(String name, String description, User user) {
+    public Playlist(long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.user = user;
     }
 
-
-    public Playlist(String name, String description, List<Track> tracks) {
+    public Playlist(String name, String description, Set<Track> tracks) {
         this.name = name;
         this.description = description;
-        this.tracks = tracks;
-    }
-
-
-
-    public Playlist(String name, String description, User user, List<Track> tracks) {
-        this.name = name;
-        this.description = description;
-        this.user = user;
         this.tracks = tracks;
     }
 }
