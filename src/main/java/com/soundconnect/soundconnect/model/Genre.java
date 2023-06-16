@@ -22,29 +22,31 @@ public class Genre {
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public String getGenre() {
         return name;
     }
-
     public void setGenre(String name) {
         this.name = name;
     }
-
     public Set<Artist> getArtists() {
         return artists;
     }
-
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
     }
-
-    public Genre() {
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public Genre() {}
 
+    public Genre(String name) {
+        this.name = name;
+    }
 }
