@@ -7,6 +7,7 @@ const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
 const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
 let searchResultsParent = document.querySelector('.search-results-box');
+
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
 
