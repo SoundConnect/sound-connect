@@ -238,18 +238,20 @@ a{
     display: block;
     right: 0;
 }
-.openOverlayButton{
+
+.openOverlayButton {
     border-radius: 10px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    background-color: #c9c9c9;
+    background-color: var(--secondary);
     color: var(--primary);
+    width: 200px;
 }
-.openOverlayButton:hover{
+
+.openOverlayButton:hover {
     background-color: #a8a8a8;
     color: var(--primary);
     cursor: pointer;
 }
+
 .search-tracks{
    position: absolute;
     top: 120px;
