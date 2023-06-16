@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 src/main/resources/application.properties
 application.properties
-keys.js
+
 
 ### STS ###
 .apt_generated
@@ -21,6 +21,7 @@ keys.js
 *.iws
 *.iml
 *.ipr
+keys.js
 
 ### NetBeans ###
 /nbproject/private/
