@@ -1,5 +1,4 @@
 package com.soundconnect.soundconnect.controller;
-
 import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
