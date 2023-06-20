@@ -6,13 +6,13 @@
 <div sec:authorize="isAuthenticated()">
 <!--    This content is only shown to authenticated users.-->
 
-    User ID: <span th:text="${#authentication.principal.id}"/>
-    Username: <span th:text="${#authentication.principal.username}"/>
-    Email: <span th:text="${#authentication.principal.email}"/>
+<!--    User ID: <span th:text="${#authentication.principal.id}"/>-->
+<!--    Username: <span th:text="${#authentication.principal.username}"/>-->
+<!--    Email: <span th:text="${#authentication.principal.email}"/>-->
 </div>
   <div class="page-wrapper">
+      <img src="/static/images/login-background.jpg" alt="login background" class="background">
       <header th:replace="~{partials/navbar :: navbar}"></header>
-      <img src="../images/login-background.jpg" alt="login background" class="background">
       <div class="container grow justify-center">
           <div class="row justify-center login-page-row">
               <div class="column login-page-col">
@@ -34,10 +34,10 @@
                       <p class="account">Don't have an account? <a href="/register">Register here</a></p>
                   </div>
                   <div th:if="${param.error}">
-                      Invalid Username and Password.
+                      <p>Invalid Username and Password.</p>
                   </div>
                   <div th:if="${param.logout}">
-                      You have been logged out.
+                      <p>You have been logged out.</p>
                   </div>
               </div>
           </div>

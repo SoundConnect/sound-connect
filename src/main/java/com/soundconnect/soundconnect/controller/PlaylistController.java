@@ -1,12 +1,16 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.*;
-import java.util.HashSet;
-import org.springframework.dao.DataIntegrityViolationException;
+import com.soundconnect.soundconnect.model.Album;
+import com.soundconnect.soundconnect.model.Artist;
+import com.soundconnect.soundconnect.model.Playlist;
+import com.soundconnect.soundconnect.model.Track;
 import com.soundconnect.soundconnect.repositories.*;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +29,18 @@ public class PlaylistController {
         this.albumsDao = albumsDao;
         this.artistsDao = artistsDao;
         this.usersDao = usersDao;
+    }
+
+//    Added createPlaylist to map with security. I don't see conflicts. by RH
+    @GetMapping("/createPlaylist")
+    public String createPlaylist() {
+        return "createPlaylist";
+    }
+    @PostMapping("/createPlaylist")
+    public String createPlaylist(@RequestParam(name="title") String title, @RequestParam(name="description") String description){
+        Playlist playlist = new Playlist(title, description);
+        playlistsDao.save(playlist);
+        return "redirect:/playlists";
     }
 
     // show form for creating a playlist

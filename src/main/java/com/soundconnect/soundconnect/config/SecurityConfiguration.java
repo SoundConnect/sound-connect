@@ -1,5 +1,4 @@
 package com.soundconnect.soundconnect.config;
-
 import com.soundconnect.soundconnect.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,31 +20,35 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
+
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
-                        "/profile"
-                ).authenticated()
+                        "/profile","/editPlaylist",
+                        "/createPlaylist").authenticated()
                 .requestMatchers(
-
                         "/login",
+                        "/logout",
                         "/register",
                         "/explore",
                         "/about",
                         "/contact"
+
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
-        http.logout((form) -> form.logoutSuccessUrl("/login"));
+        http.logout((form) -> form.logoutSuccessUrl("/logout"));
         http.httpBasic(withDefaults());
         return http.build();
     }
