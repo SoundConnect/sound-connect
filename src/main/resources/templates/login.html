@@ -27,7 +27,7 @@
                       </div>
                   </form>
                   <div>
-                      <p class="account">Don't have an account? <a href="/register">Register here</a></p>
+                      <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
                   </div>
                   <div th:if="${param.error}">
                       <p>Invalid Username and Password.</p>
@@ -38,6 +38,7 @@
               </div>
           </div>
       </div>
+      <footer th:replace="partials/footer :: footer"></footer>
   </div>
 </body>
 </html>
