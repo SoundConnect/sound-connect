@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head(title='SoundConnect - Register')"></head>
 <body>
+<div sec:authorize="isAuthenticated()">
+<!--  This content is only shown to authenticated users RH-->
+  User ID: <span th:text="${#authentication.principal.id}"/>
+  Username: <span th:text="${#authentication.principal.username}"/>
+  Email: <span th:text="${#authentication.principal.email}"/>
+</div>
   <div class="page-wrapper body">
     <div th:replace="partials/navbar :: navbar"></div>
     <div class="container grow justify-center">
@@ -9,13 +15,13 @@
         <div class="column shrink overlay-form">
           <h1 class="title">Create Your Account!</h1>
           <p class="join">Start your SoundConnect Journey Today!</p>
-          <form class="register-form" th:method="post" th:action="@{/register}">
+          <form class="register-form" th:method="post" th:action="@{/register}" th:object="${user}">
             <label class="register_label" for="username">Username:</label>
-            <input placeholder="Enter Username" type="text" id="username" name="username"  class="username_input"><br>
+            <input placeholder="Enter Username" type="text" id="username" name="username" th:field="*{username}" class="username_input"><br>
             <label class="register_label" for="email">Email:</label>
-            <input type="email" placeholder="Enter Email" id="email" name="email" class="email_input"><br>
+            <input type="email" placeholder="Enter Email" id="email" name="email" th:field="*{email}"><br>
             <label class="register_label" for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" class="password_input"><br>
+            <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"><br>
             <label class="register_label" for="confirmPassword">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
             <div class="register-submit">
@@ -27,4 +33,5 @@
     </div>
   </div>
 </body>
+
 </html>
