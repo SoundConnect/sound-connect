@@ -21,7 +21,7 @@ submitButton.addEventListener('click', () => {
 		return;
 	}
 	sendHttpRequest();
-	window.location.href = '/feed';
+	// window.location.href = '/feed';
 });
 function sendHttpRequest() {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
@@ -109,6 +109,7 @@ search.addEventListener('keyup', async () => {
 
 	let token = await getToken();
 	let searchResults = await getSongData(token, search.value);
+	console.log(searchResults);
 	searchResultsParent.innerHTML = '';
 	searchResults.forEach(song => {
 		displaySearchResults(song);
@@ -117,22 +118,24 @@ search.addEventListener('keyup', async () => {
 });
 
 // event listener for add song button
-searchResultsParent.addEventListener('click', (e) => {
+searchResultsParent.addEventListener('click', async (e) => {
 	let clickedBtn = e.target;
 	if (clickedBtn.nodeName === 'BUTTON') {
 		let songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
 		let artistNames = songData[5].split(',');
 		let artistSpotifyIds = songData[6].split(',');
+
 		for (let i = 0; i < artistNames.length; i++) {
+			let genres = await getArtistGenres(artistSpotifyIds[i]);
 			artists.push(
 				{
 					"name": artistNames[i],
-					"spotifyId": artistSpotifyIds[i]
+					"spotifyId": artistSpotifyIds[i],
+					"genres": genres
 				}
 			);
 		}
-		console.log(artists);
 
 		songList.push(
 			{
@@ -159,6 +162,31 @@ searchResultsParent.addEventListener('click', (e) => {
 		playlistBody.innerHTML += newCard.outerHTML;
 	}
 });
+
+// get genres from artist
+const getArtistGenres = async (id) => {
+	let token = await getToken();
+	let genres = [];
+
+	try {
+		const result = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
+			method: 'GET',
+			headers: {'Authorization': 'Bearer ' + token}
+		});
+		let genreData = (await result.json()).genres;
+
+		genreData.forEach(genre => {
+			let genreObject = {
+				"name": genre
+			}
+			genres.push(genreObject);
+		});
+		return genres;
+
+	} catch (error) {
+		console.log("Error retrieving artists' genre data: " + error);
+	}
+}
 
 // Format song duration (milliseconds to minutes:seconds)
 const formatSongDuration = duration => {

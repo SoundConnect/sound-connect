@@ -240,18 +240,21 @@ a{
     display: block;
     right: 0;
 }
-.openOverlayButton{
+
+.openOverlayButton {
+    font-weight: bold;
     border-radius: 10px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    background-color: #c9c9c9;
+    background-color: var(--secondary);
     color: var(--primary);
+    width: 200px;
 }
-.openOverlayButton:hover{
+
+.openOverlayButton:hover {
     background-color: #a8a8a8;
     color: var(--primary);
     cursor: pointer;
 }
+
 .search-tracks{
    position: absolute;
     top: 120px;
@@ -709,14 +712,15 @@ form.create-form {
 }
 /*====== Profile Page Styles======*/
 .sidebar-fixed {
-    width: 250px;
-    height: 100vh;
+    background-color: rgba(19, 4, 210, 0.3);
+    width: 215px;
+    height: 355px;
     position: fixed;
-    left: 60px;
+    border-radius: 40px;
+    left: 22px;
     top: 75px;
-    background: transparent;
     padding: 20px;
-    color: White;
+    color: white;
 }
 
 .sidebar ul {
@@ -728,7 +732,9 @@ form.create-form {
     color: #fff;
     text-decoration: none;
 }
-
+.list-spacing li {
+    margin-bottom: 20px;
+}
 .profile {
     padding: 20px;
 }

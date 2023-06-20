@@ -21,13 +21,15 @@ public class PlaylistController {
     private final TrackRepository tracksDao;
     private final AlbumRepository albumsDao;
     private final ArtistRepository artistsDao;
+    private final GenreRepository genresDao;
     private final UserRepository usersDao;
 
-    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, UserRepository usersDao) {
+    public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, GenreRepository genresDao, UserRepository usersDao) {
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
         this.albumsDao = albumsDao;
         this.artistsDao = artistsDao;
+        this.genresDao = genresDao;
         this.usersDao = usersDao;
     }
 
@@ -61,11 +63,8 @@ public class PlaylistController {
             Set<Track> filteredTracks = new HashSet<>();
 
             for (Track track : tracks) {
-                Set<Artist> artists = track.getArtists();
-                Set<Artist> filteredArtists = new HashSet<>();
-
                 Album album = track.getAlbum();
-                Album filteredAlbum = new Album();
+                Album filteredAlbum;
                 if (albumsDao.existsBySpotifyId(album.getSpotifyId())){
                     filteredAlbum = albumsDao.findBySpotifyId(album.getSpotifyId());
                 } else {
@@ -74,7 +73,22 @@ public class PlaylistController {
                 }
                 track.setAlbum(filteredAlbum);
 
+                Set<Artist> artists = track.getArtists();
+                Set<Artist> filteredArtists = new HashSet<>();
                 for (Artist artist : artists) {
+                    Set<Genre> genres = artist.getGenres();
+                    Set<Genre> filteredGenres = new HashSet<>();
+                    for (Genre genre : genres){
+                        if (genresDao.existsByName(genre.getName())){
+                            genre = genresDao.findByName(genre.getName());
+                            filteredGenres.add(genre);
+                        } else {
+                            filteredGenres.add(genre);
+                            genresDao.save(genre);
+                        }
+                    }
+                    artist.setGenres(filteredGenres);
+
                     if (artistsDao.existsBySpotifyId(artist.getSpotifyId())) {
                         artist = artistsDao.findBySpotifyId(artist.getSpotifyId());
                         filteredArtists.add(artist);
@@ -87,7 +101,7 @@ public class PlaylistController {
                 track.getAlbum().setArtist(firstArtist);
                 track.setArtists(filteredArtists);
 
-                Track filteredTrack = new Track();
+                Track filteredTrack;
                 if (tracksDao.existsBySpotifyId(track.getSpotifyId())){
                     filteredTrack = tracksDao.findBySpotifyId(track.getSpotifyId());
                 } else {
