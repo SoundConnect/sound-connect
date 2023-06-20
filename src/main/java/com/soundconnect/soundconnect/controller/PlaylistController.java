@@ -31,7 +31,7 @@ public class PlaylistController {
         this.usersDao = usersDao;
     }
 
-//    Added createPlaylist to map with security. I don't see conflicts. by RH
+//    Added createPlaylist and editPlaylist to map with security. I don't see conflicts. by RH
     @GetMapping("/createPlaylist")
     public String createPlaylist() {
         return "createPlaylist";
@@ -41,6 +41,10 @@ public class PlaylistController {
         Playlist playlist = new Playlist(title, description);
         playlistsDao.save(playlist);
         return "redirect:/playlists";
+    }
+    @GetMapping("/editPlaylist")
+    public String showEditPlaylistPage() {
+        return "editPlaylist";
     }
 
     // show form for creating a playlist

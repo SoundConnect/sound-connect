@@ -68,6 +68,28 @@ public class UserController {
         return "profile";
     }
 
+//   @GetMapping("/profile") for showing profile page with user image and name by RH
+//   IF this doesn't work, original code above.
+//    @Autowired
+//    private UserRepository userRepository;
+//
+//    @GetMapping("/profile")
+//    public String showProfilePage(Model model, Principal principal) {
+//        User user = userRepository.findByUsername(principal.getName());
+//        model.addAttribute("user", user);
+//        return "profile";
+//    }
+
+//    @GetMapping("/profile")
+//    public String showProfilePage(Model model, Principal principal) {
+//        if (principal == null) {
+//            return "redirect:/login";
+//        }
+//        User user = userDao.findByUsername(principal.getName());
+//        model.addAttribute("user", user);
+//        return "profile";
+//    }
+
     // edit profile
     @PostMapping("/profile/edit")
     public String changeProfile(@RequestParam(name="email") String email,

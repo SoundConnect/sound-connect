@@ -34,7 +34,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
-                        "/profile","/editPlaylist",
+                        "/profile",
                         "/createPlaylist").authenticated()
                 .requestMatchers(
                         "/login",
@@ -42,7 +42,10 @@ public class SecurityConfiguration {
                         "/register",
                         "/explore",
                         "/about",
-                        "/contact"
+                        "/contact",
+                        "/feed",
+                        "/editPlaylist"
+
 
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()

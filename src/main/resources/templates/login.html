@@ -4,11 +4,7 @@
 <head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
 <body>
 <div sec:authorize="isAuthenticated()">
-<!--    This content is only shown to authenticated users.-->
 
-<!--    User ID: <span th:text="${#authentication.principal.id}"/>-->
-<!--    Username: <span th:text="${#authentication.principal.username}"/>-->
-<!--    Email: <span th:text="${#authentication.principal.email}"/>-->
 </div>
   <div class="page-wrapper">
       <img src="/static/images/login-background.jpg" alt="login background" class="background">
