@@ -1,9 +1,6 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.Album;
-import com.soundconnect.soundconnect.model.Artist;
-import com.soundconnect.soundconnect.model.Playlist;
-import com.soundconnect.soundconnect.model.Track;
+import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;

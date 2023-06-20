@@ -3,9 +3,7 @@
 
 <head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
 <body>
-<div sec:authorize="isAuthenticated()">
-
-</div>
+<div sec:authorize="isAuthenticated()"></div>
   <div class="page-wrapper">
       <img src="/static/images/login-background.jpg" alt="login background" class="background">
       <header th:replace="~{partials/navbar :: navbar}"></header>
