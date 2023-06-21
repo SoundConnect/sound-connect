@@ -24,6 +24,8 @@
             <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"><br>
             <label class="register_label" for="confirmPassword">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
+            <input th:type="button" id="open" th:name="image" class="image-add profile-picture">
+            <input id="image-url" th:name="image-url" hidden />
             <div class="register-submit">
               <button class="register-button" type="submit" value="Submit">Register</button>
             </div>
@@ -32,6 +34,8 @@
       </div>
     </div>
   </div>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script type="module" src="/js/filepicker.js"></script>
 </body>
 
 </html>

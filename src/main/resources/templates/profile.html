@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <section class="profile-info profile-section">
-                    <p>{USERNAME}</p>
-                    <p>{IMAGE}</p>
+                    <p th:text="${user.username}" class="profile-username"></p>
+                    <img th:src="@{user.profile_pic}" alt="profile picture" class="profile-picture">
                 </section>
                 <div class="container-playlists">
                     <div class="column">

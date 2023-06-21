@@ -711,6 +711,14 @@ form.create-form {
     display: none ;
 }
 /*====== Profile Page Styles======*/
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
 .sidebar-fixed {
     background-color: rgba(19, 4, 210, 0.3);
     width: 215px;
