@@ -2,6 +2,7 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -29,6 +30,7 @@ public class Playlist {
     )
     private Set<Track> tracks;
 
+//    ============== Getters and Setters ==============
     public Long getId() {
         return id;
     }
@@ -74,9 +76,6 @@ public class Playlist {
 
 
 //    ============== Constructors ==============
-
-
-
     public Playlist(String name, String description) {
         this.name = name;
         this.description = description;
@@ -91,5 +90,13 @@ public class Playlist {
         this.name = name;
         this.description = description;
         this.tracks = tracks;
+    }
+
+//   ============== Methods ==================
+    public Set<Track> addTracks(Set<Track> filteredTracks) {
+        Set<Track> allTracks = new HashSet<>();
+        allTracks.addAll(filteredTracks);
+        allTracks.addAll(this.tracks);
+        return allTracks;
     }
 }
