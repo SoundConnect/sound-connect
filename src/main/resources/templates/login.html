@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
+<head th:replace="partials/head :: head(title='SoundConnect - Login')">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <body>
 <div sec:authorize="isAuthenticated()">
 

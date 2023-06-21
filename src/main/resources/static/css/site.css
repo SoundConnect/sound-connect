@@ -787,4 +787,29 @@ form.create-form {
     max-width: 100%;
 }
 
+/*CSS for Mobile Devices*/
+/*break points for mobile devices <600px, 601px, 768px, 992px, 1200px*/
+
+/*Iphone 14 Pro Max style*/
+@media only screen
+and (min-device-width: 393px)
+and (max-device-width: 852px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+    .content {
+        padding: 30px;
+        background-color: hotpink;
+    }
+@media only screen
+and (max-device-width: 852px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+    .content {
+        padding: 30px;
+        background-color: #1304d2;
+    }
+}
+}
 
