@@ -9,8 +9,13 @@ const searchResultsHeader = document.querySelector('.search-results-container .s
 let searchResultsParent = document.querySelector('.search-results-box');
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
+const deleteBtn = document.querySelectorAll('.delete-btn');
 
-
+const currentURL = window.location.href;
+const url = new URL(currentURL);
+const pathname = url.pathname;
+const pathSegments = pathname.split('/');
+const playlistId = pathSegments[2];
 
 // Sends a POST request to the server with playlist info
 submitButton.addEventListener('click', () => {
@@ -19,37 +24,66 @@ submitButton.addEventListener('click', () => {
 		playlistTitleError();
 		return;
 	}
-	sendHttpRequest();
-	// window.location.href = '/feed';
+	playlist();
+	window.location.href = '/feed';
 });
-function sendHttpRequest() {
+function playlist() {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
 	let playlistDescriptionValue = document.querySelector('.playlist-description').value;
-	const xhr = new XMLHttpRequest();
-
-	xhr.open('POST', '/create');
-	xhr.setRequestHeader('Content-Type', 'application/json');
-
-	xhr.onload = function() {
-		if (xhr.status === 200) {
-		} else {
-			throw new Error('Request failed');
-		}
-	};
-
-	xhr.onerror = function() {
-		throw new Error('Request failed');
-	};
 
 	const playlistData = {
 		name: playlistTitleValue,
 		description: playlistDescriptionValue,
 		tracks: songList
 	};
-	console.log(playlistData);
 
-	xhr.send(JSON.stringify(playlistData));
+	let endPoint = "";
+	if (pathname.includes('edit')) {
+		endPoint = `/feed/${playlistId}/edit`;
+	} else {
+		endPoint = '/create';
+	}
+
+	fetch(`${endPoint}`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(playlistData)
+	})
+		.then(response => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error('Request failed');
+			}
+		})
+		.catch(error => {
+			throw new Error('Request failed');
+		});
 }
+
+//delete track from playlist
+deleteBtn.forEach(btn => {
+	btn.addEventListener('click', () => {
+		let trackId = btn.value;
+		console.log(trackId);
+		fetch(`/feed/${playlistId}/edit`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({trackId: trackId})
+		})
+			.then(response => {
+				if (response.ok) {
+					console.log('Track deleted');
+				} else {
+					throw new Error('Failed to delete track');
+				}
+			});
+	});
+});
 
 // display error message for empty playlist title
 const playlistTitleError = () => {
@@ -119,8 +153,9 @@ search.addEventListener('keyup', async () => {
 // event listener for add song button
 searchResultsParent.addEventListener('click', async (e) => {
 	let clickedBtn = e.target;
+	let songData;
 	if (clickedBtn.nodeName === 'BUTTON') {
-		let songData = clickedBtn.querySelector('span').innerText.split('~');
+		songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
 		let artistNames = songData[5].split(',');
 		let artistSpotifyIds = songData[6].split(',');
@@ -149,17 +184,17 @@ searchResultsParent.addEventListener('click', async (e) => {
 				}
 			}
 		);
-		let addedSongCard = clickedBtn.parentElement;
-		addedSongCard.children[3].style.visibility = 'hidden';
-
-		let newCard = document.createElement('div');
-		newCard.classList.add('row', 'align-center', 'no-padding');
-		newCard.innerHTML = addedSongCard.innerHTML;
-		newCard.children[3].remove();
-		newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
-
-		playlistBody.innerHTML += newCard.outerHTML;
 	}
+	let addedSongCard = clickedBtn.parentElement;
+	addedSongCard.children[3].style.visibility = 'hidden';
+
+	let newCard = document.createElement('div');
+	newCard.classList.add('row', 'align-center', 'no-padding');
+	newCard.innerHTML = addedSongCard.innerHTML;
+	newCard.children[3].remove();
+	newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
+
+	playlistBody.innerHTML += newCard.outerHTML;
 });
 
 // get genres from artist
@@ -193,10 +228,9 @@ const formatSongDuration = duration => {
 	const minutes = Math.floor(totalSeconds / 60);
 	const seconds = totalSeconds % 60;
 
-	const formattedMinutes = String(minutes).padStart(2, '0');
 	const formattedSeconds = String(seconds).padStart(2, '0');
 
-	return `${formattedMinutes}:${formattedSeconds}`;
+	return `${minutes}:${formattedSeconds}`;
 }
 
 // Display search results
@@ -225,6 +259,7 @@ const displaySearchResults = song => {
 			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}~${song.album.id}</span></button>
 		</div>`;
 }
+
 
 
 

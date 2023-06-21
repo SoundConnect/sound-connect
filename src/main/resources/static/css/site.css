@@ -645,7 +645,7 @@ input.playlist-title:focus {
     transition: ease-in-out .3s;
     cursor: pointer;
 }
-.add-song-btn span {
+.add-song-btn span, .hidden {
     display: none;
 }
 .create-page-search, .edit-page-search {
@@ -699,7 +699,7 @@ form.create-form {
     max-height: 20rem;
 }
 .create-top-container {
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 .search-results-box {
     overflow: scroll;
@@ -784,3 +784,59 @@ form.create-form {
     gap: 10px;
     max-width: 100%;
 }
+
+/*
+======Styles For Playlist Feed Page======
+*/
+.post-card {
+    margin-top: 5rem;
+    /*border: 1px solid rgba(255, 5, 255, .4);*/
+    border-radius: 10px;
+    max-width: 80%;
+    min-width: 80%;
+    height: 25rem;
+    padding: 0 2rem;
+}
+.playlist-card, .post-user-info {
+    width: inherit;
+    border-radius: 10px;
+}
+.post-user-info {
+    padding: 1rem 0;
+}
+.playlist-card {
+    border: 1px solid var(--secondary);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.pfp-img-wrapper {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 9999px;
+}
+.pfp {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 9999px;
+}
+.username {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+.playlist-img-wrapper {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 10px;
+}
+.post-playlist-info {
+    flex: 0 1 10rem;
+    min-width: 10rem;
+    overflow: hidden;
+}
+.post-playlist-info p {
+    max-height: 6rem;
+    overflow: scroll;
+}
+
