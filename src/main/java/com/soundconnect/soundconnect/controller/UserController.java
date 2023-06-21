@@ -48,44 +48,47 @@ public class UserController {
     public String register(@RequestParam(name = "username") String username,
                            @RequestParam(name = "email") String email,
                            @RequestParam(name = "password") String password,
-                           @RequestParam(name = "confirmPassword") String confirmPassword) {
+                           @RequestParam(name = "confirmPassword") String confirmPassword,
+                           @RequestParam(name="image-url") String imageUrl) {
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return "redirect:/register";
         } else if (!password.equals(confirmPassword)) {
             return "redirect:/register";
         } else if (userDao.findByUsername(username) != null){ // check if user already exists
             return "redirect:/register";
+        } else if (imageUrl == null || imageUrl.isEmpty()) {
+            return "redirect:/register";
         } else {
              String hash = passwordEncoder.encode(password); //add password encoder RH
-            userDao.save(new User(username, email, hash));
+            userDao.save(new User(username, email, hash, imageUrl));
             return "redirect:/profile";
         }
     }
 
     // show profile page
     @GetMapping("/profile")
-    public String showProfile(){
+    public String showProfile(Model model){
+        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+
         return "profile";
     }
 
     // edit profile
-    @PostMapping("/profile/edit")
-    public String changeProfile(@RequestParam(name="email") String email,
-                                @RequestParam(name="password") String password,
-                                @RequestParam(name="confirmPassword") String confirmPassword,
-                                @RequestParam(name="username") String username) {
-        System.out.println("Post mapping hit");
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long userId = user.getId();
-        user = userDao.findById(userId);
-        if(!password.equals(confirmPassword)) {
-            return "redirect:/profile/edit";
-        }
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setUsername(username);
-        userDao.save(user);
-        return "redirect:/profile";
-    }
+//    @PostMapping("/profile")
+//    public String changeProfile(@RequestParam(name="email") String email,
+//                                @RequestParam(name="password") String password,
+//                                @RequestParam(name="confirmPassword") String confirmPassword,
+//                                @RequestParam(name="username") String username,
+//                                ) {
+//        System.out.println("Post mapping hit");
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        long userId = user.getId();
+//        user = userDao.findById(userId);
+//        System.out.println(imageUrl);
+//        user.setProfilePic(imageUrl);
+//
+//        userDao.save(user);
+//        return "redirect:/profile";
+//    }
 
 }
