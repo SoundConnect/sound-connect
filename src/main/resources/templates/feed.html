@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Post Feed')"></head>
+<head th:replace="~{partials/head :: head(title='SoundConnect - Post Feed')}"></head>
 <body>
     <div class="page-wrapper">
-        <nav th:replace="partials/navbar :: navbar"></nav>
+        <nav th:replace="~{partials/navbar :: navbar}"></nav>
+
         <header class="container feed-header-container">
             <div class="row justify-center feed-header-row">
                 <div class="column align-center feed-header-col">
@@ -11,6 +12,7 @@
                 </div>
             </div>
         </header>
+
         <div class="container grow feed-container justify-center">
             <div class="row feed-row justify-center">
                 <div class="column feed-col">
@@ -31,4 +33,5 @@
 
 <script type="module" th:src="@{/js/main.js}"></script>
 </body>
+
 </html>

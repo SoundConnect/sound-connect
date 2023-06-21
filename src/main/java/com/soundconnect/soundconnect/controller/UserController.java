@@ -6,8 +6,13 @@ import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,20 +23,18 @@ public class UserController {
     public final UserRepository userDao;
     private final ChatRepository chatDao;
     private final MessagesRepository messageDao;
+    private final PasswordEncoder passwordEncoder;
+  
     public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao) {
         this.userDao = userDao;
         this.chatDao = chatDao;
         this.messageDao = messageDao;
+        this.passwordEncoder = passwordEncoder;
+
     }
 
-  
-    // show login form
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "login";
-    }
 
-    // login a user
+//     login a user
     @PostMapping("/login")
     public String login(@RequestParam(name = "username") String username,
                         @RequestParam(name = "password") String password) {
@@ -39,15 +42,16 @@ public class UserController {
         if (user == null) {
             return "redirect:/login";
         } else if (!password.equals(user.getPassword())) {
-            return "redirect:/login";
-        } else {
             return "redirect:/profile";
+        } else {
+            return "redirect:/register";
         }
     }
 
-    // show registration form
+    // show registration form  (Updated by RH)
     @GetMapping("/register")
-    public String showRegisterForm() {
+    public String showRegisterForm(Model model) {
+        model.addAttribute("user", new User());
         return "register";
     }
 
@@ -56,16 +60,19 @@ public class UserController {
     public String register(@RequestParam(name = "username") String username,
                            @RequestParam(name = "email") String email,
                            @RequestParam(name = "password") String password,
-                           @RequestParam(name = "confirmPassword") String confirmPassword) {
+                           @RequestParam(name = "confirmPassword") String confirmPassword,
+                           @RequestParam(name="image-url") String imageUrl) {
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return "redirect:/register";
         } else if (!password.equals(confirmPassword)) {
             return "redirect:/register";
         } else if (userDao.findByUsername(username) != null){ // check if user already exists
             return "redirect:/register";
+        } else if (imageUrl == null || imageUrl.isEmpty()) {
+            return "redirect:/register";
         } else {
-            // password = passwordEncoder.encode(password);
-            userDao.save(new User(username, email, password));
+             String hash = passwordEncoder.encode(password); //add password encoder RH
+            userDao.save(new User(username, email, hash, imageUrl));
             return "redirect:/profile";
         }
     }
@@ -75,6 +82,7 @@ public class UserController {
     public String showProfile(Model model) {
         List<Chat> chats = chatDao.findAll();
         model.addAttribute("chats", chats);
+        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         return "profile";
     }
     @GetMapping("/profile/messages/{chatId}")
@@ -89,22 +97,21 @@ public class UserController {
 
 
     // edit profile
-    @PostMapping("/profile/edit")
-    public String changeProfile(@RequestParam(name="email") String email,
-                                @RequestParam(name="password") String password,
-                                @RequestParam(name="confirmPassword") String confirmPassword,
-                                @RequestParam(name="username") String username) {
-        System.out.println("Post mapping hit");
+//    @PostMapping("/profile")
+//    public String changeProfile(@RequestParam(name="email") String email,
+//                                @RequestParam(name="password") String password,
+//                                @RequestParam(name="confirmPassword") String confirmPassword,
+//                                @RequestParam(name="username") String username,
+//                                ) {
+//        System.out.println("Post mapping hit");
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        long userId = user.getId();
-//        user = userDao.findUserById(userId);
-//        if(!password.equals(confirmPassword)) {
-//            return "redirect:/profile/edit";
-//        }
-//        user.setEmail(email);
-//        user.setPassword(password);
-//        user.setUsername(username);
+//        user = userDao.findById(userId);
+//        System.out.println(imageUrl);
+//        user.setProfilePic(imageUrl);
+//
 //        userDao.save(user);
-        return "redirect:/profile";
-    }
+//        return "redirect:/profile";
+//    }
+
 }

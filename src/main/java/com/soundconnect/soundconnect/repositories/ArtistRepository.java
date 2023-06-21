@@ -9,4 +9,5 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
     Artist findByName(String name);
     boolean existsBySpotifyId(String spotifyId);
     Artist findBySpotifyId(String spotifyId);
+
 }
