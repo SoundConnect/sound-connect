@@ -11,7 +11,7 @@
                 <h1>Find songs in your playlist</h1>
                 <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
             </div>
-            <div class="edit-playlist-btn" title="Feed">Save</div>
+            <div class="create-playlist-btn" title="Feed">Save</div>
         </div>
     </section>
 
@@ -70,6 +70,7 @@
                         </div>
                         <div class="column song-album-name" th:text="${track.album.name}"></div>
                         <div class="column align-right song-duration" th:text="${track.duration}"></div>
+                        <button class="delete-btn" name="trackId" th:value="${track.id}">X</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +78,7 @@
     </section>
 </div>
 
-<script src="/js/createPlaylist.js" type="module"></script>
+<script src="/js/playlist.js" type="module"></script>
 </body>
 
 </html>

@@ -1,19 +1,18 @@
 package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.*;
-import com.soundconnect.soundconnect.repositories.*;
+import java.util.HashSet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Controller
 public class PlaylistController {
-
     private final PlaylistRepository playlistsDao;
     private final TrackRepository tracksDao;
     private final AlbumRepository albumsDao;
@@ -21,6 +20,7 @@ public class PlaylistController {
     private final GenreRepository genresDao;
     private final UserRepository usersDao;
 
+    @Autowired
     public PlaylistController(PlaylistRepository playlistsDao, TrackRepository tracksDao, AlbumRepository albumsDao, ArtistRepository artistsDao, GenreRepository genresDao, UserRepository usersDao) {
         this.playlistsDao = playlistsDao;
         this.tracksDao = tracksDao;
@@ -28,22 +28,6 @@ public class PlaylistController {
         this.artistsDao = artistsDao;
         this.genresDao = genresDao;
         this.usersDao = usersDao;
-    }
-
-//    Added createPlaylist and editPlaylist to map with security. I don't see conflicts. by RH
-    @GetMapping("/createPlaylist")
-    public String createPlaylist() {
-        return "createPlaylist";
-    }
-    @PostMapping("/createPlaylist")
-    public String createPlaylist(@RequestParam(name="title") String title, @RequestParam(name="description") String description){
-        Playlist playlist = new Playlist(title, description);
-        playlistsDao.save(playlist);
-        return "redirect:/playlists";
-    }
-    @GetMapping("/editPlaylist")
-    public String showEditPlaylistPage() {
-        return "editPlaylist";
     }
 
     // show form for creating a playlist
@@ -56,94 +40,116 @@ public class PlaylistController {
     @PostMapping("/create")
     public String createPlaylist(@RequestBody Playlist playlist) {
         try {
-            Set<Track> tracks = playlist.getTracks();
-            Set<Track> filteredTracks = new HashSet<>();
-
-            for (Track track : tracks) {
-                Album album = track.getAlbum();
-                Album filteredAlbum;
-                if (albumsDao.existsBySpotifyId(album.getSpotifyId())){
-                    filteredAlbum = albumsDao.findBySpotifyId(album.getSpotifyId());
-                } else {
-                    filteredAlbum = album;
-                    albumsDao.save(filteredAlbum);
-                }
-                track.setAlbum(filteredAlbum);
-
-                Set<Artist> artists = track.getArtists();
-                Set<Artist> filteredArtists = new HashSet<>();
-                for (Artist artist : artists) {
-                    Set<Genre> genres = artist.getGenres();
-                    Set<Genre> filteredGenres = new HashSet<>();
-                    for (Genre genre : genres){
-                        if (genresDao.existsByName(genre.getName())){
-                            genre = genresDao.findByName(genre.getName());
-                            filteredGenres.add(genre);
-                        } else {
-                            filteredGenres.add(genre);
-                            genresDao.save(genre);
-                        }
-                    }
-                    artist.setGenres(filteredGenres);
-
-                    if (artistsDao.existsBySpotifyId(artist.getSpotifyId())) {
-                        artist = artistsDao.findBySpotifyId(artist.getSpotifyId());
-                        filteredArtists.add(artist);
-                    } else {
-                        filteredArtists.add(artist);
-                        artistsDao.save(artist);
-                    }
-                }
-                Artist firstArtist = filteredArtists.iterator().next();
-                track.getAlbum().setArtist(firstArtist);
-                track.setArtists(filteredArtists);
-
-                Track filteredTrack;
-                if (tracksDao.existsBySpotifyId(track.getSpotifyId())){
-                    filteredTrack = tracksDao.findBySpotifyId(track.getSpotifyId());
-                } else {
-                    filteredTrack = track;
-                    tracksDao.save(filteredTrack);
-                }
-                filteredTracks.add(filteredTrack);
-            }
+            Set<Track> filteredTracks = handlePlaylistData(playlist);
             playlist.setTracks(filteredTracks);
             playlistsDao.save(playlist);
 
         } catch (DataIntegrityViolationException e) {
             e.getCause().printStackTrace();
         }
-        return "redirect:/profile";
+        return "redirect:/feed";
     }
 
     // show form for editing a playlist
     @GetMapping("/feed/{id}/edit")
-    public String showEditPlaylistForm(@PathVariable long id, Model model){
+    public String showEditPlaylistForm(@PathVariable long id, Model model) {
         Playlist playlist = playlistsDao.findById(id);
         model.addAttribute("playlist", playlist);
+
         return "editPlaylist";
     }
 
-
     // edit playlist
     @PostMapping("/feed/{id}/edit")
-    public String editPlaylist(@PathVariable long id, @RequestBody Playlist playlist){
+    public String editPlaylist(@PathVariable long id, @RequestBody Playlist playlist ){
+        try {
+            Playlist playlistToEdit = playlistsDao.findById(id);
+
+            playlistToEdit.setName(playlist.getName());
+            playlistToEdit.setDescription(playlist.getDescription());
+            Set<Track> filteredTracks = handlePlaylistData(playlist);
+            Set<Track> allTracks = playlistToEdit.addTracks(filteredTracks);
+            playlistToEdit.setTracks(allTracks);
+
+            playlistsDao.save(playlistToEdit);
+        } catch (DataIntegrityViolationException e) {
+            e.getCause().printStackTrace();
+        }
+
         return "redirect:/profile";
     }
 
-//     show feed for all shared playlists
-        @GetMapping("/feed")
-        public String showFeed (Model model){
+
+    // show feed for all shared playlists
+    @GetMapping("/feed")
+    public String showFeed (Model model){
         List<Playlist> playlists = playlistsDao.findAll();
         model.addAttribute("playlists", playlists);
-            return "feed";
+        return "feed";
+    }
+
+    // delete playlist from account
+    @PostMapping("/feed")
+    public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
+        playlistsDao.deleteById(id);
+        return "redirect:/feed";
+    }
+
+    // method for handling added/edited/deleted data from a playlist
+    public Set<Track> handlePlaylistData(Playlist playlist) {
+        Set<Track> tracks = playlist.getTracks();
+        Set<Track> filteredTracks = new HashSet<>();
+
+        for (Track track : tracks) {
+            Album album = track.getAlbum();
+            Album filteredAlbum;
+            if (albumsDao.existsBySpotifyId(album.getSpotifyId())) {
+                filteredAlbum = albumsDao.findBySpotifyId(album.getSpotifyId());
+            } else {
+                filteredAlbum = album;
+                albumsDao.save(filteredAlbum);
+            }
+            track.setAlbum(filteredAlbum);
+
+            Set<Artist> artists = track.getArtists();
+            Set<Artist> filteredArtists = new HashSet<>();
+            for (Artist artist : artists) {
+                Set<Genre> genres = artist.getGenres();
+                Set<Genre> filteredGenres = new HashSet<>();
+                for (Genre genre : genres) {
+                    if (genresDao.existsByName(genre.getName())) {
+                        genre = genresDao.findByName(genre.getName());
+                        filteredGenres.add(genre);
+                    } else {
+                        filteredGenres.add(genre);
+                        genresDao.save(genre);
+                    }
+                }
+                artist.setGenres(filteredGenres);
+
+                if (artistsDao.existsBySpotifyId(artist.getSpotifyId())) {
+                    artist = artistsDao.findBySpotifyId(artist.getSpotifyId());
+                    filteredArtists.add(artist);
+                } else {
+                    filteredArtists.add(artist);
+                    artistsDao.save(artist);
+                }
+            }
+            Artist firstArtist = filteredArtists.iterator().next();
+            track.getAlbum().setArtist(firstArtist);
+            track.setArtists(filteredArtists);
+
+            Track filteredTrack;
+            if (tracksDao.existsBySpotifyId(track.getSpotifyId())) {
+                filteredTrack = tracksDao.findBySpotifyId(track.getSpotifyId());
+            } else {
+                filteredTrack = track;
+                tracksDao.save(filteredTrack);
+            }
+            filteredTracks.add(filteredTrack);
         }
 
-//     delete playlist from account
-        @PostMapping("/feed")
-        public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
-            playlistsDao.deleteById(id);
-            return "redirect:/feed";
-        }
+        return filteredTracks;
     }
+}
 
