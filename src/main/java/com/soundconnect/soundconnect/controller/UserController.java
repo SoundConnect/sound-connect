@@ -1,17 +1,27 @@
 package com.soundconnect.soundconnect.controller;
 
+import com.soundconnect.soundconnect.model.Chat;
+import com.soundconnect.soundconnect.model.Message;
 import com.soundconnect.soundconnect.model.User;
+import com.soundconnect.soundconnect.repositories.ChatRepository;
+import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
     public final UserRepository userDao;
-    public UserController(UserRepository userDao) {
+    private final ChatRepository chatDao;
+    private final MessagesRepository messageDao;
+    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao) {
         this.userDao = userDao;
+        this.chatDao = chatDao;
+        this.messageDao = messageDao;
     }
 
   
@@ -62,9 +72,21 @@ public class UserController {
 
     // show profile page
     @GetMapping("/profile")
-    public String showProfile(){
+    public String showProfile(Model model) {
+        List<Chat> chats = chatDao.findAll();
+        model.addAttribute("chats", chats);
         return "profile";
     }
+    @GetMapping("/profile/messages/{chatId}")
+    @ResponseBody
+    public List<Message> showMessages(@PathVariable long chatId, Model model) {
+        Chat chat = chatDao.findById(chatId);
+        List<Message> messages = chat.getMessages();
+        model.addAttribute("messages", messages);
+        return messages;
+    }
+
+
 
     // edit profile
     @PostMapping("/profile/edit")
