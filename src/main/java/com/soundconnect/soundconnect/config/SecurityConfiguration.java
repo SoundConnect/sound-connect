@@ -48,7 +48,7 @@ public class SecurityConfiguration {
 
 
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));

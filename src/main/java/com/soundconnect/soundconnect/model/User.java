@@ -21,6 +21,9 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(nullable = false, length = 1000)
+    private String profilePic;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "user_playlist",
@@ -35,6 +38,14 @@ public class User {
 
     public void setPlaylists(Set<Playlist> playlists) {
         this.playlists = playlists;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public long getId() {
@@ -96,6 +107,13 @@ public class User {
         this.email = email;
         this.password = password;
 
+    }
+
+    public User(String username, String email, String password, String profilePic) {
+        this.username = username;
+        this.email= email;
+        this.password = password;
+        this.profilePic = profilePic;
     }
 }
     // ============== Image Upload by RH ==============

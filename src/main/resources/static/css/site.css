@@ -710,6 +710,14 @@ form.create-form {
     display: none ;
 }
 /*====== Profile Page Styles======*/
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
 .sidebar-fixed {
     background-color: rgba(19, 4, 210, 0.3);
     width: 215px;
@@ -786,6 +794,76 @@ form.create-form {
     gap: 10px;
     max-width: 100%;
 }
+/********** Messages **********/
+.message-container.show{
+    display: block;
+}
+
+.message-container {
+    position: fixed;
+    display: none;
+    bottom: 0;
+    right: 20px;
+    width: 1000px;
+    height: 450px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message-content {
+    padding: 10px;
+}
+
+.chat-messages {
+    height: 300px;
+    width: 50%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.message-feed{
+    height: 300px;
+    width: 50%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.message-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+.message-title {
+    color: var(--primary);
+}
+.chat{
+    color: var(--primary);
+    cursor: pointer;
+}
+.chat-row:hover{
+    background-color: var(--primary);
+}
+.chat:hover{
+    color: var(--secondary);
+    background-color: var(--primary);
+    cursor: pointer;
+}
+.message{
+    color: var(--primary);
+}
+.sender{
+    color: grey;
+}
+/********** End Messages **********/
+
 
 /*CSS for Mobile Devices*/
 /*break points for mobile devices <600px, 601px, 768px, 992px, 1200px*/
