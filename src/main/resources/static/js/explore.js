@@ -1,6 +1,5 @@
 import {getToken} from './main.js';
 
-
 let token = await getToken();
 let artistToken = await getToken();
 let albumToken = await getToken();

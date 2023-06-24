@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
 <body>
+<div sec:authorize="isAuthenticated()">
+
+</div>
   <div class="page-wrapper">
+      <img src="/static/images/login-background.jpg" alt="login background" class="background">
       <header th:replace="~{partials/navbar :: navbar}"></header>
-      <img src="../images/login-background.jpg" alt="login background" class="background">
       <div class="container grow justify-center">
           <div class="row justify-center login-page-row">
               <div class="column login-page-col">
                   <h1 class="join">Where music, culture, and community come together.</h1>
                   <br>
               </div>
+
               <div class="column login-page-col login-form">
-                  <form action="/login" method="post">
+                  <form th:action="@{/login}" method="post">
                       <label class="text-area" for="username">Username:</label>
                       <input class="text-input" type="text" id="username" name="username">
                       <label class="text-area" for="password">Password:</label>
@@ -23,6 +28,12 @@
                   </form>
                   <div>
                       <p class="account">Don't have an account? <a href="/register">Register here</a></p>
+                  </div>
+                  <div th:if="${param.error}">
+                      <p>Invalid Username and Password.</p>
+                  </div>
+                  <div th:if="${param.logout}">
+                      <p>You have been logged out.</p>
                   </div>
               </div>
           </div>

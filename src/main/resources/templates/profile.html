@@ -6,20 +6,21 @@
 </head>
 
 <body>
-<img src="/images/login-background.jpg" alt="login background" class="background">
 <div class="page-wrapper profile">
     <header th:replace="partials/navbar :: navbar"></header>
+    <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container-profile">
         <div class="sidebar-fixed">
-            <ul class="list-spacing">
-                <li><a href="/">Home</a></li>
+            <ul>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/explore">Recommended Playlists</a></li>
                 <li><a href="/playlists">Add Playlists</a></li>
-                <li><a href="/create">Create Playlists</a></li>
-                <li><a href="/editplaylist">Edit Playlists</a></li>
+                <li><a href="/createPlaylist">Create Playlists</a></li>
+                <li><a href="/editPlaylist">Edit Playlists</a></li>
                 <li><a href="/feed">View Posts</a></li>
                 <li><a href="/">Log Out</a></li>
                 <button id="openButton">Open Messages</button>
+
             </ul>
         </div>
         <div class="content-section row">
@@ -31,8 +32,8 @@
                     </div>
                 </div>
                 <section class="profile-info profile-section">
-                    <h2>User Name</h2>
-                    <img src="/images/profile-default.png" alt="User Profile">
+                    <p th:text="${user.username}" class="profile-username"></p>
+                    <img th:src="@{user.profile_pic}" alt="profile picture" class="profile-picture">
                 </section>
                 <div class="container-playlists">
                     <div class="column">
@@ -124,5 +125,6 @@
     };
 </script>
 </body>
+
 </html>
 
