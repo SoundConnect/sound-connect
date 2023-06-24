@@ -61,18 +61,19 @@ function loadMessages(chatId) {
             }
         })
         .then(function(messages) {
-            let messagesContainer = document.querySelector('#messageFeed');
-            messagesContainer.innerHTML = '';
+            let senderCol = document.querySelector('.senderCol');
+            senderCol.innerHTML = '';
             messages.forEach(function(message) {
                 let messageElement = document.createElement('div');
                 let senderElement = document.createElement('div');
+
                 senderElement.classList.add('sender');
                 senderElement.textContent = message.sender;
                 messageElement.classList.add('message');
                 messageElement.textContent = message.message
 
-                messagesContainer.appendChild(messageElement);
-                messagesContainer.appendChild(senderElement);
+                senderElement.appendChild(messageElement);
+                senderCol.appendChild(senderElement);
             });
         })
         .catch(function(error) {
