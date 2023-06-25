@@ -16,6 +16,7 @@ public class Message {
     @Column(nullable = false, length = 250)
     private String sender;
 
+
     @JsonIgnore // Ignore this field during JSON serialization to avoid circular references
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "chat_id")

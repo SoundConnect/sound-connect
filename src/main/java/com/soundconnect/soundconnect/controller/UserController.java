@@ -25,7 +25,7 @@ public class UserController {
     private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
   
-    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao) {
+    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder) {
         this.userDao = userDao;
         this.chatDao = chatDao;
         this.messageDao = messageDao;
