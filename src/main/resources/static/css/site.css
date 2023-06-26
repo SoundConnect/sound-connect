@@ -97,7 +97,6 @@ body{
 }
 
 .footer{
-    margin-top: 100px;
     margin-bottom: 15px;
 }
 
@@ -485,9 +484,8 @@ a {
     padding:10px;
 }
 
-textarea {
-    min-height: 100px;
-    resize: none;
+.text-area {
+    color: #f5f5f5;
 }
 
 label {
@@ -526,9 +524,15 @@ button.btn.primary {
     position: relative;  /* Makes it a positioning context */
 }
 
+.background {
+    z-index: -1;
+    position: absolute;
+}
+
 /* This positions the .join content over the hero image */
 .join {
-    position: absolute;
+    display: flex;
+    justify-content: center;
     top: 50px;  /* Adjust as needed */
     left: 250px;  /* Adjust as needed */
     color: #f5f5f5;  /* Set text color to white or any other color that contrasts with the image */
@@ -539,7 +543,7 @@ button.btn.primary {
 /* This positions the login form over the hero image */
 .login-form {
     font-size:30px;
-    position: absolute;
+    position: initial;
     top: 300px;  /* Adjust as needed */
     left: 450px;  /* Adjust as needed */
     z-index: 1;  /* Optional: To make sure it stays on top */
@@ -967,10 +971,6 @@ button {
 
 
 /*CSS for responsive NAVBAR*/
-* {
-    box-sizing: border-box;
-}
-
 nav {
     background:#060429;
     color: #f5f5f5;
