@@ -176,6 +176,7 @@ a{
 .playlist-image{
     height: 100%;
     width: 180px;
+    border-radius: 10px;
 }
 .playlist-info{
     height: 100%;
@@ -361,10 +362,20 @@ a{
 /*    width: 100%;*/
 /*}*/
 /*****************************Register Page********************************/
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
 .register-form{
     padding: 20px;
     border-radius: 10px;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
@@ -437,16 +448,17 @@ a {
     flex-direction: column;
 }
 
-form {
+
+.login-form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     border-radius: 10px;
     padding: 20px;
 }
 
-form > * {
+.login-form > * {
     width: 50%;
 }
 
@@ -506,7 +518,7 @@ button.btn.primary {
 .login-submit{
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 /* This should be the container having the hero image */
@@ -748,14 +760,6 @@ form.create-form {
     display: none ;
 }
 /*====== Profile Page Styles======*/
-
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
 .sidebar-fixed {
     background-color: rgba(19, 4, 210, 0.3);
     width: 215px;
@@ -792,17 +796,10 @@ form.create-form {
     text-align: center;
 }
 
-.profile-info h2 {
-    margin-bottom: 10px;
-}
-
 .profile-info img {
-    background-color: #1304d2;
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    border: white 1px solid;
-
 }
 .container-profile{
     margin-top: 50px;
@@ -925,6 +922,48 @@ button {
     color: grey;
 }
 /********** End Messages **********/
+
+/********** Feed **********/
+.feed-playlist {
+    margin-top: 5rem;
+
+    background-color: #9e9e9e;
+    border-radius: 10px;
+    height: 20rem;
+    position: relative;
+}
+.playlist-details {
+    padding: 1rem;
+    background-color: #6e6e6e;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    flex: 1 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.playlist-tracks {
+    flex: 3 0 0;
+}
+.playlist-img-wrapper {
+    width: 10%;
+    overflow: hidden;
+}
+.playlist-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.desc-row {
+    height: fit-content;
+    max-height: 4rem;
+    overflow: hidden;
+}
+.playlist-col {
+    overflow: scroll;
+    border-radius: inherit;
+}
+
 
 
 /*CSS for responsive NAVBAR*/

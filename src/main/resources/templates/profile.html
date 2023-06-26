@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,9 @@
                 <li><a href="/index">Home</a></li>
                 <li><a href="/explore">Recommended Playlists</a></li>
                 <li><a href="/playlists">Add Playlists</a></li>
-                <li><a href="/createPlaylist">Create Playlists</a></li>
+                <li><a href="/create">Create Playlists</a></li>
                 <li><a href="/editPlaylist">Edit Playlists</a></li>
                 <li><a href="/feed">View Posts</a></li>
-                <li><a href="/">Log Out</a></li>
                 <button id="openButton">Open Messages</button>
 
             </ul>
@@ -32,12 +31,9 @@
                         <p>Following: 0</p>
                     </div>
                 </div>
-                <section class="profile-info profile-section">
-                    <h1>username</h1>
-                    <p>user Image</p>
-
+                <section th:each="user : ${users}" class="profile-info profile-section">
                     <p th:text="${user.username}" class="profile-username"></p>
-                    <img th:src="@{user.profile_pic}" alt="profile picture" class="profile-picture" src="">
+                    <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
                 </section>
                 <div class="container-playlists">
                     <div class="column">
@@ -77,7 +73,13 @@
                                         <h3 class="chat" th:text="${chat.id}" th:data-chatid="${chat.id}"></h3>
                                     </div>
                                 </div>
-                                <div id="messageFeed" class="message-feed">
+                                <div id="messageFeed" class="row message-feed">
+                                    <div class="column senderCol">
+
+                                    </div>
+                                    <div class="column recipientCol">
+
+                                    </div>
 
                                 </div>
                             </div>

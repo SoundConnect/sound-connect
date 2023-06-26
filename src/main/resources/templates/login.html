@@ -10,20 +10,22 @@
 <div class="page-wrapper">
     <header th:replace="~{partials/navbar :: navbar}")></header>
     <div sec:authorize="!isAuthenticated()">
-            <p>You are not logged in. Please log in to continue.</p>
-        </div>
-
-    <div class="container grow justify-center">
+      <p>You are not logged in. Please log in to continue.</p>
+    </div>
+      <img src="/images/login-background.jpg" alt="login background" class="background">
+      <header th:replace="~{partials/navbar :: navbar}"></header>
+      <div class="container grow justify-center">
           <div class="row justify-center login-page-row">
               <div class="column login-page-col">
                   <img th:src="@{/images/concert.jpeg}" alt="login background" class="background">
                   <h1 class="join">Where music, culture, and community come together.</h1>
                   <br>
-
               </div>
-
+              <div th:if="${param.logout}">
+                  <p>You have been logged out.</p>
+              </div>
               <div class="column login-page-col login-form">
-                  <form th:action="@{/login}" method="post">
+                  <form class="login-form" th:action="@{/login}" method="post">
                       <label class="text-area" for="username">Username:</label>
                       <input class="text-input" type="text" id="username" name="username">
                       <label class="text-area" for="password">Password:</label>
@@ -37,9 +39,6 @@
                   </div>
                   <div th:if="${param.error}">
                       <p>Invalid Username and Password.</p>
-                  </div>
-                  <div th:if="${param.logout}">
-                      <p>You have been logged out.</p>
                   </div>
               </div>
           </div>

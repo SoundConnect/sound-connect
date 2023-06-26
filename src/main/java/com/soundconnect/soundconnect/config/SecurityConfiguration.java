@@ -36,8 +36,10 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
                         "/profile",
-                        "/createPlaylist").authenticated()
+                        "/create",
+                        "/feed/*/edit").authenticated()
                 .requestMatchers(
+                        "/",
                         "/login",
                         "/logout",
                         "/register",
@@ -46,10 +48,8 @@ public class SecurityConfiguration {
                         "/contact",
                         "/feed",
                         "/editPlaylist"
-
-
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**","https://kit.fontawesome.com/**", "/static/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "https://kit.fontawesome.com/**", "/static/**", "/keys.js").permitAll()
         );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));
