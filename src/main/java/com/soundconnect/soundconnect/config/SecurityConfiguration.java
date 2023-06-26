@@ -35,7 +35,8 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
                         "/profile",
-                        "/createPlaylist").authenticated()
+                        "/create",
+                        "/editPlaylist").authenticated()
                 .requestMatchers(
                         "/login",
                         "/logout",
@@ -44,8 +45,7 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-                        "/editPlaylist"
-
+                        "/"
 
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()

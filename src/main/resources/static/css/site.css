@@ -711,14 +711,6 @@ form.create-form {
     display: none ;
 }
 /*====== Profile Page Styles======*/
-
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
 .sidebar-fixed {
     background-color: rgba(19, 4, 210, 0.3);
     width: 215px;
@@ -757,17 +749,10 @@ form.create-form {
 
 }
 
-.profile-info h2 {
-    margin-bottom: 10px;
-}
-
 .profile-info img {
-    background-color: #1304d2;
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    border: white 1px solid;
-
 }
 .container-profile{
     margin-top: 50px;
@@ -864,6 +849,5 @@ button {
     color: grey;
 }
 /********** End Messages **********/
-=======
 
 

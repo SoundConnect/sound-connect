@@ -20,12 +20,12 @@ import java.util.Optional;
 
 @Controller
 public class UserController {
-    public final UserRepository userDao;
+    private final UserRepository userDao;
     private final ChatRepository chatDao;
     private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
   
-    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao) {
+    public UserController(PasswordEncoder passwordEncoder, UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao) {
         this.userDao = userDao;
         this.chatDao = chatDao;
         this.messageDao = messageDao;
@@ -82,7 +82,8 @@ public class UserController {
     public String showProfile(Model model) {
         List<Chat> chats = chatDao.findAll();
         model.addAttribute("chats", chats);
-        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        User users = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("users", users);
         return "profile";
     }
     @GetMapping("/profile/messages/{chatId}")
