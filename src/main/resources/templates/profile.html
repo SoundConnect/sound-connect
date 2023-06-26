@@ -3,12 +3,13 @@
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <title>SoundConnect Profile</title>
 </head>
 <body>
-<img src="/images/login-background.jpg" alt="login background" class="background">
 <div class="page-wrapper profile">
-    <header th:replace="partials/navbar :: navbar"></header>
+    <header th:replace="~{partials/navbar :: navbar}"></header>
+    <img src="/images/concert.jpeg" alt="profile background" class="background">
     <div class="container-profile">
         <div class="sidebar-fixed">
             <ul>
@@ -93,9 +94,12 @@
         </div>
     </div>
 </div>
+
 <div>
-    <footer th:replace="partials/footer :: footer"></footer>
+    <footer th:replace="~{partials/footer :: footer}"></footer>
 </div>
+
+
 <script src="https://cdn.talkjs.com/talk.js"></script>
 <script src="/js/messages.js">
     (async () => {
@@ -110,7 +114,9 @@
     })();
 </script>
 <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
-<script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
+
+        <script>
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {

@@ -1,78 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Menu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
+</head>
+<body>
 <nav th:fragment="navbar">
-    <header class="header">
-  <nav class="navbar">
-    <a href="#" class="nav-logo">SoundConnect</a>
-    <ul class="nav-menu">
-      <li class="nav-item">
-        <a href="/about" class="nav-link">About</a>
-      </li>
-      <li class="nav-item">
-        <a href="/contact" class="nav-link">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a href="/explore" class="nav-link">Explore</a>
-      </li>
-    </ul>
-<!--    <div class="column shrink login-col">-->
-<!--      <a href="/login" class="login-button">Login</a>-->
-<!--      <a href="/register" class="sign-up-button">Sign Up</a>-->
-<!--      <a href="/logout" class="logout button">Logout</a>-->
-<!--    </div>-->
-    <nav id="mobile-navbar">
-      <div id="hamburger-icon" class="hamburger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    <div class="hamburger">
-      <ul id="nav-menu" class="nav-menu">
+    <div class="logo"><h1> SoundConnect</h1></div>
+    <div class="openMenu"><i class="fa fa-bars"></i></div>
+    <ul class="mainMenu">
+        <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/explore">Explore</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">SignUp</a></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    </div>
-    </nav>
-     </header>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-github"></i>
+        </span>
+    </ul>
 </nav>
-
-
-
-
-
-<!--<nav th:fragment="navbar">-->
-<!--  <div class="container grow nav-container">-->
-<!--    <div class="row nav-row">-->
-<!--      <div class="column gap-15 nav-col shrink">-->
-<!--        <a href="/"><h1 class="logo">Sound Connect</h1></a>-->
-<!--        <div><a class="underline" href="/about" title="About">About</a></div>-->
-<!--        <div><a class="underline" href="/contact" title="contact">Contact</a></div>-->
-<!--        <div><a class="underline" href="/explore" title="explore">Explore</a></div>-->
-<!--      </div>-->
-<!--      <div class="column shrink login-col">-->
-<!--        <a href="/login" class="login-button">Login</a>-->
-<!--        <a href="/register" class="sign-up-button">Sign Up</a>-->
-<!--        <a href="/logout" class="logout button">Logout</a>-->
-<!--      </div>-->
-<!--      <nav id="mobile-navbar">-->
-<!--        <div id="hamburger-icon" class="hamburger-icon">-->
-<!--          <span></span>-->
-<!--          <span></span>-->
-<!--          <span></span>-->
-<!--        </div>-->
-
-<!--        <ul id="nav-menu" class="nav-menu">-->
-<!--          <li><a href="/about">About</a></li>-->
-<!--          <li><a href="/contact">Contact</a></li>-->
-<!--          <li><a href="/explore">Explore</a></li>-->
-<!--          <li><a href="/login">Login</a></li>-->
-<!--          <li><a href="/register">SignUp</a></li>-->
-<!--          <li><a href="/logout">Logout</a></li>-->
-<!--        </ul>-->
-
-<!--   </nav>-->
-<!--    </div>-->
-<!--  </div>-->
-  <!--</nav>-->
+<script th:src="@{/js/hamburger-menu.js}"></script>
+</body>
+</html>

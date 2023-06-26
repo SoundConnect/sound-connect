@@ -1,4 +1,5 @@
 package com.soundconnect.soundconnect.config;
+
 import com.soundconnect.soundconnect.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,8 +49,8 @@ public class SecurityConfiguration {
 
 
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                );
+                .requestMatchers("/css/**", "/js/**", "/images/**","https://kit.fontawesome.com/**", "/static/**").permitAll()
+        );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));
         http.httpBasic(withDefaults());

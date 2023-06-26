@@ -1,9 +1,15 @@
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+const mainMenu = document.querySelector('.mainMenu');
+const closeMenu = document.querySelector('.closeMenu');
+const openMenu = document.querySelector('.openMenu');
 
-hamburger.addEventListener("click", mobileMenu);
+openMenu.addEventListener('click', show);
+closeMenu.addEventListener('click', close);
 
-function mobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+function show() {
+    mainMenu.style.display = 'flex';
+    mainMenu.style.top = '0';
+}
+
+function close() {
+    mainMenu.style.top = '-100%';
 }
