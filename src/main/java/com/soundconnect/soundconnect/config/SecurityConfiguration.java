@@ -48,7 +48,7 @@ public class SecurityConfiguration {
                         "/feed",
                         "/editPlaylist"
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
                 );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));

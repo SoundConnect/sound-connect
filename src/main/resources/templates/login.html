@@ -15,7 +15,9 @@
                   <h1 class="join">Where music, culture, and community come together.</h1>
                   <br>
               </div>
-
+              <div th:if="${param.logout}">
+                  <p>You have been logged out.</p>
+              </div>
               <div class="column login-page-col login-form">
                   <form th:action="@{/login}" method="post">
                       <label class="text-area" for="username">Username:</label>
@@ -31,9 +33,6 @@
                   </div>
                   <div th:if="${param.error}">
                       <p>Invalid Username and Password.</p>
-                  </div>
-                  <div th:if="${param.logout}">
-                      <p>You have been logged out.</p>
                   </div>
               </div>
           </div>
