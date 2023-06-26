@@ -18,6 +18,14 @@ const pathname = url.pathname;
 const pathSegments = pathname.split('/');
 const playlistId = pathSegments[2];
 
+// Get CSRF token
+const getCSRFToken = () => {
+	let metaTag = document.querySelector('meta[name="_csrf"]');
+	let CSRFToken = metaTag.getAttribute('content');
+	console.log(CSRFToken);
+	return CSRFToken;
+}
+
 // Sends a POST request to the server with playlist info
 submitButton.addEventListener('click', () => {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
@@ -48,7 +56,8 @@ function playlist() {
 	fetch(`${endPoint}`, {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'x-csrf-token': getCSRFToken()
 		},
 		body: JSON.stringify(playlistData)
 	})
@@ -72,7 +81,8 @@ deleteBtn.forEach(btn => {
 		fetch(`/feed/${playlistId}/edit`, {
 			method: 'PUT',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'X-CSRF-TOKEN': getCSRFToken()
 			},
 			body: JSON.stringify({trackId: trackId})
 		})
@@ -116,7 +126,9 @@ const getSongData = async (token, songName) => {
 	try {
 		const result = await fetch(`https://api.spotify.com/v1/search?query=${songName}&type=track&market=US&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=10`, {
 			method: 'GET',
-			headers: {'Authorization': 'Bearer ' + token}
+			headers: {
+				'Authorization': 'Bearer ' + token
+			},
 		});
 		let data = await result.json();
 		return sortSongData(data.tracks.items);
@@ -206,7 +218,9 @@ const getArtistGenres = async (id) => {
 	try {
 		const result = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
 			method: 'GET',
-			headers: {'Authorization': 'Bearer ' + token}
+			headers: {
+				'Authorization': 'Bearer ' + token
+			}
 		});
 		let genreData = (await result.json()).genres;
 
