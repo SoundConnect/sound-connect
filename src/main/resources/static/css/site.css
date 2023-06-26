@@ -361,10 +361,20 @@ nav a:hover::before, .footer-links:hover::before {
     width: 100%;
 }
 /*****************************Register Page********************************/
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
 .register-form{
     padding: 20px;
     border-radius: 10px;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
@@ -444,16 +454,16 @@ a {
     z-index: -1; /* Image will be behind the content */
 }
 
-form {
+.login-form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     border-radius: 10px;
     padding: 20px;
 }
 
-form > * {
+.login-form > * {
     width: 50%;
 }
 
@@ -512,7 +522,7 @@ button.btn.primary {
 .login-submit{
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 /*======Items Below login page======*/
 
