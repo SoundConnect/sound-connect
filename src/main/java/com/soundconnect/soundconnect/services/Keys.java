@@ -8,10 +8,10 @@ public class Keys {
     @Value("${fileStack.key}")
     private String FILESTACK_KEY;
 
-    @Value("@{firstSpotify.key}")
+    @Value("${firstSpotify.key}")
     private String FIRST_SPOTIFY_KEY;
 
-    @Value("@{secondSpotify.key}")
+    @Value("${secondSpotify.key}")
     private String SECOND_SPOTIFY_KEY;
 
     public String getFILESTACK_KEY() {
