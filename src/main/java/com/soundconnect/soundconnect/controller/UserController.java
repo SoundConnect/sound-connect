@@ -2,9 +2,11 @@ package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.Chat;
 import com.soundconnect.soundconnect.model.Message;
+import com.soundconnect.soundconnect.model.Playlist;
 import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
+import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -24,14 +25,15 @@ public class UserController {
     private final ChatRepository chatDao;
     private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
+    private final PlaylistRepository playlistDao;
   
 
-    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder) {
+    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao) {
         this.userDao = userDao;
         this.chatDao = chatDao;
         this.messageDao = messageDao;
         this.passwordEncoder = passwordEncoder;
-
+        this.playlistDao = playlistDao;
     }
 
 
@@ -83,8 +85,16 @@ public class UserController {
     public String showProfile(Model model) {
         List<Chat> chats = chatDao.findAll();
         model.addAttribute("chats", chats);
+
+//      Getting user info from security context
         User users = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("users", users);
+
+//      Displaying user's playlists on their profile
+        // find user by id with security
+//        List<Playlist> userPlaylists = playlistDao.findAllByUser(users);
+//        model.addAttribute("userPlaylists", userPlaylists);
+
         return "profile";
     }
     @GetMapping("/profile/messages/{chatId}")
