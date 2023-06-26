@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <title>SoundConnect Profile</title>
 </head>
-
 <body>
 <div class="page-wrapper profile">
-    <header th:replace="partials/navbar :: navbar"></header>
-    <img src="/images/login-background.jpg" alt="login background" class="background">
+    <header th:replace="~{partials/navbar :: navbar}"></header>
+    <img src="/images/concert.jpeg" alt="profile background" class="background">
     <div class="container-profile">
         <div class="sidebar-fixed">
             <ul>
@@ -83,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <input type="text" id="messageInput" class="message-input" placeholder="Type your message">
+                            <label for="messageInput"></label><input type="text" id="messageInput" class="message-input" placeholder="Type your message">
                             <button id="sendButton">Send</button>
                             <button id="closeButton">Close</button>
                         </div>
@@ -95,9 +96,12 @@
         </div>
     </div>
 </div>
+
 <div>
-    <footer th:replace="partials/footer :: footer"></footer>
+    <footer th:replace="~{partials/footer :: footer}"></footer>
 </div>
+
+
 <script src="https://cdn.talkjs.com/talk.js"></script>
 <script src="/js/messages.js">
     (async () => {
@@ -112,7 +116,9 @@
     })();
 </script>
 <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
-<script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
+
+        <script>
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {
@@ -124,6 +130,5 @@
     };
 </script>
 </body>
-
 </html>
 

@@ -91,7 +91,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
-//Security Configuration by RH
+
+    //Security Configuration by RH
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         email = copy.email;
@@ -103,7 +104,7 @@ public class User {
     public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
-        this.email= email;
+        this.email = email;
         this.password = password;
 
     }
@@ -115,3 +116,16 @@ public class User {
         this.profilePic = profilePic;
     }
 }
+    // ============== Image Upload by RH ==============
+//        private String imagePath; // this is the path to the image file
+//
+//        public String getImagePath() {
+//            return imagePath;
+//        }
+//
+//        public void setImagePath(String imagePath) {
+//            this.imagePath = imagePath;
+//        }
+//
+//    }
+

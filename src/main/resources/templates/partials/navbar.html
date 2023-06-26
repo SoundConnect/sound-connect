@@ -1,18 +1,20 @@
 <nav th:fragment="navbar">
-  <div class="container grow nav-container">
-    <div class="row nav-row">
-      <div class="column gap-15 nav-col shrink">
-        <a href="/"><h1 class="logo">Sound Connect</h1></a>
-        <div><a class="underline" href="/about" title="About">About</a></div>
-        <div><a class="underline" href="/contact" title="contact">Contact</a></div>
-        <div><a class="underline" href="/explore" title="explore">Explore</a></div>
-      </div>
-      <div class="column shrink login-col">
-        <a sec:authorize="!isAuthenticated()" href="/login" class="login-button">Login</a>
-        <a sec:authorize="!isAuthenticated()" href="/register" class="sign-up-button">Sign Up</a>
-        <a sec:authorize="isAuthenticated()" href="/logout" class="logout button">Logout</a>
-      </div>
-    </div>
-  </div>
-
+    <div class="logo"><h1> SoundConnect</h1></div>
+    <div class="openMenu"><i class="fa fa-bars"></i></div>
+    <ul class="mainMenu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/login">Login</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/register">register</a></li>
+        <li><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>
+        <div class="closeMenu"><i class="fa fa-times"></i></div>
+        <span class="icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-github"></i>
+        </span>
+    </ul>
 </nav>

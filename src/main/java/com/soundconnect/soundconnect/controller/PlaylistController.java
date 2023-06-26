@@ -1,10 +1,13 @@
 package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.*;
+
+import com.soundconnect.soundconnect.repositories.*;
+
 import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.dao.DataIntegrityViolationException;
-import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +32,7 @@ public class PlaylistController {
         this.genresDao = genresDao;
         this.usersDao = usersDao;
     }
+
 
     // show form for creating a playlist
     @GetMapping("/create")
