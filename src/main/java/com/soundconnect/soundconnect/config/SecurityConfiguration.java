@@ -36,8 +36,9 @@ public class SecurityConfiguration {
                 .requestMatchers(
                         "/profile",
                         "/create",
-                        "/editPlaylist").authenticated()
+                        "/feed/*/edit").authenticated()
                 .requestMatchers(
+                        "/",
                         "/login",
                         "/logout",
                         "/register",
@@ -45,8 +46,7 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-                        "/"
-
+                        "/editPlaylist"
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 );
