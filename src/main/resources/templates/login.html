@@ -9,22 +9,13 @@
 <body>
 <div class="page-wrapper">
     <header th:replace="~{partials/navbar :: navbar}")></header>
-    <div sec:authorize="!isAuthenticated()">
-      <p>You are not logged in. Please log in to continue.</p>
-    </div>
-      <img src="/images/login-background.jpg" alt="login background" class="background">
-      <header th:replace="~{partials/navbar :: navbar}"></header>
-      <div class="container grow justify-center">
-          <div class="row justify-center login-page-row">
-              <div class="column login-page-col">
-                  <img th:src="@{/images/concert.jpeg}" alt="login background" class="background">
-                  <h1 class="join">Where music, culture, and community come together.</h1>
-                  <br>
-              </div>
-              <div th:if="${param.logout}">
-                  <p>You have been logged out.</p>
-              </div>
-              <div class="column login-page-col login-form">
+    <img src="/images/login-background.jpg" alt="login background" class="background">
+    <div class="container grow justify-center">
+        <div class="row justify-center login-page-row">
+          <div class="column login-page-col">
+              <h1 class="join">Where music, culture, and community come together.</h1>
+              <br>
+              <div class="login-page-col login-form">
                   <form class="login-form" th:action="@{/login}" method="post">
                       <label class="text-area" for="username">Username:</label>
                       <input class="text-input" type="text" id="username" name="username">
@@ -34,17 +25,18 @@
                           <button type="submit" class="button btn primary">Log In</button>
                       </div>
                   </form>
-                  <div>
-                      <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
-                  </div>
-                  <div th:if="${param.error}">
-                      <p>Invalid Username and Password.</p>
-                  </div>
               </div>
           </div>
-      </div>
-      <footer th:replace="~{partials/footer :: footer}"></footer>
-  </div>
+          <div>
+              <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
+          </div>
+          <div th:if="${param.error}">
+              <p>Invalid Username and Password.</p>
+          </div>
+        </div>
+    </div>
+    <footer th:replace="~{partials/footer :: footer}"></footer>
+</div>
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
