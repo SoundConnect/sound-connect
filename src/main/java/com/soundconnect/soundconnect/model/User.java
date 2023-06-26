@@ -2,6 +2,7 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,6 +24,9 @@ public class User {
 
     @Column(nullable = false, length = 1000)
     private String profilePic;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Playlist> ownedPlaylists;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
