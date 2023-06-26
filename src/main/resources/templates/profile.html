@@ -70,17 +70,13 @@
                             <div class="row">
                                 <div id="chatMessages" class="chat-messages">
                                     <div class="chat-row" th:each="chat : ${chats}">
-                                        <h3 class="chat" th:text="${chat.id}" th:data-chatid="${chat.id}"></h3>
+                                        <h3 class="chat" th:text="${chat.participants}" th:data-chatid="${chat.id}"></h3>
                                     </div>
                                 </div>
                                 <div id="messageFeed" class="row message-feed">
                                     <div class="column senderCol">
 
                                     </div>
-                                    <div class="column recipientCol">
-
-                                    </div>
-
                                 </div>
                             </div>
 

@@ -1,3 +1,5 @@
+let chatId = null;
+let _csrf = document.querySelector("meta[name='_csrf']").getAttribute("content");
 document.addEventListener("DOMContentLoaded", function() {
     let openButton = document.querySelector("#openButton");
     let closeButton = document.querySelector("#closeButton");
@@ -11,31 +13,43 @@ document.addEventListener("DOMContentLoaded", function() {
         messageContainer.classList.remove("show");
     });
 });
+let newChatButton = document.querySelector("#newMessage");
+newChatButton.addEventListener("click", function() {
+    document.querySelector("#recipientsInput").value = "";
+    document.querySelector(".senderCol").innerHTML = "";
+    chatId = null;
+    const previousChatElement = document.querySelector(`.chat[data-chatid="${selectedChatId}"]`);
+    previousChatElement.classList.remove('selected');
+});
 document.querySelector("#sendButton").addEventListener("click", sendMessage);
-
 function sendMessage() {
     let messageInput = document.querySelector("#messageInput");
     let message = messageInput.value;
 
     let recipientsValue = document.querySelector("#recipientsInput").value;
     let recipients = recipientsValue.split(",").map(recipient => recipient.trim());
-
     let data = {
         recipients: recipients,
-        message: message
+        message: message,
+        chat: chatId
     };
-
-    fetch("/profile", {
+    console.log(data)
+    if(chatId == null){
+        chatId = 0;
+    }
+    fetch("/profile/" + chatId , {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-csrf-token": `${_csrf}`
         },
         body: JSON.stringify(data)
     })
         .then(function(response) {
+            console.log(response)
             if (response.ok) {
                 console.log("Message sent successfully!");
-                // Clear the input field
+
                 messageInput.value = "";
             } else {
                 console.error("Failed to send the message.");
@@ -45,14 +59,51 @@ function sendMessage() {
             console.error("An error occurred:", error);
         });
 }
-document.querySelectorAll('.chat').forEach(function(chatElement) {
-    chatElement.addEventListener('click', function() {
-        let chatId = this.getAttribute('data-chatid');
+
+const chatElements = document.querySelectorAll('.chat');
+
+let selectedChatId = null;
+
+chatElements.forEach(function (chatElement) {
+    chatElement.addEventListener('click', function () {
+
+        const chatId = this.getAttribute('data-chatid');
+
+        if (selectedChatId) {
+            const previousChatElement = document.querySelector(`.chat[data-chatid="${selectedChatId}"]`);
+            previousChatElement.classList.remove('selected');
+        }
+
+        this.classList.add('selected');
+
+        selectedChatId = chatId;
+
         loadMessages(chatId);
+        selectChat(chatId);
     });
 });
+
+
+function selectChat(chatId) {
+    fetch('/profile/chat/' + chatId) // Replace with your endpoint to fetch chat details
+        .then(function(response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to fetch chat details');
+            }
+        })
+        .then(function(chat) {
+            let participants = chat.participants;
+            document.querySelector('#recipientsInput').value = participants;
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+}
+
 function loadMessages(chatId) {
-    fetch("/profile/messages/"+ chatId)
+    fetch("/profile/messages/" + chatId)
         .then(function(response) {
             if (response.ok) {
                 return response.json();
@@ -67,12 +118,13 @@ function loadMessages(chatId) {
                 let messageElement = document.createElement('div');
                 let senderElement = document.createElement('div');
 
-                senderElement.classList.add('sender');
-                senderElement.textContent = message.sender;
                 messageElement.classList.add('message');
                 messageElement.textContent = message.message
+                senderElement.classList.add('sender');
+                senderElement.textContent = message.sender;
 
-                senderElement.appendChild(messageElement);
+
+                senderCol.appendChild(messageElement);
                 senderCol.appendChild(senderElement);
             });
         })

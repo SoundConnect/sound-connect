@@ -857,6 +857,10 @@ button {
     background-color: var(--primary);
     cursor: pointer;
 }
+.chat.selected {
+    color: var(--secondary);
+    background-color: var(--primary);
+}
 .message{
     color: var(--primary);
 }
@@ -864,6 +868,6 @@ button {
     color: grey;
 }
 /********** End Messages **********/
-=======
+
 
 

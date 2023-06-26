@@ -16,7 +16,10 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    private UserDetailsLoader usersLoader;
+
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
     }
 
     @Bean
@@ -35,8 +38,10 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
                         "/profile",
+                        "/profile/**",
                         "/createPlaylist").authenticated()
                 .requestMatchers(
+                        "/",
                         "/login",
                         "/logout",
                         "/register",
@@ -44,7 +49,10 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-                        "/editPlaylist"
+                        "/editPlaylist",
+                        "/profile/messages/**",
+                        "/profile/**"
+
 
 
                 ).permitAll()
