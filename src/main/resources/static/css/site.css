@@ -479,8 +479,9 @@ textarea {
 }
 
 label {
-    font-size: 20px;
-    color: #f5f5f5;
+    font-size: 25px;
+    font-weight: bold;
+    color: #060429;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -507,6 +508,31 @@ button.btn.primary {
     justify-content: center;
     margin-top: 5px;
 }
+
+/* This should be the container having the hero image */
+.login-page-col {
+    position: relative;  /* Makes it a positioning context */
+}
+
+/* This positions the .join content over the hero image */
+.join {
+    position: absolute;
+    top: 50px;  /* Adjust as needed */
+    left: 250px;  /* Adjust as needed */
+    color: #f5f5f5;  /* Set text color to white or any other color that contrasts with the image */
+    font-size: 30px;
+    z-index: 1;  /* Optional: To make sure it stays on top */
+}
+
+/* This positions the login form over the hero image */
+.login-form {
+    font-size:30px;
+    position: absolute;
+    top: 300px;  /* Adjust as needed */
+    left: 450px;  /* Adjust as needed */
+    z-index: 1;  /* Optional: To make sure it stays on top */
+}
+
 /*======Items Below login page======*/
 
 .account {
@@ -519,15 +545,27 @@ button.btn.primary {
     font-size: 20px;
     color: #f5f5f5;
 }
-.join {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 20vh;
-    font-size: 20px;
-    color:white;
+
+
+@media (max-width: 800px) {
+    .join {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10vh;
+        font-size: 15px;
+        color:hotpink;
+    }
+    .login-form {
+        font-size:30px;
+        position: absolute;
+        top: 300px;  /* Adjust as needed */
+        left: 60px;  /* Adjust as needed */
+        z-index: 1;  /* Optional: To make sure it stays on top */
+    }
 }
+
 .reg-highlight {
     color:#f5f5f5;
     font-weight: bold;
@@ -746,26 +784,12 @@ form.create-form {
     padding: 20px;
 }
 
-/*.hero {*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    height: 300px; !* Set the height you want for the hero image *!*/
-/*    position: relative;*/
-/*}*/
-
 .profile-info {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-80%, -80%);
     text-align: center;
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-    /*flex-direction: column;*/
-    /*margin-top: -75px;*/
-    /*padding: 20px;*/
-
 }
 
 .profile-info h2 {
@@ -906,8 +930,6 @@ button {
 /*CSS for responsive NAVBAR*/
 * {
     box-sizing: border-box;
-    /*margin: 0;*/
-    /*padding: 0;*/
 }
 
 nav {
@@ -922,8 +944,6 @@ nav .mainMenu {
     list-style: none;
     align-items: center;
     justify-content: space-evenly;
-    /*flex-wrap: nowrap;*/
-    /*flex-direction: row;*/
 }
 nav .mainMenu li a {
     display: inline-block;
