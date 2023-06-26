@@ -2,36 +2,78 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{partials/head :: head(title='SoundConnect - Post Feed')}"></head>
 <body>
-    <div class="page-wrapper">
-        <nav th:replace="~{partials/navbar :: navbar}"></nav>
+<div class="page-wrapper">
+    <nav th:replace="~{partials/navbar :: navbar}"></nav>
 
-        <header class="container feed-header-container">
-            <div class="row justify-center feed-header-row">
-                <div class="column align-center feed-header-col">
-                    <h1>View Posts</h1>
-                </div>
+    <header class="container feed-header-container">
+        <div class="row justify-center feed-header-row">
+            <div class="column align-center feed-header-col">
+                <h1>View Posts</h1>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div class="container grow feed-container justify-center">
-            <div class="row feed-row justify-center">
-                <div class="column feed-col">
-                    <ul class="feed-ul">
-                        <li class="feed-posts" th:each="playlist : ${playlists}">
-                            <form th:action="${playlist.id} ? @{/feed} : @{/feed/{id}/edit(id=${playlist.id})}" th:method="post">
-                                <h2 class="feed-post-header" th:text="${playlist.name}"></h2>
-                                <p class="feed-post-body" th:text="${playlist.description}"></p>
-                                <button type="submit" name="delete_playlist" th:value="${playlist.id}">DELETE</button>
-                            </form>
-                            <a class="submit-btn" th:href="@{/feed/{id}/edit(id=${playlist.id})}">EDIT</a>
-                        </li>
-                    </ul>
+    <!-- playlist container -->
+    <section class="container grow gap-10">
+        <!-- one playlist -->
+        <div th:each="playlist : ${playlists}" class="row no-padding feed-playlist">
+            <div class="column playlist-col">
+                <!-- playlist details/info -->
+                <div class="row align-center playlist-details">
+                    <div class="column shrink playlist-img-wrapper">
+                        <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                    </div>
+                    <div class="column">
+                        <h2 th:text="${playlist.name}"></h2>
+                        <div class="row no-padding desc-row">
+                            <p th:text="${playlist.description}">Playlist Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur facilis fugiat quibusdam recusandae tenetur voluptates. Aperiam atque blanditiis deserunt dolor magni quae quas reiciendis, sunt veniam voluptatibus. Laborum officiis, quisquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis ipsum mollitia quam tempore unde, ut? Delectus expedita nesciunt nulla omnis reiciendis rerum veniam veritatis! Commodi dignissimos enim libero neque.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- playlist Tracks Box -->
+                <div class="row playlist-tracks">
+                    <div class="column gap-10 playlist-song-box">
+                        <!-- playlist tracks -->
+                        <div th:each="track : ${playlist.tracks}">
+                            <div class="row align-center no-padding tracks-box">
+                                <div class="column shrink song-pic-wrapper">
+                                    <img th:src="${track.album.albumArt}" alt="Song Picture" class="song-pic" >
+                                </div>
+                                <div class="column song-title no-gap">
+                                    <p class="song-name" th:text="${track.name}"></p>
+                                    <p class="song-artist" th:text="${track.album.artist.name}"></p>
+                                </div>
+                                <div class="column song-album-name" th:text="${track.album.name}"></div>
+                                <div class="column align-right song-duration" th:text="${track.duration}"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
+
+<!--        <div class="container grow feed-container justify-center">-->
+<!--            <div class="row feed-row justify-center">-->
+<!--                <div class="column feed-col">-->
+<!--                    <ul class="feed-ul">-->
+<!--                        <li class="feed-posts" th:each="playlist : ${playlists}">-->
+<!--                            <form th:action="${playlist.id} ? @{/feed} : @{/feed/{id}/edit(id=${playlist.id})}" th:method="post">-->
+<!--                                <h2 class="feed-post-header" th:text="${playlist.name}"></h2>-->
+<!--                                <p class="feed-post-body" th:text="${playlist.description}"></p>-->
+<!--                                <button type="submit" name="delete_playlist" th:value="${playlist.id}">DELETE</button>-->
+<!--                            </form>-->
+<!--                            <a class="submit-btn" th:href="@{/feed/{id}/edit(id=${playlist.id})}">EDIT</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+</div>
 
 <script type="module" th:src="@{/js/main.js}"></script>
 </body>
-
 </html>

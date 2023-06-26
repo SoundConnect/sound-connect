@@ -176,6 +176,7 @@ a{
 .playlist-image{
     height: 100%;
     width: 180px;
+    border-radius: 10px;
 }
 .playlist-info{
     height: 100%;
@@ -859,5 +860,47 @@ button {
     color: grey;
 }
 /********** End Messages **********/
+
+/********** Feed **********/
+.feed-playlist {
+    margin-top: 5rem;
+
+    background-color: #9e9e9e;
+    border-radius: 10px;
+    height: 20rem;
+    position: relative;
+}
+.playlist-details {
+    padding: 1rem;
+    background-color: #6e6e6e;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    flex: 1 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.playlist-tracks {
+    flex: 3 0 0;
+}
+.playlist-img-wrapper {
+    width: 10%;
+    overflow: hidden;
+}
+.playlist-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.desc-row {
+    height: fit-content;
+    max-height: 4rem;
+    overflow: hidden;
+}
+.playlist-col {
+    overflow: scroll;
+    border-radius: inherit;
+}
+
 
 
