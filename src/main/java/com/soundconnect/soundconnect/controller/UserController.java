@@ -6,6 +6,7 @@ import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -92,6 +93,14 @@ public class UserController {
         model.addAttribute("chats", chats);
         model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         return "profile";
+    }
+    @GetMapping("/profile/newchat")
+    @ResponseBody
+    public ResponseEntity<List<Chat>> showNewChat(Model model) {
+        List<Chat> chats = chatDao.findAll();
+        model.addAttribute("chats", chats);
+        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        return ResponseEntity.ok(chats);
     }
     @GetMapping("/profile/messages/{chatId}")
     @ResponseBody

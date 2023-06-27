@@ -63,7 +63,7 @@
                             <button id="newMessage">New+</button>
                         </div>
 
-                        <label class="message-title" for="recipientsInput">Recipient(s):</label>
+                        <label class="message-recipients" for="recipientsInput">Recipient(s):</label>
                         <input type="text" id="recipientsInput" class="recipient-input" placeholder="Recipient username">
 
                         <div class="messages-container">
@@ -96,12 +96,7 @@
     <footer th:replace="partials/footer :: footer"></footer>
 </div>
 <script src="https://cdn.talkjs.com/talk.js"></script>
-<script src="/js/messages.js">
-    (async () => {
-        let messages = await loadChats();
-        console.log(messages)
-    })();
-</script>
+<script src="/js/messages.js"></script>
 <script type="module" src="/js/profile.js">
     (async () => {
         let playlist = await displayPlaylist();

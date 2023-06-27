@@ -809,7 +809,7 @@ form.create-form {
     height: 450px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .message-content {
@@ -823,6 +823,7 @@ form.create-form {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
+    padding: 10px;
 }
 .message-feed{
     height: 300px;
@@ -845,9 +846,15 @@ button {
 .message-title {
     color: var(--primary);
 }
+.message-recipients{
+    gap: 10px;
+    margin-left: 20px;
+    color: var(--primary);
+}
 .chat{
     color: var(--primary);
     cursor: pointer;
+    height: 50px;
 }
 .chat-row:hover{
     background-color: var(--primary);
@@ -861,12 +868,20 @@ button {
     color: var(--secondary);
     background-color: var(--primary);
 }
-.message{
-    color: var(--primary);
+.message {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-radius: 10px;
+    padding: 5px;
+    display: inline-block;
 }
 .sender{
     color: grey;
+    font-size: 12px;
+    margin-bottom: 20px;
+    margin-left: 5px;
 }
+
 /********** End Messages **********/
 
 

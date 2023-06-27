@@ -51,6 +51,7 @@ function sendMessage() {
                 console.log("Message sent successfully!");
 
                 messageInput.value = "";
+                loadNewChats();
             } else {
                 console.error("Failed to send the message.");
             }
@@ -115,26 +116,59 @@ function loadMessages(chatId) {
             let senderCol = document.querySelector('.senderCol');
             senderCol.innerHTML = '';
             messages.forEach(function(message) {
+                let messageWrapper = document.createElement('div');
+                let senderWrapper = document.createElement('div');
                 let messageElement = document.createElement('div');
                 let senderElement = document.createElement('div');
 
+                messageWrapper.classList.add('message-wrapper');
                 messageElement.classList.add('message');
                 messageElement.textContent = message.message
+                senderWrapper.classList.add('sender-wrapper');
                 senderElement.classList.add('sender');
                 senderElement.textContent = message.sender;
 
-
-                senderCol.appendChild(messageElement);
-                senderCol.appendChild(senderElement);
+                messageWrapper.appendChild(messageElement);
+                senderCol.appendChild(messageWrapper);
+                senderWrapper.appendChild(senderElement);
+                senderCol.appendChild(senderWrapper);
             });
         })
         .catch(function(error) {
             console.error('An error occurred while loading messages:', error);
         });
 }
-function loadChats() {
-
-    fetch('/profile')
+// function loadChats() {
+//
+//     fetch('/profile')
+//         .then(function(response) {
+//             if (response.ok) {
+//                 return response.json();
+//             } else {
+//                 throw new Error('Failed to fetch chats');
+//             }
+//         })
+//         .then(function(chats) {
+//             let chatsContainer = document.querySelector('#chats');
+//             chatsContainer.innerHTML = '';
+//
+//             chats.forEach(function(chat) {
+//                 let chatElement = document.createElement('div');
+//                 chatElement.classList.add('chat');
+//                 chatElement.textContent = chat.name;
+//                 chatElement.addEventListener('click', function() {
+//                     loadMessages(chat.id);
+//                 });
+//
+//                 chatsContainer.appendChild(chatElement);
+//             });
+//         })
+//         .catch(function(error) {
+//             console.error('An error occurred while loading chats:', error);
+//         });
+// }
+function loadNewChats() {
+    fetch('/profile/newchat')
         .then(function(response) {
             if (response.ok) {
                 return response.json();
@@ -143,13 +177,16 @@ function loadChats() {
             }
         })
         .then(function(chats) {
-            let chatsContainer = document.querySelector('#chats');
+            let chatsContainer = document.querySelector('#chatMessages');
             chatsContainer.innerHTML = '';
-
+            chats = chats.reverse();
             chats.forEach(function(chat) {
-                let chatElement = document.createElement('div');
+                let chatElement = document.createElement('h3')
+                chatElement.textContent = chat.participants;
                 chatElement.classList.add('chat');
-                chatElement.textContent = chat.name;
+                chatElement.setAttribute('data-chatid', chat.id);
+
+                chatElement.innerHTML = `${chat.participants }`;
                 chatElement.addEventListener('click', function() {
                     loadMessages(chat.id);
                 });
@@ -161,3 +198,4 @@ function loadChats() {
             console.error('An error occurred while loading chats:', error);
         });
 }
+
