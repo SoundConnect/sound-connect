@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <title>SoundConnect Profile</title>
+       <title>SoundConnect Profile</title>
 </head>
 <body>
 <div class="page-wrapper profile">
@@ -116,7 +116,6 @@
     })();
 </script>
 <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
-<script th:src="@{/js/hamburger-menu.js}"></script>
 
         <script>
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
@@ -129,6 +128,8 @@
         IFrameAPI.createController(element, options, callback);
     };
 </script>
+<script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
 
