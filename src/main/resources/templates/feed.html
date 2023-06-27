@@ -14,14 +14,17 @@
     </header>
 
     <!-- playlist container -->
-    <section class="container grow gap-10">
+    <section class="container grow gap-30">
         <!-- one playlist -->
         <div th:each="playlist : ${playlists}" class="row no-padding feed-playlist">
             <div class="column playlist-col">
                 <!-- playlist details/info -->
-                <div class="row align-center playlist-details">
-                    <div class="column shrink playlist-img-wrapper">
-                        <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                <div class="row grow align-center playlist-details">
+                    <div th:each="playlist : ${playlist}" class="column shrink playlist-img-wrapper">
+<!--                        <img src="/images/default-playlist-logo.png" alt="Playlist Image">-->
+
+                        <img class="playlist-img" th:src="${playlist.tracks[0].album.albumArt}" alt="Playlist Image">
+                        <img class="playlist-img" th:src="${playlist.tracks[1].album.albumArt}" alt="Playlist Image">
                     </div>
                     <div class="column">
                         <h2 th:text="${playlist.name}"></h2>
@@ -32,7 +35,7 @@
                 </div>
 
                 <!-- playlist Tracks Box -->
-                <div class="row playlist-tracks">
+                <div class="row grow playlist-tracks">
                     <div class="column gap-10 playlist-song-box">
                         <!-- playlist tracks -->
                         <div th:each="track : ${playlist.tracks}">
@@ -72,6 +75,7 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
+    <footer th:replace="~{partials/footer :: footer}"></footer>
 </div>
 
 <script type="module" th:src="@{/js/main.js}"></script>

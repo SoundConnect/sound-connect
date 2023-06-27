@@ -2,12 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head(title='SoundConnect - Register')"></head>
 <body>
-<div sec:authorize="isAuthenticated()">
-<!--  This content is only shown to authenticated users RH-->
-  User ID: <span th:text="${#authentication.principal.id}"/>
-  Username: <span th:text="${#authentication.principal.username}"/>
-  Email: <span th:text="${#authentication.principal.email}"/>
-</div>
   <div class="page-wrapper body">
     <div th:replace="partials/navbar :: navbar"></div>
     <div class="container grow justify-center">

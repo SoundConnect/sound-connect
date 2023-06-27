@@ -89,6 +89,8 @@ public class PlaylistController {
     public String showFeed (Model model){
         List<Playlist> playlists = playlistsDao.findAll();
         model.addAttribute("playlists", playlists);
+
+
         return "feed";
     }
 
