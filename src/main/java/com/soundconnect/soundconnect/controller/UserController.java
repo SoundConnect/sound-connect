@@ -8,6 +8,7 @@ import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -62,13 +63,21 @@ public class UserController {
                            @RequestParam(name = "password") String password,
                            @RequestParam(name = "confirmPassword") String confirmPassword,
                            @RequestParam(name="image-url") String imageUrl) {
+        System.out.println("Inside register");
+        System.out.printf("username: %s%nemail: %s%npassword: %s%nconfirmPassword: %s%nimageUrl: %s%n", username, email, password, confirmPassword, imageUrl);
+
+        // TODO:
+        // IMPORTANT
+        // Change when we have a way to upload images
+        imageUrl = "dummyurl.hello";
+
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return "redirect:/register";
         } else if (!password.equals(confirmPassword)) {
             return "redirect:/register";
-        } else if (userDao.findByUsername(username) != null){ // check if user already exists
+        } else if (userDao.existsByUsername(username)){ // check if user already exists
             return "redirect:/register";
-        } else if (imageUrl == null || imageUrl.isEmpty()) {
+        } else if (imageUrl.equals("")) {
             return "redirect:/register";
         } else {
              String hash = passwordEncoder.encode(password); //add password encoder RH
@@ -83,9 +92,9 @@ public class UserController {
         List<Chat> chats = chatDao.findAll();
         model.addAttribute("chats", chats);
 
-//      Getting user info from security context
-        User users = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("users", users);
+        // Getting user info from security context
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("user", user);
 
 //      Displaying user's playlists on their profile
         // find user by id with security
@@ -94,13 +103,38 @@ public class UserController {
 
         return "profile";
     }
+    @GetMapping("/profile/newchat")
+    @ResponseBody
+    public ResponseEntity<List<Chat>> showNewChat(Model model) {
+        List<Chat> chats = chatDao.findAll();
+        model.addAttribute("chats", chats);
+        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+        return ResponseEntity.ok(chats);
+    }
     @GetMapping("/profile/messages/{chatId}")
     @ResponseBody
     public List<Message> showMessages(@PathVariable long chatId, Model model) {
         Chat chat = chatDao.findById(chatId);
+        System.out.println(chat);
         List<Message> messages = chat.getMessages();
         model.addAttribute("messages", messages);
         return messages;
+    }
+    @GetMapping("/profile/chat/{chatId}")
+    @ResponseBody
+    public Chat showParticipants(@PathVariable long chatId, Model model) {
+        Chat chat = chatDao.findById(chatId);
+        System.out.println(chat);
+        model.addAttribute("chat", chat);
+        return chat;
+    }
+
+    // show profile page for other users
+    @GetMapping("/profile/{username}")
+    public String showOtherProfile(@PathVariable String username, Model model) {
+        User user = userDao.findByUsername(username);
+        model.addAttribute("user", user);
+        return "profile";
     }
 
 

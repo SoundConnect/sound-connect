@@ -5,29 +5,29 @@
   <div class="page-wrapper body">
     <div th:replace="partials/navbar :: navbar"></div>
     <div class="container grow justify-center">
-      <div class="row justify-center">
-        <div class="column shrink overlay-form">
-          <h1 class="title">Create Your Account!</h1>
-          <p class="join">Start your SoundConnect Journey Today!</p>
-          <form class="register-form" th:method="post" th:action="@{/register}" th:object="${user}">
-            <label class="register_label" for="username">Username:</label>
-            <input placeholder="Enter Username" type="text" id="username" name="username" th:field="*{username}" class="username_input"><br>
-            <label class="register_label" for="email">Email:</label>
-            <input type="email" placeholder="Enter Email" id="email" name="email" th:field="*{email}"><br>
-            <label class="register_label" for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"><br>
-            <label class="register_label" for="confirmPassword">Confirm Password:</label>
-            <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
-            <input th:type="button" id="open" th:name="image" class="image-add profile-picture">
-            <input id="image-url" th:name="image-url" hidden />
-            <div class="register-submit">
-              <button class="register-button" type="submit" value="Submit">Register</button>
+        <div class="row justify-center">
+            <div class="column shrink overlay-form">
+                <h1 class="title">Create Your Account!</h1>
+                <p class="join">Start your SoundConnect Journey Today!</p>
+                <form class="register-form" th:method="post" th:action="@{/register}" th:object="${user}">
+                    <label class="register_label" for="username">Username:</label>
+                    <input placeholder="Enter Username" type="text" id="username" name="username" th:field="*{username}" class="username_input"><br>
+                    <label class="register_label" for="email">Email:</label>
+                    <input type="email" placeholder="Enter Email" id="email" name="email" th:field="*{email}"><br>
+                    <label class="register_label" for="password">Password:</label>
+                    <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"><br>
+                    <label class="register_label" for="confirmPassword">Confirm Password:</label>
+                    <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
+                    <input th:type="button" id="open" th:name="image" class="image-add profile-picture">
+                    <input id="image-url" th:name="image-url" hidden />
+                    <div class="register-submit">
+                        <button class="register-button" type="submit" value="Submit">Register</button>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>
 </body>
