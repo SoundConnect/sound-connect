@@ -1,4 +1,5 @@
 package com.soundconnect.soundconnect.config;
+
 import com.soundconnect.soundconnect.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +40,10 @@ public class SecurityConfiguration {
                 .requestMatchers(
                         "/profile",
                         "/profile/**",
-                        "/createPlaylist").authenticated()
+                        "/create,
+                        "/createPlaylist"),
+                        "/feed/*/edit").authenticated()
+
                 .requestMatchers(
                         "/",
                         "/login",
@@ -49,15 +53,17 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
+
                         "/editPlaylist",
                         "/profile/messages/**",
                         "/profile/**"
 
 
 
+
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                );
+                .requestMatchers("/css/**", "/js/**", "/images/**", "https://kit.fontawesome.com/**", "/static/**", "/keys.js").permitAll()
+        );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));
         http.httpBasic(withDefaults());

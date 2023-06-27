@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="partials/head :: head(title='SoundConnect - Login')"></head>
+<head th:replace="~{partials/head :: head(title='SoundConnect - Login')}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
 <body>
-<div sec:authorize="isAuthenticated()">
-
-</div>
-  <div class="page-wrapper">
-      <img src="/images/login-background.jpg" alt="login background" class="background">
-      <header th:replace="~{partials/navbar :: navbar}"></header>
-      <div class="container grow justify-center">
-          <div class="row justify-center login-page-row">
-              <div class="column login-page-col">
-                  <h1 class="join">Where music, culture, and community come together.</h1>
-                  <br>
-              </div>
-
-              <div class="column login-page-col login-form">
-                  <form th:action="@{/login}" method="post">
+<div class="page-wrapper">
+    <header th:replace="~{partials/navbar :: navbar}")></header>
+    <img src="/images/login-background.jpg" alt="login background" class="background">
+    <div class="container grow justify-center">
+        <div class="row justify-center login-page-row">
+          <div class="column login-page-col">
+              <h1 class="join">Where music, culture, and community come together.</h1>
+              <br>
+              <div class="login-page-col login-form">
+                  <form class="login-form" th:action="@{/login}" method="post">
                       <label class="text-area" for="username">Username:</label>
                       <input class="text-input" type="text" id="username" name="username">
                       <label class="text-area" for="password">Password:</label>
@@ -26,18 +25,18 @@
                           <button type="submit" class="button btn primary">Log In</button>
                       </div>
                   </form>
-                  <div>
-                      <p class="account">Don't have an account? <a href="/register">Register here</a></p>
-                  </div>
-                  <div th:if="${param.error}">
-                      <p>Invalid Username and Password.</p>
-                  </div>
-                  <div th:if="${param.logout}">
-                      <p>You have been logged out.</p>
-                  </div>
               </div>
           </div>
-      </div>
-  </div>
+          <div>
+              <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
+          </div>
+          <div th:if="${param.error}">
+              <p>Invalid Username and Password.</p>
+          </div>
+        </div>
+    </div>
+    <footer th:replace="~{partials/footer :: footer}"></footer>
+</div>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
