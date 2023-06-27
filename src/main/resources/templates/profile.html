@@ -29,7 +29,7 @@
 <!--                                <p>Followers: 0</p>-->
 <!--                                <p>Following: 0</p>-->
 <!--                            </div>-->
-                            <div th:each="user : ${users}" class="row profile-info profile-section">
+                            <div class="row profile-info profile-section">
                                 <p th:text="${user.username}" class="profile-username"></p>
                                 <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
                             </div>

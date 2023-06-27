@@ -21,10 +21,10 @@
                 <!-- playlist owner info -->
                 <div class="row align-center no-padding owner-box">
                     <div class="column shrink owner-pfp">
-                        <img th:src="${playlist.owner.profilePic}" alt="Profile Picture">
+                        <img class="pfp" th:src="${playlist.owner.profilePic}" alt="Profile Picture">
                     </div>
                     <div class="column shrink">
-                        <h2 th:text="${playlist.owner.username}"></h2>
+                        <h2 class="username" th:text="${playlist.owner.username}"></h2>
                     </div>
                 </div>
 
@@ -39,13 +39,27 @@
                             <p th:text="${playlist.description}">Playlist Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur facilis fugiat quibusdam recusandae tenetur voluptates. Aperiam atque blanditiis deserunt dolor magni quae quas reiciendis, sunt veniam voluptatibus. Laborum officiis, quisquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis ipsum mollitia quam tempore unde, ut? Delectus expedita nesciunt nulla omnis reiciendis rerum veniam veritatis! Commodi dignissimos enim libero neque.</p>
                         </div>
                     </div>
+                    <!-- Playlist Duration and Number of Songs -->
+<!--                    <div class="column shrink align-right">-->
+<!--                        <p></p>-->
+<!--                        <p></p>-->
+<!--                    </div>-->
                 </div>
 
                 <!-- playlist Tracks Box -->
                 <div class="row playlist-tracks">
                     <div class="column gap-10 playlist-song-box">
+                        <!-- tracks header -->
+                        <div class="row align-center no-padding song-box-header">
+                            <div class="column song-title no-gap">
+                                <div class="song-name">Title</div>
+                            </div>
+                            <div class="song-pic-wrapper"></div>
+                            <div class="column song-album-name">Album</div>
+                            <div class="column align-right song-duration">Duration</div>
+                        </div>
                         <!-- playlist tracks -->
-                        <div th:each="track : ${playlist.tracks}">
+                        <div class="playlist-track" th:each="track : ${playlist.tracks}">
                             <div class="row align-center no-padding tracks-box">
                                 <div class="column shrink song-pic-wrapper">
                                     <img th:src="${track.album.albumArt}" alt="Song Picture" class="song-pic" >
@@ -63,27 +77,8 @@
             </div>
         </div>
     </section>
-
-
-
-<!--        <div class="container grow feed-container justify-center">-->
-<!--            <div class="row feed-row justify-center">-->
-<!--                <div class="column feed-col">-->
-<!--                    <ul class="feed-ul">-->
-<!--                        <li class="feed-posts" th:each="playlist : ${playlists}">-->
-<!--                            <form th:action="${playlist.id} ? @{/feed} : @{/feed/{id}/edit(id=${playlist.id})}" th:method="post">-->
-<!--                                <h2 class="feed-post-header" th:text="${playlist.name}"></h2>-->
-<!--                                <p class="feed-post-body" th:text="${playlist.description}"></p>-->
-<!--                                <button type="submit" name="delete_playlist" th:value="${playlist.id}">DELETE</button>-->
-<!--                            </form>-->
-<!--                            <a class="submit-btn" th:href="@{/feed/{id}/edit(id=${playlist.id})}">EDIT</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
 </div>
 
-<script type="module" th:src="@{/js/main.js}"></script>
+<script type="module" th:src="@{/js/feed.js}"></script>
 </body>
 </html>

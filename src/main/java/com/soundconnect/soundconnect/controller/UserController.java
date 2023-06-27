@@ -83,9 +83,9 @@ public class UserController {
         List<Chat> chats = chatDao.findAll();
         model.addAttribute("chats", chats);
 
-//      Getting user info from security context
-        User users = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-        model.addAttribute("users", users);
+        // Getting user info from security context
+        User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+        model.addAttribute("user", user);
 
 //      Displaying user's playlists on their profile
         // find user by id with security
@@ -101,6 +101,14 @@ public class UserController {
         List<Message> messages = chat.getMessages();
         model.addAttribute("messages", messages);
         return messages;
+    }
+
+    // show profile page for other users
+    @GetMapping("/profile/{username}")
+    public String showOtherProfile(@PathVariable String username, Model model) {
+        User user = userDao.findByUsername(username);
+        model.addAttribute("user", user);
+        return "profile";
     }
 
 
