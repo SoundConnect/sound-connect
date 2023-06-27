@@ -101,49 +101,6 @@ footer {
     cursor: pointer;
 }
 
-.footer{
-    margin-bottom: 15px;
-}
-
-.footer-img-wrapper{
-    height: 50px;
-    width: 50px;
-    margin: 0 10px;
-}
-
-.footer-desc{
-    font-weight: 100;
-}
-.newsletter-input{
-    height: 40px;
-    width: 300px;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid var(--secondary);
-    outline: unset;
-    padding: 0 10px;
-    color: var(--secondary);
-}
-
-a{
-    text-decoration: none;
-    color: var(--secondary);
-}
-
-.footer-links:hover{
-    color: blue;
-}
-.info{
-    margin-top: 170px;
-}
-.info-title{
-    font-size: 35px;
-}
-.info-desc{
-    font-size: 20px;
-    font-weight: 100;
-    width: 500px;
-}
 
 /*****************************End Landing Page********************************/
 
@@ -283,88 +240,7 @@ a{
     cursor: pointer;
 }
 /*****************************End Explore Page********************************/
-/*****************************NAV BAR********************************/
 
-/*.nav-container{*/
-/*    flex-direction: row;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    padding: 10px;*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    z-index: 9;*/
-/*    width: 100%;*/
-/*    background-color: rgba(0, 8, 30, 0.6);*/
-/*}*/
-
-/*.nav-row{*/
-/*    align-content: center;*/
-/*    justify-content: space-between;*/
-/*}*/
-
-/*.nav-container .column{*/
-/*    flex-direction: row;*/
-/*    justify-content: inherit;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.login-button{*/
-/*    align-items: center;*/
-/*}*/
-
-/*.login-button, .sign-up-button{*/
-/*    background-color: var(--secondary);*/
-/*    color: var(--primary);*/
-/*    border: unset;*/
-/*    border-radius: 10px;*/
-/*    font-size: 15px;*/
-/*    font-weight: bold;*/
-/*    padding: 10px;*/
-/*    margin: 0px 5px;*/
-/*    transition: ease-in-out .3s;*/
-/*}*/
-/*.login-button:hover, .sign-up-button:hover {*/
-/*    background-color: var(--primary);*/
-/*    color: var(--secondary);*/
-/*    border: 2px solid var(--secondary);*/
-/*    border-radius: 10px;*/
-/*    font-size: 15px;*/
-/*    font-weight: bold;*/
-/*    padding: 10px;*/
-/*    margin: 0px 5px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.logo{*/
-/*    background: linear-gradient(to right, var(--tertiary), var(--secondary));*/
-/*    -webkit-background-clip: text;*/
-/*    -webkit-text-fill-color: transparent;*/
-/*}*/
-/*.logo-header{*/
-/*    background: linear-gradient(to right, var(--tertiary), var(--secondary));*/
-/*    -webkit-background-clip: text;*/
-/*    -webkit-text-fill-color: transparent;*/
-/*}*/
-/*nav a {*/
-/*    color: var(--secondary);*/
-/*    position: relative;*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*nav .underline::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    left: 0;*/
-/*    bottom: -2px;*/
-/*    width: 0;*/
-/*    height: 2px;*/
-/*    background-color: var(--secondary);*/
-/*    transition: width 0.3s ease;*/
-/*}*/
-
-/*nav a:hover::before, .footer-links:hover::before {*/
-/*    width: 100%;*/
-/*}*/
 /*****************************Register Page********************************/
 .profile-picture {
     width: 100px;
@@ -389,10 +265,37 @@ a{
     outline: unset;
     padding: 0 10px;
     color: var(--secondary);
+
+}
+/*Title: Upoad Image;*/
+.profile-img {
+    display: flex;
+    justify-content: center;
+}
+.image-add-profile-picture{
+    height: 40px;
+    width: 70%;
+    display: block;
+    background-color: var(--primary);
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+    margin: 15px auto;
+    transition: ease-in-out .3s;
+    text-align: center;
+    cursor: pointer;
 }
 .register_label{
     font-size: 20px;
     font-weight: bold;
+    color: var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 10px;
 }
 .register-button{
     background-color: var(--secondary);
@@ -444,155 +347,6 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
-/*
-======Forms Styles For Login Page======*/
-
-.login-page-row{
-    flex-direction: column;
-}
-
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.login-form > * {
-    width: 50%;
-}
-
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-    width:100%;
-}
-.input-wrapper[split="1/2"] {
-    width: calc(50% - 5px);
-}
-
-
-.text-input{
-    background-color: #f5f5f5;
-    outline: unset;
-    border: unset;
-    display: flex;
-    flex-direction: column;
-    min-height: 30px;
-    border-radius: 3px;
-    color: black;
-    font-family: inherit;
-    padding:10px;
-}
-
-.text-area {
-    color: #f5f5f5;
-}
-
-label {
-    font-size: 25px;
-    font-weight: bold;
-    color: #060429;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-button.btn.primary {
-    background-color: #060429;
-    min-height: 45px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    justify-content: center;
-    border-radius: 5px;
-    color: #f5f5f5;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: unset;
-    border: #1304d2 1px solid;
-}
-
-.login-submit{
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-/* This should be the container having the hero image */
-.login-page-col {
-    position: relative;  /* Makes it a positioning context */
-}
-
-.background {
-    z-index: -1;
-    position: absolute;
-}
-
-/* This positions the .join content over the hero image */
-.join {
-    display: flex;
-    justify-content: center;
-    top: 50px;  /* Adjust as needed */
-    left: 250px;  /* Adjust as needed */
-    color: #f5f5f5;  /* Set text color to white or any other color that contrasts with the image */
-    font-size: 30px;
-    z-index: 1;  /* Optional: To make sure it stays on top */
-}
-
-/* This positions the login form over the hero image */
-.login-form {
-    font-size:30px;
-    position: initial;
-    top: 300px;  /* Adjust as needed */
-    left: 450px;  /* Adjust as needed */
-    z-index: 1;  /* Optional: To make sure it stays on top */
-}
-
-/*======Items Below login page======*/
-
-.account {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    min-height: 10vh;
-    font-size: 20px;
-    color: #f5f5f5;
-}
-
-
-@media (max-width: 800px) {
-    .join {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 10vh;
-        font-size: 15px;
-        color:hotpink;
-    }
-    .login-form {
-        font-size:30px;
-        position: absolute;
-        top: 300px;  /* Adjust as needed */
-        left: 60px;  /* Adjust as needed */
-        z-index: 1;  /* Optional: To make sure it stays on top */
-    }
-}
-
-.reg-highlight {
-    color:#f5f5f5;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 
 /*
 ======Styles For Playlist Creation Page======
@@ -811,7 +565,7 @@ form.create-form {
     height: 200px;
 }
 .container-profile{
-    margin-top: 50px;
+    margin-top: 350px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -837,31 +591,7 @@ form.create-form {
     gap: 10px;
     max-width: 50%;
 }
-@media (max-width: 800px) {
-    .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
-        max-width: 25%;
-    }
-    .profile-playlists, .profile-category, .profile-albums {
-        display: block;
-        flex-wrap: wrap;
-        margin-right: 100px;
-        padding: 10px;
-        gap: 30px;
-    }
-    .sidebar-fixed {
-        background-color: rgba(19, 4, 210, 0.3);
-        width: 215px;
-        height: 250px;
-        position: absolute;
-        border-radius: 40px;
-        display: flex;
-        left: 22px;
-        top: 100px;
-        padding: 20px;
-        color: #f5f5f5;
-    }
 
-}
 /********** Messages **********/
 .message-container.show{
     display: block;
@@ -992,6 +722,133 @@ button {
     overflow: scroll;
     border-radius: inherit;
 }
+
+/*
+======Forms Styles For Login Page======*/
+
+.login-page-row{
+    flex-direction: column;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.login-form > * {
+    width: 70%;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.input-wrapper[split="1/2"] {
+    width: calc(50% - 5px);
+}
+
+
+.text-input{
+    background-color: #f5f5f5;
+    outline: unset;
+    border: unset;
+    display: flex;
+    flex-direction: column;
+    min-height: 30px;
+    border-radius: 3px;
+    color: black;
+    font-family: inherit;
+    padding:10px;
+}
+
+.text-area {
+    color: #f5f5f5;
+}
+
+label {
+    font-size: 25px;
+    font-weight: bold;
+    color: #060429;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button.btn.primary {
+    background-color: #060429;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    justify-content: center;
+    border-radius: 5px;
+    color: #f5f5f5;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: unset;
+    border: #1304d2 1px solid;
+}
+
+.login-submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* This should be the container having the hero image */
+.login-page-col {
+    position: relative;  /* Makes it a positioning context */
+}
+
+.background {
+    z-index: -1;
+    position: absolute;
+}
+
+/* This positions the .join content over the hero image */
+.join {
+    display: flex;
+    justify-content: center;
+    top: 50px;  /* Adjust as needed */
+    left: 250px;  /* Adjust as needed */
+    color: #f5f5f5;  /* Set text color to white or any other color that contrasts with the image */
+    font-size: 30px;
+    z-index: 1;  /* Optional: To make sure it stays on top */
+}
+
+/* This positions the login form over the hero image */
+.login-form {
+    font-size:30px;
+    position: initial;
+    top: 300px;  /* Adjust as needed */
+    left: 450px;  /* Adjust as needed */
+    z-index: 1;  /* Optional: To make sure it stays on top */
+}
+
+/*======Items Below login page======*/
+
+.account {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    font-size: 20px;
+    color: #f5f5f5;
+}
+.reg-highlight {
+    color: greenyellow;
+    font-weight: bold;
+    cursor: pointer;
+}
 .owner-box {
     position: absolute;
     top: -3.7rem;
@@ -1025,7 +882,8 @@ button {
 
 /*CSS for responsive NAVBAR*/
 nav {
-    background:#060429;
+    width: 100%;
+    max-width: 1100px;
     color: #f5f5f5;
     display: flex;
     justify-content: space-evenly;
@@ -1047,11 +905,12 @@ nav .mainMenu li a {
 
 }
 nav .mainMenu li a:hover {
-    background: #1304d2;
+    color: #1304d2;
+    text-decoration: none;
 }
 nav .openMenu {
     font-size: 2rem;
-    margin:50px;
+    margin:20px;
     display: none;
     cursor:pointer;
 }
@@ -1074,6 +933,123 @@ nav .logo {
     font-size: 25px;
     cursor:pointer;
 }
+
+/*/------------------FOOTER STYLES-------------------------*!*/
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Optional: Align items vertically in the center */
+    margin-bottom: 15px;
+    padding: 20px; /* Optional: Add padding */
+}
+
+.footer-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
+
+.footer-desc{
+    font-weight: 100;
+}
+.row .justify-space-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0;
+}
+.row {
+    padding: 0 0;
+}
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px
+}
+.row .news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.newsletter-input{
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+
+a{
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.footer-links:hover{
+    color: blue;
+}
+.info{
+    margin-top: 170px;
+}
+.info-title{
+    font-size: 35px;
+}
+.info-desc{
+    font-size: 20px;
+    font-weight: 100;
+    width: 500px;
+}
+/*MEDIA QUERIES FOR FOOTER */
+@media (max-width: 800px) {
+    .logo {
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        align-items: start;
+        color: #f5f5f5;
+    }
+    .footer{
+        flex-direction: column;
+        align-items: start;
+    }
+    .footer-desc{
+        text-align: start;
+    }
+    .footer-links{
+        margin: 10px 0;
+    }
+    .info{
+        margin-top: 0;
+    }
+    .info-title{
+        font-size: 25px;
+    }
+    .info-desc{
+        font-size: 15px;
+        width: 300px;
+    }
+    .newsletter-input{
+        width: 200px;
+    }
+}
+
+
+/*MEDIA QUERIES FOR NAVBAR */
 @media(max-width: 800px){
     nav .mainMenu {
         height: 100vh;
@@ -1106,5 +1082,52 @@ nav .logo {
     .icons i {
         display: inline-block;
         padding: 12px;
+    }
+}
+
+/*MEDIA QUERIES FOR PROFILE PG*/
+@media (max-width: 800px) {
+    .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
+        max-width: 25%;
+    }
+    .profile-playlists, .profile-category, .profile-albums {
+        display: block;
+        flex-wrap: wrap;
+        margin-right: 100px;
+        padding: 10px;
+        gap: 30px;
+    }
+    .sidebar-fixed {
+        background-color: rgba(19, 4, 210, 0.3);
+        width: 215px;
+        height: 250px;
+        position: absolute;
+        border-radius: 40px;
+        display: flex;
+        left: 22px;
+        top: 100px;
+        padding: 20px;
+        color: #f5f5f5;
+    }
+
+}
+/*MEDIA QUERIES FOR LOGIN PG*/
+
+@media (max-width: 800px) {
+    .join {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10vh;
+        font-size: 15px;
+        color:#f5f5f5;
+    }
+    .login-form {
+        font-size:30px;
+        /*position: absolute;*/
+        top: 300px;  /* Adjust as needed */
+        left: 60px;  /* Adjust as needed */
+        z-index: 1;  /* Optional: To make sure it stays on top */
     }
 }

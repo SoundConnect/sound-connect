@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Menu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
 <nav th:fragment="navbar">
     <div class="logo"><h1> SoundConnect</h1></div>
     <div class="openMenu"><i class="fa fa-bars"></i></div>
@@ -7,9 +16,10 @@
         <li><a href="/contact">Contact</a></li>
         <li><a href="/explore">Explore</a></li>
         <li><a sec:authorize="!isAuthenticated()" href="/login">Login</a></li>
-        <li><a sec:authorize="!isAuthenticated()" href="/register">register</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/register">Register</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/profile">Profile</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>
+
         <div class="closeMenu"><i class="fa fa-times"></i></div>
         <span class="icons">
             <i class="fab fa-facebook"></i>
@@ -19,3 +29,35 @@
         </span>
     </ul>
 </nav>
+<script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<nav th:fragment="navbar">-->
+<!--    <div class="logo"><h1> SoundConnect</h1></div>-->
+<!--    <div class="openMenu"><i class="fa fa-bars"></i></div>-->
+<!--    <ul class="mainMenu">-->
+<!--        <li><a href="/">Home</a></li>-->
+<!--        <li><a href="/about">About</a></li>-->
+<!--        <li><a href="/contact">Contact</a></li>-->
+<!--        <li><a href="/explore">Explore</a></li>-->
+<!--        <li><a sec:authorize="!isAuthenticated()" href="/login">Login</a></li>-->
+<!--        <li><a sec:authorize="!isAuthenticated()" href="/register">register</a></li>-->
+<!--        <li><a sec:authorize="isAuthenticated()" href="/profile">Profile</a></li>-->
+<!--        <li><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>-->
+<!--        <div class="closeMenu"><i class="fa fa-times"></i></div>-->
+<!--        <span class="icons">-->
+<!--            <i class="fab fa-facebook"></i>-->
+<!--            <i class="fab fa-instagram"></i>-->
+<!--            <i class="fab fa-twitter"></i>-->
+<!--            <i class="fab fa-github"></i>-->
+<!--        </span>-->
+<!--    </ul>-->
+<!--</nav>-->
