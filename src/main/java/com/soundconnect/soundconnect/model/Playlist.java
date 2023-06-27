@@ -19,6 +19,10 @@ public class Playlist {
     @Column(nullable = false, length = 1500)
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     @ManyToMany(mappedBy = "playlists")
     private Set<User> users;
 
@@ -71,11 +75,17 @@ public class Playlist {
         this.tracks = tracks;
     }
 
-    public Playlist() {
+    public User getOwner() {
+        return owner;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
-//    ============== Constructors ==============
+    //    ============== Constructors ==============
+    public Playlist() {}
+
     public Playlist(String name, String description) {
         this.name = name;
         this.description = description;
