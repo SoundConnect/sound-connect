@@ -1,47 +1,41 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Profile')">
-    <meta charset="UTF-8">
-    <title>SoundConnect Profile</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+    <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        <title>SoundConnect Profile</title>
+    </head>
+    <body>
+        <div class="page-wrapper profile">
+            <header th:replace="~{partials/navbar :: navbar}"></header>
+            <div class="container-profile">
+                <div class="sidebar-fixed">
+                    <ul>
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/explore">Recommended Playlists</a></li>
+                        <li><a href="/playlists">Add Playlists</a></li>
+                        <li><a href="/create">Create Playlists</a></li>
+                        <li><a href="/editPlaylist">Edit Playlists</a></li>
+                        <li><a href="/feed">View Posts</a></li>
+                        <button id="openButton">Open Messages</button>
 
-<body>
-<div class="page-wrapper profile">
-    <header th:replace="partials/navbar :: navbar"></header>
-    <img src="/images/login-background.jpg" alt="login background" class="background">
-    <div class="container-profile">
-        <div class="sidebar-fixed">
-            <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/explore">Recommended Playlists</a></li>
-                <li><a href="/playlists">Add Playlists</a></li>
-                <li><a href="/createPlaylist">Create Playlists</a></li>
-                <li><a href="/editPlaylist">Edit Playlists</a></li>
-                <li><a href="/feed">View Posts</a></li>
-                <li><a href="/logout">Log Out</a></li>
-            </ul>
-        </div>
-        <div class="content-section row">
-            <div class="profile">
-                <div class="container">
-                    <div class="row justify-right">
-                        <p>Followers: 0</p>
-                        <p>Following: 0</p>
-                    </div>
+                    </ul>
                 </div>
-                <section class="profile-info profile-section">
-                    <p>{USERNAME}</p>
-                    <p>{IMAGE}</p>
-                </section>
-                <div class="container-playlists">
-                    <div class="column">
-                        <div class="row ">
-                            <h1>Featured Playlists</h1>
-                        </div>
-                        <div class="profile-playlists row">
-                        </div>
-
-                        <div class="row">
+                <div class="content-section row">
+                    <div class="profile">
+                        <div class="container">
+                            <div class="row profile-info profile-section">
+                                <p th:text="${user.username}" class="profile-username"></p>
+                                <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
+                            </div>
+                            <div class="container-playlists">
+                                <div class="column">
+                                    <div class="row ">
+                                        <h1>Featured Playlists</h1>
+                                    </div>
+                                    <div class="profile-playlists row">
+                                    </div>
+                                  <div class="row">
                             <h1>Category Playlists</h1>
                         </div>
                         <div class="profile-category row">
@@ -54,6 +48,38 @@
                         </div>
                     </div>
                 </div>
+                <div id="messageContainer" class="message-container">
+                    <div class="message-content">
+                        <div class="row justify-space-between">
+                            <h2 class="message-title">Messages</h2>
+                            <button id="newMessage">New+</button>
+                        </div>
+
+                        <label class="message-recipients" for="recipientsInput">Recipient(s):</label>
+                        <input type="text" id="recipientsInput" class="recipient-input" placeholder="Recipient username">
+
+                        <div class="messages-container">
+                            <div class="row">
+                                <div id="chatMessages" class="chat-messages">
+                                    <div class="chat-row" th:each="chat : ${chats}">
+                                        <h3 class="chat" th:text="${chat.participants}" th:data-chatid="${chat.id}"></h3>
+                                    </div>
+                                </div>
+                                <div id="messageFeed" class="row message-feed">
+                                    <div class="column senderCol">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="text" id="messageInput" class="message-input" placeholder="Type your message">
+                            <button id="sendButton">Send</button>
+                            <button id="closeButton">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -61,6 +87,8 @@
 <div>
     <footer th:replace="partials/footer :: footer"></footer>
 </div>
+<script src="https://cdn.talkjs.com/talk.js"></script>
+<script src="/js/messages.js"></script>
 <script type="module" src="/js/profile.js">
     (async () => {
         let playlist = await displayPlaylist();
@@ -79,7 +107,7 @@
         IFrameAPI.createController(element, options, callback);
     };
 </script>
+<script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
-
 </html>
-

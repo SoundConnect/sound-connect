@@ -2,6 +2,7 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,12 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(nullable = false, length = 1000)
+    private String profilePic;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Playlist> ownedPlaylists;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "user_playlist",
@@ -35,6 +42,14 @@ public class User {
 
     public void setPlaylists(Set<Playlist> playlists) {
         this.playlists = playlists;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public long getId() {
@@ -80,7 +95,8 @@ public class User {
         this.email = email;
         this.password = password;
     }
-//Security Configuration by RH
+
+    //Security Configuration by RH
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
         email = copy.email;
@@ -92,8 +108,28 @@ public class User {
     public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
-        this.email= email;
+        this.email = email;
         this.password = password;
 
     }
+
+    public User(String username, String email, String password, String profilePic) {
+        this.username = username;
+        this.email= email;
+        this.password = password;
+        this.profilePic = profilePic;
+    }
 }
+    // ============== Image Upload by RH ==============
+//        private String imagePath; // this is the path to the image file
+//
+//        public String getImagePath() {
+//            return imagePath;
+//        }
+//
+//        public void setImagePath(String imagePath) {
+//            this.imagePath = imagePath;
+//        }
+//
+//    }
+

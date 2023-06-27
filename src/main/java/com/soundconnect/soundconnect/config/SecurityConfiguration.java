@@ -1,4 +1,5 @@
 package com.soundconnect.soundconnect.config;
+
 import com.soundconnect.soundconnect.services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,10 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    private UserDetailsLoader usersLoader;
+
     public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
     }
 
     @Bean
@@ -35,8 +39,13 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
                         "/profile",
-                        "/createPlaylist").authenticated()
+                        "/profile/**",
+                        "/create",
+                        "/createPlaylist",
+                        "/feed/*/edit").authenticated()
+
                 .requestMatchers(
+                        "/",
                         "/login",
                         "/logout",
                         "/register",
@@ -44,12 +53,17 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-                        "/editPlaylist"
+
+                        "/editPlaylist",
+                        "/profile/messages/**",
+                        "/profile/**"
+
+
 
 
                 ).permitAll()
-                .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
-                );
+                .requestMatchers("/css/**", "/js/**", "/images/**", "https://kit.fontawesome.com/**", "/static/**", "/keys.js").permitAll()
+        );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));
         http.httpBasic(withDefaults());
