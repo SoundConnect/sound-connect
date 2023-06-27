@@ -15,10 +15,10 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/explore">Explore</a></li>
-        <li><a sec:authorize="!isAuthenticated()" href="/login">Login</a></li>
-        <li><a sec:authorize="!isAuthenticated()" href="/register">register</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/profile">Profile</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/logout">Logout</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/login">Login</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/register">Register</a></li>
 
         <div class="closeMenu"><i class="fa fa-times"></i></div>
         <span class="icons">
