@@ -40,8 +40,8 @@ public class SecurityConfiguration {
                 .requestMatchers(
                         "/profile",
                         "/profile/**",
-                        "/create,
-                        "/createPlaylist"),
+                        "/create",
+                        "/createPlaylist",
                         "/feed/*/edit").authenticated()
 
                 .requestMatchers(
