@@ -1,7 +1,7 @@
 
 // import {KEYS} from "./keys";
 const KEYS ={
-	clientID: "ce45f68184154033b71a753b12af825c", clientSecret :"a820a46f42714a9e9f885ed8e8433e10"
+	clientID: `${FIRST_SPOTIFY_KEY}`, clientSecret :`${SECOND_SPOTIFY_KEY}`
 
 // export const KEYS = {
 // 	clientID: "6b14de4df2be4965a8c7675f7314f326",

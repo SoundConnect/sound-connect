@@ -2,31 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:fragment="head (title)">
   <meta charset="UTF-8">
+  <meta name="_csrf" data-th-content="${_csrf.token}"/>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="_csrf" data-th-content="${_csrf.token}"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title th:text="${title}">SoundConnect</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" th:href="@{/css/resets.css}"/>
   <link rel="stylesheet" th:href="@{/css/layout.css}"/>
   <link rel="stylesheet" th:href="@{/css/site.css}"/>
+  <script th:src="@{/keys.js}"></script>
 </head>
-
-</html>
-
-
-
-
-
-
-
-<!--<head th:fragment="head (title)">-->
-<!--  <html  xmlns:th="http://www.thymeleaf.org" lang="en">-->
-<!--  <meta charset="UTF-8">-->
-<!--  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
-<!--  <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
-<!--  <title  th:text="${title}">SoundConnect</title>-->
-<!--  <link rel="stylesheet" th:href="@{/css/resets.css}"/>-->
-<!--  <link rel="stylesheet" th:href="@{/css/layout.css}"/>-->
-<!--  <link rel="stylesheet" th:href="@{/css/site.css}"/>-->
-<!--  </html>-->
-<!--  <title>SoundConnect</title>-->
-<!--</head>-->

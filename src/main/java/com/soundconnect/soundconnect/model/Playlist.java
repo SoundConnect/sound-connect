@@ -2,6 +2,7 @@ package com.soundconnect.soundconnect.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,10 @@ public class Playlist {
     @Column(nullable = false, length = 1500)
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     @ManyToMany(mappedBy = "playlists")
     private Set<User> users;
 
@@ -29,6 +34,7 @@ public class Playlist {
     )
     private Set<Track> tracks;
 
+//    ============== Getters and Setters ==============
     public Long getId() {
         return id;
     }
@@ -69,13 +75,16 @@ public class Playlist {
         this.tracks = tracks;
     }
 
-    public Playlist() {
+    public User getOwner() {
+        return owner;
     }
 
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 
-//    ============== Constructors ==============
-
-
+    //    ============== Constructors ==============
+    public Playlist() {}
 
     public Playlist(String name, String description) {
         this.name = name;
@@ -91,5 +100,13 @@ public class Playlist {
         this.name = name;
         this.description = description;
         this.tracks = tracks;
+    }
+
+//   ============== Methods ==================
+    public Set<Track> addTracks(Set<Track> filteredTracks) {
+        Set<Track> allTracks = new HashSet<>();
+        allTracks.addAll(filteredTracks);
+        allTracks.addAll(this.tracks);
+        return allTracks;
     }
 }
