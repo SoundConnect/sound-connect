@@ -36,6 +36,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers(
                         "/profile",
+                        "profile/*",
                         "/create",
                         "/feed/*/edit").authenticated()
                 .requestMatchers(

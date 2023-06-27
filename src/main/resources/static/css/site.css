@@ -972,6 +972,9 @@ button {
     position: absolute;
     top: -3.7rem;
 }
+.owner-box img, .owner-box h2 {
+    cursor: pointer;
+}
 .owner-pfp {
     width: 3rem;
     height: 3rem;
@@ -983,7 +986,17 @@ button {
     height: 100%;
     object-fit: cover;
 }
-
+.playlist-tracks .playlist-song-box, .playlist-tracks .playlist-song-box {
+    padding: 10px 0;
+}
+.playlist-tracks .song-box-header {
+    max-height: 2rem;
+    font-size: 1rem;
+    display: none;
+}
+.playlist-tracks:hover .song-box-header{
+    display: flex;
+}
 
 
 /*CSS for responsive NAVBAR*/
