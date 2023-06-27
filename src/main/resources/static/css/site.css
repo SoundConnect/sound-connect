@@ -260,10 +260,37 @@ body{
     outline: unset;
     padding: 0 10px;
     color: var(--secondary);
+
+}
+/*Title: Upoad Image;*/
+.profile-img {
+    display: flex;
+    justify-content: center;
+}
+.image-add-profile-picture{
+    height: 40px;
+    width: 70%;
+    display: block;
+    background-color: var(--primary);
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+    margin: 15px auto;
+    transition: ease-in-out .3s;
+    text-align: center;
+    cursor: pointer;
 }
 .register_label{
     font-size: 20px;
     font-weight: bold;
+    color: var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 10px;
 }
 .register-button{
     background-color: var(--secondary);
@@ -803,7 +830,6 @@ button.btn.primary {
 nav {
     width: 100%;
     max-width: 1100px;
-    background:#060429;
     color: #f5f5f5;
     display: flex;
     justify-content: space-evenly;
@@ -825,7 +851,8 @@ nav .mainMenu li a {
 
 }
 nav .mainMenu li a:hover {
-    background: #1304d2;
+    color: #1304d2;
+    text-decoration: none;
 }
 nav .openMenu {
     font-size: 2rem;

@@ -10,6 +10,7 @@
 </div>
   <div class="page-wrapper body">
     <div th:replace="partials/navbar :: navbar"></div>
+    <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container grow justify-center">
       <div class="row justify-center">
         <div class="column shrink overlay-form">
@@ -19,13 +20,15 @@
             <label class="register_label" for="username">Username:</label>
             <input placeholder="Enter Username" type="text" id="username" name="username" th:field="*{username}" class="username_input"><br>
             <label class="register_label" for="email">Email:</label>
-            <input type="email" placeholder="Enter Email" id="email" name="email" th:field="*{email}"><br>
+            <input type="email" placeholder="Enter Email" id="email" name="email" th:field="*{email}"class="email_input"><br>
             <label class="register_label" for="password">Password:</label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"><br>
+            <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"class="password_input"><br>
             <label class="register_label" for="confirmPassword">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
-            <input th:type="button" id="open" th:name="image" class="image-add profile-picture">
-            <input id="image-url" th:name="image-url" hidden />
+            <p class="profile-img">Upload Profile Image</p>
+            <label for="open"></label>
+            <input class="image-add-profile-picture" type="text" placeholder="Here" value="Click to Upload Profile Image" th:type="button" id="open" th:name="image" >
+            <label for="image-url"></label><input id="image-url" th:name="image-url" hidden />
             <div class="register-submit">
               <button class="register-button" type="submit" value="Submit">Register</button>
             </div>
@@ -34,8 +37,10 @@
       </div>
     </div>
   </div>
+<div>
+<footer th:replace="~{partials/footer :: footer}"></footer>
+</div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>
 </body>
-
 </html>
