@@ -52,8 +52,8 @@ public class PlaylistController {
 
             User owner = getCurrentUser();
             playlist.setOwner(owner);
-
             playlistsDao.save(playlist);
+
         } catch (DataIntegrityViolationException e) {
             e.getCause().printStackTrace();
         }
@@ -113,8 +113,9 @@ public class PlaylistController {
             String currentUserName = authentication.getName();
             System.out.println(currentUserName);
             return usersDao.findByUsername(currentUserName);
+        }  else {
+            return null;
         }
-        return null;
     }
 
     // method for handling added/edited/deleted data from a playlist
