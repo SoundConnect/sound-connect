@@ -325,9 +325,7 @@ body{
 .register-submit .register-button{
     width: 200px;
 }
-.footer{
-    margin-top: -150px;
-}
+
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
 .about-paragraph{
@@ -1092,3 +1090,8 @@ a{
         z-index: 1;  /* Optional: To make sure it stays on top */
     }
 }
+/*MEDIA QUERIES FOR REGISTER PG*/
+@media (max-width: 800px) {
+
+}
+
