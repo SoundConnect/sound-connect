@@ -63,13 +63,6 @@ public class UserController {
                            @RequestParam(name = "password") String password,
                            @RequestParam(name = "confirmPassword") String confirmPassword,
                            @RequestParam(name="image-url") String imageUrl) {
-        System.out.println("Inside register");
-        System.out.printf("username: %s%nemail: %s%npassword: %s%nconfirmPassword: %s%nimageUrl: %s%n", username, email, password, confirmPassword, imageUrl);
-
-        // TODO:
-        // IMPORTANT
-        // Change when we have a way to upload images
-        imageUrl = "dummyurl.hello";
 
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return "redirect:/register";
@@ -77,7 +70,7 @@ public class UserController {
             return "redirect:/register";
         } else if (userDao.existsByUsername(username)){ // check if user already exists
             return "redirect:/register";
-        } else if (imageUrl.equals("")) {
+        } else if (imageUrl == null || imageUrl.isEmpty()) {
             return "redirect:/register";
         } else {
              String hash = passwordEncoder.encode(password); //add password encoder RH
