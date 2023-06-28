@@ -255,11 +255,11 @@ footer {
     background-color: var(--primary);
     border-radius: 10px;
     padding: 2px 4px;
+    transition: ease-in-out .2s;
 }
 .edit-btn:hover {
     background-color: var(--secondary);
     color: var(--primary);
-    scale: 1.1;
 }
 
 .register-form{
@@ -534,6 +534,7 @@ form.create-form {
 .search-results-container .song-box-header {
     display: none ;
 }
+
 /*====== Profile Page Styles======*/
 .my-playlists {
     overflow-x: scroll;
@@ -544,35 +545,67 @@ form.create-form {
     min-width: 50%;
     max-width: 50%;
 }
-
-.sidebar-fixed {
-    background-color: rgba(19, 4, 210, 0.3);
-    width: 215px;
-    height: 250px;
+  /* profile sidebar */
+.profile-sidebar {
+    background-color: var(--primary);
+    border: 2px solid var(--secondary);
+    border-left-color: var(--primary);
+    width: 12vw;
+    height: 70vh;
     position: fixed;
-    border-radius: 40px;
-    left: 22px;
-    top: 100px;
+    border-radius: 0 10px 10px 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     padding: 20px;
-    color: white;
+    color: var(--secondary);
 }
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+.profile-sidebar-user-info, .profile-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-
-.sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
+.profile-sidebar-user-info img {
+    margin: 0;
 }
-.list-spacing li {
-    margin-bottom: 20px;
+.profile-sidebar-nav .link {
+    background-color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    padding: 10px;
+    transition: ease-in-out .2s;
+}
+.profile-sidebar-nav .link:hover {
+    background-color: var(--primary);
+    cursor: pointer;
+}
+.profile-sidebar-nav .link:hover a {
+    color: var(--secondary);
+}
+.profile-sidebar-nav a {
+    color: var(--primary);
+    width: min-content;
+}
+.profile-username {
+    font-size: 2rem;
+    font-weight: 700;
+}
+#openButton {
+    cursor: pointer;
+    border: 2px solid var(--secondary);
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 10px;
+    transition: ease-in-out .2s;
+}
+#openButton:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
 }
 .profile {
     padding: 20px;
 }
-
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -587,7 +620,6 @@ form.create-form {
     height: 200px;
 }
 .container-profile{
-    margin-top: 350px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -629,6 +661,7 @@ form.create-form {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 10px;
+    z-index: 1000;
 }
 
 .message-content {
@@ -721,6 +754,8 @@ button {
     position: sticky;
     top: 0;
     z-index: 999;
+    max-height: 5rem;
+    min-height: 5rem;
 }
 .playlist-tracks {
     flex: 3 0 0;
@@ -1019,8 +1054,8 @@ nav .logo {
     max-width: 1100px;
     padding: 0;
 }
-
-.newsletter{
+.
+{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1151,13 +1186,12 @@ a{
         padding: 10px;
         gap: 30px;
     }
-    .sidebar-fixed {
+    .profile-sidebar {
         background-color: rgba(19, 4, 210, 0.3);
         width: 215px;
         height: 250px;
         position: absolute;
         border-radius: 40px;
-        display: flex;
         left: 22px;
         top: 100px;
         padding: 20px;

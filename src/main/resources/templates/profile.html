@@ -2,27 +2,34 @@
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')"></head>
 <body>
     <div class="page-wrapper profile">
+        <!-- Header -->
         <header th:replace="~{partials/navbar :: navbar}"></header>
-        <div class="container-profile">
-            <div class="sidebar-fixed">
-                <ul>
-                    <li><a href="/index">Home</a></li>
-                    <li><a href="/explore">Recommended Playlists</a></li>
-                    <li><a href="/playlists">Add Playlists</a></li>
-                    <li><a href="/create">Create Playlists</a></li>
-                    <li><a href="/editPlaylist">Edit Playlists</a></li>
-                    <li><a href="/feed">View Posts</a></li>
-                    <button id="openButton">Open Messages</button>
 
-                </ul>
+        <!-- Main Content -->
+        <div class="container-profile">
+            <!-- Sidebar -->
+            <div class="row profile-sidebar">
+                <div class="column align-center gap-30">
+                    <div class="profile-sidebar-user-info text-center">
+                        <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
+                        <p th:text="${user.username}" class="profile-username"></p>
+                    </div>
+                    <div class="profile-sidebar-nav">
+                        <div class="link text-center">
+                            <a href="/create">Create a Playlist</a>
+                        </div>
+                        <div class="link text-center">
+                            <a href="/feed">Playlist Feed</a>
+                        </div>
+                    </div>
+                    <div class="row justify-center grow align-bottom">
+                        <button id="openButton">Open Messages</button>
+                    </div>
+                </div>
             </div>
             <div class="content-section row">
                 <div class="profile">
                     <div class="container">
-                        <div class="row profile-info profile-section">
-                            <p th:text="${user.username}" class="profile-username"></p>
-                            <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
-                        </div>
                         <div class="container-playlists">
                             <div class="column">
                                 <!-- User's playlists -->
@@ -127,15 +134,14 @@
                                 <button id="closeButton">Close</button>
                             </div>
                         </div>
-                        <input type="text" id="messageInput" class="message-input" placeholder="Type your message">
-                        <button id="sendButton">Send</button>
-                        <button id="closeButton">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <footer th:replace="partials/footer :: footer"></footer>
     </div>
-    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 <script src="https://cdn.talkjs.com/talk.js"></script>
 <script src="/js/messages.js"></script>
