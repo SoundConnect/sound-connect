@@ -97,16 +97,21 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.3</version>
-            </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+<!--                        <release>11</release> &lt;!&ndash; This line specifies the &#45;&#45;release flag &ndash;&gt;-->
+                    </configuration>
+                </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
 <!--                <version>${project.parent.version}</version>-->
             </plugin>
+
         </plugins>
     </build>
 </project>
