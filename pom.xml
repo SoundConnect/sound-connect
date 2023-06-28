@@ -52,11 +52,11 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.github.kaustubhpatange</groupId>-->
-<!--            <artifactId>spotifyapi</artifactId>-->
-<!--            <version>0.16</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.github.kaustubhpatange</groupId>
+            <artifactId>spotifyapi</artifactId>
+            <version>0.16</version>
+        </dependency>
         <dependency>
             <groupId>se.michaelthelin.spotify</groupId>
             <artifactId>spotify-web-api-java</artifactId>
@@ -89,29 +89,13 @@
             <artifactId>amqp-client</artifactId>
             <version>5.18.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.11.0</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.11.0</version>
-                    <configuration>
-<!--                        <release>11</release> &lt;!&ndash; This line specifies the &#45;&#45;release flag &ndash;&gt;-->
-                    </configuration>
-                </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-<!--                <version>${project.parent.version}</version>-->
             </plugin>
-
         </plugins>
     </build>
 </project>
