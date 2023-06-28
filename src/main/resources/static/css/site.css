@@ -50,29 +50,142 @@ body{
 
 }
 /*****************************Landing Page********************************/
-.hero-scene{
-    position: relative;
+.wrapper1{
+    background-image: url(../images/login-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+.heading-1{
+    display: flex;
+    flex-direction: row;
+}
+.heading-2{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    font-size: 40px;
+}
+.discover{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+}
+.info-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    color: #f5f5f5;
+}
+.info-desc1{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 30px;
+    color: #f5f5f5;
+    width: 100%;
+    height: 100%
 }
 
-.overlay-text1{
-    position: absolute;
-    top: 230px;
-    left: 229px;
-    font-size: 35px;
+.sign-up-button{
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 20px 10px 20px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    margin-left: 250px;
+}
+.login-button:hover, .sign-up-button:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 250px;
+    cursor: pointer;
 }
 
-.overlay-text2{
-    position: absolute;
-    top: 325px;
-    left: 448px;
-    font-size: 35px;
+.box1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
+.fa-music{
+    font-size: 100px;
+    color: #f5f5f5;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+.box2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -145px;
+    margin-left: 400px
+}
+.fa-users{
+    font-size: 100px;
+    color: #f5f5f5;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-share{
+    font-size: 100px;
+    color: #f5f5f5;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #f5f5f5;
+    width: 100%;
+    height: 100%
+
+}
+
 .service-card-wrapper{
     height: 321px;
     width: 317px;
@@ -91,41 +204,13 @@ body{
     margin:7px auto -75px auto;
     padding-top: 20px;
 }
-.button{
-    width: 100px;
-}
+
 .card-title{
     font-size: 35px;
 }
 .row.card-body{
     height: 400px;
 }
-
-.login-button, .sign-up-button{
-    background-color: var(--secondary);
-    color: var(--primary);
-    width: 85px;
-    border: unset;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 0px 5px;
-    text-align: center;
-    transition: ease-in-out .3s;
-}
-.login-button:hover, .sign-up-button:hover{
-    background-color: var(--primary);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 0px 5px;
-    cursor: pointer;
-}
-
 
 /*****************************End Landing Page********************************/
 
@@ -1125,11 +1210,25 @@ a{
 @media (max-width: 800px) {
 
 }
+/*MEDIA QUERIES FOR CONTACT PG*/
 
 @media (max-width: 800px) {
-
     .overlay-form1{
-        font-size: 30px;
+        display: inline-block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10vh;
+        font-size: 15px;
+    }
+    .para-sec{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10vh;
+        font-size: 15px;
+
     }
     .title {
         display: flex;
@@ -1139,28 +1238,204 @@ a{
         display: flex;
         width: 100%;
         justify-content: center;
+        font-size: 15px;
     }
     .about-paragraph1{
         display: flex;
+        flex-wrap: wrap;
         justify-content: flex-start;
         width: 100%;
-        margin: 30px;
-        font-size: 20px;
+        margin: 10px;
+        font-size: 25px;
     }
     .about-paragraph2{
         display: flex;
-        width: 100%;
+        flex-wrap: wrap;        width: 100%;
         justify-content: flex-start;
-        margin: 30px;
-        font-size: 20px;
+        margin: 10px;
+        font-size: 25px;
 
     }
     .about-paragraph3{
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        justify-content: flex-start;
-        margin: 30px;
-        font-size: 20px;
+        /*justify-content: flex-start;*/
+        margin: 10px;
+        font-size: 25px;
 
     }
+}
+
+/*MEDIA QUERIES FOR HOME/INDEX PG*/
+
+@media (max-width: 800px) {
+    .wrapper1{
+        background-image: url(../images/login-background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+    }
+    .heading-1{
+        display: flex;
+        flex-direction: row;
+    }
+    .heading-2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 50px;
+        font-size: 30px;
+    }
+    .discover{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-top: 50px;
+    }
+    .info-title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 5px;
+        color: #f5f5f5;
+    }
+    .info-desc1{
+        display: flex;
+        flex-direction: column;
+        font-size: 20px;
+        color: #f5f5f5;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+    }
+
+    .sign-up-button{
+        background-color: var(--secondary);
+        color: var(--primary);
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+        margin: 20px 10px 20px 10px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        margin-left: 250px;
+    }
+    .login-button:hover, .sign-up-button:hover{
+        background-color: var(--primary);
+        color: var(--secondary);
+        border: 2px solid var(--secondary);
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+        margin-left: 250px;
+        cursor: pointer;
+    }
+
+    .box1 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-left: 25px;
+    }
+    .fa-music{
+        font-size: 15px;
+        color: #f5f5f5;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .box2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: -205px;
+        margin-left: 275px;
+    }
+    .fa-users{
+        font-size: 15px;
+        color: #f5f5f5;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .box3 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-right: 25px;
+    }
+
+    .fa-share{
+        font-size: 15px;
+        color: #f5f5f5;
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card-description{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        color: #f5f5f5;
+        width: 100%;
+        height: 100%
+
+    }
+
+    .service-card-wrapper{
+        height: 200px;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px var(--secondary);
+        border: 1px solid var(--secondary);
+        background-color: #202033;
+    }
+    .service-card{
+        height: 100%;
+        width: 100%;
+    }
+    .service-card-icon{
+        height: 100px;
+        width: 100px;
+        margin:7px auto -75px auto;
+        /*padding-top: 20px;*/
+    }
+
+    .card-title{
+        font-size: 20px;
+    }
+    .row.card-body{
+        height: 400px;
+    }
+
 }
