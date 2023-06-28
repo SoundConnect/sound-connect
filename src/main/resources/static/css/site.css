@@ -726,15 +726,49 @@ button {
     flex: 3 0 0;
 }
 .playlist-img-wrapper {
-    width: 10%;
+    width: 16vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     overflow: hidden;
+    margin-left: 10px;
 }
-.playlist-img-wrapper img {
-    width: 100%;
-    height: 100%;
+.playlist-img {
+    width: 8vw;
+    height: 11vh;
     object-fit: cover;
     border-radius: 10px;
 }
+
+.large-playlist-images{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image1{
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    border-top-right-radius: unset;
+}
+
+.image2{
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    border-top-left-radius: unset;
+}
+
+.image3{
+    border-bottom-right-radius: unset;
+    border-top-right-radius: unset;
+    border-top-left-radius: unset;
+}
+
+.image4 {
+    border-bottom-left-radius: unset;
+    border-top-right-radius: unset;
+    border-top-left-radius: unset;
+}
+
 .desc-row {
     height: fit-content;
     max-height: 4rem;
@@ -985,9 +1019,7 @@ nav .logo {
     max-width: 1100px;
     padding: 0;
 }
-.row {
-    padding: 0 0;
-}
+
 .newsletter{
     display: flex;
     flex-direction: column;
