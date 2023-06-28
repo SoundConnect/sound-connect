@@ -325,6 +325,9 @@ body{
 .register-submit .register-button{
     width: 200px;
 }
+.footer{
+    margin-top: -150px;
+}
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
 .about-paragraph{
@@ -829,10 +832,12 @@ button.btn.primary {
 /*CSS for responsive NAVBAR*/
 nav {
     width: 100%;
-    max-width: 1100px;
+    /*max-width: 1350px;*/
     color: #f5f5f5;
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
 }
 
 nav .mainMenu {
@@ -884,10 +889,13 @@ nav .logo {
 
 .footer {
     display: flex;
+    width: 100%;
+    margin-left: 150px;
+    gap: 20px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center; /* Optional: Align items vertically in the center */
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     padding: 20px; /* Optional: Add padding */
 }
 
@@ -899,6 +907,7 @@ nav .logo {
 
 .footer-desc{
     font-weight: 100;
+    margin-right: 40px;
 }
 .row .justify-space-between{
     display: flex;
@@ -918,6 +927,8 @@ nav .logo {
     align-items: flex-start;
     justify-content: center;
     margin-top: 20px;
+    margin-right: 150px;
+    margin-left: 25px;
     width: 100%;
     max-width: 1100px
 }
@@ -975,6 +986,7 @@ a{
     }
     .footer-desc{
         text-align: start;
+        margin-right: 450px;
     }
     .footer-links{
         margin: 10px 0;
@@ -988,6 +1000,9 @@ a{
     .info-desc{
         font-size: 15px;
         width: 300px;
+    }
+    .newsletter{
+        margin: 0;
     }
     .newsletter-input{
         width: 200px;
