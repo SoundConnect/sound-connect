@@ -96,6 +96,10 @@ public class UserController {
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("user", user);
 
+        // User's playlists
+        List<Playlist> playlists = playlistDao.findAllByOwner(user);
+        model.addAttribute("playlists", playlists);
+
 //      Displaying user's playlists on their profile
         // find user by id with security
 //        List<Playlist> userPlaylists = playlistDao.findAllByUser(users);
@@ -103,6 +107,7 @@ public class UserController {
 
         return "profile";
     }
+  
     @GetMapping("/profile/newchat")
     @ResponseBody
     public ResponseEntity<List<Chat>> showNewChat(Model model) {
@@ -134,7 +139,20 @@ public class UserController {
     public String showOtherProfile(@PathVariable String username, Model model) {
         User user = userDao.findByUsername(username);
         model.addAttribute("user", user);
+
+        List<Playlist> userPlaylists = playlistDao.findAllByOwner(user);
+        model.addAttribute("playlists", userPlaylists);
+
         return "profile";
+    }
+
+    @GetMapping("/profile/messages/{chatId}")
+    @ResponseBody
+    public List<Message> showMessages(@PathVariable long chatId, Model model) {
+        Chat chat = chatDao.findById(chatId);
+        List<Message> messages = chat.getMessages();
+        model.addAttribute("messages", messages);
+        return messages;
     }
 
 

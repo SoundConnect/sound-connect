@@ -249,6 +249,18 @@ footer {
     object-fit: cover;
     margin-bottom: 20px;
 }
+.edit-btn {
+    cursor: pointer;
+    border: 1px solid var(--secondary);
+    background-color: var(--primary);
+    border-radius: 10px;
+    padding: 2px 4px;
+}
+.edit-btn:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+    scale: 1.1;
+}
 
 .register-form{
     padding: 20px;
@@ -523,6 +535,16 @@ form.create-form {
     display: none ;
 }
 /*====== Profile Page Styles======*/
+.my-playlists {
+    overflow-x: scroll;
+}
+.my-playlists .playlist-col {
+    max-height: 20rem;
+    overflow-y: scroll;
+    min-width: 50%;
+    max-width: 50%;
+}
+
 .sidebar-fixed {
     background-color: rgba(19, 4, 210, 0.3);
     width: 215px;
@@ -716,7 +738,7 @@ button {
 .desc-row {
     height: fit-content;
     max-height: 4rem;
-    overflow: hidden;
+    overflow: scroll;
 }
 .playlist-col {
     overflow: scroll;
