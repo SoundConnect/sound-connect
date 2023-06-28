@@ -28,10 +28,13 @@
                     </div>
                 </div>
 
-                <!-- playlist details -->
-                <div class="row align-center playlist-details">
-                    <div class="column shrink playlist-img-wrapper">
-                        <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                <!-- playlist details/info -->
+                <div class="row grow align-center playlist-details">
+                    <div th:each="playlist : ${playlist}" class="column shrink playlist-img-wrapper">
+<!--                        <img src="/images/default-playlist-logo.png" alt="Playlist Image">-->
+
+                        <img class="playlist-img" th:src="${playlist.tracks[0].album.albumArt}" alt="Playlist Image">
+                        <img class="playlist-img" th:src="${playlist.tracks[1].album.albumArt}" alt="Playlist Image">
                     </div>
                     <div class="column">
                         <h2 th:text="${playlist.name}"></h2>
@@ -47,7 +50,7 @@
                 </div>
 
                 <!-- playlist Tracks Box -->
-                <div class="row playlist-tracks">
+                <div class="row grow playlist-tracks">
                     <div class="column gap-10 playlist-song-box">
                         <!-- tracks header -->
                         <div class="row align-center no-padding song-box-header">

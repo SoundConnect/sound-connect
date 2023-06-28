@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,31 +32,42 @@ public class MessageController {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @PostMapping("/profile")
-    public void sendMessage(@RequestBody MessageRequest messageRequest) {
-        Message message = new Message(messageRequest.getMessage(), "test");
-        System.out.println(message);
+    @PostMapping("/profile/{id}")
+    public String sendMessage(@RequestBody MessageRequest messageRequest, @PathVariable Long id) {
+        System.out.println("profile/id");
+        Message message = new Message(messageRequest.getMessage(),"test", messageRequest.getRecipients().get(0));
+        messageRequest.setSender("test");
+        messageRequest.setMessage(messageRequest.getMessage());
+        messageRequest.setRecipients(messageRequest.getRecipients());
+        messageRequest.setChatId(messageRequest.getChatId());
         List<String> recipients = messageRequest.getRecipients();
+        System.out.println(recipients);
         messageDao.save(message);
 
         for (String recipient : recipients) {
             rabbitTemplate.convertAndSend("", recipient, message.toString());
         }
-        if(messageRequest.getChatId() == null) {
+
+        if(id == 0) {
             Chat chat = new Chat();
             chat.pushMessage(message);
+            String participants = messageRequest.getRecipients().get(0);
+            participants+= ", test";
+            chat.setParticipants(participants);
+            System.out.println(chat.getParticipants());
+            System.out.println(chat.getMessages());
+            System.out.println(chat.getId());
             chatDao.save(chat);
-            messageRequest.setChatId(chat.getId());
+
         }else {
-            Optional<Chat> optionalChat = chatDao.findById(messageRequest.getChatId());
+            Optional<Chat> optionalChat = chatDao.findById(id);
             if (optionalChat.isPresent()) {
                 Chat chat = optionalChat.get();
                 chat.pushMessage(message);
                 chatDao.save(chat);
             }
         }
-
-        System.out.println("Sending message: " + message + " to recipients: " + recipients);
+            return "redirect:/profile";
     }
 
     @RabbitListener(queues = "myQueue")
