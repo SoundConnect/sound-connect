@@ -145,34 +145,4 @@ public class UserController {
 
         return "profile";
     }
-
-    @GetMapping("/profile/messages/{chatId}")
-    @ResponseBody
-    public List<Message> showMessages(@PathVariable long chatId, Model model) {
-        Chat chat = chatDao.findById(chatId);
-        List<Message> messages = chat.getMessages();
-        model.addAttribute("messages", messages);
-        return messages;
-    }
-
-
-
-    // edit profile
-//    @PostMapping("/profile")
-//    public String changeProfile(@RequestParam(name="email") String email,
-//                                @RequestParam(name="password") String password,
-//                                @RequestParam(name="confirmPassword") String confirmPassword,
-//                                @RequestParam(name="username") String username,
-//                                ) {
-//        System.out.println("Post mapping hit");
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        long userId = user.getId();
-//        user = userDao.findById(userId);
-//        System.out.println(imageUrl);
-//        user.setProfilePic(imageUrl);
-//
-//        userDao.save(user);
-//        return "redirect:/profile";
-//    }
-
 }
