@@ -14,11 +14,41 @@ body{
 
 /*****************************Contact Page ********************************/
 
+.overlay-form1{
+    font-size: 30px;
+}
 .title {
     display: flex;
     justify-content: center;
 }
+.about-paragraph0{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.about-paragraph1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 30px;
+    font-size: 20px;
+}
+.about-paragraph2{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 30px;
+    font-size: 20px;
 
+}
+.about-paragraph3{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 30px;
+    font-size: 20px;
+
+}
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
@@ -331,6 +361,7 @@ body{
 .about-paragraph{
     font-size: 20px;
     font-weight: bold;
+    padding: 50px;
 }
 /*****************************End About Page********************************/
 :root{
@@ -1095,3 +1126,41 @@ a{
 
 }
 
+@media (max-width: 800px) {
+
+    .overlay-form1{
+        font-size: 30px;
+    }
+    .title {
+        display: flex;
+        justify-content: center;
+    }
+    .about-paragraph0{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .about-paragraph1{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        margin: 30px;
+        font-size: 20px;
+    }
+    .about-paragraph2{
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        margin: 30px;
+        font-size: 20px;
+
+    }
+    .about-paragraph3{
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        margin: 30px;
+        font-size: 20px;
+
+    }
+}
