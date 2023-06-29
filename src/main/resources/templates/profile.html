@@ -117,10 +117,11 @@
                             <div class="messages-container">
                                 <div class="row">
                                     <div id="chatMessages" class="chat-messages">
-                                        <div class="chat-row" th:each="chat : ${chats}">
+                                        <div class="chat-row" th:each="chat : ${chats}" th:if="${chat.participantIds.contains(user.id)}">
                                             <h3 class="chat" th:text="${chat.participants}" th:data-chatid="${chat.id}"></h3>
                                         </div>
                                     </div>
+
                                     <div id="messageFeed" class="row message-feed">
                                         <div class="column senderCol">
 

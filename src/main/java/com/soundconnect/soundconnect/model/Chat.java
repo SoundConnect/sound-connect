@@ -11,9 +11,20 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(nullable = false, length = 250)
     private String participants;
+
+    @ElementCollection
+    @Column(nullable = false)
+    private List<Long> participantIds = new ArrayList<>();
+
+    public List<Long> getParticipantIds() {
+        return participantIds;
+    }
+
+    public void setParticipantIds(List<Long> participantIds) {
+        this.participantIds = participantIds;
+    }
 
     @OneToMany(mappedBy = "chat", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Message> messages = new ArrayList<>();
@@ -46,9 +57,11 @@ public class Chat {
         this.participants = participants;
     }
 
+
     public Chat() {
         this.messages = messages;
         this.participants = participants;
+        this.participantIds = participantIds;
     }
 
 }

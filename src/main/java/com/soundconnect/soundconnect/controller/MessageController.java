@@ -3,8 +3,10 @@ package com.soundconnect.soundconnect.controller;
 import com.soundconnect.soundconnect.model.Chat;
 import com.soundconnect.soundconnect.model.Message;
 import com.soundconnect.soundconnect.model.MessageRequest;
+import com.soundconnect.soundconnect.model.User;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
+import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +26,25 @@ public class MessageController {
 
     private final RabbitTemplate rabbitTemplate;
     private final MessagesRepository messageDao;
+    private final UserRepository userDao;
     private final ChatRepository chatDao;
     @Autowired
-    public MessageController(RabbitTemplate rabbitTemplate, MessagesRepository messageDao, ChatRepository chatDao) {
+    public MessageController(RabbitTemplate rabbitTemplate, MessagesRepository messageDao, ChatRepository chatDao, UserRepository userDao) {
         this.messageDao = messageDao;
         this.chatDao = chatDao;
         this.rabbitTemplate = rabbitTemplate;
+        this.userDao = userDao;
     }
 
     @PostMapping("/profile/{id}")
     public String sendMessage(@RequestBody MessageRequest messageRequest, @PathVariable Long id) {
-        System.out.println("profile/id");
         Message message = new Message(messageRequest.getMessage(),"test", messageRequest.getRecipients().get(0));
         messageRequest.setSender("test");
         messageRequest.setMessage(messageRequest.getMessage());
         messageRequest.setRecipients(messageRequest.getRecipients());
         messageRequest.setChatId(messageRequest.getChatId());
         List<String> recipients = messageRequest.getRecipients();
-        System.out.println(recipients);
+
         messageDao.save(message);
 
         for (String recipient : recipients) {
@@ -53,10 +56,17 @@ public class MessageController {
             chat.pushMessage(message);
             String participants = messageRequest.getRecipients().get(0);
             participants+= ", test";
+            String[] participantArray = participants.split(", ");
+            String participant = participantArray[0];
+            List<Long> participantList = new ArrayList<>();
+            for (String username : participantArray) {
+                User user = userDao.findByUsername(username);
+                if (user != null) {
+                    participantList.add(user.getId());
+                }
+            }
             chat.setParticipants(participants);
-            System.out.println(chat.getParticipants());
-            System.out.println(chat.getMessages());
-            System.out.println(chat.getId());
+
             chatDao.save(chat);
 
         }else {
@@ -69,7 +79,6 @@ public class MessageController {
         }
             return "redirect:/profile";
     }
-
     @RabbitListener(queues = "myQueue")
     public void receiveMessage(String message) {
         // Process the received message

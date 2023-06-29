@@ -1,9 +1,6 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.Chat;
-import com.soundconnect.soundconnect.model.Message;
-import com.soundconnect.soundconnect.model.Playlist;
-import com.soundconnect.soundconnect.model.User;
+import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
@@ -15,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
