@@ -93,11 +93,6 @@ public class UserController {
         List<Playlist> playlists = playlistDao.findAllByOwner(user);
         model.addAttribute("playlists", playlists);
 
-//      Displaying user's playlists on their profile
-        // find user by id with security
-//        List<Playlist> userPlaylists = playlistDao.findAllByUser(users);
-//        model.addAttribute("userPlaylists", userPlaylists);
-
         return "profile";
     }
   

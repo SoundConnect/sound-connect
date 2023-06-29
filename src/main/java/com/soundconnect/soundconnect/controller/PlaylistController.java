@@ -100,10 +100,10 @@ public class PlaylistController {
     }
 
     // delete playlist from account
-    @PostMapping("/feed")
-    public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
+    @PostMapping("/profile/{id}/delete")
+    public String deletePlaylist (@PathVariable long id) {
         playlistsDao.deleteById(id);
-        return "redirect:/feed";
+        return "redirect:/profile";
     }
 
     // method for getting current session user
