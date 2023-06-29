@@ -34,7 +34,12 @@ submitButton.addEventListener('click', () => {
 		return;
 	}
 	playlist();
-	window.location.href = '/feed';
+	if (pathname.includes('edit')) {
+		window.location.href = '/profile';
+	} else {
+		window.location.href = '/feed';
+	}
+
 });
 function playlist() {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
@@ -76,8 +81,8 @@ function playlist() {
 //delete track from playlist
 deleteBtn.forEach(btn => {
 	btn.addEventListener('click', () => {
+		btn.parentElement.parentElement.remove();
 		let trackId = btn.value;
-		console.log(trackId);
 		fetch(`/feed/${playlistId}/edit`, {
 			method: 'PUT',
 			headers: {
@@ -168,6 +173,9 @@ searchResultsParent.addEventListener('click', async (e) => {
 	let clickedBtn = e.target;
 	let songData;
 	if (clickedBtn.nodeName === 'BUTTON') {
+		let addedSongCard = clickedBtn.parentElement;
+		addedSongCard.children[3].style.visibility = 'hidden';
+
 		songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
 		let artistNames = songData[5].split(',');
@@ -198,8 +206,6 @@ searchResultsParent.addEventListener('click', async (e) => {
 			}
 		);
 	}
-	let addedSongCard = clickedBtn.parentElement;
-	addedSongCard.children[3].style.visibility = 'hidden';
 
 	let newCard = document.createElement('div');
 	newCard.classList.add('row', 'align-center', 'no-padding');

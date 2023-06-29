@@ -2,10 +2,7 @@ package com.soundconnect.soundconnect.controller;
 
 import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.*;
-
-import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -51,8 +50,8 @@ public class PlaylistController {
 
             User owner = getCurrentUser();
             playlist.setOwner(owner);
-
             playlistsDao.save(playlist);
+
         } catch (DataIntegrityViolationException e) {
             e.getCause().printStackTrace();
         }
@@ -112,8 +111,9 @@ public class PlaylistController {
             String currentUserName = authentication.getName();
             System.out.println(currentUserName);
             return usersDao.findByUsername(currentUserName);
+        }  else {
+            return null;
         }
-        return null;
     }
 
     // method for handling added/edited/deleted data from a playlist

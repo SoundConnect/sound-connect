@@ -12,4 +12,7 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Long> {
     Playlist findByName(String name);
 
     Playlist findByDescription(String description);
+
+    List<Playlist> findAllByOwner(User user);
+
 }
