@@ -10,7 +10,7 @@ let searchResultsParent = document.querySelector('.search-results-box');
 
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
-const deleteBtn = document.querySelectorAll('.delete-btn');
+const deleteBtn = document.querySelectorAll('.delete-track-btn');
 
 const currentURL = window.location.href;
 const url = new URL(currentURL);
@@ -79,26 +79,44 @@ function playlist() {
 }
 
 //delete track from playlist
-deleteBtn.forEach(btn => {
-	btn.addEventListener('click', () => {
-		btn.parentElement.parentElement.remove();
-		let trackId = btn.value;
-		fetch(`/feed/${playlistId}/edit`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				'X-CSRF-TOKEN': getCSRFToken()
-			},
-			body: JSON.stringify({trackId: trackId})
-		})
-			.then(response => {
-				if (response.ok) {
-					console.log('Track deleted');
-				} else {
-					throw new Error('Failed to delete track');
+document.body.addEventListener( 'click', function ( e ) {
+	if (e.target.classList.contains('delete-track-btn')) {
+		// edit playlist logic
+		if (pathname.includes('edit')) {
+			let btn = e.target;
+			btn.parentElement.parentElement.remove();
+			let trackId = btn.value;
+			fetch(`/feed/${playlistId}/edit`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-TOKEN': getCSRFToken()
+				},
+				body: JSON.stringify({trackId: trackId})
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Track deleted');
+					} else {
+						throw new Error('Failed to delete track');
+					}
+				});
+		// create a playlist logic
+		} else {
+			// remove track from dom
+			let btn = e.target;
+			let trackCard = btn.parentElement;
+			playlistBody.removeChild(trackCard);
+
+			// remove track from songList for fetch request
+			let trackId = btn.value;
+			songList.forEach((track, index)=>{
+				if (track.spotifyId === trackId) {
+					songList.splice(index, 1);
 				}
 			});
-	});
+		}
+	}
 });
 
 // display error message for empty playlist title
@@ -172,10 +190,8 @@ search.addEventListener('keyup', async () => {
 searchResultsParent.addEventListener('click', async (e) => {
 	let clickedBtn = e.target;
 	let songData;
-	if (clickedBtn.nodeName === 'BUTTON') {
-		let addedSongCard = clickedBtn.parentElement;
-		addedSongCard.children[3].style.visibility = 'hidden';
-
+	if (clickedBtn.nodeName === 'BUTTON' && clickedBtn.classList.contains('add-song-btn')) {
+		console.log('clicked');
 		songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
 		let artistNames = songData[5].split(',');
@@ -205,15 +221,17 @@ searchResultsParent.addEventListener('click', async (e) => {
 				}
 			}
 		);
+
+		// find clicked on card and remove it from search results
+		let addedSongCard = clickedBtn.parentElement;
+		console.log(addedSongCard);
+		searchResultsParent.removeChild(addedSongCard);
+		// add card to playlist and replace add button with remove button
+		addedSongCard.children[4].classList.replace('add-song-btn', 'delete-track-btn');
+		addedSongCard.children[4].innerText = 'X';
+		addedSongCard.children[4].value = songData[1];
+		playlistBody.appendChild(addedSongCard);
 	}
-
-	let newCard = document.createElement('div');
-	newCard.classList.add('row', 'align-center', 'no-padding');
-	newCard.innerHTML = addedSongCard.innerHTML;
-	newCard.children[3].remove();
-	newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
-
-	playlistBody.innerHTML += newCard.outerHTML;
 });
 
 // get genres from artist
@@ -277,6 +295,7 @@ const displaySearchResults = song => {
 				<p class="song-artist">${artists}</p>
 			</div>
 			<div class="column song-album-name">${albumName}</div>
+			<div class="column align-right song-duration">${formatSongDuration(song.duration_ms)}</div>
 			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}~${song.album.id}</span></button>
 		</div>`;
 }

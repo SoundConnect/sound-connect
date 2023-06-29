@@ -14,19 +14,20 @@
                         <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
                         <p th:text="${user.username}" class="profile-username"></p>
                     </div>
-                    <div class="profile-sidebar-nav">
+                    <div class="profile-sidebar-nav gap-10">
                         <div class="link text-center">
                             <a href="/create">Create a Playlist</a>
                         </div>
                         <div class="link text-center">
                             <a href="/feed">Playlist Feed</a>
                         </div>
-                    </div>
-                    <div class="row justify-center grow align-bottom">
-                        <button id="openButton">Open Messages</button>
+                        <div class="row justify-center grow align-bottom no-padding">
+                            <button id="openButton">Open Messages</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="content-section row">
                 <div class="profile">
                     <div class="container">
@@ -43,11 +44,16 @@
                                             <div class="column justify-center shrink playlist-img-wrapper">
                                                 <img src="/images/default-playlist-logo.png" alt="Playlist Image">
                                             </div>
-                                            <div class="column justify-center">
-                                                <h2 th:text="${playlist.name}"></h2>
-                                            </div>
-                                            <div class="column justify-center gap-5 align-right shrink">
-                                                <a th:href="@{/feed/{id}/edit(id=${playlist.id})}" class="edit-btn">Edit</a>
+                                            <div class="column playlist-details-col">
+                                                <div class="row align-center text-center shrink no-padding gap-5">
+                                                    <a th:href="@{/feed/{id}/edit(id=${playlist.id})}" class="edit-btn">Edit</a>
+                                                    <form th:action="@{/profile/{id}/delete(id=${playlist.id})}" method="post">
+                                                        <button type="submit" name="deletePlaylist" class="delete-playlist-btn">Delete</button>
+                                                    </form>
+                                                </div>
+                                                <div class="row grow no-padding">
+                                                    <h2 th:text="${playlist.name}"></h2>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- playlist Tracks Box -->
