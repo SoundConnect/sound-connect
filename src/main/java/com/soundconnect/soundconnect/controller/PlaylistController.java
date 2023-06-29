@@ -5,6 +5,9 @@ import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,8 +48,11 @@ public class PlaylistController {
         try {
             Set<Track> filteredTracks = handlePlaylistData(playlist);
             playlist.setTracks(filteredTracks);
-            playlistsDao.save(playlist);
 
+            User owner = getCurrentUser();
+            playlist.setOwner(owner);
+
+            playlistsDao.save(playlist);
         } catch (DataIntegrityViolationException e) {
             e.getCause().printStackTrace();
         }
@@ -70,6 +76,7 @@ public class PlaylistController {
 
             playlistToEdit.setName(playlist.getName());
             playlistToEdit.setDescription(playlist.getDescription());
+
             Set<Track> filteredTracks = handlePlaylistData(playlist);
             Set<Track> allTracks = playlistToEdit.addTracks(filteredTracks);
             playlistToEdit.setTracks(allTracks);
@@ -78,7 +85,6 @@ public class PlaylistController {
         } catch (DataIntegrityViolationException e) {
             e.getCause().printStackTrace();
         }
-
         return "redirect:/profile";
     }
 
@@ -88,6 +94,7 @@ public class PlaylistController {
     public String showFeed (Model model){
         List<Playlist> playlists = playlistsDao.findAll();
         model.addAttribute("playlists", playlists);
+
         return "feed";
     }
 
@@ -96,6 +103,17 @@ public class PlaylistController {
     public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
         playlistsDao.deleteById(id);
         return "redirect:/feed";
+    }
+
+    // method for getting current session user
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            System.out.println(currentUserName);
+            return usersDao.findByUsername(currentUserName);
+        }
+        return null;
     }
 
     // method for handling added/edited/deleted data from a playlist
@@ -119,13 +137,15 @@ public class PlaylistController {
             for (Artist artist : artists) {
                 Set<Genre> genres = artist.getGenres();
                 Set<Genre> filteredGenres = new HashSet<>();
-                for (Genre genre : genres) {
-                    if (genresDao.existsByName(genre.getName())) {
-                        genre = genresDao.findByName(genre.getName());
-                        filteredGenres.add(genre);
-                    } else {
-                        filteredGenres.add(genre);
-                        genresDao.save(genre);
+                if (!(genres == null)) {
+                    for (Genre genre : genres) {
+                        if (genresDao.existsByName(genre.getName())) {
+                            genre = genresDao.findByName(genre.getName());
+                            filteredGenres.add(genre);
+                        } else {
+                            filteredGenres.add(genre);
+                            genresDao.save(genre);
+                        }
                     }
                 }
                 artist.setGenres(filteredGenres);

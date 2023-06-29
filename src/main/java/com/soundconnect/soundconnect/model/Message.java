@@ -16,6 +16,16 @@ public class Message {
     @Column(nullable = false, length = 250)
     private String sender;
 
+    @Column(nullable = false, length = 250)
+    private String recipient;
+
+    public String getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
 
     @JsonIgnore // Ignore this field during JSON serialization to avoid circular references
     @ManyToOne(fetch = FetchType.EAGER)
@@ -25,9 +35,10 @@ public class Message {
     public Message() {
     }
 
-    public Message(String message, String sender) {
+    public Message(String message, String sender, String recipient) {
         this.message = message;
         this.sender = sender;
+        this.recipient = recipient;
     }
 
     @JsonProperty("id")
@@ -57,7 +68,6 @@ public class Message {
         this.sender = sender;
     }
 
-    // No need to include the 'chat' field in the JSON representation
 
     public Chat getChat() {
         return chat;

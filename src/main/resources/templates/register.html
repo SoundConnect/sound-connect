@@ -2,12 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head(title='SoundConnect - Register')"></head>
 <body>
-<div sec:authorize="isAuthenticated()">
-<!--  This content is only shown to authenticated users RH-->
-  User ID: <span th:text="${#authentication.principal.id}"/>
-  Username: <span th:text="${#authentication.principal.username}"/>
-  Email: <span th:text="${#authentication.principal.email}"/>
-</div>
   <div class="page-wrapper body">
     <div th:replace="partials/navbar :: navbar"></div>
     <img src="/images/login-background.jpg" alt="login background" class="background">
@@ -25,20 +19,19 @@
             <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"class="password_input"><br>
             <label class="register_label" for="confirmPassword">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
-            <p class="profile-img">Profile Image</p>
+            <p class="profile-img">Upload Profile Image</p>
             <label for="open"></label>
             <input class="image-add-profile-picture" type="text" placeholder="Here" value="Click to Upload Profile Image" th:type="button" id="open" th:name="image" >
             <label for="image-url"></label><input id="image-url" th:name="image-url" hidden />
             <div class="register-submit">
               <button class="register-button" type="submit" value="Submit">Register</button>
             </div>
-          </form>
-        </div>
-      </div>
+        </form>
     </div>
+    <footer th:replace="~{partials/footer :: footer}"></footer> 
   </div>
+      
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>
-<footer th:replace="~{partials/footer :: footer}"></footer>
 </body>
 </html>

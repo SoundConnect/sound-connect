@@ -1,49 +1,41 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Profile')">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-       <title>SoundConnect Profile</title>
-</head>
-<body>
-<div class="page-wrapper profile">
-    <header th:replace="~{partials/navbar :: navbar}"></header>
-    <img src="/images/concert.jpeg" alt="profile background" class="background">
-    <div class="container-profile">
-        <div class="sidebar-fixed">
-            <ul>
-                <li><a href="/index">Home</a></li>
-                <li><a href="/explore">Recommended Playlists</a></li>
-                <li><a href="/playlists">Add Playlists</a></li>
-                <li><a href="/create">Create Playlists</a></li>
-                <li><a href="/editPlaylist">Edit Playlists</a></li>
-                <li><a href="/feed">View Posts</a></li>
-                <button id="openButton">Open Messages</button>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+    <head th:replace="partials/head :: head(title='SoundConnect - Profile')">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        <title>SoundConnect Profile</title>
+    </head>
+    <body>
+        <div class="page-wrapper profile">
+            <header th:replace="~{partials/navbar :: navbar}"></header>
+            <div class="container-profile">
+                <div class="sidebar-fixed">
+                    <ul>
+                        <li><a href="/index">Home</a></li>
+                        <li><a href="/explore">Recommended Playlists</a></li>
+                        <li><a href="/playlists">Add Playlists</a></li>
+                        <li><a href="/create">Create Playlists</a></li>
+                        <li><a href="/editPlaylist">Edit Playlists</a></li>
+                        <li><a href="/feed">View Posts</a></li>
+                        <button id="openButton">Open Messages</button>
 
-            </ul>
-        </div>
-        <div class="content-section row">
-            <div class="profile">
-                <div class="container">
-                    <div class="row justify-right">
-                        <p>Followers: 0</p>
-                        <p>Following: 0</p>
-                    </div>
+                    </ul>
                 </div>
-                <section th:each="user : ${users}" class="profile-info profile-section">
-                    <p th:text="${user.username}" class="profile-username"></p>
-                    <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
-                </section>
-                <div class="container-playlists">
-                    <div class="column">
-                        <div class="row ">
-                            <h1>Featured Playlists</h1>
-                        </div>
-                        <div class="profile-playlists row">
-                        </div>
-
-                        <div class="row">
+                <div class="content-section row">
+                    <div class="profile">
+                        <div class="container">
+                            <div class="row profile-info profile-section">
+                                <p th:text="${user.username}" class="profile-username"></p>
+                                <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
+                            </div>
+                            <div class="container-playlists">
+                                <div class="column">
+                                    <div class="row ">
+                                        <h1>Featured Playlists</h1>
+                                    </div>
+                                    <div class="profile-playlists row">
+                                    </div>
+                                  <div class="row">
                             <h1>Category Playlists</h1>
                         </div>
                         <div class="profile-category row">
@@ -63,28 +55,24 @@
                             <button id="newMessage">New+</button>
                         </div>
 
-                        <label class="message-title" for="recipientsInput">Recipient(s):</label>
+                        <label class="message-recipients" for="recipientsInput">Recipient(s):</label>
                         <input type="text" id="recipientsInput" class="recipient-input" placeholder="Recipient username">
 
                         <div class="messages-container">
                             <div class="row">
                                 <div id="chatMessages" class="chat-messages">
                                     <div class="chat-row" th:each="chat : ${chats}">
-                                        <h3 class="chat" th:text="${chat.id}" th:data-chatid="${chat.id}"></h3>
+                                        <h3 class="chat" th:text="${chat.participants}" th:data-chatid="${chat.id}"></h3>
                                     </div>
                                 </div>
                                 <div id="messageFeed" class="row message-feed">
                                     <div class="column senderCol">
 
                                     </div>
-                                    <div class="column recipientCol">
-
-                                    </div>
-
                                 </div>
                             </div>
 
-                            <label for="messageInput"></label><input type="text" id="messageInput" class="message-input" placeholder="Type your message">
+                            <input type="text" id="messageInput" class="message-input" placeholder="Type your message">
                             <button id="sendButton">Send</button>
                             <button id="closeButton">Close</button>
                         </div>
@@ -96,19 +84,11 @@
         </div>
     </div>
 </div>
-
 <div>
-    <footer th:replace="~{partials/footer :: footer}"></footer>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
-
-
 <script src="https://cdn.talkjs.com/talk.js"></script>
-<script src="/js/messages.js">
-    (async () => {
-        let messages = await loadChats();
-        console.log(messages)
-    })();
-</script>
+<script src="/js/messages.js"></script>
 <script type="module" src="/js/profile.js">
     (async () => {
         let playlist = await displayPlaylist();
@@ -116,8 +96,7 @@
     })();
 </script>
 <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
-
-        <script>
+<script>
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
         const element = document.getElementById('embed-iframe');
         const options = {
@@ -132,4 +111,3 @@
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
-
