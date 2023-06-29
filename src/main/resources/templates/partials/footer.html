@@ -1,10 +1,11 @@
-<footer th:fragment="footer" class="container footer">
+<footer th:fragment="footer" class="container justify-center footer">
   <div class="row justify-space-between">
     <div class="column gap-30">
       <div class="row">
         <h1 class="logo">Sound Connect</h1>
       </div>
-      <span class="icons">
+      <div class="row">
+        <span class="icons">
             <i class="fab fa-facebook"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-twitter"></i>
@@ -12,16 +13,29 @@
         </span>
       </div>
     </div>
-    <div class="column gap-20">
-      <div class="row news-row">
-        <div class="newsletter">
-          <h1>Newsletter</h1>
-          <p class="footer-desc">Sign up for our newsletter to stay informed about the latest music and events!</p>
-          <p class="footer-desc">Unsubscribe at anytime</p>
-          <label>
-            <input class="newsletter-input" type="text" placeholder="Enter your email">
-          </label>
+    <div class="column justify-center">
+      <div class="row">
+        <div class="column">
+          <a class="footer-links" href="/about">About</a>
+        </div>
+        <div class="column">
+          <a class="footer-links" href="/contact">Contact</a>
         </div>
       </div>
+    </div>
+    <div class="column gap-20">
+      <div class="row">
+        <div>
+          <h1>Newsletter</h1>
+          <p class="footer-desc">Sign up for our newsletter to stay informed about the latest music and events</p>
+          <p class="footer-desc">Unsubscribe at anytime</p>
+        </div>
       </div>
+      <div class="row">
+        <div>
+          <input class="newsletter-input" type="text" placeholder="Enter your email">
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
