@@ -1,11 +1,11 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.Chat;
-import com.soundconnect.soundconnect.model.Message;
+//import com.soundconnect.soundconnect.model.Chat;
+//import com.soundconnect.soundconnect.model.Message;
 import com.soundconnect.soundconnect.model.Playlist;
 import com.soundconnect.soundconnect.model.User;
-import com.soundconnect.soundconnect.repositories.ChatRepository;
-import com.soundconnect.soundconnect.repositories.MessagesRepository;
+//import com.soundconnect.soundconnect.repositories.ChatRepository;
+//import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +20,14 @@ import java.util.List;
 @Controller
 public class UserController {
     private final UserRepository userDao;
-    private final ChatRepository chatDao;
-    private final MessagesRepository messageDao;
+//    private final ChatRepository chatDao;
+//    private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
     private final PlaylistRepository playlistDao;
   
 
-    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao) {
         this.userDao = userDao;
-        this.chatDao = chatDao;
-        this.messageDao = messageDao;
         this.passwordEncoder = passwordEncoder;
         this.playlistDao = playlistDao;
     }
@@ -89,8 +87,8 @@ public class UserController {
     // show profile page
     @GetMapping("/profile")
     public String showProfile(Model model) {
-        List<Chat> chats = chatDao.findAll();
-        model.addAttribute("chats", chats);
+//        List<Chat> chats = chatDao.findAll();
+//        model.addAttribute("chats", chats);
 
         // Getting user info from security context
         User user = userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -103,31 +101,31 @@ public class UserController {
 
         return "profile";
     }
-    @GetMapping("/profile/newchat")
-    @ResponseBody
-    public ResponseEntity<List<Chat>> showNewChat(Model model) {
-        List<Chat> chats = chatDao.findAll();
-        model.addAttribute("chats", chats);
-        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
-        return ResponseEntity.ok(chats);
-    }
-    @GetMapping("/profile/messages/{chatId}")
-    @ResponseBody
-    public List<Message> showMessages(@PathVariable long chatId, Model model) {
-        Chat chat = chatDao.findById(chatId);
-        System.out.println(chat);
-        List<Message> messages = chat.getMessages();
-        model.addAttribute("messages", messages);
-        return messages;
-    }
-    @GetMapping("/profile/chat/{chatId}")
-    @ResponseBody
-    public Chat showParticipants(@PathVariable long chatId, Model model) {
-        Chat chat = chatDao.findById(chatId);
-        System.out.println(chat);
-        model.addAttribute("chat", chat);
-        return chat;
-    }
+//    @GetMapping("/profile/newchat")
+//    @ResponseBody
+//    public ResponseEntity<List<Chat>> showNewChat(Model model) {
+//        List<Chat> chats = chatDao.findAll();
+//        model.addAttribute("chats", chats);
+//        model.addAttribute("user", userDao.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
+//        return ResponseEntity.ok(chats);
+//    }
+//    @GetMapping("/profile/messages/{chatId}")
+//    @ResponseBody
+//    public List<Message> showMessages(@PathVariable long chatId, Model model) {
+//        Chat chat = chatDao.findById(chatId);
+//        System.out.println(chat);
+//        List<Message> messages = chat.getMessages();
+//        model.addAttribute("messages", messages);
+//        return messages;
+//    }
+//    @GetMapping("/profile/chat/{chatId}")
+//    @ResponseBody
+//    public Chat showParticipants(@PathVariable long chatId, Model model) {
+//        Chat chat = chatDao.findById(chatId);
+//        System.out.println(chat);
+//        model.addAttribute("chat", chat);
+//        return chat;
+//    }
 
     // show profile page for other users
     @GetMapping("/profile/{username}")
