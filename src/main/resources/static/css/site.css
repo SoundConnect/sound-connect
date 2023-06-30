@@ -26,14 +26,6 @@ label {
 }
 
 /*****************************Contact Page ********************************/
-
-.contact-form{
-    margin-top: 10px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
-
 .contact-input{
     height: 40px;
     background-color: var(--primary);
@@ -44,14 +36,10 @@ label {
     color: var(--secondary);
 }
 
-.contact-label{
-    color: #f5f5f5;
-}
-
 .contact-button{
     background-color: var(--secondary);
     color: var(--primary);
-    border: unset;
+    border: 2px solid var(--secondary);
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -70,20 +58,9 @@ label {
     padding: 10px;
     cursor: pointer;
 }
-
-.contact-section{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.contact-input{
-    margin-bottom: 10px;
-}
-
-.contact-form textarea{
+textarea.contact-input {
     height: 200px;
-    width: 200px;
-    resize: none;
+    padding: 10px;
 }
 
 .contact-container{
@@ -1202,7 +1179,7 @@ button {
     padding:10px;
 }
 
-.text-area {
+.text-area, .contact-label {
     color: var(--secondary);
     font-size: 1rem;
     letter-spacing: 2px;

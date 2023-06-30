@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Contact')">
-
+<head th:replace="~{partials/head :: head(title='SoundConnect - Contact')}"></head>
 <body>
 <div class="page-wrapper">
-    <div th:replace="partials/navbar :: navbar"></div>
+    <div th:replace="~{partials/navbar :: navbar}"></div>
+    <img src="/images/login-background.jpg" alt="contact background" class="background">
     <div class="container contact-container grow justify-center body">
         <div class="row justify-center">
-            <div class="column shrink justify-center">
-                <h1>Contact Us:</h1>
-                <form class="contact-form">
-                    <label class="contact-label" for="name">Name:</label>
-                    <input class="contact-input" id="name" type="text" name="name" placeholder="Name">
-                    <label class="contact-label" for="email">Email:</label>
-                    <input class="contact-input" id="email" type="email" name="email" placeholder="Email">
-                    <label class="contact-label" for="message">Message:</label>
-                    <textarea class="contact-input" id="message" name="message" placeholder="Message"></textarea>
-                    <button class="contact-button" name="contact-submit" type="submit">Send</button>
-                </form>
+            <div class="column align-center justify-center">
+                <div class="row justify-center">
+                    <h1>Contact Us:</h1>
+                </div>
+                <div class="row justify-center">
+                    <form class="column gap-20">
+                        <div class="column">
+                            <label class="contact-label" for="name">Name:</label>
+                            <input class="contact-input" id="name" type="text" name="name" placeholder="Name">
+                        </div>
+                        <div class="column">
+                            <label class="contact-label" for="email">Email:</label>
+                            <input class="contact-input" id="email" type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="column">
+                            <label class="contact-label" for="message">Message:</label>
+                            <textarea class="contact-input" id="message" name="message" placeholder="Message"></textarea>
+                        </div>
+                        <div class="row shrink justify-center">
+                            <button class="contact-button" name="contact-submit" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div th:replace="partials/footer :: footer"></div>
+    <div th:replace="~{partials/footer :: footer}"></div>
 </div>
+
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
