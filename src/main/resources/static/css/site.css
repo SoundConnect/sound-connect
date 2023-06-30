@@ -84,7 +84,7 @@ footer {
     height: 400px;
 }
 
-.login-button, .sign-up-button{
+.login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
     color: var(--primary);
     width: 85px;
@@ -97,7 +97,7 @@ footer {
     text-align: center;
     transition: ease-in-out .3s;
 }
-.login-button:hover, .sign-up-button:hover{
+.login-button:hover, .sign-up-button:hover, .logout-button:hover{
     background-color: var(--primary);
     color: var(--secondary);
     border: 2px solid var(--secondary);
