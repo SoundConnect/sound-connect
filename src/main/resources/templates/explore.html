@@ -2,7 +2,7 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Explore')">
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper explore-page-wrapper">
     <header th:replace="partials/navbar :: navbar"></header>
     <div class="container hero-scene">
 <!--        <div class="row justify-center full-width">-->
@@ -19,7 +19,7 @@
                     <button class="openOverlayButton">Search Music</button>
                 </div>
                 <div class="explore-playlist row"></div>
-                <div class="row">
+                <div class="row explore-artist-row">
                     <h1>Recommended Artists</h1>
                 </div>
                 <div class=" row explore-artists"></div>
@@ -40,8 +40,8 @@
                     </div>
                 </div>
         </div>
-        <footer th:replace="partials/footer :: footer"></footer>
     </div>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 
 <script type="module" src="/js/explore.js">
