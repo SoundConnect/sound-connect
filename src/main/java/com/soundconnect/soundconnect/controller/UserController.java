@@ -75,7 +75,7 @@ public class UserController {
         } else {
              String hash = passwordEncoder.encode(password); //add password encoder RH
             userDao.save(new User(username, email, hash, imageUrl));
-            return "redirect:/profile";
+            return "redirect:/login";
         }
     }
 
