@@ -51,12 +51,10 @@ public class MessageController {
         if(id == 0) {
             Chat chat = new Chat();
             chat.pushMessage(message);
-            String participants = messageRequest.getRecipients().get(0);
-            participants+= ", test";
-            chat.setParticipants(participants);
-            System.out.println(chat.getParticipants());
-            System.out.println(chat.getMessages());
-            System.out.println(chat.getId());
+            String name = messageRequest.getRecipients().get(0);
+
+            chat.setChatName(name);
+
             chatDao.save(chat);
 
         }else {

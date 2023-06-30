@@ -1,5 +1,6 @@
 package com.soundconnect.soundconnect.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessageRequest {
@@ -49,4 +50,5 @@ public class MessageRequest {
     public void setChatId(Long chatId) {
         this.chatId = chatId;
     }
+
 }
