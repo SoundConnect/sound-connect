@@ -1,74 +1,12 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/head :: head(title='SoundConnect - Home')"></head>-->
-<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">-->
-<!--<script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>-->
-<!--<body>-->
-<!--<div class="page-wrapper">-->
-<!--    <nav th:replace="partials/navbar :: navbar"></nav>-->
-<!--    <div class="container">-->
-<!--        <div class="row justify-center full-width hero-scene">-->
-<!--            <img src="/images/hero-image.jpg" alt="hero image">-->
-<!--        </div>-->
-<!--        <div class="overlay-text1">-->
-<!--            <h1><span class="logo-header">Sound</span> Connect: Where Music and</h1>-->
-<!--        </div>-->
-<!--        <div class="overlay-text2">-->
-<!--            <h1> Community Collide</h1>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--    <div class="flex-row">-->
-<!--        <div class="card">-->
-<!--            <i class="fa-solid fa-music"></i>-->
-<!--            <p>Create and customize your own playlists</p>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--            <i class="fa-solid fa-users"></i>-->
-<!--            <p>Connect with friends & family</p>-->
-<!--        </div>-->
-<!--        <div class="card">-->
-<!--            <i class="fa-solid fa-share"></i>-->
-<!--            <p>Share playlists & events</p>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--        <footer th:replace="partials/footer :: footer"></footer>-->
-<!--</div>-->
-<!--</div>-->
-<!--<script th:src="@{/js/hamburger-menu.js}"></script>-->
-<!--</body>-->
-<!--</html>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head(title='SoundConnect - Home')"></head>
 <body>
-<div class="page-wrapper wrapper1">
-    <header th:replace="~{partials/navbar :: navbar}")></header>
-    <img src="/images/login-background.jpg" alt="login background" class="background">
-    <div class="container hero-scene">
-        <div class="row justify-center full-width">
+<div class="page-wrapper">
+    <nav th:replace="partials/navbar :: navbar"></nav>
+    <div class="container">
+        <div class="row justify-center full-width hero-scene">
             <img src="/images/hero-image.jpg" alt="hero image">
-        </div>
-        <div class="heading-1">
-            <p>Sound Connect: WHere Music and Community Collide</p>
         </div>
         <div class="overlay-text1">
             <h1><span class="logo-header">Sound</span> Connect: Where Music and</h1>
@@ -78,8 +16,8 @@
         </div>
     </div>
 </div>
-<div class="container bottom-sec">
-    <div class="row justify-space-between">
+<div class="container">
+    <div class="row justify-space-between mobile-card-row">
         <div class="column justify-center">
             <div class="service-card-wrapper">
                 <div class="service-card-icon">
