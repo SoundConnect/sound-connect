@@ -24,7 +24,7 @@ public class UserController {
     private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
     private final PlaylistRepository playlistDao;
-  
+
 
     public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao) {
         this.userDao = userDao;
@@ -95,7 +95,7 @@ public class UserController {
 
         return "profile";
     }
-  
+
     @GetMapping("/profile/newchat")
     @ResponseBody
     public ResponseEntity<List<Chat>> showNewChat(Model model) {
