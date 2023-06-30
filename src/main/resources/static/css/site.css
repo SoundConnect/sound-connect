@@ -26,14 +26,6 @@ label {
 }
 
 /*****************************Contact Page ********************************/
-
-.contact-form{
-    margin-top: 10px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
-
 .contact-input{
     height: 40px;
     background-color: var(--primary);
@@ -44,14 +36,10 @@ label {
     color: var(--secondary);
 }
 
-.contact-label{
-    color: #f5f5f5;
-}
-
 .contact-button{
     background-color: var(--secondary);
     color: var(--primary);
-    border: unset;
+    border: 2px solid var(--secondary);
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -70,20 +58,9 @@ label {
     padding: 10px;
     cursor: pointer;
 }
-
-.contact-section{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.contact-input{
-    margin-bottom: 10px;
-}
-
-.contact-form textarea{
+textarea.contact-input {
     height: 200px;
-    width: 200px;
-    resize: none;
+    padding: 10px;
 }
 
 .contact-container{
@@ -111,12 +88,6 @@ label {
     /*left: 448px;*/
     font-size: 35px;
 }
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
-}
 .service-card-wrapper{
     height: 321px;
     width: 317px;
@@ -128,12 +99,6 @@ label {
 .card i {
     font-size: 2em;
     margin-bottom: 20px;
-}
-
-.about-paragraph0{
-    display: flex;
-    width: 100%;
-    justify-content: center;
 }
 /*****************************Landing Page********************************/
 .hero-scene{
@@ -270,10 +235,12 @@ label {
 
 /*****************************Explore Page********************************/
 
-.overlay-text3 {
+.explore-page-title {
     position: absolute;
-    top: 10%;
-    font-size: 30px;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
 }
 .explore-row-bg{
     position: absolute;
@@ -595,21 +562,34 @@ label {
 
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
+.about-container {
+    margin-top: 5%;
+}
 .profiles{
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 .about-paragraph{
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 1.5rem;
     padding: 50px;
+    font-weight: normal;
+}
+.separation-line {
+    border-bottom: 1px solid var(--secondary);
+}
+.about-cards-gap {
+    gap: 7%;
 }
 .card {
-    width: 220px;
-    margin: 20px;
+    width: 25%;
     padding: 10px;
-    background-color: #bbbbbb;
-    border-radius: 4px;
-    box-shadow: 2px 2px 7px rgb(255, 255, 255);
+    background-color: var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+    border: 3px solid var(--primary);
     text-align: center;
 }
 .card img {
@@ -618,6 +598,8 @@ label {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-content {
@@ -635,10 +617,9 @@ label {
     color: #888;
 }
 .linkedIn-names{
+    font-size: 14px;
     color: var(--primary);
-}
-.about-row{
-    height: 700px;
+    letter-spacing: 2px;
 }
 /*****************************End About Page********************************/
 :root{
@@ -1164,6 +1145,7 @@ button {
     align-items: center;
     border-radius: 10px;
     padding: 20px;
+    gap: 10px;
 }
 
 .login-form > * {
@@ -1193,8 +1175,12 @@ button {
     padding:10px;
 }
 
-.text-area {
-    color: #f5f5f5;
+.text-area, .contact-label {
+    color: var(--secondary);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
 }
 
 button.btn.primary {
