@@ -9,6 +9,7 @@
             </div>
             <div class="column shrink login-col">
                 <div th:if="${isProfileActive}">
+                    <a href="/profile" class="sign-up-button">Profile</a>
                     <a href="/logout" class="logout-button">Logout</a>
                 </div>
                 <div th:unless="${isProfileActive}">
