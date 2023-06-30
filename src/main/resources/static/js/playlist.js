@@ -1,32 +1,46 @@
-export const KEYS = {
-	clientID: "6b14de4df2be4965a8c7675f7314f326",
-	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
-	accessCode: ""
-}
+// import {KEYS} from "./keys";
+
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
 const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
 let searchResultsParent = document.querySelector('.search-results-box');
-
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
-const deleteBtn = document.querySelectorAll('.delete-track-btn');
 
+// Get playlist id and name of current page form url
 const currentURL = window.location.href;
 const url = new URL(currentURL);
 const pathname = url.pathname;
 const pathSegments = pathname.split('/');
 const playlistId = pathSegments[2];
 
+// Get API token from Spotify
+const getToken = async () => {
+	try {
+		const result = await fetch('https://accounts.spotify.com/api/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': 'Basic ' + btoa(`${FIRST_SPOTIFY_KEY}` + ':' + `${SECOND_SPOTIFY_KEY}`)
+			},
+			body: 'grant_type=client_credentials'
+		});
+		const data = await result.json();
+		return data.access_token;
+
+	} catch (error) {
+		console.log("Error retrieving API access code: " + error);
+	}
+}
+
 // Get CSRF token
-const getCSRFToken = () => {
+function getCSRFToken() {
 	let metaTag = document.querySelector('meta[name="_csrf"]');
 	let CSRFToken = metaTag.getAttribute('content');
-	console.log(CSRFToken);
 	return CSRFToken;
 }
 
-// Sends a POST request to the server with playlist info
+// Sends a POST request to the server with playlist info and redirects to correct page
 submitButton.addEventListener('click', () => {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
 	if (playlistTitleValue.trim() === '') {
@@ -123,25 +137,6 @@ document.body.addEventListener( 'click', function ( e ) {
 const playlistTitleError = () => {
 	let title = document.querySelector('input.playlist-title');
 	title.style.borderColor = 'red';
-}
-
-// Get API token from Spotify
-const getToken = async () => {
-	try {
-		const result = await fetch('https://accounts.spotify.com/api/token', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-				'Authorization': 'Basic ' + btoa(KEYS.clientID + ':' + KEYS.clientSecret)
-			},
-			body: 'grant_type=client_credentials'
-		});
-		const data = await result.json();
-		return data.access_token;
-
-	} catch (error) {
-		console.log("Error retrieving API access code: " + error);
-	}
 }
 
 // Get song data from song name
