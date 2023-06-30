@@ -136,16 +136,53 @@ label {
     justify-content: center;
 }
 /*****************************Landing Page********************************/
-.wrapper1{
-    background-image: url(../images/login-background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+.hero-scene{
+    position: relative;
 }
-.heading-1{
-    display: flex;
-    flex-direction: row;
+
+.overlay-text1{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    /*top: 230px;*/
+    /*left: 229px;*/
+    font-size: 35px;
+}
+
+.overlay-text2{
+    position: absolute;
+    top: 40%;
+    left: 31%;
+    /*top: 325px;*/
+    /*left: 448px;*/
+    font-size: 35px;
+}
+.overlay-text3{
+    position: absolute;
+    top: 230px;
+    left: 364px;
+    font-size: 45px;
+}
+.service-card-wrapper{
+    height: 321px;
+    width: 317px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px var(--secondary);
+    border: 1px solid var(--secondary);
+    background-color: #202033;
+}
+.service-card{
+    height: 100%;
+    width: 100%;
+}
+.service-card-icon{
+    height: 100px;
+    width: 100px;
+    margin:7px auto -75px auto;
+    padding-top: 20px;
+}
+.button{
+    width: 100px;
 }
 .card-title{
     padding: 10px;
@@ -161,21 +198,15 @@ label {
 .login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
     color: var(--primary);
+    width: 85px;
+    border: unset;
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
+    margin: 0px 5px;
     text-align: center;
-    margin-left: 250px;
+    transition: ease-in-out .3s;
 }
 .login-button:hover, .sign-up-button:hover, .logout-button:hover{
     background-color: var(--primary);
@@ -185,33 +216,55 @@ label {
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin-left: 250px;
+    margin: 0px 5px;
     cursor: pointer;
 }
-.flex-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
+/*.wrapper1{*/
+/*    background-image: url(../images/login-background.jpg);*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    z-index: -1;*/
+/*}*/
+/*.heading-1{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+/*.card-title{*/
+/*    padding: 10px;*/
+/*    font-size: 35px;*/
+/*}*/
+/*.card-description{*/
+/*    padding: 10px;*/
+/*}*/
+/*.row.card-body{*/
+/*    height: 400px;*/
+/*}*/
 
-.card {
-    background-color: #202033;
-    padding: 20px;
-    margin: 10px;
-    width: 300px;
-    height: 300px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 2em;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px var(--secondary);
-    border: 1px solid var(--secondary);
-}
+/*.flex-row {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-evenly;*/
+/*}*/
 
-.card i {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
+/*.card {*/
+/*    background-color: #202033;*/
+/*    padding: 20px;*/
+/*    margin: 10px;*/
+/*    width: 300px;*/
+/*    height: 300px;*/
+/*    box-sizing: border-box;*/
+/*    text-align: center;*/
+/*    font-size: 2em;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 2px 2px 10px var(--secondary);*/
+/*    border: 1px solid var(--secondary);*/
+/*}*/
+
+/*.card i {*/
+/*    font-size: 2em;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
 /*****************************End Landing Page********************************/
 
@@ -1416,52 +1469,62 @@ nav a:hover::before, .footer-links:hover::before {
     font-weight: 100;
     width: 500px;
 }
-/*MEDIA QUERIES FOR FOOTER */
+
+/*######################################################*/
+/*################ MEDIA QUERIES FOR TABLET ############*/
+/*######################################################*/
+
 @media (max-width: 768px) {
-    .logo {
-        display: flex;
-        flex-direction: row;
-        align-self: flex-start;
-        align-items: start;
-        color: #f5f5f5;
+    /*######################################################*/
+    /*####################### INDEX PAGE ###################*/
+    /*######################################################*/
+    .overlay-text1{
+        top: 30%;
+        left: 10%;
+        font-size: 20px;
     }
-    .footer{
-        flex-direction: column;
-        align-items: start;
+
+    .overlay-text2 {
+        top:36%;
+        left: 26%;
+        font-size: 20px;
     }
-    .footer-desc{
-        width: 60%;
-        font-weight: 100;
-        font-size: 15px;
-    }
-    .footer-links{
-        margin: 10px 0;
-    }
-    .info{
-        margin-top: 0;
-    }
-    .info-title{
-        font-size: 25px;
-    }
-    .info-desc{
-        font-size: 15px;
-        width: 300px;
-    }
-    .gap-30{
-        margin: 0;
-    }
-    .sc-row{
-        display: flex;
-        flex-direction: column;
-        margin-right: 80px;
-        align-items: start;
-    }
-    .newsletter{
-        margin: 0;
-    }
-    .newsletter-input{
-        width: 200px;
-    }
+}
+
+/*MEDIA QUERIES FOR FOOTER */
+
+@media (max-width: 800px) {
+/*    .logo {*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        align-self: flex-start;*/
+/*        align-items: start;*/
+/*        color: #f5f5f5;*/
+/*    }*/
+/*    .footer{*/
+/*        flex-direction: column;*/
+/*        align-items: start;*/
+/*    }*/
+/*    .footer-desc{*/
+/*        text-align: start;*/
+/*    }*/
+/*    .footer-links{*/
+/*        margin: 10px 0;*/
+/*    }*/
+/*    .info{*/
+/*        margin-top: 0;*/
+/*    }*/
+/*    .info-title{*/
+/*        font-size: 25px;*/
+/*    }*/
+/*    .info-desc{*/
+/*        font-size: 15px;*/
+/*        width: 300px;*/
+/*    }*/
+/*    .newsletter-input{*/
+/*        width: 200px;*/
+/*    }*/
+
 }
 
 
@@ -1547,90 +1610,33 @@ nav a:hover::before, .footer-links:hover::before {
     }
 }
 
-/*MEDIA QUERIES FOR HOME/INDEX PG*/
-@media (max-width: 768px) {
-    .card {
-        width: 50%;
-        margin-top: 25px;
-
-    }
-    .wrapper1{
-        background-image: url(../images/login-background.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-    }
-    .heading-1{
-        display: flex;
-        flex-direction: row;
-    }
-    .heading-2{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 50px;
-        font-size: 20px;
-    }
-    .discover{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 50px;
-    }
-    .info-title{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-        color: #f5f5f5;
-    }
-    .info-desc1{
-        display: flex;
-        flex-direction: column;
-        font-size: 20px;
-        color: #f5f5f5;
-        width: 100%;
-        height: 100%;
-        padding: 15px;
+/*MEDIA QUERIES FOR LANDING PG*/
+@media (max-width: 767px) {
+    /* Add your mobile-specific styles here */
+    .hero-scene {
+        padding: 20px;
+        height: 500px;
     }
 
-    .sign-up-button{
-        background-color: var(--secondary);
-        color: var(--primary);
-        border-radius: 10px;
-        font-size: 15px;
-        font-weight: bold;
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 100%;
+    .overlay-text1,
+    .overlay-text2 {
         text-align: center;
-        margin-left: 150px;
+        margin-top: 10px;
+        font-size: 10px;
     }
-    .login-button:hover, .sign-up-button:hover{
-        background-color: var(--primary);
-        color: var(--secondary);
-        border: 2px solid var(--secondary);
-        border-radius: 10px;
-        font-size: 15px;
-        font-weight: bold;
-        padding: 10px;
-        margin-left: 250px;
-        cursor: pointer;
+
+    .service-card-wrapper {
+        margin-bottom: 20px;
     }
-}
-@media (max-width: 768px){
-    .overlay-form1{
-        font-size: 20px;
+
+    .info {
+        padding: 20px;
     }
+    .row.mobile-card-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

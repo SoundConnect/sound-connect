@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/head :: head(title='SoundConnect - Home')"></head>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/36855c9e68.js" crossorigin="anonymous"></script>
 <body>
 <div class="page-wrapper">
     <nav th:replace="partials/navbar :: navbar"></nav>
@@ -17,142 +15,82 @@
             <h1> Community Collide</h1>
         </div>
     </div>
-</div>
-</div>
-
-    <div class="flex-row">
-        <div class="card">
-            <i class="fa-solid fa-music"></i>
-            <p>Create and customize your own playlists</p>
+    <div class="container">
+        <div class="row justify-space-between mobile-card-row">
+            <div class="column justify-center">
+                <div class="service-card-wrapper">
+                    <div class="service-card-icon">
+                        <img src="/images/create-icon.png" alt="create icon">
+                    </div>
+                    <div class="row card-body align-center">
+                        <div class="column">
+                            <div class="service-card">
+                                <h1 class="card-title">Create</h1>
+                            </div>
+                            <div class="card-description">
+                                <p>Create and customize your own playlists</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column justify-center">
+                <div class="service-card-wrapper">
+                    <div class="service-card">
+                        <div class="service-card-icon">
+                            <img src="/images/connect-icon.png" alt="connect icon">
+                        </div>
+                        <div class="row card-body align-center">
+                            <div class="column">
+                                <div class="service-card">
+                                    <h1 class="card-title">Connect</h1>
+                                </div>
+                                <div class="card-description">
+                                    <p>Connect with friends & family</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column justify-center">
+                <div class="service-card-wrapper">
+                    <div class="service-card">
+                        <div class="service-card">
+                            <div class="service-card-icon">
+                                <img src="/images/share-icon.png" alt="connect icon">
+                            </div>
+                            <div class="row card-body align-center">
+                                <div class="column">
+                                    <div class="service-card">
+                                        <h1 class="card-title">Share</h1>
+                                    </div>
+                                    <div class="card-description">
+                                        <p>Share playlists & events</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <i class="fa-solid fa-users"></i>
-            <p>Connect with friends & family</p>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-share"></i>
-            <p>Share playlists & events</p>
-        </div>
-    </div>
-        </div>
-    </section>
+        <section class="container info">
+            <div class="row">
+                <div class="column">
+                    <img src="/images/concert.jpeg" alt="info image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column align-center">
+                    <h1 class="info-title">Discover New Music</h1>
+                    <p class="info-desc">Embark on an electrifying musical adventure alongside your loved ones. Let their diverse tastes guide you to thrilling new tracks and exceptional artists. Share your favorite tunes, create mesmerizing playlists, and unite through the power of music. Dive into a world of harmonious connections, where melodies become the language that binds hearts and creates unforgettable memories.</p>
+                    <a href="/register" class="sign-up-button">sign up</a>
+                </div>
+            </div>
+        </section>
         <footer th:replace="partials/footer :: footer"></footer>
+    </div>
 </div>
-</div>
-<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="partials/head :: head(title='SoundConnect - Home')"></head>-->
-<!--<body>-->
-<!--<div class="page-wrapper wrapper1">-->
-<!--    <header th:replace="~{partials/navbar :: navbar}")></header>-->
-<!--    <img src="/images/login-background.jpg" alt="login background" class="background">-->
-<!--    <div class="container hero-scene">-->
-<!--        <div class="row justify-center full-width">-->
-<!--            <img src="/images/hero-image.jpg" alt="hero image">-->
-<!--        </div>-->
-<!--        <div class="heading-1">-->
-<!--            <p>Sound Connect: WHere Music and Community Collide</p>-->
-<!--        </div>-->
-<!--        <div class="overlay-text1">-->
-<!--            <h1><span class="logo-header">Sound</span> Connect: Where Music and</h1>-->
-<!--        </div>-->
-<!--        <div class="overlay-text2">-->
-<!--            <h1> Community Collide</h1>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="container bottom-sec">-->
-<!--    <div class="row justify-space-between">-->
-<!--        <div class="column justify-center">-->
-<!--            <div class="service-card-wrapper">-->
-<!--                <div class="service-card-icon">-->
-<!--                    <img src="/images/create-icon.png" alt="create icon">-->
-<!--                </div>-->
-<!--                <div class="row card-body align-center">-->
-<!--                    <div class="column">-->
-<!--                        <div class="service-card">-->
-<!--                            <h1 class="card-title">Create</h1>-->
-<!--                        </div>-->
-<!--                        <div class="card-description">-->
-<!--                            <p>Create and customize your own playlists</p>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="column justify-center">-->
-<!--            <div class="service-card-wrapper">-->
-<!--                <div class="service-card">-->
-<!--                    <div class="service-card-icon">-->
-<!--                        <img src="/images/connect-icon.png" alt="connect icon">-->
-<!--                    </div>-->
-<!--                    <div class="row card-body align-center">-->
-<!--                        <div class="column">-->
-<!--                            <div class="service-card">-->
-<!--                                <h1 class="card-title">Connect</h1>-->
-<!--                            </div>-->
-<!--                            <div class="card-description">-->
-<!--                                <p>Connect with friends & family</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="column justify-center">-->
-<!--            <div class="service-card-wrapper">-->
-<!--                <div class="service-card">-->
-<!--                    <div class="service-card">-->
-<!--                        <div class="service-card-icon">-->
-<!--                            <img src="/images/share-icon.png" alt="connect icon">-->
-<!--                        </div>-->
-<!--                        <div class="row card-body align-center">-->
-<!--                            <div class="column">-->
-<!--                                <div class="service-card">-->
-<!--                                    <h1 class="card-title">Share</h1>-->
-<!--                                </div>-->
-<!--                                <div class="card-description">-->
-<!--                                    <p>Share playlists & events</p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <section class="container info">-->
-<!--        <div class="row">-->
-<!--            <div class="column">-->
-<!--                <img src="/images/concert.jpeg" alt="info image">-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            <div class="column align-center">-->
-<!--                <h1 class="info-title">Discover New Music</h1>-->
-<!--                <p class="info-desc">Embark on an electrifying musical adventure alongside your loved ones. Let their diverse tastes guide you to thrilling new tracks and exceptional artists. Share your favorite tunes, create mesmerizing playlists, and unite through the power of music. Dive into a world of harmonious connections, where melodies become the language that binds hearts and creates unforgettable memories.</p>-->
-<!--                <a href="/register" class="sign-up-button">sign up</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-<!--    <footer th:replace="partials/footer :: footer"></footer>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
