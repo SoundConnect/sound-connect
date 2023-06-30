@@ -1475,7 +1475,20 @@ nav a:hover::before, .footer-links:hover::before {
 /*######################################################*/
 
 @media (max-width: 768px) {
+    /*######################################################*/
+    /*####################### INDEX PAGE ###################*/
+    /*######################################################*/
+    .overlay-text1{
+        top: 30%;
+        left: 10%;
+        font-size: 20px;
+    }
 
+    .overlay-text2 {
+        top:36%;
+        left: 26%;
+        font-size: 20px;
+    }
 }
 
 /*MEDIA QUERIES FOR FOOTER */
