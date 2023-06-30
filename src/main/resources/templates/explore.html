@@ -8,7 +8,6 @@
     <div class="container justify-center align-center explore-page-title">
         <h1>Explore New Music</h1>
     </div>
-
     <div class="container">
         <div class="row explore-row-bg">
             <div class="column ">
@@ -17,7 +16,7 @@
                     <button class="openOverlayButton">Search Music</button>
                 </div>
                 <div class="explore-playlist row"></div>
-                <div class="row">
+                <div class="row explore-artist-row">
                     <h1>Recommended Artists</h1>
                 </div>
                 <div class=" row explore-artists"></div>
@@ -38,8 +37,8 @@
                     </div>
                 </div>
         </div>
-        <footer th:replace="partials/footer :: footer"></footer>
     </div>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 
 <script type="module" src="/js/explore.js">
