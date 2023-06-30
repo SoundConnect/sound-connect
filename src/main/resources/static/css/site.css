@@ -1265,36 +1265,36 @@ nav a:hover::before, .footer-links:hover::before {
 }
 /*MEDIA QUERIES FOR FOOTER */
 @media (max-width: 800px) {
-    .logo {
-        display: flex;
-        flex-direction: row;
-        align-self: flex-start;
-        align-items: start;
-        color: #f5f5f5;
-    }
-    .footer{
-        flex-direction: column;
-        align-items: start;
-    }
-    .footer-desc{
-        text-align: start;
-    }
-    .footer-links{
-        margin: 10px 0;
-    }
-    .info{
-        margin-top: 0;
-    }
-    .info-title{
-        font-size: 25px;
-    }
-    .info-desc{
-        font-size: 15px;
-        width: 300px;
-    }
-    .newsletter-input{
-        width: 200px;
-    }
+/*    .logo {*/
+/*        display: flex;*/
+/*        flex-direction: row;*/
+/*        align-self: flex-start;*/
+/*        align-items: start;*/
+/*        color: #f5f5f5;*/
+/*    }*/
+/*    .footer{*/
+/*        flex-direction: column;*/
+/*        align-items: start;*/
+/*    }*/
+/*    .footer-desc{*/
+/*        text-align: start;*/
+/*    }*/
+/*    .footer-links{*/
+/*        margin: 10px 0;*/
+/*    }*/
+/*    .info{*/
+/*        margin-top: 0;*/
+/*    }*/
+/*    .info-title{*/
+/*        font-size: 25px;*/
+/*    }*/
+/*    .info-desc{*/
+/*        font-size: 15px;*/
+/*        width: 300px;*/
+/*    }*/
+/*    .newsletter-input{*/
+/*        width: 200px;*/
+/*    }*/
 }
 
 
@@ -1377,5 +1377,34 @@ nav a:hover::before, .footer-links:hover::before {
         top: 300px;  /* Adjust as needed */
         left: 60px;  /* Adjust as needed */
         z-index: 1;  /* Optional: To make sure it stays on top */
+    }
+}
+/*MEDIA QUERIES FOR LANDING PG*/
+@media (max-width: 767px) {
+    /* Add your mobile-specific styles here */
+    .hero-scene {
+        padding: 20px;
+        height: 500px;
+    }
+
+    .overlay-text1,
+    .overlay-text2 {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .service-card-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .info {
+        padding: 20px;
+    }
+    .row.mobile-card-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
