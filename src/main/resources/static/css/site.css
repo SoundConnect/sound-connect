@@ -129,12 +129,6 @@ label {
     font-size: 2em;
     margin-bottom: 20px;
 }
-
-.about-paragraph0{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
@@ -595,21 +589,34 @@ label {
 
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
+.about-container {
+    margin-top: 5%;
+}
 .profiles{
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 .about-paragraph{
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 1.5rem;
     padding: 50px;
+    font-weight: normal;
+}
+.separation-line {
+    border-bottom: 1px solid var(--secondary);
+}
+.about-cards-gap {
+    gap: 7%;
 }
 .card {
-    width: 220px;
-    margin: 20px;
+    width: 25%;
     padding: 10px;
-    background-color: #bbbbbb;
-    border-radius: 4px;
-    box-shadow: 2px 2px 7px rgb(255, 255, 255);
+    background-color: var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+    border: 3px solid var(--primary);
     text-align: center;
 }
 .card img {
@@ -618,6 +625,8 @@ label {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-content {
@@ -635,10 +644,9 @@ label {
     color: #888;
 }
 .linkedIn-names{
+    font-size: 14px;
     color: var(--primary);
-}
-.about-row{
-    height: 700px;
+    letter-spacing: 2px;
 }
 /*****************************End About Page********************************/
 :root{
@@ -1164,6 +1172,7 @@ button {
     align-items: center;
     border-radius: 10px;
     padding: 20px;
+    gap: 10px;
 }
 
 .login-form > * {
@@ -1194,7 +1203,11 @@ button {
 }
 
 .text-area {
-    color: #f5f5f5;
+    color: var(--secondary);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
 }
 
 button.btn.primary {
