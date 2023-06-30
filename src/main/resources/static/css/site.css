@@ -1542,7 +1542,7 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 /*MEDIA QUERIES FOR LANDING PG*/
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     /* Add your mobile-specific styles here */
     .hero-scene {
         padding: 20px;
@@ -1553,7 +1553,7 @@ nav a:hover::before, .footer-links:hover::before {
     .overlay-text2 {
         text-align: center;
         margin-top: 10px;
-        font-size: 10px;
+        font-size: 20px;
     }
 
     .service-card-wrapper {
@@ -1569,5 +1569,7 @@ nav a:hover::before, .footer-links:hover::before {
         align-items: center;
         justify-content: center;
     }
+
+/*    ABOUT PAGE MEDIA QUERIES      */
 
 }
