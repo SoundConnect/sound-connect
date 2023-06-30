@@ -1,20 +1,20 @@
 package com.soundconnect.soundconnect.controller;
 
-import com.soundconnect.soundconnect.model.Chat;
-import com.soundconnect.soundconnect.model.Message;
-import com.soundconnect.soundconnect.model.Playlist;
-import com.soundconnect.soundconnect.model.User;
+import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
 import com.soundconnect.soundconnect.repositories.PlaylistRepository;
 import com.soundconnect.soundconnect.repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -93,15 +93,13 @@ public class UserController {
         List<Playlist> playlists = playlistDao.findAllByOwner(user);
         model.addAttribute("playlists", playlists);
 
-//      Displaying user's playlists on their profile
+        model.addAttribute("isProfileActive", true);
+        // Displaying user's playlists on their profile
         // find user by id with security
-        List<Playlist> userPlaylists = playlistDao.findAllByOwner(user);
-        model.addAttribute("userPlaylists", userPlaylists);
 
         return "profile";
     }
 
-  
     @GetMapping("/profile/newchat")
     @ResponseBody
     public ResponseEntity<List<Chat>> showNewChat(Model model) {

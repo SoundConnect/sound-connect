@@ -8,8 +8,14 @@
                 <div><a class="underline" href="/explore" title="About">Explore</a></div>
             </div>
             <div class="column shrink login-col">
-                <a href="login" class="login-button">Login</a>
-                <a href="register" class="sign-up-button">Sign Up</a>
+                <div th:if="${isProfileActive}">
+                    <a href="/profile" class="sign-up-button">Profile</a>
+                    <a href="/logout" class="logout-button">Logout</a>
+                </div>
+                <div th:unless="${isProfileActive}">
+                    <a href="/login" class="login-button">Login</a>
+                    <a href="/register" class="sign-up-button">Sign Up</a>
+                </div>
             </div>
         </div>
     </div>

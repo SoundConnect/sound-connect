@@ -6,7 +6,6 @@ let categoryToken = await getToken();
 let albumToken = await getToken();
 
 
-
 export async function displayPlaylist() {
     try {
         const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=US&timestamp=2023-06-14T15%3A00%3A40&offset=0&limit=3', {
