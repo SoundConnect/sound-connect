@@ -26,12 +26,12 @@ public class UserController {
     private final PlaylistRepository playlistDao;
   
 
-    public UserController(UserRepository userDao, ChatRepository chatDao, MessagesRepository messageDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao, ChatRepository chatDao, MessagesRepository messageDao) {
         this.userDao = userDao;
-        this.chatDao = chatDao;
-        this.messageDao = messageDao;
         this.passwordEncoder = passwordEncoder;
         this.playlistDao = playlistDao;
+        this.chatDao = chatDao;
+        this.messageDao = messageDao;
     }
 
 
@@ -96,12 +96,9 @@ public class UserController {
         model.addAttribute("isProfileActive", true);
         // Displaying user's playlists on their profile
         // find user by id with security
-        // List<Playlist> userPlaylists = playlistDao.findAllByUser(users);
-        // model.addAttribute("userPlaylists", userPlaylists);
 
         return "profile";
     }
-
 
     @GetMapping("/profile/newchat")
     @ResponseBody
@@ -128,6 +125,7 @@ public class UserController {
         model.addAttribute("chat", chat);
         return chat;
     }
+
 
     // show profile page for other users
     @GetMapping("/profile/{username}")
