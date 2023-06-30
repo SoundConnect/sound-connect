@@ -158,36 +158,6 @@ label {
     height: 400px;
 }
 
-.login-button, .sign-up-button, .logout-button{
-    background-color: var(--secondary);
-    color: var(--primary);
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    text-align: center;
-    margin-left: 250px;
-}
-.login-button:hover, .sign-up-button:hover, .logout-button:hover{
-    background-color: var(--primary);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin-left: 250px;
-    cursor: pointer;
-}
 .flex-row {
     display: flex;
     flex-wrap: wrap;
@@ -1416,6 +1386,15 @@ nav a:hover::before, .footer-links:hover::before {
     font-weight: 100;
     width: 500px;
 }
+
+/*######################################################*/
+/*################ MEDIA QUERIES FOR TABLET ############*/
+/*######################################################*/
+
+@media (max-width: 768px) {
+
+}
+
 /*MEDIA QUERIES FOR FOOTER */
 
 @media (max-width: 800px) {
