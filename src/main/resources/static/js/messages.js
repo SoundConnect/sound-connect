@@ -96,7 +96,7 @@ function selectChat(chatId) {
             }
         })
         .then(function(chat) {
-            let participants = chat.participants;
+            let participants = chat.chatName;
             document.querySelector('#recipientsInput').value = participants;
         })
         .catch(function(error) {

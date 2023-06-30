@@ -12,19 +12,8 @@ public class Chat {
     private Long id;
 
     @Column(nullable = false, length = 250)
-    private String participants;
+    private String chatName;
 
-    @ElementCollection
-    @Column(nullable = false)
-    private List<Long> participantIds = new ArrayList<>();
-
-    public List<Long> getParticipantIds() {
-        return participantIds;
-    }
-
-    public void setParticipantIds(List<Long> participantIds) {
-        this.participantIds = participantIds;
-    }
 
     @OneToMany(mappedBy = "chat", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Message> messages = new ArrayList<>();
@@ -49,19 +38,17 @@ public class Chat {
         message.setChat(this);
     }
 
-    public String getParticipants() {
-        return participants;
+    public String getChatName() {
+        return chatName;
     }
 
-    public void setParticipants(String participants) {
-        this.participants = participants;
+    public void setChatName(String chatName) {
+        this.chatName = chatName;
     }
-
 
     public Chat() {
         this.messages = messages;
-        this.participants = participants;
-        this.participantIds = participantIds;
+        this.chatName = chatName;
     }
 
 }
