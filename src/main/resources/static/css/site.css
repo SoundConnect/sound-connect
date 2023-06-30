@@ -88,12 +88,6 @@ textarea.contact-input {
     /*left: 448px;*/
     font-size: 35px;
 }
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
-}
 .service-card-wrapper{
     height: 321px;
     width: 317px;
@@ -241,10 +235,12 @@ textarea.contact-input {
 
 /*****************************Explore Page********************************/
 
-.overlay-text3 {
+.explore-page-title {
     position: absolute;
-    top: 10%;
-    font-size: 30px;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
 }
 .explore-row-bg{
     position: absolute;
