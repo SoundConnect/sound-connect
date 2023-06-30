@@ -22,6 +22,7 @@ newChatButton.addEventListener("click", function() {
     previousChatElement.classList.remove('selected');
 });
 document.querySelector("#sendButton").addEventListener("click", sendMessage);
+
 function sendMessage() {
     let messageInput = document.querySelector("#messageInput");
     let message = messageInput.value;
@@ -31,7 +32,7 @@ function sendMessage() {
     let data = {
         recipients: recipients,
         message: message,
-        chat: chatId
+        chat: chatId,
     };
     console.log(data)
     if(chatId == null){
@@ -95,7 +96,7 @@ function selectChat(chatId) {
             }
         })
         .then(function(chat) {
-            let participants = chat.participants;
+            let participants = chat.chatName;
             document.querySelector('#recipientsInput').value = participants;
         })
         .catch(function(error) {
@@ -180,19 +181,23 @@ function loadNewChats() {
             let chatsContainer = document.querySelector('#chatMessages');
             chatsContainer.innerHTML = '';
             chats = chats.reverse();
+
             chats.forEach(function(chat) {
-                let chatElement = document.createElement('h3')
-                chatElement.textContent = chat.participants;
-                chatElement.classList.add('chat');
-                chatElement.setAttribute('data-chatid', chat.id);
+                if (chat.participantIds.includes(userId)) { // Replace `userId` with the user's ID
+                    let chatElement = document.createElement('h3');
+                    chatElement.textContent = chat.participants;
+                    chatElement.classList.add('chat');
+                    chatElement.setAttribute('data-chatid', chat.id);
 
-                chatElement.innerHTML = `${chat.participants }`;
-                chatElement.addEventListener('click', function() {
-                    loadMessages(chat.id);
-                });
+                    chatElement.innerHTML = `${chat.participants}`;
+                    chatElement.addEventListener('click', function() {
+                        loadMessages(chat.id);
+                    });
 
-                chatsContainer.appendChild(chatElement);
+                    chatsContainer.appendChild(chatElement);
+                }
             });
+
         })
         .catch(function(error) {
             console.error('An error occurred while loading chats:', error);

@@ -27,7 +27,9 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row justify-center full-width profile-hero">
+                <img class="hero-image" src="/images/hero-image.jpg" alt="hero image">
+            </div>
             <div class="content-section row">
                 <div class="profile">
                     <div class="container">
@@ -110,20 +112,21 @@
                     <div id="messageContainer" class="message-container">
                         <div class="message-content">
                             <div class="row justify-space-between">
-                                <h2 class="message-title">Messages</h2>
+                                <h2 class="message-title">Messages Board</h2>
                                 <button id="newMessage">New+</button>
                             </div>
 
-                            <label class="message-title" for="recipientsInput">Recipient(s):</label>
-                            <input type="text" id="recipientsInput" class="recipient-input" placeholder="Recipient username">
+                            <label class="message-title" for="recipientsInput">Name:</label>
+                            <input type="text" id="recipientsInput" class="recipient-input" placeholder="chat name">
 
                             <div class="messages-container">
                                 <div class="row">
                                     <div id="chatMessages" class="chat-messages">
                                         <div class="chat-row" th:each="chat : ${chats}">
-                                            <h3 class="chat" th:text="${chat.id}" th:data-chatid="${chat.id}"></h3>
+                                            <h3 class="chat" th:text="${chat.chatName}" th:data-chatid="${chat.id}"></h3>
                                         </div>
                                     </div>
+
                                     <div id="messageFeed" class="row message-feed">
                                         <div class="column senderCol">
 
@@ -144,10 +147,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer th:replace="partials/footer :: footer"></footer>
     </div>
+    <!-- Footer -->
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 <script src="https://cdn.talkjs.com/talk.js"></script>
 <script src="/js/messages.js"></script>

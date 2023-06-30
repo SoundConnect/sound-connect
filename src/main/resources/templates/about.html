@@ -6,6 +6,9 @@
     <div th:replace="partials/navbar :: navbar"></div>
     <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container grow justify-center body">
+      <div class="row justify-center full-width about-row">
+        <img src="/images/hero-image.jpg" alt="hero image">
+      </div>
       <div class="row justify-center">
         <div class="column overlay-form">
           <h1 class="title">About SoundConnect</h1>
@@ -13,6 +16,46 @@
         </div>
       </div>
     </div>
+    <section class="container profiles">
+      <div class="team-title">
+        <h2>The Team</h2>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src="linkedin_photo1.jpg" alt="Profile Photo">
+            <div class="card-content">
+              <h3 class="linkedIn-names">Connor Brinkley</h3>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <img src="linkedin_photo2.jpg" alt="Profile Photo">
+            <div class="card-content">
+              <h3 class="linkedIn-names">Hunter Grubbs</h3>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <img src="/images/damian-linkedin.JPG" alt="Profile Photo">
+            <div class="card-content">
+              <h3 class="linkedIn-names">Damian Wrather</h3>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <img src="linkedin_photo4.jpg" alt="Profile Photo">
+            <div class="card-content">
+              <h3 class="linkedIn-names">Randy Hidalgo</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer th:replace="partials/footer :: footer"></footer>
   </div>
   <script th:src="@{/js/hamburger-menu.js}"></script>
