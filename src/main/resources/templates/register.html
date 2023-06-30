@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="partials/head :: head(title='SoundConnect - Register')"></head>
 <body>
-  <div class="page-wrapper body">
+  <div class="page-wrapper reg-body">
     <div th:replace="partials/navbar :: navbar"></div>
     <img src="/images/login-background.jpg" alt="login background" class="background">
-    <div class="container grow justify-center">
-      <div class="row justify-center">
-        <div class="column shrink overlay-form">
-          <h1 class="title">Create Your Account!</h1>
-          <p class="join">Start your SoundConnect Journey Today!</p>
+    <div class="container reg-contain">
+      <div class="row reg-row">
+        <div class="column overlay-form">
+          <h1 class="titled">Create Your Account!</h1>
+          <p class="joined">Start your SoundConnect Journey Today!</p>
           <form class="register-form" th:method="post" th:action="@{/register}" th:object="${user}">
             <label class="register_label" for="username">Username:</label>
             <input placeholder="Enter Username" type="text" id="username" name="username" th:field="*{username}" class="username_input"><br>
@@ -19,7 +19,7 @@
             <input type="password" placeholder="Enter Password" name="password" id="password" th:field="*{password}"class="password_input"><br>
             <label class="register_label" for="confirmPassword">Confirm Password:</label>
             <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" class="confirm_password_input"><br>
-            <p class="profile-img">Upload Profile Image</p>
+            <p class="profile-img">Profile Image</p>
             <label for="open"></label>
             <input class="image-add-profile-picture" type="text" placeholder="Here" value="Click to Upload Profile Image" th:type="button" id="open" th:name="image" >
             <label for="image-url"></label><input id="image-url" th:name="image-url" hidden />
@@ -28,10 +28,13 @@
             </div>
         </form>
     </div>
-    <footer th:replace="~{partials/footer :: footer}"></footer> 
+
   </div>
-      
+  </div>
+    <footer th:replace="~{partials/footer :: footer}"></footer>
+  </div>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>

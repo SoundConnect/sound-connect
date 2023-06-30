@@ -75,7 +75,7 @@ public class UserController {
         } else {
              String hash = passwordEncoder.encode(password); //add password encoder RH
             userDao.save(new User(username, email, hash, imageUrl));
-            return "redirect:/profile";
+            return "redirect:/login";
         }
     }
 
@@ -92,6 +92,7 @@ public class UserController {
         // User's playlists
         List<Playlist> playlists = playlistDao.findAllByOwner(user);
         model.addAttribute("playlists", playlists);
+
 
         model.addAttribute("isProfileActive", true);
         // Displaying user's playlists on their profile

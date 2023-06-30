@@ -1,32 +1,46 @@
-export const KEYS = {
-	clientID: "6b14de4df2be4965a8c7675f7314f326",
-	clientSecret: "b686f5110ec84bba8b217a1e06aae212",
-	accessCode: ""
-}
+// import {KEYS} from "./keys";
+
 const submitButton = document.querySelector('.create-playlist-btn');
 const search = document.querySelector('.create-page-search');
 const searchResultsHeader = document.querySelector('.search-results-container .song-box-header');
 let searchResultsParent = document.querySelector('.search-results-box');
-
 let playlistBody = document.querySelector('.playlist-song-box');
 let songList = [];
-const deleteBtn = document.querySelectorAll('.delete-btn');
 
+// Get playlist id and name of current page form url
 const currentURL = window.location.href;
 const url = new URL(currentURL);
 const pathname = url.pathname;
 const pathSegments = pathname.split('/');
 const playlistId = pathSegments[2];
 
+// Get API token from Spotify
+const getToken = async () => {
+	try {
+		const result = await fetch('https://accounts.spotify.com/api/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': 'Basic ' + btoa(`${FIRST_SPOTIFY_KEY}` + ':' + `${SECOND_SPOTIFY_KEY}`)
+			},
+			body: 'grant_type=client_credentials'
+		});
+		const data = await result.json();
+		return data.access_token;
+
+	} catch (error) {
+		console.log("Error retrieving API access code: " + error);
+	}
+}
+
 // Get CSRF token
-const getCSRFToken = () => {
+function getCSRFToken() {
 	let metaTag = document.querySelector('meta[name="_csrf"]');
 	let CSRFToken = metaTag.getAttribute('content');
-	console.log(CSRFToken);
 	return CSRFToken;
 }
 
-// Sends a POST request to the server with playlist info
+// Sends a POST request to the server with playlist info and redirects to correct page
 submitButton.addEventListener('click', () => {
 	let playlistTitleValue = document.querySelector('.playlist-title').value;
 	if (playlistTitleValue.trim() === '') {
@@ -79,51 +93,50 @@ function playlist() {
 }
 
 //delete track from playlist
-deleteBtn.forEach(btn => {
-	btn.addEventListener('click', () => {
-		btn.parentElement.parentElement.remove();
-		let trackId = btn.value;
-		fetch(`/feed/${playlistId}/edit`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-				'X-CSRF-TOKEN': getCSRFToken()
-			},
-			body: JSON.stringify({trackId: trackId})
-		})
-			.then(response => {
-				if (response.ok) {
-					console.log('Track deleted');
-				} else {
-					throw new Error('Failed to delete track');
+document.body.addEventListener( 'click', function ( e ) {
+	if (e.target.classList.contains('delete-track-btn')) {
+		// edit playlist logic
+		if (pathname.includes('edit')) {
+			let btn = e.target;
+			btn.parentElement.parentElement.remove();
+			let trackId = btn.value;
+			fetch(`/feed/${playlistId}/edit`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-TOKEN': getCSRFToken()
+				},
+				body: JSON.stringify({trackId: trackId})
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Track deleted');
+					} else {
+						throw new Error('Failed to delete track');
+					}
+				});
+		// create a playlist logic
+		} else {
+			// remove track from dom
+			let btn = e.target;
+			let trackCard = btn.parentElement;
+			playlistBody.removeChild(trackCard);
+
+			// remove track from songList for fetch request
+			let trackId = btn.value;
+			songList.forEach((track, index)=>{
+				if (track.spotifyId === trackId) {
+					songList.splice(index, 1);
 				}
 			});
-	});
+		}
+	}
 });
 
 // display error message for empty playlist title
 const playlistTitleError = () => {
 	let title = document.querySelector('input.playlist-title');
 	title.style.borderColor = 'red';
-}
-
-// Get API token from Spotify
-const getToken = async () => {
-	try {
-		const result = await fetch('https://accounts.spotify.com/api/token', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-				'Authorization': 'Basic ' + btoa(KEYS.clientID + ':' + KEYS.clientSecret)
-			},
-			body: 'grant_type=client_credentials'
-		});
-		const data = await result.json();
-		return data.access_token;
-
-	} catch (error) {
-		console.log("Error retrieving API access code: " + error);
-	}
 }
 
 // Get song data from song name
@@ -172,10 +185,8 @@ search.addEventListener('keyup', async () => {
 searchResultsParent.addEventListener('click', async (e) => {
 	let clickedBtn = e.target;
 	let songData;
-	if (clickedBtn.nodeName === 'BUTTON') {
-		let addedSongCard = clickedBtn.parentElement;
-		addedSongCard.children[3].style.visibility = 'hidden';
-
+	if (clickedBtn.nodeName === 'BUTTON' && clickedBtn.classList.contains('add-song-btn')) {
+		console.log('clicked');
 		songData = clickedBtn.querySelector('span').innerText.split('~');
 		let artists = [];
 		let artistNames = songData[5].split(',');
@@ -205,15 +216,17 @@ searchResultsParent.addEventListener('click', async (e) => {
 				}
 			}
 		);
+
+		// find clicked on card and remove it from search results
+		let addedSongCard = clickedBtn.parentElement;
+		console.log(addedSongCard);
+		searchResultsParent.removeChild(addedSongCard);
+		// add card to playlist and replace add button with remove button
+		addedSongCard.children[4].classList.replace('add-song-btn', 'delete-track-btn');
+		addedSongCard.children[4].innerText = 'X';
+		addedSongCard.children[4].value = songData[1];
+		playlistBody.appendChild(addedSongCard);
 	}
-
-	let newCard = document.createElement('div');
-	newCard.classList.add('row', 'align-center', 'no-padding');
-	newCard.innerHTML = addedSongCard.innerHTML;
-	newCard.children[3].remove();
-	newCard.innerHTML += `<div class="column align-right song-duration">${formatSongDuration(songData[2])}</div>`;
-
-	playlistBody.innerHTML += newCard.outerHTML;
 });
 
 // get genres from artist
@@ -277,6 +290,7 @@ const displaySearchResults = song => {
 				<p class="song-artist">${artists}</p>
 			</div>
 			<div class="column song-album-name">${albumName}</div>
+			<div class="column align-right song-duration">${formatSongDuration(song.duration_ms)}</div>
 			<button class="add-song-btn">Add <span>${song.name}~${song.id}~${song.duration_ms}~${song.album.name}~${song.album.images[2].url}~${artists}~${artistSpotifyIds}~${song.album.id}</span></button>
 		</div>`;
 }

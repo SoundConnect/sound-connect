@@ -123,20 +123,29 @@ label {
     border-radius: 10px;
     box-shadow: 2px 2px 10px var(--secondary);
     border: 1px solid var(--secondary);
-    background-color: #202033;
 }
-.service-card{
-    height: 100%;
+
+.card i {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about-paragraph0{
+    display: flex;
     width: 100%;
+    justify-content: center;
 }
-.service-card-icon{
-    height: 100px;
-    width: 100px;
-    margin:7px auto -75px auto;
-    padding-top: 20px;
+/*****************************Landing Page********************************/
+.wrapper1{
+    background-image: url(../images/login-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
-.button{
-    width: 100px;
+.heading-1{
+    display: flex;
+    flex-direction: row;
 }
 .card-title{
     padding: 10px;
@@ -152,15 +161,21 @@ label {
 .login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
     color: var(--primary);
-    width: 85px;
-    border: unset;
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
     text-align: center;
-    transition: ease-in-out .3s;
+    margin-left: 250px;
 }
 .login-button:hover, .sign-up-button:hover, .logout-button:hover{
     background-color: var(--primary);
@@ -170,14 +185,55 @@ label {
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin-left: 250px;
     cursor: pointer;
 }
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
+.card {
+    background-color: #202033;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 2em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.card i {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
 
 /*****************************End Landing Page********************************/
 
 /*****************************Explore Page********************************/
+
+.overlay-text3 {
+    position: absolute;
+    top: 10%;
+    font-size: 30px;
+}
+.explore-row-bg{
+    position: absolute;
+    top: 20%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #070646;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px var(--secondary);
+    padding: 10px;
+}
+
 .account-info-wrapper{
     height: 400px;
 }
@@ -243,15 +299,11 @@ label {
     height: 100%;
     width: 180px;
 }
-.explore-row-bg{
-    background-color: #070646;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px var(--secondary);
-    padding: 10px;
-}
+
 .overlayContainer {
     position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
     top: 0;
     right: -100%;
@@ -322,17 +374,42 @@ label {
     object-fit: cover;
     margin-bottom: 20px;
 }
-.edit-btn {
+.edit-btn, .delete-playlist-btn {
     cursor: pointer;
-    border: 1px solid var(--secondary);
-    background-color: var(--primary);
-    border-radius: 10px;
-    padding: 2px 4px;
-    transition: ease-in-out .2s;
-}
-.edit-btn:hover {
     background-color: var(--secondary);
     color: var(--primary);
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: ease-in-out .2s;
+    border: none;
+    font-size: 10px;
+    width: 5rem;
+    height: 20px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.edit-btn {
+    line-height: 10px;
+}
+.edit-btn:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+.delete-playlist-btn:hover, .delete-track-btn:hover {
+    background-color: red;
+    color: var(--secondary);
+}
+.delete-track-btn {
+    cursor: pointer;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: ease-in-out .2s;
+    border: none;
+    font-size: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .register-form{
@@ -391,7 +468,7 @@ label {
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin: 0 5px;
     transition: ease-in-out .3s;
     text-align: center;
     cursor: pointer;
@@ -415,14 +492,63 @@ label {
 .register-submit .register-button{
     width: 200px;
 }
+.reg-body{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* This will allow the footer to be pushed to the bottom */
+}
+.reg-contain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    min-height: 100vh; /* Full viewport height */
+}
+.overlay-form {
+    max-width: 500px; /* Set max width for better display on larger screens */
+    width: 100%;
+    margin: 0 auto; /* Center the form on smaller screens */
+}
+
+.footer {
+    flex-shrink: 0; /* Footer will not shrink smaller than its content size */
+}
+.reg-row{
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    padding: 0 20px;
+    gap: 20px;
+    flex-direction: column;
+}
+.titled {
+    display: flex;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    justify-content: center;
+
+}
+.joined{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
 .profiles{
     margin-top: 100px;
 }
 .about-paragraph{
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
+    padding: 50px;
 }
 .card {
     width: 220px;
@@ -477,9 +603,6 @@ a {
 ======Styles For Playlist Creation Page======
 */
 
-.playlist-details-box, .playlist-song-box {
-    padding: 20px 10px;
-}
 .playlist-pic-box {
     width: 20rem;
 }
@@ -510,6 +633,7 @@ input.playlist-title {
     padding: 4px 8px;
     height: 100%;
     width: 100%;
+    outline: none;
 }
 input.playlist-title:focus {
     border: 1px solid rgba(245, 245, 245, 1);
@@ -582,7 +706,12 @@ input.playlist-title:focus {
     transition: ease-in-out .3s;
     cursor: pointer;
 }
-.add-song-btn span {
+.add-song-btn:hover {
+    background-color: green;
+    color: var(--secondary);
+    border: 2px solid green;
+}
+.add-song-btn span, .delete-btn span {
     display: none;
 }
 .create-page-search, .edit-page-search {
@@ -673,19 +802,19 @@ form.create-form {
     overflow-x: scroll;
 }
 .my-playlists .playlist-col {
-    max-height: 20rem;
+    max-height: 30rem;
     overflow-y: scroll;
     min-width: 50%;
     max-width: 50%;
 }
   /* profile sidebar */
 .profile-sidebar {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     border: 2px solid var(--secondary);
-    border-left-color: var(--primary);
     width: 12vw;
-    height: 70vh;
+    height: 60vh;
     position: fixed;
+    z-index: 100;
     border-radius: 0 10px 10px 0;
     left: 0;
     top: 50%;
@@ -696,17 +825,18 @@ form.create-form {
 .profile-sidebar-user-info, .profile-sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 .profile-sidebar-user-info img {
     margin: 0;
+    padding: 5px;
+    border: 3px solid var(--primary);
 }
 .profile-sidebar-nav .link {
     background-color: var(--secondary);
-    border: 2px solid var(--secondary);
     border-radius: 10px;
     padding: 10px;
     transition: ease-in-out .2s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 .profile-sidebar-nav .link:hover {
     background-color: var(--primary);
@@ -717,20 +847,26 @@ form.create-form {
 }
 .profile-sidebar-nav a {
     color: var(--primary);
-    width: min-content;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 1rem;
 }
 .profile-username {
     font-size: 2rem;
     font-weight: 700;
+    color: var(--primary);
 }
 #openButton {
     cursor: pointer;
-    border: 2px solid var(--secondary);
+    border: none;
     background-color: var(--secondary);
     color: var(--primary);
     border-radius: 10px;
     padding: 10px;
     transition: ease-in-out .2s;
+    font-size: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 #openButton:hover {
     background-color: var(--primary);
@@ -780,6 +916,9 @@ form.create-form {
     border-radius: 10px;
     gap: 10px;
     max-width: 50%;
+}
+.playlist-details-col {
+    height: inherit;
 }
 
 /********** Messages **********/
@@ -902,19 +1041,22 @@ button {
     position: sticky;
     top: 0;
     z-index: 999;
-    max-height: 5rem;
-    min-height: 5rem;
+    border-radius: 10px;
+}
+.playlist-details .playlist-img-wrapper {
+    margin: 0;
 }
 .playlist-tracks {
     flex: 3 0 0;
 }
 .playlist-img-wrapper {
-    width: 16vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
     margin-left: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .playlist-img {
     width: 8vw;
@@ -922,30 +1064,25 @@ button {
     object-fit: cover;
     border-radius: 10px;
 }
-
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
 }
-
 .image1{
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
     border-top-right-radius: unset;
 }
-
 .image2{
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
     border-top-left-radius: unset;
 }
-
 .image3{
     border-bottom-right-radius: unset;
     border-top-right-radius: unset;
     border-top-left-radius: unset;
 }
-
 .image4 {
     border-bottom-left-radius: unset;
     border-top-right-radius: unset;
@@ -1109,6 +1246,9 @@ button.btn.primary {
 .playlist-tracks:hover .song-box-header{
     display: flex;
 }
+.song-box-header .add-song-btn, .song-box-header .delete-track-btn {
+    visibility: hidden;
+}
 
 .logo{
     background: linear-gradient(to right, var(--tertiary), var(--secondary));
@@ -1193,10 +1333,13 @@ nav a:hover::before, .footer-links:hover::before {
 
 .footer {
     display: flex;
+    width: 100%;
+    gap: 20px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center; /* Optional: Align items vertically in the center */
-    margin-bottom: 15px;
+    margin-left: 10%;
+    margin-bottom: 30px;
     padding: 20px; /* Optional: Add padding */
 }
 
@@ -1207,7 +1350,9 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 .footer-desc{
+    width: 60%;
     font-weight: 100;
+    font-size: 15px;
 }
 .row .justify-space-between{
     display: flex;
@@ -1234,6 +1379,14 @@ nav a:hover::before, .footer-links:hover::before {
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+}
+.news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    color: var(--secondary);
 }
 .newsletter-input{
     display: inline-flex;
@@ -1264,6 +1417,7 @@ nav a:hover::before, .footer-links:hover::before {
     width: 500px;
 }
 /*MEDIA QUERIES FOR FOOTER */
+
 @media (max-width: 800px) {
 /*    .logo {*/
 /*        display: flex;*/
@@ -1295,11 +1449,12 @@ nav a:hover::before, .footer-links:hover::before {
 /*    .newsletter-input{*/
 /*        width: 200px;*/
 /*    }*/
+
 }
 
 
 /*MEDIA QUERIES FOR NAVBAR */
-@media(max-width: 800px){
+@media(max-width: 768px){
     nav .mainMenu {
         height: 100vh;
         position: fixed;
@@ -1335,7 +1490,7 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 /*MEDIA QUERIES FOR PROFILE PG*/
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
         max-width: 25%;
     }
@@ -1361,14 +1516,14 @@ nav a:hover::before, .footer-links:hover::before {
 }
 /*MEDIA QUERIES FOR LOGIN PG*/
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .join {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 10vh;
-        font-size: 15px;
+        font-size: 20px;
         color:#f5f5f5;
     }
     .login-form {
@@ -1379,6 +1534,7 @@ nav a:hover::before, .footer-links:hover::before {
         z-index: 1;  /* Optional: To make sure it stays on top */
     }
 }
+
 /*MEDIA QUERIES FOR LANDING PG*/
 @media (max-width: 767px) {
     /* Add your mobile-specific styles here */

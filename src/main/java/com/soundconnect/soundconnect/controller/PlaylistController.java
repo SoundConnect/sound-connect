@@ -3,10 +3,7 @@ package com.soundconnect.soundconnect.controller;
 import com.soundconnect.soundconnect.model.*;
 
 import com.soundconnect.soundconnect.repositories.*;
-
-import java.util.HashSet;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,6 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -100,10 +99,10 @@ public class PlaylistController {
     }
 
     // delete playlist from account
-    @PostMapping("/feed")
-    public String deletePlaylist (@RequestParam(name = "delete_playlist") long id) {
+    @PostMapping("/profile/{id}/delete")
+    public String deletePlaylist (@PathVariable long id) {
         playlistsDao.deleteById(id);
-        return "redirect:/feed";
+        return "redirect:/profile";
     }
 
     // method for getting current session user

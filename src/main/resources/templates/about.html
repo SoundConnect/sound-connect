@@ -4,6 +4,7 @@
 <body>
   <div class="page-wrapper">
     <div th:replace="partials/navbar :: navbar"></div>
+    <img src="/images/login-background.jpg" alt="login background" class="background">
     <div class="container grow justify-center body">
       <div class="row justify-center full-width about-row">
         <img src="/images/hero-image.jpg" alt="hero image">
@@ -57,6 +58,6 @@
 
     <footer th:replace="partials/footer :: footer"></footer>
   </div>
+  <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
-
 </html>
