@@ -70,10 +70,23 @@ textarea.contact-input {
 .hero-scene{
     position: relative;
 }
-
+.mobile-wave-wrapper{
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+}
 .overlay-text1{
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 15%;
     /*top: 230px;*/
     /*left: 229px;*/
@@ -82,7 +95,7 @@ textarea.contact-input {
 
 .overlay-text2{
     position: absolute;
-    top: 40%;
+    top: 65%;
     left: 31%;
     /*top: 325px;*/
     /*left: 448px;*/
@@ -103,30 +116,6 @@ textarea.contact-input {
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
-}
-
-.overlay-text1{
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    /*top: 230px;*/
-    /*left: 229px;*/
-    font-size: 35px;
-}
-
-.overlay-text2{
-    position: absolute;
-    top: 40%;
-    left: 31%;
-    /*top: 325px;*/
-    /*left: 448px;*/
-    font-size: 35px;
-}
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -479,9 +468,32 @@ textarea.contact-input {
     margin: 0 auto; /* Center the form on smaller screens */
 }
 
-.footer {
-    flex-shrink: 0; /* Footer will not shrink smaller than its content size */
+
+.reg-row{
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    padding: 0 20px;
+    gap: 20px;
+    flex-direction: column;
 }
+.titled {
+    display: flex;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    justify-content: center;
+
+}
+.joined{
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
+
 
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
@@ -1296,6 +1308,11 @@ nav a:hover::before, .footer-links:hover::before {
     padding: 20px; /* Optional: Add padding */
 }
 
+.row.spacing{
+    gap: 450px;
+}
+
+
 .explore-page-wrapper footer {
     margin-top: 384px;
 }
@@ -1307,7 +1324,6 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 .footer-desc{
-    width: 60%;
     font-weight: 100;
     font-size: 15px;
 }
@@ -1461,8 +1477,9 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 /*MEDIA QUERIES FOR LANDING PG*/
+
 @media (max-width: 768px) {
-    /* Add your mobile-specific styles here */
+
     .hero-scene {
         padding: 20px;
         height: 500px;
@@ -1472,7 +1489,16 @@ nav a:hover::before, .footer-links:hover::before {
     .overlay-text2 {
         text-align: center;
         margin-top: 10px;
-        font-size: 20px;
+        font-size: 10px;
+        left:30%;
+    }
+    .overlay-text2{
+        left: 39%;
+        top: 47%;
+    }
+    .overlay-text1{
+        top: 40%;
+
     }
 
     .service-card-wrapper {
@@ -1488,7 +1514,30 @@ nav a:hover::before, .footer-links:hover::before {
         align-items: center;
         justify-content: center;
     }
+    .newsletter-input{
+        width: 200px;
+    }
+    .mobile-nav{
+        display: none;
+    }
+    .mobile-wave-wrapper{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+    }
+    .mobile-wave-wrapper:hover{
+        cursor: pointer;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        padding: 5px;
+    }
 
-/*    ABOUT PAGE MEDIA QUERIES      */
+
+    .row.spacing{
+        gap: 30px;
+    }
 
 }
