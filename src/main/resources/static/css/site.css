@@ -93,10 +93,23 @@ label {
 .hero-scene{
     position: relative;
 }
-
+.mobile-wave-wrapper{
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+}
 .overlay-text1{
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 15%;
     /*top: 230px;*/
     /*left: 229px;*/
@@ -105,7 +118,7 @@ label {
 
 .overlay-text2{
     position: absolute;
-    top: 40%;
+    top: 65%;
     left: 31%;
     /*top: 325px;*/
     /*left: 448px;*/
@@ -138,30 +151,6 @@ label {
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
-}
-
-.overlay-text1{
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    /*top: 230px;*/
-    /*left: 229px;*/
-    font-size: 35px;
-}
-
-.overlay-text2{
-    position: absolute;
-    top: 40%;
-    left: 31%;
-    /*top: 325px;*/
-    /*left: 448px;*/
-    font-size: 35px;
-}
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -564,9 +553,6 @@ label {
     margin: 0 auto; /* Center the form on smaller screens */
 }
 
-.footer {
-    flex-shrink: 0; /* Footer will not shrink smaller than its content size */
-}
 .reg-row{
     width: 100%;
     max-width: 1100px;
@@ -1391,11 +1377,12 @@ nav a:hover::before, .footer-links:hover::before {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center; /* Optional: Align items vertically in the center */
-    margin-left: 10%;
     margin-bottom: 30px;
     padding: 20px; /* Optional: Add padding */
 }
-
+.row.spacing{
+    gap: 450px;
+}
 .footer-img-wrapper{
     height: 50px;
     width: 50px;
@@ -1403,7 +1390,6 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 .footer-desc{
-    width: 60%;
     font-weight: 100;
     font-size: 15px;
 }
@@ -1599,7 +1585,6 @@ nav a:hover::before, .footer-links:hover::before {
 
 /*MEDIA QUERIES FOR LANDING PG*/
 @media (max-width: 767px) {
-    /* Add your mobile-specific styles here */
     .hero-scene {
         padding: 20px;
         height: 500px;
@@ -1610,6 +1595,14 @@ nav a:hover::before, .footer-links:hover::before {
         text-align: center;
         margin-top: 10px;
         font-size: 10px;
+        left:30%;
+    }
+    .overlay-text2{
+        left: 39%;
+        top: 47%;
+    }
+    .overlay-text1{
+        top: 40%;
     }
 
     .service-card-wrapper {
@@ -1625,5 +1618,28 @@ nav a:hover::before, .footer-links:hover::before {
         align-items: center;
         justify-content: center;
     }
+    .newsletter-input{
+        width: 200px;
+    }
+    .mobile-nav{
+        display: none;
+    }
+    .mobile-wave-wrapper{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+    }
+    .mobile-wave-wrapper:hover{
+        cursor: pointer;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        padding: 5px;
+    }
 
+    .row.spacing{
+        gap: 30px;
+    }
 }
