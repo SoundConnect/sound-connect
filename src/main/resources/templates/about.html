@@ -24,7 +24,7 @@
         <div class="row justify-center">
             <h2 class="about-title">Meet the Team</h2>
         </div>
-        <div class="row grow about-cards-gap">
+        <div class="row grow about-cards-gap mobile-about-cards">
             <div class="column align-center card">
                 <img src="linkedin_photo1.jpg" alt="Profile Photo">
                 <div class="card-content">
@@ -40,7 +40,7 @@
             <div class="column align-center card">
                 <img src="/images/damian-linkedin.JPG" alt="Profile Photo">
                 <div class="card-content">
-                    <h3 class="linkedIn-names">Damian Wrather</h3>
+                    <a target="_blank" href="https://www.linkedin.com/in/damian-wrather/"><h3 class="linkedIn-names">Damian Wrather</h3></a>
                 </div>
             </div>
             <div class="column align-center card">
@@ -54,7 +54,7 @@
 
     <footer th:replace="partials/footer :: footer"></footer>
 </div>
-
+<script src="/js/mobile.js"></script>
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>

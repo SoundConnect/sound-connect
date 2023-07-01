@@ -12,10 +12,11 @@
         <div class="row explore-row-bg">
             <div class="column ">
                 <div class="row explore-box-header justify-space-between">
+                <div class="row justify-space-between mobile-tracks-row">
                     <h1>Recommended Tracks</h1>
                     <button class="openOverlayButton">Search Music</button>
                 </div>
-                <div class="explore-playlist row"></div>
+                <div class="row explore-playlist"></div>
                 <div class="row explore-artist-row">
                     <h1>Recommended Artists</h1>
                 </div>
@@ -32,7 +33,7 @@
                         <div class="column align-center">
                             <input type="text" placeholder="Search.." class="explore-search">
                         </div>
-                        <div class="explore-search-results row"></div>
+                        <div class="row explore-search-results"></div>
                         <button class="closeOverlayButton">Close</button>
                     </div>
                 </div>
@@ -41,6 +42,8 @@
     <div class="explore-page-footer">
         <footer th:replace="partials/footer :: footer"></footer>
     </div>
+
+</div>
 </div>
 
 <script type="module" src="/js/explore.js">
@@ -74,5 +77,6 @@
 
 </script>
 <script th:src="@{/js/hamburger-menu.js}"></script>
+<script src="/js/mobile.js"></script>
 </body>
 </html>
