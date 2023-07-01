@@ -314,19 +314,20 @@ textarea.contact-input {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    top: 0;
+    top: 50%;
     right: -100%;
     width: 100%;
-    height: 150vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
     transition: right 0.3s ease-in-out;
+    overflow-x: scroll;
 }
 
 .overlayContent {
     position: absolute;
     top: 60px;
-    left: 175px;
+    left: 25%;
     transform: translate(-50%, -50%);
     color: #fff;
     padding: 20px;
@@ -889,7 +890,9 @@ form.create-form {
 .playlist-details-col {
     height: inherit;
 }
-
+.content-section{
+    margin-top: 20px;
+}
 /********** Messages **********/
 .message-container.show{
     display: block;
@@ -1481,7 +1484,7 @@ nav a:hover::before, .footer-links:hover::before {
 
 /*MEDIA QUERIES FOR LANDING PG*/
 
-@media (max-width: 768px) {
+@media (max-width: 425px) {
 
     .hero-scene {
         padding: 20px;
@@ -1493,17 +1496,26 @@ nav a:hover::before, .footer-links:hover::before {
         text-align: center;
         margin-top: 10px;
         font-size: 10px;
-        left:30%;
+        left:15%;
     }
     .overlay-text2{
-        left: 39%;
+        left: 30%;
         top: 47%;
     }
     .overlay-text1{
         top: 40%;
 
     }
-
+.mobile-img{
+    width: 350px;
+}
+.info-title{
+    font-size: 25px;
+}
+.info-desc{
+    font-size: 15px;
+    width: 353px;
+}
     .service-card-wrapper {
         margin-bottom: 20px;
     }
@@ -1522,6 +1534,9 @@ nav a:hover::before, .footer-links:hover::before {
     }
     .mobile-nav{
         display: none;
+    }
+    .logo{
+        font-size: 15px;
     }
     .mobile-wave-wrapper{
         display: flex;
@@ -1543,4 +1558,67 @@ nav a:hover::before, .footer-links:hover::before {
         gap: 30px;
     }
 
+    .row.explore-playlist, .row.explore-artists, .row.explore-albums, .row.explore-search-results{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-tracks-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .explore-page-title{
+        font-size: 10px;
+    }
+    .openOverlayButton{
+        height: 50px;
+    }
+    .overlayContainer{
+        top: 50%;
+        height: 100%;
+    }
+    .search-artists, .search-tracks, .search-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .overlayContent{
+        left: 50%;
+    }
+
+    .mobile-about-cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card{
+        width: 300px;
+    }
+    .content-section{
+        margin-top: 350px;
+    }
+    .profile-sidebar{
+        top: 50%;
+        left: 20%;
+        width: 285px;
+    }
+    .mobile-sidebar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    /*createPlaylist*/
+
+    .mobile-search-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
