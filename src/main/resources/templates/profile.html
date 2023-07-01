@@ -4,6 +4,8 @@
     <div class="page-wrapper profile">
         <!-- Header -->
         <header th:replace="~{partials/navbar :: navbar}"></header>
+        <!-- Background -->
+        <img src="/images/login-background.jpg" alt="login background" class="background">
 
         <!-- Main Content -->
         <div class="container-profile">
@@ -27,9 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-center full-width profile-hero">
-                <img class="hero-image" src="/images/hero-image.jpg" alt="hero image">
-            </div>
+
             <div class="content-section row">
                 <div class="profile">
                     <div class="container">
@@ -151,6 +151,7 @@
     <!-- Footer -->
     <footer th:replace="partials/footer :: footer"></footer>
 </div>
+
 <script src="https://cdn.talkjs.com/talk.js"></script>
 <script src="/js/messages.js"></script>
 <script type="module" src="/js/profile.js">
