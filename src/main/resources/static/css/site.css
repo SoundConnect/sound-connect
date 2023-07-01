@@ -25,6 +25,92 @@ label {
     letter-spacing: 1px;
 }
 
+/*/------------------FOOTER STYLES-------------------------*!*/
+
+.footer {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center; /* Optional: Align items vertically in the center */
+    margin-bottom: 30px;
+    padding: 20px; /* Optional: Add padding */
+}
+
+.footer-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
+
+.footer-desc{
+    width: 60%;
+    font-weight: 100;
+    font-size: 15px;
+}
+.footer-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0;
+}
+
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px
+}
+.row .news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    color: var(--secondary);
+}
+.newsletter-input{
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+
+
+.footer-links:hover{
+    color: blue;
+}
+.info{
+    margin-top: 170px;
+}
+.info-title{
+    font-size: 35px;
+}
+.info-desc{
+    font-size: 20px;
+    font-weight: 100;
+    width: 500px;
+}
+
 /*****************************Contact Page ********************************/
 .contact-input{
     height: 40px;
@@ -383,6 +469,10 @@ textarea.contact-input {
     background-color: #c9c9c9;
     color: var(--primary);
     cursor: pointer;
+}
+
+.explore-page-footer {
+    margin-top: 205px;
 }
 /*****************************End Explore Page********************************/
 
@@ -1067,6 +1157,7 @@ button {
     position: relative;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .playlist-details {
     padding: 1rem;
     background-color: #6e6e6e;
@@ -1365,95 +1456,6 @@ nav .underline::before {
 nav a:hover::before, .footer-links:hover::before {
     width: 100%;
 }
-/*/------------------FOOTER STYLES-------------------------*!*/
-
-.footer {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center; /* Optional: Align items vertically in the center */
-    margin-bottom: 30px;
-    padding: 20px; /* Optional: Add padding */
-}
-
-.explore-page-wrapper footer {
-    margin-top: 384px;
-}
-
-.footer-img-wrapper{
-    height: 50px;
-    width: 50px;
-    margin: 0 10px;
-}
-
-.footer-desc{
-    width: 60%;
-    font-weight: 100;
-    font-size: 15px;
-}
-.footer-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1100px;
-    padding: 0;
-}
-
-.newsletter{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 1100px
-}
-.row .news-row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-.news-row{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 20px;
-    color: var(--secondary);
-}
-.newsletter-input{
-    display: inline-flex;
-    flex-wrap: wrap;
-    height: 40px;
-    width: 300px;
-    background-color: transparent;
-    border-radius: 10px;
-    border: 1px solid var(--secondary);
-    outline: unset;
-    padding: 0 10px;
-    color: var(--secondary);
-}
-
-
-.footer-links:hover{
-    color: blue;
-}
-.info{
-    margin-top: 170px;
-}
-.info-title{
-    font-size: 35px;
-}
-.info-desc{
-    font-size: 20px;
-    font-weight: 100;
-    width: 500px;
-}
 
 /*######################################################*/
 /*################ MEDIA QUERIES FOR TABLET ############*/
@@ -1497,25 +1499,30 @@ nav a:hover::before, .footer-links:hover::before {
 
 /*MEDIA QUERIES FOR PROFILE PG*/
 @media (max-width: 768px) {
-    .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
-        max-width: 25%;
-    }
-    .profile-playlists, .profile-category, .profile-albums {
-        display: block;
-        flex-wrap: wrap;
-        margin-right: 100px;
-        padding: 10px;
-        gap: 30px;
-    }
+
     .profile-sidebar {
-        background-color: rgba(19, 4, 210, 0.3);
-        width: 215px;
-        height: 250px;
+        display: unset;
+        background-color: unset;
+        border: unset;
+        width: unset;
         position: absolute;
-        border-radius: 40px;
-        left: 22px;
-        top: 100px;
-        padding: 20px;
+        left: 7.5%;
+        top: 40%;
+    }
+
+    .sidebar-column{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile-sidebar-user-info, .profile-sidebar-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 19px;
+    }
+
+    .profile-sidebar-user-info p {
         color: #f5f5f5;
     }
 
@@ -1570,6 +1577,29 @@ nav a:hover::before, .footer-links:hover::before {
         justify-content: center;
     }
 
-/*    ABOUT PAGE MEDIA QUERIES      */
+/*    EXPLORE PAGE MEDIA QUERIES      */
 
+    .explore-row-bg {
+        width: 93%;
+    }
+
+    .explore-playlist{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .explore-artists{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-albums{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-page-footer{
+        margin-top: 1860px;
+    }
 }
