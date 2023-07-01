@@ -2,7 +2,7 @@
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{partials/head :: head(title='SoundConnect - Explore')}"></head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper explore-page-wrapper">
     <header th:replace="~{partials/navbar :: navbar}"></header>
     <img src="/images/login-background.jpg" alt="contact background" class="background">
     <div class="container justify-center align-center explore-page-title">
@@ -11,6 +11,7 @@
     <div class="container">
         <div class="row explore-row-bg">
             <div class="column ">
+                <div class="row explore-box-header justify-space-between">
                 <div class="row justify-space-between mobile-tracks-row">
                     <h1>Recommended Tracks</h1>
                     <button class="openOverlayButton">Search Music</button>
@@ -38,8 +39,10 @@
                 </div>
         </div>
     </div>
-<div class="explore-footer">
-    <footer th:replace="partials/footer :: footer"></footer>
+    <div class="explore-page-footer">
+        <footer th:replace="partials/footer :: footer"></footer>
+    </div>
+
 </div>
 </div>
 

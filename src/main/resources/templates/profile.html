@@ -11,7 +11,8 @@
         <div class="container-profile">
             <!-- Sidebar -->
             <div class="row profile-sidebar">
-                <div class="column mobile-sidebar align-center gap-30">
+                <div class="column sidebar-column align-center gap-30">
+
                     <div class="profile-sidebar-user-info text-center">
                         <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
                         <p th:text="${user.username}" class="profile-username"></p>
@@ -23,7 +24,7 @@
                         <div class="link text-center">
                             <a href="/feed">Playlist Feed</a>
                         </div>
-                        <div class="row justify-center grow align-bottom no-padding">
+                        <div class="row open-message-btn justify-center grow align-bottom no-padding">
                             <button id="openButton">Open Messages</button>
                         </div>
                     </div>
