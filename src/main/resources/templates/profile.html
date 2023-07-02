@@ -1,156 +1,155 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')"></head>
 <body>
-    <div class="page-wrapper profile">
-        <!-- Header -->
-        <header th:replace="~{partials/navbar :: navbar}"></header>
-        <!-- Background -->
-        <img src="/images/login-background.jpg" alt="login background" class="background">
+<div class="page-wrapper profile">
+    <!-- Header -->
+    <header th:replace="~{partials/navbar :: navbar}"></header>
+    <!-- Background -->
+    <img src="/images/login-background.jpg" alt="login background" class="background">
 
-        <!-- Main Content -->
-        <div class="container-profile">
-            <!-- Sidebar -->
-            <div class="row profile-sidebar">
-                <div class="column sidebar-column align-center gap-30">
-
-                    <div class="profile-sidebar-user-info text-center">
-                        <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
-                        <p th:text="${user.username}" class="profile-username"></p>
+    <!-- Main Content -->
+    <div class="container-profile">
+        <!-- Sidebar -->
+        <div class="row profile-sidebar">
+            <div class="column mobile-sidebar align-center gap-30">
+                <div class="profile-sidebar-user-info text-center">
+                    <img th:src="*{user.profilePic}" alt="profile picture" class="profile-picture">
+                    <p th:text="${user.username}" class="profile-username"></p>
+                </div>
+                <div class="profile-sidebar-nav gap-10">
+                    <div class="link text-center">
+                        <a href="/create">Create a Playlist</a>
                     </div>
-                    <div class="profile-sidebar-nav gap-10">
-                        <div class="link text-center">
-                            <a href="/create">Create a Playlist</a>
-                        </div>
-                        <div class="link text-center">
-                            <a href="/feed">Playlist Feed</a>
-                        </div>
-                        <div class="row open-message-btn justify-center grow align-bottom no-padding">
-                            <button id="openButton">Open Messages</button>
-                        </div>
+                    <div class="link text-center">
+                        <a href="/feed">Playlist Feed</a>
+                    </div>
+                    <div class="row justify-center grow align-bottom no-padding">
+                        <button id="openButton">Open Messages</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="content-section row">
-                <div class="profile">
-                    <div class="container">
-                        <div class="container-playlists">
-                            <div class="column">
-                                <!-- User's playlists -->
-                                <div class="row">
-                                    <h1>My Playlists</h1>
-                                </div>
-                                <div class="row my-playlists">
-                                    <div th:each="playlist : ${playlists}" class="column playlist playlist-col">
-                                        <!-- playlist title/edit and delete options -->
-                                        <div class="row align-center playlist-details">
-                                            <div class="column justify-center shrink playlist-img-wrapper">
-                                                <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+        <div class="content-section row">
+            <div class="profile">
+                <div class="container">
+                    <div class="container-playlists">
+                        <div class="column">
+                            <!-- User's playlists -->
+                            <div class="row">
+                                <h1>My Playlists</h1>
+                            </div>
+                            <div class="row my-playlists">
+                                <div th:each="playlist : ${playlists}" class="column playlist playlist-col">
+                                    <!-- playlist title/edit and delete options -->
+                                    <div class="row align-center playlist-details">
+                                        <div class="column justify-center shrink playlist-img-wrapper">
+                                            <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                                        </div>
+                                        <div class="column playlist-details-col">
+                                            <div class="row align-center text-center shrink no-padding gap-5">
+                                                <a th:href="@{/feed/{id}/edit(id=${playlist.id})}" class="edit-btn">Edit</a>
+                                                <form th:action="@{/profile/{id}/delete(id=${playlist.id})}" method="post">
+                                                    <button type="submit" name="deletePlaylist" class="delete-playlist-btn">Delete</button>
+                                                </form>
                                             </div>
-                                            <div class="column playlist-details-col">
-                                                <div class="row align-center text-center shrink no-padding gap-5">
-                                                    <a th:href="@{/feed/{id}/edit(id=${playlist.id})}" class="edit-btn">Edit</a>
-                                                    <form th:action="@{/profile/{id}/delete(id=${playlist.id})}" method="post">
-                                                        <button type="submit" name="deletePlaylist" class="delete-playlist-btn">Delete</button>
-                                                    </form>
-                                                </div>
-                                                <div class="row grow no-padding">
-                                                    <h2 th:text="${playlist.name}"></h2>
-                                                </div>
+                                            <div class="row grow no-padding">
+                                                <h2 th:text="${playlist.name}"></h2>
                                             </div>
                                         </div>
-                                        <!-- playlist Tracks Box -->
-                                        <div class="row playlist-tracks">
-                                            <div class="column gap-10 playlist-song-box">
-                                                <!-- tracks header -->
-                                                <div class="row align-center no-padding song-box-header">
-                                                    <div class="column song-title no-gap">
-                                                        <div class="song-name">Title</div>
-                                                    </div>
-                                                    <div class="song-pic-wrapper"></div>
-                                                    <div class="column song-album-name">Album</div>
-                                                    <div class="column align-right song-duration">Duration</div>
+                                    </div>
+                                    <!-- playlist Tracks Box -->
+                                    <div class="row playlist-tracks">
+                                        <div class="column gap-10 playlist-song-box">
+                                            <!-- tracks header -->
+                                            <div class="row align-center no-padding song-box-header">
+                                                <div class="column song-title no-gap">
+                                                    <div class="song-name">Title</div>
                                                 </div>
-                                                <!-- playlist tracks -->
-                                                <div class="playlist-track" th:each="track : ${playlist.tracks}">
-                                                    <div class="row align-center no-padding tracks-box">
-                                                        <div class="column shrink song-pic-wrapper">
-                                                            <img th:src="${track.album.albumArt}" alt="Song Picture" class="song-pic" >
-                                                        </div>
-                                                        <div class="column song-title no-gap">
-                                                            <p class="song-name" th:text="${#strings.abbreviate(track.name, 20)}"></p>
-                                                            <p class="song-artist" th:text="${#strings.abbreviate(track.album.artist.name, 20)}"></p>
-                                                        </div>
-                                                        <div class="column song-album-name" th:text="${#strings.abbreviate(track.album.name, 17)}"></div>
-                                                        <div class="column align-right song-duration" th:text="${track.duration}"></div>
+                                                <div class="song-pic-wrapper"></div>
+                                                <div class="column song-album-name">Album</div>
+                                                <div class="column align-right song-duration">Duration</div>
+                                            </div>
+                                            <!-- playlist tracks -->
+                                            <div class="playlist-track" th:each="track : ${playlist.tracks}">
+                                                <div class="row align-center no-padding tracks-box">
+                                                    <div class="column shrink song-pic-wrapper">
+                                                        <img th:src="${track.album.albumArt}" alt="Song Picture" class="song-pic" >
                                                     </div>
+                                                    <div class="column song-title no-gap">
+                                                        <p class="song-name" th:text="${#strings.abbreviate(track.name, 20)}"></p>
+                                                        <p class="song-artist" th:text="${#strings.abbreviate(track.album.artist.name, 20)}"></p>
+                                                    </div>
+                                                    <div class="column song-album-name" th:text="${#strings.abbreviate(track.album.name, 17)}"></div>
+                                                    <div class="column align-right song-duration" th:text="${track.duration}"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <h1>Featured Playlists</h1>
-                                </div>
-                                <div class="profile-playlists row">
-                                </div>
+                            <div class="row">
+                                <h1>Featured Playlists</h1>
+                            </div>
+                            <div class="profile-playlists row">
+                            </div>
 
-                                <div class="row">
-                                    <h1>Category Playlists</h1>
-                                </div>
-                                <div class="profile-category row">
-                                </div>
+                            <div class="row">
+                                <h1>Category Playlists</h1>
+                            </div>
+                            <div class="profile-category row">
+                            </div>
 
-                                <div class="row">
-                                    <h1>Albums Playlists</h1>
-                                </div>
-                                <div class="profile-albums row">
-                                </div>
+                            <div class="row">
+                                <h1>Albums Playlists</h1>
+                            </div>
+                            <div class="profile-albums row">
                             </div>
                         </div>
                     </div>
-                    <div id="messageContainer" class="message-container">
-                        <div class="message-content">
-                            <div class="row justify-space-between">
-                                <h2 class="message-title">Messages Board</h2>
-                                <button id="newMessage">New+</button>
-                            </div>
+                </div>
+                <div id="messageContainer" class="message-container">
+                    <div class="message-content">
+                        <div class="row justify-space-between">
+                            <h2 class="message-title">Messages Board</h2>
+                            <button id="newMessage">New+</button>
+                        </div>
 
-                            <label class="message-title" for="recipientsInput">Name:</label>
-                            <input type="text" id="recipientsInput" class="recipient-input" placeholder="chat name">
+                        <label class="message-title" for="recipientsInput">Name:</label>
+                        <input type="text" id="recipientsInput" class="recipient-input" placeholder="chat name">
 
-                            <div class="messages-container">
-                                <div class="row">
-                                    <div id="chatMessages" class="chat-messages">
-                                        <div class="chat-row" th:each="chat : ${chats}">
-                                            <h3 class="chat" th:text="${chat.chatName}" th:data-chatid="${chat.id}"></h3>
-                                        </div>
-                                    </div>
-
-                                    <div id="messageFeed" class="row message-feed">
-                                        <div class="column senderCol">
-
-                                        </div>
-                                        <div class="column recipientCol">
-
-                                        </div>
-
+                        <div class="messages-container">
+                            <div class="row">
+                                <div id="chatMessages" class="chat-messages">
+                                    <div class="chat-row" th:each="chat : ${chats}">
+                                        <h3 class="chat" th:text="${chat.chatName}" th:data-chatid="${chat.id}"></h3>
                                     </div>
                                 </div>
 
-                                <label for="messageInput"></label><input type="text" id="messageInput" class="message-input" placeholder="Type your message">
-                                <button id="sendButton">Send</button>
-                                <button id="closeButton">Close</button>
+                                <div id="messageFeed" class="row message-feed">
+                                    <div class="column senderCol">
+
+                                    </div>
+                                    <div class="column recipientCol">
+
+                                    </div>
+
+                                </div>
                             </div>
+
+                            <label for="messageInput"></label><input type="text" id="messageInput" class="message-input" placeholder="Type your message">
+                            <button id="sendButton">Send</button>
+                            <button id="closeButton">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer th:replace="partials/footer :: footer"></footer>
+</div>
+<!-- Footer -->
+<footer th:replace="partials/footer :: footer"></footer>
 </div>
 
 <script src="https://cdn.talkjs.com/talk.js"></script>
@@ -173,7 +172,7 @@
         IFrameAPI.createController(element, options, callback);
     };
 </script>
-    <script src="/js/mobile.js"></script>
+<script src="/js/mobile.js"></script>
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>

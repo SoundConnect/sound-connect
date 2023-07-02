@@ -1493,7 +1493,7 @@ nav a:hover::before, .footer-links:hover::before {
 /*######################################################*/
 
 /*MEDIA QUERIES FOR NAVBAR */
-@media(max-width: 768px){
+@media(max-width: 768px) and (min-width: 426px){
     nav .mainMenu {
         height: 100vh;
         position: fixed;
@@ -1527,18 +1527,52 @@ nav a:hover::before, .footer-links:hover::before {
         padding: 12px;
     }
 }
-
+/*MEDIA QUERIES FOR EXPLORE*/
+@media (max-width: 768px) and (min-width: 426px) {
+    .row.explore-playlist{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .track-iframe{
+        width: 500px;
+    }
+    .row.explore-artists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .artist-iframe{
+        width: 600px;
+    }
+    .row.explore-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .album-iframe{
+        width: 600px;
+    }
+}
 /*MEDIA QUERIES FOR PROFILE PG*/
-@media (max-width: 768px) {
-
+@media (max-width: 768px) and (min-width: 426px) {
+.container-profile{
+    margin-top: 300px;
+}
     .profile-sidebar {
         display: unset;
         background-color: unset;
         border: unset;
         width: unset;
         position: absolute;
-        left: 7.5%;
-        top: 40%;
+        left: 20%;
+        top: 50%;
     }
 
     .sidebar-column{
@@ -1556,11 +1590,48 @@ nav a:hover::before, .footer-links:hover::before {
     .profile-sidebar-user-info p {
         color: #f5f5f5;
     }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .playlist-iframe{
+        width: 600px;
+    }
+    .row.spacing{
+        gap: 230px;
+    }
+    .profile-sidebar-nav{
+        margin-top: 50px;
+    }
 
 }
 /*MEDIA QUERIES FOR LOGIN PG*/
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 426px) {
     .join {
         display: flex;
         flex-direction: column;
@@ -1673,8 +1744,9 @@ nav a:hover::before, .footer-links:hover::before {
         flex-wrap: wrap;
     }
 
-    .explore-page-footer{
+    .explore-page-footer {
         margin-top: 1860px;
+    }
 
     .row.spacing{
         gap: 30px;
@@ -1725,9 +1797,12 @@ nav a:hover::before, .footer-links:hover::before {
         margin-top: 350px;
     }
     .profile-sidebar{
-        top: 50%;
+        top: 35%;
         left: 20%;
-        width: 285px;
+        width: 250px;
+        height: 230px;
+        position: absolute;
+        border-radius: 10px;
     }
     .mobile-sidebar{
         display: flex;
@@ -1748,5 +1823,32 @@ nav a:hover::before, .footer-links:hover::before {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .playlist-iframe{
+        width: 250px;
     }
 }

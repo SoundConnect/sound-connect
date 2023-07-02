@@ -23,6 +23,7 @@ export async function displayPlaylist() {
         const ids = playlists.map(playlist => playlist.id);
         function createPlaylistIframe(playlist) {
             const iframe = document.createElement('iframe');
+            iframe.classList.add('playlist-iframe');
             iframe.src = `https://open.spotify.com/embed/playlist/${playlist}`;
             iframe.width = '100%';
             iframe.height = '352';
