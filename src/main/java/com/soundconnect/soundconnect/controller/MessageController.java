@@ -35,6 +35,7 @@ public class MessageController {
     @PostMapping("/profile/{id}")
     public String sendMessage(@RequestBody MessageRequest messageRequest, @PathVariable Long id) {
         System.out.println("profile/id");
+
         Message message = new Message(messageRequest.getMessage(),messageRequest.getSender(), messageRequest.getRecipients().get(0));
         messageRequest.setSender(messageRequest.getSender());
         messageRequest.setMessage(messageRequest.getMessage());
@@ -51,6 +52,7 @@ public class MessageController {
         if(id == 0) {
             Chat chat = new Chat();
             chat.pushMessage(message);
+
             String name = messageRequest.getRecipients().get(0);
 
             chat.setChatName(name);
