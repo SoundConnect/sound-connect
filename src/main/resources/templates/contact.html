@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Contact')">
-
+<head th:replace="~{partials/head :: head(title='SoundConnect - Contact')}"></head>
 <body>
 <div class="page-wrapper">
-    <div th:replace="partials/navbar :: navbar"></div>
-    <div class="container grow justify-center body">
+    <div th:replace="~{partials/navbar :: navbar}"></div>
+    <img src="/images/login-background.jpg" alt="contact background" class="background">
+    <div class="container contact-container grow justify-center body">
         <div class="row justify-center">
-            <div class="column shrink overlay-form">
-                <h1 class="title">Contact Us</h1>
-                <p class="about-paragraph">If you have any questions or concerns, please contact us at one of the
-                    following: </p>
-                <div class="row">
-                    <p class="about-paragraph">Email: Soundconnect@soundconnect.com</p>
+            <div class="column align-center justify-center">
+                <div class="row justify-center">
+                    <h1>Contact Us:</h1>
                 </div>
-                <div class="row">
-                    <p class="about-paragraph">Phone: 1-800-555-5555</p>
+                <div class="row justify-center">
+                    <form class="column gap-20">
+                        <div class="column">
+                            <label class="contact-label" for="name">Name:</label>
+                            <input class="contact-input" id="name" type="text" name="name" placeholder="Name">
+                        </div>
+                        <div class="column">
+                            <label class="contact-label" for="email">Email:</label>
+                            <input class="contact-input" id="email" type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="column">
+                            <label class="contact-label" for="message">Message:</label>
+                            <textarea class="contact-input" id="message" name="message" placeholder="Message"></textarea>
+                        </div>
+                        <div class="row shrink justify-center">
+                            <button class="contact-button" name="contact-submit" type="submit">Send</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="row">
-                    <p class="about-paragraph">Address: 1234 SoundConnect Way, SoundConnect, Tx 12345</p>
-                </div>
-                <div class="row align-center">
-                    <p class="about-paragraph">Social Media:
-                <div class="footer-img-wrapper">
-                    <img src="/images/instagram-icon.png" alt="instagram icon">
-                </div>
-                <div class="footer-img-wrapper">
-                    <img src="/images/twitter-icon.png" alt="instagram icon">
-                </div>
-            </div>
-                </p>
             </div>
         </div>
     </div>
-    <div th:replace="partials/footer :: footer"></div>
+    <div th:replace="~{partials/footer :: footer}"></div>
 </div>
+<script src="/js/mobile.js"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
-
 </html>

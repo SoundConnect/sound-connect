@@ -2,12 +2,12 @@
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/head :: head(title='SoundConnect - Create a Playlist')}"></head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper gap-10">
     <nav th:replace="~{partials/navbar :: navbar}"></nav>
 
     <!-- Search input -->
     <section class="container create-top-container">
-        <div class="row justify-space-between align-center create-top-box">
+        <div class="row justify-space-between align-center create-top-box mobile-search-row">
             <div class="d-flex gap-10">
                 <h1>Find songs for your playlist</h1>
                 <input class="create-page-search" type="text" name="search-input" placeholder="Search for a song...">
@@ -17,7 +17,7 @@
     </section>
 
     <!-- Search results -->
-    <section class="container gap-20 search-results-container">
+    <section class="container gap-21 search-results-container">
         <div class="row align-center no-padding song-box-header">
             <div class="column song-title no-gap">
                 <div class="song-name">Title</div>
@@ -25,13 +25,14 @@
             <div class="song-pic-wrapper"></div>
             <div class="column song-album-name">Album</div>
             <div class="column align-right song-duration">Duration</div>
+            <button class="add-song-btn">Add</button>
         </div>
         <div class="search-results-box"></div>
     </section>
 
     <!-- Playlist / form card -->
     <section class="container justify-center grow">
-        <div class="row grow no-padding no-gap playlist-box">
+        <div class="row grow no-padding gap-30 playlist-box mobile-playlist-box">
             <!-- Left Column: Playlist pic, title, desc -->
             <div class="column gap-10 playlist-details-box">
                 <div class="row justify-center align-center no-padding playlist-pic-box">
@@ -57,12 +58,13 @@
                     <div class="song-pic-wrapper"></div>
                     <div class="column song-album-name">Album</div>
                     <div class="column align-right song-duration">Duration</div>
+                    <button class="delete-track-btn">X</button>
                 </div>
             </div>
         </div>
     </section>
 </div>
-
+<script src="/js/mobile.js"></script>
 <script src="/js/playlist.js" type="module"></script>
 </body>
 

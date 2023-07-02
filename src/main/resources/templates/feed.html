@@ -31,7 +31,7 @@
                 <!-- playlist details/info -->
                 <div class="row grow align-center playlist-details">
                     <div th:each="playlist : ${playlist}" class="column shrink playlist-img-wrapper">
-                        <div th:if="${playlist.tracks.size() < 4}">
+                        <div th:if="${playlist.tracks.size() < 4}" class="d-flex">
                             <img src="/images/default-playlist-logo.png" alt="Playlist Image">
                         </div>
                         <div class="large-playlist-images" th:if="${playlist.tracks.size() >= 4}">
@@ -87,7 +87,7 @@
     </section>
     <footer th:replace="~{partials/footer :: footer}"></footer>
 </div>
-
+<script src="/js/mobile.js"></script>
 <script type="module" th:src="@{/js/feed.js}"></script>
 </body>
 </html>

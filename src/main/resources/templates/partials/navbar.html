@@ -3,13 +3,29 @@
         <div class="row nav-row">
             <div class="column gap-15 nav-col shrink">
                 <a href="/"><h1 class="logo">Sound Connect</h1></a>
-                <div><a class="underline" href="/about" title="About">About</a></div>
-                <div><a class="underline" href="/contact" title="About">Contact</a></div>
-                <div><a class="underline" href="/explore" title="About">Explore</a></div>
+                <div class="mobile-nav"><a class="underline" href="/about" title="About">About</a></div>
+                <div class="mobile-nav"><a class="underline" href="/contact" title="About">Contact</a></div>
+                <div class="mobile-nav"><a class="underline" href="/explore" title="About">Explore</a></div>
+                <div class="icon-container">
+                    <div class="mobile-wave-wrapper">
+                        <img src="/images/nav-wave.png" id="dropdown-trigger">
+                    </div>
+                    <div class="dropdown-menu column">
+                        <a class="underline" href="/about">About</a>
+                        <a class="underline" href="/contact">Contact</a>
+                        <a class="underline" href="/explore">Explore</a>
+                    </div>
+                </div>
             </div>
             <div class="column shrink login-col">
-                <a href="login" class="login-button">Login</a>
-                <a href="register" class="sign-up-button">Sign Up</a>
+                <div th:if="${isProfileActive}">
+                    <a href="/profile" class="sign-up-button">Profile</a>
+                    <a href="/logout" class="logout-button">Logout</a>
+                </div>
+                <div th:unless="${isProfileActive}">
+                    <a href="/login" class="login-button">Login</a>
+                    <a href="/register" class="sign-up-button">Sign Up</a>
+                </div>
             </div>
         </div>
     </div>

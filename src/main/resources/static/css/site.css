@@ -17,21 +17,162 @@ footer {
     margin-bottom: 20px;
 }
 
-/*****************************Contact Page ********************************/
-
-.title {
-    display: flex;
-    justify-content: center;
+label {
+    font-size: 25px;
+    font-weight: bold;
+    color: #060429;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+/*/------------------FOOTER STYLES-------------------------*!*/
+
+.footer {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center; /* Optional: Align items vertically in the center */
+    margin-bottom: 30px;
+    padding: 20px; /* Optional: Add padding */
+}
+
+.footer-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
+
+.footer-desc{
+    width: 60%;
+    font-weight: 100;
+    font-size: 15px;
+}
+.footer-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0;
+}
+
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px
+}
+.row .news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    color: var(--secondary);
+}
+.newsletter-input{
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+
+
+.footer-links:hover{
+    color: blue;
+}
+.info{
+    margin-top: 170px;
+}
+.info-title{
+    font-size: 35px;
+}
+.info-desc{
+    font-size: 20px;
+    font-weight: 100;
+    width: 500px;
+}
+
+/*****************************Contact Page ********************************/
+.contact-input{
+    height: 40px;
+    background-color: var(--primary);
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+
+.contact-button{
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    transition: ease-in-out .3s;
+    text-align: center;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+textarea.contact-input {
+    height: 200px;
+    padding: 10px;
+}
+
+.contact-container{
+    margin-top: 100px;
+}
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
 }
-
+.mobile-wave-wrapper{
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+}
 .overlay-text1{
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 15%;
     /*top: 230px;*/
     /*left: 229px;*/
@@ -40,17 +181,27 @@ footer {
 
 .overlay-text2{
     position: absolute;
-    top: 40%;
+    top: 65%;
     left: 31%;
     /*top: 325px;*/
     /*left: 448px;*/
     font-size: 35px;
 }
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
+.service-card-wrapper{
+    height: 321px;
+    width: 317px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.card i {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+/*****************************Landing Page********************************/
+.hero-scene{
+    position: relative;
 }
 .service-card-wrapper{
     height: 321px;
@@ -84,7 +235,7 @@ footer {
     height: 400px;
 }
 
-.login-button, .sign-up-button{
+.login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
     color: var(--primary);
     width: 85px;
@@ -97,7 +248,7 @@ footer {
     text-align: center;
     transition: ease-in-out .3s;
 }
-.login-button:hover, .sign-up-button:hover{
+.login-button:hover, .sign-up-button:hover, .logout-button:hover{
     background-color: var(--primary);
     color: var(--secondary);
     border: 2px solid var(--secondary);
@@ -108,11 +259,76 @@ footer {
     margin: 0px 5px;
     cursor: pointer;
 }
+/*.wrapper1{*/
+/*    background-image: url(../images/login-background.jpg);*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    z-index: -1;*/
+/*}*/
+/*.heading-1{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+/*.card-title{*/
+/*    padding: 10px;*/
+/*    font-size: 35px;*/
+/*}*/
+/*.card-description{*/
+/*    padding: 10px;*/
+/*}*/
+/*.row.card-body{*/
+/*    height: 400px;*/
+/*}*/
 
+/*.flex-row {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-evenly;*/
+/*}*/
+
+/*.card {*/
+/*    background-color: #202033;*/
+/*    padding: 20px;*/
+/*    margin: 10px;*/
+/*    width: 300px;*/
+/*    height: 300px;*/
+/*    box-sizing: border-box;*/
+/*    text-align: center;*/
+/*    font-size: 2em;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 2px 2px 10px var(--secondary);*/
+/*    border: 1px solid var(--secondary);*/
+/*}*/
+
+/*.card i {*/
+/*    font-size: 2em;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
 /*****************************End Landing Page********************************/
 
 /*****************************Explore Page********************************/
+
+.explore-page-title {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+}
+.explore-row-bg{
+    position: absolute;
+    top: 20%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #070646;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px var(--secondary);
+    padding: 10px;
+}
+
 .account-info-wrapper{
     height: 400px;
 }
@@ -178,29 +394,26 @@ footer {
     height: 100%;
     width: 180px;
 }
-.explore-row-bg{
-    background-color: #070646;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 1px 1px 5px var(--secondary);
-    padding: 10px;
-}
+
 .overlayContainer {
     position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
-    top: 0;
+    top: 50%;
     right: -100%;
     width: 100%;
-    height: 150vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
     transition: right 0.3s ease-in-out;
+    overflow-x: scroll;
 }
 
 .overlayContent {
     position: absolute;
     top: 60px;
-    left: 175px;
+    left: 25%;
     transform: translate(-50%, -50%);
     color: #fff;
     padding: 20px;
@@ -247,6 +460,10 @@ footer {
     color: var(--primary);
     cursor: pointer;
 }
+
+.explore-page-footer {
+    margin-top: 205px;
+}
 /*****************************End Explore Page********************************/
 
 /*****************************Register Page********************************/
@@ -257,26 +474,51 @@ footer {
     object-fit: cover;
     margin-bottom: 20px;
 }
-.edit-btn {
+.edit-btn, .delete-playlist-btn {
     cursor: pointer;
-    border: 1px solid var(--secondary);
-    background-color: var(--primary);
-    border-radius: 10px;
-    padding: 2px 4px;
-    transition: ease-in-out .2s;
-}
-.edit-btn:hover {
     background-color: var(--secondary);
     color: var(--primary);
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: ease-in-out .2s;
+    border: none;
+    font-size: 10px;
+    width: 5rem;
+    height: 20px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.edit-btn {
+    line-height: 10px;
+}
+.edit-btn:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+.delete-playlist-btn:hover, .delete-track-btn:hover {
+    background-color: red;
+    color: var(--secondary);
+}
+.delete-track-btn {
+    cursor: pointer;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: ease-in-out .2s;
+    border: none;
+    font-size: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.register-form{
-    padding: 20px;
-    border-radius: 10px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
+/*.register-form{*/
+/*    padding: 20px;*/
+/*    justify-content: center;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap:*/
+/*}*/
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
     background-color: var(--primary);
@@ -287,22 +529,16 @@ footer {
     color: var(--secondary);
 
 }
-/*Title: Upoad Image;*/
-.profile-img {
+/*Title: Upload Image;*/
+.image-add-profile-picture{
     display: flex;
     justify-content: center;
-}
-.image-add-profile-picture{
-    height: 40px;
-    width: 70%;
-    display: block;
     background-color: var(--primary);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
-    padding: 0 10px;
+    padding: 10px;
     color: var(--secondary);
-    margin: 15px auto;
     transition: ease-in-out .3s;
     text-align: center;
     cursor: pointer;
@@ -317,55 +553,69 @@ footer {
     background-color: transparent;
     border-radius: 10px;
 }
-.register-button{
-    background-color: var(--secondary);
-    color: var(--primary);
-    width: 85px;
-    border: unset;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 0px 5px;
-    transition: ease-in-out .3s;
-    text-align: center;
-    cursor: pointer;
-}
-.register-button:hover{
-    background-color: var(--primary);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-    font-size: 15px;
-    padding: 10px;
-    cursor: pointer;
+.overlay-form {
+    max-width: 500px; /* Set max width for better display on larger screens */
+    width: 100%;
+    margin: 0 auto; /* Center the form on smaller screens */
 }
 
-.register-submit{
+
+.reg-row{
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    padding: 0 20px;
+    gap: 20px;
+    flex-direction: column;
+}
+.titled {
+    display: flex;
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    justify-content: center;
+
+}
+.joined {
     display: flex;
     justify-content: center;
-    margin-top: 5px;
-}
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 20px;
 
-.register-submit .register-button{
-    width: 200px;
 }
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
+.about-container, .register-container {
+    margin-top: 5%;
+}
 .profiles{
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 .about-paragraph{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 50px;
+    font-weight: normal;
+}
+.separation-line {
+    border-bottom: 1px solid var(--secondary);
+}
+.about-cards-gap {
+    gap: 7%;
 }
 .card {
-    width: 220px;
-    margin: 20px;
+    width: 25%;
     padding: 10px;
-    background-color: #bbbbbb;
-    border-radius: 4px;
-    box-shadow: 2px 2px 7px rgb(255, 255, 255);
+    background-color: var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+    border: 3px solid var(--primary);
     text-align: center;
 }
 .card img {
@@ -374,6 +624,8 @@ footer {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-content {
@@ -391,10 +643,9 @@ footer {
     color: #888;
 }
 .linkedIn-names{
+    font-size: 14px;
     color: var(--primary);
-}
-.about-row{
-    height: 700px;
+    letter-spacing: 2px;
 }
 /*****************************End About Page********************************/
 :root{
@@ -412,9 +663,6 @@ a {
 ======Styles For Playlist Creation Page======
 */
 
-.playlist-details-box, .playlist-song-box {
-    padding: 20px 10px;
-}
 .playlist-pic-box {
     width: 20rem;
 }
@@ -445,6 +693,7 @@ input.playlist-title {
     padding: 4px 8px;
     height: 100%;
     width: 100%;
+    outline: none;
 }
 input.playlist-title:focus {
     border: 1px solid rgba(245, 245, 245, 1);
@@ -517,7 +766,12 @@ input.playlist-title:focus {
     transition: ease-in-out .3s;
     cursor: pointer;
 }
-.add-song-btn span {
+.add-song-btn:hover {
+    background-color: green;
+    color: var(--secondary);
+    border: 2px solid green;
+}
+.add-song-btn span, .delete-btn span {
     display: none;
 }
 .create-page-search, .edit-page-search {
@@ -608,19 +862,19 @@ form.create-form {
     overflow-x: scroll;
 }
 .my-playlists .playlist-col {
-    max-height: 20rem;
+    max-height: 30rem;
     overflow-y: scroll;
     min-width: 50%;
     max-width: 50%;
 }
   /* profile sidebar */
 .profile-sidebar {
-    background-color: var(--primary);
+    background-color: var(--secondary);
     border: 2px solid var(--secondary);
-    border-left-color: var(--primary);
     width: 12vw;
-    height: 70vh;
+    height: 60vh;
     position: fixed;
+    z-index: 100;
     border-radius: 0 10px 10px 0;
     left: 0;
     top: 50%;
@@ -631,17 +885,18 @@ form.create-form {
 .profile-sidebar-user-info, .profile-sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 .profile-sidebar-user-info img {
     margin: 0;
+    padding: 5px;
+    border: 3px solid var(--primary);
 }
 .profile-sidebar-nav .link {
     background-color: var(--secondary);
-    border: 2px solid var(--secondary);
     border-radius: 10px;
     padding: 10px;
     transition: ease-in-out .2s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 .profile-sidebar-nav .link:hover {
     background-color: var(--primary);
@@ -652,20 +907,26 @@ form.create-form {
 }
 .profile-sidebar-nav a {
     color: var(--primary);
-    width: min-content;
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 1rem;
 }
 .profile-username {
     font-size: 2rem;
     font-weight: 700;
+    color: var(--primary);
 }
 #openButton {
     cursor: pointer;
-    border: 2px solid var(--secondary);
+    border: none;
     background-color: var(--secondary);
     color: var(--primary);
     border-radius: 10px;
     padding: 10px;
     transition: ease-in-out .2s;
+    font-size: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
 #openButton:hover {
     background-color: var(--primary);
@@ -716,7 +977,12 @@ form.create-form {
     gap: 10px;
     max-width: 50%;
 }
-
+.playlist-details-col {
+    height: inherit;
+}
+.content-section{
+    margin-top: 20px;
+}
 /********** Messages **********/
 .message-container.show{
     display: block;
@@ -829,6 +1095,7 @@ button {
     position: relative;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .playlist-details {
     padding: 1rem;
     background-color: #6e6e6e;
@@ -837,19 +1104,22 @@ button {
     position: sticky;
     top: 0;
     z-index: 999;
-    max-height: 5rem;
-    min-height: 5rem;
+    border-radius: 10px;
+}
+.playlist-details .playlist-img-wrapper {
+    margin: 0;
 }
 .playlist-tracks {
     flex: 3 0 0;
 }
 .playlist-img-wrapper {
-    width: 16vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
     margin-left: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .playlist-img {
     width: 8vw;
@@ -857,30 +1127,25 @@ button {
     object-fit: cover;
     border-radius: 10px;
 }
-
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
 }
-
 .image1{
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
     border-top-right-radius: unset;
 }
-
 .image2{
     border-bottom-left-radius: unset;
     border-bottom-right-radius: unset;
     border-top-left-radius: unset;
 }
-
 .image3{
     border-bottom-right-radius: unset;
     border-top-right-radius: unset;
     border-top-left-radius: unset;
 }
-
 .image4 {
     border-bottom-left-radius: unset;
     border-top-right-radius: unset;
@@ -899,19 +1164,17 @@ button {
 
 /*
 ======Forms Styles For Login Page======*/
-
-.login-page-row{
-    flex-direction: column;
+.login-container {
+    margin-top: 10rem;
 }
-
-
-.login-form {
+.login-form, .register-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     padding: 20px;
+    gap: 10px;
 }
 
 .login-form > * {
@@ -929,56 +1192,44 @@ button {
 
 
 .text-input{
-    background-color: #f5f5f5;
-    outline: unset;
-    border: unset;
-    display: flex;
-    flex-direction: column;
-    min-height: 30px;
-    border-radius: 3px;
-    color: black;
-    font-family: inherit;
-    padding:10px;
+    background-color: var(--primary);
+    outline: none;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    color: var(--secondary);
+    padding: 10px;
 }
 
-.text-area {
-    color: #f5f5f5;
-}
-
-label {
-    font-size: 25px;
-    font-weight: bold;
-    color: #060429;
+.text-area, .contact-label {
+    color: var(--secondary);
+    font-size: 1rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: normal;
 }
 
 button.btn.primary {
-    background-color: #060429;
-    min-height: 45px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    justify-content: center;
-    border-radius: 5px;
-    color: #f5f5f5;
+    border: none;
+    outline: none;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 10px;
+    transition: ease-in-out .3s;
+    font-weight: 700;
+    font-size: 1rem;
+}
+button.btn.primary:hover {
+    transform: scale(1.1);
+    background-color: green;
+    color: var(--secondary);
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: unset;
-    border: #1304d2 1px solid;
 }
 
 .login-submit{
     display: flex;
     justify-content: center;
     margin-top: 15px;
-}
-
-/* This should be the container having the hero image */
-.login-page-col {
-    position: relative;  /* Makes it a positioning context */
 }
 
 .background {
@@ -1014,14 +1265,17 @@ button.btn.primary {
     gap: 10px;
     align-items: center;
     justify-content: center;
-    min-height: 10vh;
-    font-size: 20px;
-    color: #f5f5f5;
+    font-size: 14px;
+    color: var(--secondary);
 }
 .reg-highlight {
-    color: greenyellow;
-    font-weight: bold;
+    color: var(--secondary);
     cursor: pointer;
+    transition: ease-in-out .2s;
+    font-weight: 700;
+}
+.reg-highlight:hover {
+    color: green;
 }
 .owner-box {
     position: absolute;
@@ -1052,61 +1306,10 @@ button.btn.primary {
 .playlist-tracks:hover .song-box-header{
     display: flex;
 }
+.song-box-header .add-song-btn, .song-box-header .delete-track-btn {
+    visibility: hidden;
+}
 
-
-/*CSS for responsive NAVBAR*/
-/*nav {*/
-/*    width: 100%;*/
-/*    max-width: 1100px;*/
-/*    color: #f5f5f5;*/
-/*    display: flex;*/
-/*    justify-content: space-evenly;*/
-/*}*/
-
-/*nav .mainMenu {*/
-/*    display: none;*/
-/*    list-style: none;*/
-/*    align-items: center;*/
-/*    justify-content: space-evenly;*/
-/*}*/
-/*nav .mainMenu li a {*/
-/*    display: inline-block;*/
-/*    padding: 15px;*/
-/*    text-decoration: none;*/
-/*    text-transform: uppercase;*/
-/*    color: #f5f5f5;*/
-/*    font-size: 1.5rem;*/
-
-/*}*/
-/*nav .mainMenu li a:hover {*/
-/*    color: #1304d2;*/
-/*    text-decoration: none;*/
-/*}*/
-/*nav .openMenu {*/
-/*    font-size: 2rem;*/
-/*    margin:20px;*/
-/*    display: none;*/
-/*    cursor:pointer;*/
-/*}*/
-/*nav .mainMenu, .closeMenu, .icons i {*/
-/*    font-size: 1rem;*/
-/*    display: inline-flex;*/
-/*    flex-direction: row;*/
-/*    cursor: pointer;*/
-/*}*/
-/*nav .closeMenu {*/
-/*    display: none;*/
-/*}*/
-/*.fa-facebook:hover{color: rgb(0, 110, 255);}*/
-/*.fa-twitter:hover{color: rgb(86, 154,243);}*/
-/*.fa-instagram:hover{color: rgb(255, 0, 191);}*/
-/*.fa-github:hover{color: rgb(255, 123, 0);}*/
-
-/*nav .logo {*/
-/*    margin: 16px;*/
-/*    font-size: 25px;*/
-/*    cursor:pointer;*/
-/*}*/
 .logo{
     background: linear-gradient(to right, var(--tertiary), var(--secondary));
     -webkit-background-clip: text;
@@ -1121,7 +1324,8 @@ button.btn.primary {
     top: 0;
     z-index: 9;
     width: 100%;
-    background-color: rgba(0, 8, 30, 0.6);
+    background-color: rgba(0, 8, 30, .6);
+    backdrop-filter: blur(5px);
 }
 
 .nav-row{
@@ -1139,18 +1343,18 @@ button.btn.primary {
     align-items: center;
 }
 
-.login-button, .sign-up-button{
+.login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
+    border: 2px solid var(--secondary);
     color: var(--primary);
-    border: unset;
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin: 0 5px;
     transition: ease-in-out .3s;
 }
-.login-button:hover, .sign-up-button:hover {
+.login-button:hover, .sign-up-button:hover, .logout-button:hover {
     background-color: var(--primary);
     color: var(--secondary);
     border: 2px solid var(--secondary);
@@ -1158,7 +1362,7 @@ button.btn.primary {
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin: 0 5px;
     cursor: pointer;
 }
 .logo-header{
@@ -1186,15 +1390,29 @@ nav .underline::before {
 nav a:hover::before, .footer-links:hover::before {
     width: 100%;
 }
+
 /*/------------------FOOTER STYLES-------------------------*!*/
 
 .footer {
     display: flex;
+    gap: 20px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center; /* Optional: Align items vertically in the center */
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     padding: 20px; /* Optional: Add padding */
+}
+.explore-footer{
+    margin-top: 500px;
+}
+
+.row.spacing{
+    gap: 450px;
+}
+
+
+.explore-page-wrapper footer {
+    margin-top: 384px;
 }
 
 .footer-img-wrapper{
@@ -1205,8 +1423,9 @@ nav a:hover::before, .footer-links:hover::before {
 
 .footer-desc{
     font-weight: 100;
+    font-size: 15px;
 }
-.row .justify-space-between{
+.footer-row{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1232,6 +1451,14 @@ nav a:hover::before, .footer-links:hover::before {
     justify-content: space-between;
     margin-top: 20px;
 }
+.news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    color: var(--secondary);
+}
 .newsletter-input{
     display: inline-flex;
     flex-wrap: wrap;
@@ -1245,10 +1472,6 @@ nav a:hover::before, .footer-links:hover::before {
     color: var(--secondary);
 }
 
-a{
-    text-decoration: none;
-    color: var(--secondary);
-}
 
 .footer-links:hover{
     color: blue;
@@ -1264,43 +1487,13 @@ a{
     font-weight: 100;
     width: 500px;
 }
-/*MEDIA QUERIES FOR FOOTER */
-@media (max-width: 800px) {
-    .logo {
-        display: flex;
-        flex-direction: row;
-        align-self: flex-start;
-        align-items: start;
-        color: #f5f5f5;
-    }
-    .footer{
-        flex-direction: column;
-        align-items: start;
-    }
-    .footer-desc{
-        text-align: start;
-    }
-    .footer-links{
-        margin: 10px 0;
-    }
-    .info{
-        margin-top: 0;
-    }
-    .info-title{
-        font-size: 25px;
-    }
-    .info-desc{
-        font-size: 15px;
-        width: 300px;
-    }
-    .newsletter-input{
-        width: 200px;
-    }
-}
 
+/*######################################################*/
+/*################ MEDIA QUERIES FOR TABLET ############*/
+/*######################################################*/
 
 /*MEDIA QUERIES FOR NAVBAR */
-@media(max-width: 800px){
+@media(max-width: 768px) and (min-width: 426px){
     nav .mainMenu {
         height: 100vh;
         position: fixed;
@@ -1334,42 +1527,118 @@ a{
         padding: 12px;
     }
 }
-
+/*MEDIA QUERIES FOR EXPLORE*/
+@media (max-width: 768px) and (min-width: 426px) {
+    .row.explore-playlist{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .track-iframe{
+        width: 500px;
+    }
+    .row.explore-artists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .artist-iframe{
+        width: 600px;
+    }
+    .row.explore-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .album-iframe{
+        width: 600px;
+    }
+}
 /*MEDIA QUERIES FOR PROFILE PG*/
-@media (max-width: 800px) {
-    .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
-        max-width: 25%;
-    }
-    .profile-playlists, .profile-category, .profile-albums {
-        display: block;
-        flex-wrap: wrap;
-        margin-right: 100px;
-        padding: 10px;
-        gap: 30px;
-    }
+@media (max-width: 768px) and (min-width: 426px) {
+.container-profile{
+    margin-top: 300px;
+}
     .profile-sidebar {
-        background-color: rgba(19, 4, 210, 0.3);
-        width: 215px;
-        height: 250px;
+        display: unset;
+        background-color: unset;
+        border: unset;
+        width: unset;
         position: absolute;
-        border-radius: 40px;
-        left: 22px;
-        top: 100px;
-        padding: 20px;
+        left: 20%;
+        top: 50%;
+    }
+
+    .sidebar-column{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile-sidebar-user-info, .profile-sidebar-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 19px;
+    }
+
+    .profile-sidebar-user-info p {
         color: #f5f5f5;
+    }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .playlist-iframe{
+        width: 600px;
+    }
+    .row.spacing{
+        gap: 230px;
+    }
+    .profile-sidebar-nav{
+        margin-top: 50px;
     }
 
 }
 /*MEDIA QUERIES FOR LOGIN PG*/
 
-@media (max-width: 800px) {
+@media (max-width: 768px) and (min-width: 426px) {
     .join {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 10vh;
-        font-size: 15px;
+        font-size: 20px;
         color:#f5f5f5;
     }
     .login-form {
@@ -1378,5 +1647,208 @@ a{
         top: 300px;  /* Adjust as needed */
         left: 60px;  /* Adjust as needed */
         z-index: 1;  /* Optional: To make sure it stays on top */
+    }
+}
+
+/*MEDIA QUERIES FOR LANDING PG*/
+
+@media (max-width: 425px) {
+
+    .hero-scene {
+        padding: 20px;
+        height: 500px;
+    }
+
+    .overlay-text1,
+    .overlay-text2 {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 10px;
+        left:15%;
+    }
+    .overlay-text2{
+        left: 30%;
+        top: 47%;
+    }
+    .overlay-text1{
+        top: 40%;
+
+    }
+.mobile-img{
+    width: 350px;
+}
+.info-title{
+    font-size: 25px;
+}
+.info-desc{
+    font-size: 15px;
+    width: 353px;
+}
+    .service-card-wrapper {
+        margin-bottom: 20px;
+    }
+
+    .info {
+        padding: 20px;
+    }
+    .row.mobile-card-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .newsletter-input{
+        width: 200px;
+    }
+    .mobile-nav{
+        display: none;
+    }
+    .logo{
+        font-size: 15px;
+    }
+    .mobile-wave-wrapper{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+    }
+    .mobile-wave-wrapper:hover{
+        cursor: pointer;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        padding: 5px;
+    }
+
+
+/*    EXPLORE PAGE MEDIA QUERIES      */
+
+    .explore-row-bg {
+        width: 93%;
+    }
+
+    .explore-playlist{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .explore-artists{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-albums{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-page-footer {
+        margin-top: 1860px;
+    }
+
+    .row.spacing{
+        gap: 30px;
+    }
+
+    .row.explore-playlist, .row.explore-artists, .row.explore-albums, .row.explore-search-results{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-tracks-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .explore-page-title{
+        font-size: 10px;
+    }
+    .openOverlayButton{
+        height: 50px;
+    }
+    .overlayContainer{
+        top: 50%;
+        height: 100%;
+    }
+    .search-artists, .search-tracks, .search-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .overlayContent{
+        left: 50%;
+    }
+
+    .mobile-about-cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card{
+        width: 300px;
+    }
+    .content-section{
+        margin-top: 350px;
+    }
+    .profile-sidebar{
+        top: 35%;
+        left: 20%;
+        width: 250px;
+        height: 230px;
+        position: absolute;
+        border-radius: 10px;
+    }
+    .mobile-sidebar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    /*createPlaylist*/
+
+    .mobile-search-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-playlist-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .playlist-iframe{
+        width: 250px;
     }
 }

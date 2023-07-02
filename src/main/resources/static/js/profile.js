@@ -6,7 +6,6 @@ let categoryToken = await getToken();
 let albumToken = await getToken();
 
 
-
 export async function displayPlaylist() {
     try {
         const response = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=US&timestamp=2023-06-14T15%3A00%3A40&offset=0&limit=3', {
@@ -24,6 +23,7 @@ export async function displayPlaylist() {
         const ids = playlists.map(playlist => playlist.id);
         function createPlaylistIframe(playlist) {
             const iframe = document.createElement('iframe');
+            iframe.classList.add('playlist-iframe');
             iframe.src = `https://open.spotify.com/embed/playlist/${playlist}`;
             iframe.width = '100%';
             iframe.height = '352';
