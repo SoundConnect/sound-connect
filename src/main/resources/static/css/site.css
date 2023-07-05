@@ -1563,6 +1563,14 @@ nav a:hover::before, .footer-links:hover::before {
     .album-iframe{
         width: 600px;
     }
+
+    .explore-row-bg{
+        width: 93%;
+    }
+
+    .search-tracks, .search-artists, .search-albums {
+        width: 260px;
+    }
 }
 /*MEDIA QUERIES FOR PROFILE PG*/
 @media (max-width: 768px) and (min-width: 426px) {
@@ -1661,6 +1669,33 @@ nav a:hover::before, .footer-links:hover::before {
         z-index: 1;  /* Optional: To make sure it stays on top */
     }
 }
+
+/* MEDIA QUERIES FOR FEED   */
+
+@media (max-width: 768px) and (min-width: 426px) {
+
+    .large-playlist-images {
+        width: 202px;
+    }
+
+    .playlist-img{
+        height: 101px;
+        width: 101px;
+    }
+}
+
+/*  MEDIA QUERIES FOR ABOUT PAGE    */
+
+@media (max-width: 768px) and (min-width: 426px) {
+    .about-page nav {
+        margin-bottom: 30px;
+    }
+
+    .card {
+        width: 0%;
+    }
+}
+
 
 /*MEDIA QUERIES FOR LANDING PG*/
 
