@@ -25,7 +25,7 @@ public class UserController {
     private final MessagesRepository messageDao;
     private final PasswordEncoder passwordEncoder;
     private final PlaylistRepository playlistDao;
-  
+
 
 
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao, ChatRepository chatDao, MessagesRepository messageDao) {
