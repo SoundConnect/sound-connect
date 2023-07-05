@@ -1087,6 +1087,11 @@ button {
 /********** End Messages **********/
 
 /********** Feed **********/
+
+.feed-header-container {
+    margin-top: 70px;
+}
+
 .feed-playlist {
     margin-top: 5rem;
     background-color: #9e9e9e;
@@ -1094,6 +1099,7 @@ button {
     height: 30rem;
     position: relative;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 90%;
 }
 
 .playlist-details {
@@ -1130,6 +1136,7 @@ button {
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
+    width: 164px;
 }
 .image1{
     border-bottom-left-radius: unset;
@@ -1810,6 +1817,7 @@ nav a:hover::before, .footer-links:hover::before {
         align-items: center;
         justify-content: center;
     }
+
     /*createPlaylist*/
 
     .mobile-search-row{
