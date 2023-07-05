@@ -1860,3 +1860,15 @@ nav a:hover::before, .footer-links:hover::before {
         width: 250px;
     }
 }
+@media (min-width: 2560px) {
+
+    .overlay-text1{
+        top: 50%;
+        left: 27%;
+    }
+    .overlay-text2{
+        top: 60%;
+        left: 36%;
+    }
+}
+
