@@ -172,20 +172,16 @@ textarea.contact-input {
 }
 .overlay-text1{
     position: absolute;
-    top: 50%;
-    left: 15%;
-    /*top: 230px;*/
-    /*left: 229px;*/
-    font-size: 35px;
+    top: 15%;
+    left: 7%;
+    font-size: 29px;
 }
 
 .overlay-text2{
     position: absolute;
-    top: 65%;
-    left: 31%;
-    /*top: 325px;*/
-    /*left: 448px;*/
-    font-size: 35px;
+    top: 25%;
+    left: 23%;
+    font-size: 31px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -882,6 +878,7 @@ form.create-form {
     padding: 20px;
     color: var(--secondary);
 }
+
 .profile-sidebar-user-info, .profile-sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -1592,6 +1589,14 @@ nav a:hover::before, .footer-links:hover::before {
         flex-direction: row;
         align-items: center;
         height: 19px;
+    }
+
+    .profile-sidebar-user-info {
+        flex-direction: column-reverse;
+    }
+
+    .mobile-sidebar{
+        gap: unset;
     }
 
     .profile-sidebar-user-info p {
