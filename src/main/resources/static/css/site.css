@@ -1099,6 +1099,7 @@ button {
     height: 30rem;
     position: relative;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 90%;
 }
 
 .playlist-details {
@@ -1135,7 +1136,7 @@ button {
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
-    width: 242px;
+    width: 164px;
 }
 .image1{
     border-bottom-left-radius: unset;
