@@ -33,7 +33,6 @@ public class SecurityConfiguration {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
@@ -43,7 +42,6 @@ public class SecurityConfiguration {
                         "/create",
                         "/createPlaylist",
                         "/feed/*/edit").authenticated()
-
                 .requestMatchers(
                         "/",
                         "/login",
@@ -53,20 +51,15 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-
                         "/editPlaylist",
                         "/profile/messages/**",
                         "/profile/**"
-
-
-
-
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "https://kit.fontawesome.com/**", "/static/**", "/keys.js").permitAll()
         );
         http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/profile"));
         http.logout((form) -> form.logoutSuccessUrl("/logout"));
-        http.httpBasic(withDefaults());
+        // http.httpBasic(withDefaults());
         return http.build();
     }
 }

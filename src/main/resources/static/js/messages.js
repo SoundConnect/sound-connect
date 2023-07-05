@@ -40,7 +40,7 @@ function sendMessage() {
     if(chatId == null){
         chatId = 0;
     }
-    fetch("/profile/" + chatId , {
+    fetch("/profile/messages/" + chatId , {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

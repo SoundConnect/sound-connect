@@ -32,7 +32,7 @@ public class MessageController {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @PostMapping("/profile/{id}")
+    @PostMapping("/profile/messages/{id}")
     public String sendMessage(@RequestBody MessageRequest messageRequest, @PathVariable Long id) {
         System.out.println("profile/id");
 
