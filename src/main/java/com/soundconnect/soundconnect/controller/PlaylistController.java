@@ -95,7 +95,7 @@ public class PlaylistController {
     public String showFeed (Model model){
         List<Playlist> playlists = playlistsDao.findAll();
         model.addAttribute("playlists", playlists);
-
+        model.addAttribute("isProfileActive", true);
         return "feed";
     }
 
