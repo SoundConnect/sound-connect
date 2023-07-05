@@ -38,7 +38,7 @@ function sendMessage() {
     };
     console.log(data)
     if(chatId == null){
-        chatId = 0;
+        chatId = '0';
     }
     fetch(`/profile/messages/${chatId}` , {
         method: "POST",
