@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - About')">
+<head th:replace="~{partials/head :: head(title='SoundConnect - About')}">
 <body>
-  <div class="page-wrapper">
-    <div th:replace="partials/navbar :: navbar"></div>
-    <img src="/images/login-background.jpg" alt="login background" class="background">
-    <div class="container grow justify-center body">
-      <div class="row justify-center full-width about-row">
-        <img src="/images/hero-image.jpg" alt="hero image">
-      </div>
-      <div class="row justify-center">
-        <div class="column overlay-form">
-          <h1 class="title">About SoundConnect</h1>
-          <p class="about-paragraph">SoundConnect is a social media platform for music lovers. It is a place where you can share your favorite music with your friends and family. You can also discover new music and artists that you may have never heard of before. SoundConnect is a place where music, culture, and community come together.</p>
+<div class="page-wrapper">
+    <nav th:replace="~{partials/navbar :: navbar}"></nav>
+    <img src="/images/login-background.jpg" alt="about background" class="background">
+    <div class="container grow justify-center about-container">
+        <div class="row justify-center">
+            <h2 class="about-title">About SoundConnect</h2>
         </div>
-      </div>
+        <div class="row">
+            <div class="column separation-line">
+                <p class="about-paragraph text-center">
+                    SoundConnect is a social media platform for music lovers.
+                    It is a place where you can share your favorite music with your friends and family.
+                    You can also discover new music and artists that you may have never heard of before.
+                    SoundConnect is a place where music, culture, and community come together.
+                </p>
+            </div>
+        </div>
     </div>
     <section class="container profiles">
-      <div class="team-title">
-        <h2>The Team</h2>
-      </div>
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="linkedin_photo1.jpg" alt="Profile Photo">
-            <div class="card-content">
-              <h3 class="linkedIn-names">Connor Brinkley</h3>
-            </div>
-          </div>
+        <div class="row justify-center">
+            <h2 class="about-title">Meet the Team</h2>
         </div>
-        <div class="column">
-          <div class="card">
-            <img src="linkedin_photo2.jpg" alt="Profile Photo">
-            <div class="card-content">
-              <h3 class="linkedIn-names">Hunter Grubbs</h3>
+        <div class="row grow about-cards-gap mobile-about-cards">
+            <div class="column align-center card">
+                <img src="/images/connor.jpg" alt="Profile Photo">
+                <div class="card-content">
+                    <h3 class="linkedIn-names">Connor Brinkley</h3>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <img src="/images/damian-linkedin.JPG" alt="Profile Photo">
-            <div class="card-content">
-              <h3 class="linkedIn-names">Damian Wrather</h3>
+            <div class="column align-center card">
+                <img src="linkedin_photo2.jpg" alt="Profile Photo">
+                <div class="card-content">
+                    <h3 class="linkedIn-names">Hunter Grubbs</h3>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <img src="linkedin_photo4.jpg" alt="Profile Photo">
-            <div class="card-content">
-              <h3 class="linkedIn-names">Randy Hidalgo</h3>
+            <div class="column align-center card">
+                <img src="/images/damian-linkedin.JPG" alt="Profile Photo">
+                <div class="card-content">
+                    <a target="_blank" href="https://www.linkedin.com/in/damian-wrather/"><h3 class="linkedIn-names">Damian Wrather</h3></a>
+                </div>
             </div>
-          </div>
+            <div class="column align-center card">
+                <img src="linkedin_photo4.jpg" alt="Profile Photo">
+                <div class="card-content">
+                    <h3 class="linkedIn-names">Randy Hidalgo</h3>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <footer th:replace="partials/footer :: footer"></footer>
-  </div>
-  <script th:src="@{/js/hamburger-menu.js}"></script>
+</div>
+<script src="/js/mobile.js"></script>
+<script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>

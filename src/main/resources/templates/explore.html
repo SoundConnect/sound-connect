@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head(title='SoundConnect - Explore')">
+<head th:replace="~{partials/head :: head(title='SoundConnect - Explore')}"></head>
 <body>
 <div class="page-wrapper">
-    <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container hero-scene">
-<!--        <div class="row justify-center full-width">-->
-            <img src="/images/hero-image.jpg" alt="hero image">
-        <div class="overlay-text3">
-            <h1>Explore New Music</h1>
-        </div>
-
+    <header th:replace="~{partials/navbar :: navbar}"></header>
+    <img src="/images/login-background.jpg" alt="contact background" class="background">
+    <div class="container justify-center align-center explore-page-title">
+        <h1>Explore New Music</h1>
+    </div>
     <div class="container">
         <div class="row explore-row-bg">
             <div class="column ">
-                <div class="row justify-space-between">
+                <div class="row justify-space-between mobile-tracks-row">
                     <h1>Recommended Tracks</h1>
                     <button class="openOverlayButton">Search Music</button>
                 </div>
-                <div class="explore-playlist row"></div>
-                <div class="row">
+                <div class="row explore-playlist"></div>
+                <div class="row explore-artist-row">
                     <h1>Recommended Artists</h1>
                 </div>
                 <div class=" row explore-artists"></div>
@@ -29,19 +26,21 @@
                 <div class="row explore-albums"></div>
             </div>
         </div>
-            <div class="overlayContainer">
-                    <div class="overlayContent">
-                        <!-- Add your overlay content here -->
-                        <div class="column align-center">
-                            <input type="text" placeholder="Search.." class="explore-search">
-                        </div>
-                        <div class="explore-search-results row"></div>
-                        <button class="closeOverlayButton">Close</button>
-                    </div>
+        <div class="overlayContainer">
+            <div class="overlayContent">
+                <!-- Add your overlay content here -->
+                <div class="column align-center">
+                    <input type="text" placeholder="Search.." class="explore-search">
                 </div>
+                <div class="row explore-search-results"></div>
+                <button class="closeOverlayButton">Close</button>
+            </div>
         </div>
-        <footer th:replace="partials/footer :: footer"></footer>
     </div>
+</div>
+<div class="explore-footer">
+    <footer th:replace="partials/footer :: footer"></footer>
+</div>
 </div>
 
 <script type="module" src="/js/explore.js">
@@ -75,5 +74,6 @@
 
 </script>
 <script th:src="@{/js/hamburger-menu.js}"></script>
+<script src="/js/mobile.js"></script>
 </body>
 </html>

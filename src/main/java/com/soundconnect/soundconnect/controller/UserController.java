@@ -1,5 +1,6 @@
 package com.soundconnect.soundconnect.controller;
 
+
 import com.soundconnect.soundconnect.model.*;
 import com.soundconnect.soundconnect.repositories.ChatRepository;
 import com.soundconnect.soundconnect.repositories.MessagesRepository;
@@ -26,12 +27,14 @@ public class UserController {
     private final PlaylistRepository playlistDao;
   
 
+
     public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, PlaylistRepository playlistDao, ChatRepository chatDao, MessagesRepository messageDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.playlistDao = playlistDao;
         this.chatDao = chatDao;
         this.messageDao = messageDao;
+
     }
 
 
@@ -93,10 +96,10 @@ public class UserController {
         List<Playlist> playlists = playlistDao.findAllByOwner(user);
         model.addAttribute("playlists", playlists);
 
-
         model.addAttribute("isProfileActive", true);
         // Displaying user's playlists on their profile
         // find user by id with security
+
 
         return "profile";
     }

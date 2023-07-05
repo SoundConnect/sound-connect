@@ -6,7 +6,7 @@
     <nav th:replace="partials/navbar :: navbar"></nav>
     <div class="container">
         <div class="row justify-center full-width hero-scene">
-            <img src="/images/hero-image.jpg" alt="hero image">
+            <img class="hero-image" src="/images/hero-image.jpg" alt="hero image">
         </div>
         <div class="overlay-text1">
             <h1><span class="logo-header">Sound</span> Connect: Where Music and</h1>
@@ -15,7 +15,7 @@
             <h1> Community Collide</h1>
         </div>
     </div>
-    <div class="container">
+    <div class="container mobil-card-container">
         <div class="row justify-space-between mobile-card-row">
             <div class="column justify-center">
                 <div class="service-card-wrapper">
@@ -77,8 +77,8 @@
         </div>
         <section class="container info">
             <div class="row">
-                <div class="column">
-                    <img src="/images/concert.jpeg" alt="info image">
+                <div class="column align-center">
+                    <img class="mobile-img" src="/images/concert.jpeg" alt="info image">
                 </div>
             </div>
             <div class="row">
@@ -89,8 +89,9 @@
                 </div>
             </div>
         </section>
-        <footer th:replace="partials/footer :: footer"></footer>
     </div>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
+<script src="/js/mobile.js"></script>
 </body>
 </html>

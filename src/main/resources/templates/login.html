@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-
-<head th:replace="~{partials/head :: head(title='SoundConnect - Login')}">
-</head>
+<head th:replace="~{partials/head :: head(title='SoundConnect - Login')}"></head>
 <body>
 <div class="page-wrapper">
-    <header th:replace="~{partials/navbar :: navbar}")></header>
+    <header th:replace="~{partials/navbar :: navbar}"></header>
     <img src="/images/login-background.jpg" alt="login background" class="background">
-    <div class="container grow justify-center">
-        <div class="row justify-center login-page-row">
-          <div class="column login-page-col">
+
+    <div class="container grow justify-center login-container">
+        <div class="row justify-center">
+          <div class="column">
               <h1 class="join">Where music, culture, and community come together.</h1>
-              <br>
               <div class="login-page-col login-form">
                   <form class="login-form" th:action="@{/login}" method="post">
-                      <label class="text-area" for="username">Username:</label>
-                      <input class="text-input" type="text" id="username" name="username">
-                      <label class="text-area" for="password">Password:</label>
-                      <input class="text-input" type="password" id="password" name="password">
+                      <div class="column">
+                          <label class="text-area" for="username">Username</label>
+                          <input placeholder="Username" class="text-input" type="text" id="username" name="username">
+                      </div>
+                      <div class="column">
+                          <label class="text-area d-flex shrink" for="password">Password</label>
+                          <input placeholder="Password" class="text-input" type="password" id="password" name="password">
+                      </div>
                       <div class="login-submit">
                           <button type="submit" class="button btn primary">Log In</button>
                       </div>
                   </form>
+                  <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
               </div>
-          </div>
-          <div>
-              <p class="account">Don't have an account? <a href="/register" class="reg-highlight">Register here</a></p>
-          </div>
-          <div th:if="${param.error}">
-              <p>Invalid Username and Password.</p>
           </div>
         </div>
     </div>
     <footer th:replace="~{partials/footer :: footer}"></footer>
 </div>
+<script src="/js/mobile.js"></script>
 <script th:src="@{/js/hamburger-menu.js}"></script>
 </body>
 </html>
