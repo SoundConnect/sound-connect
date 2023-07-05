@@ -40,6 +40,7 @@ public class SecurityConfiguration {
                         "/profile",
                         "/profile/**",
                         "/create",
+                        "/profile/messages/**",
                         "/createPlaylist",
                         "/feed/*/edit").authenticated()
                 .requestMatchers(
