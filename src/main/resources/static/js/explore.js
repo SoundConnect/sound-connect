@@ -21,6 +21,7 @@ export async function displayPlaylist() {
         const ids = tracks.map(track => track.id);
         function createPlaylistIframe(trackId) {
             const iframe = document.createElement('iframe');
+            iframe.classList.add('track-iframe');
             iframe.src = `https://open.spotify.com/embed/track/${trackId}`;
             iframe.width = '250';
             iframe.height = '80';
@@ -59,6 +60,7 @@ async function getArtists(artistToken) {
         })
         function createArtistIframe(artistId) {
             const iframe = document.createElement('iframe');
+            iframe.classList.add('artist-iframe');
             iframe.style.borderRadius = '12px';
             iframe.src = `https://open.spotify.com/embed/artist/${artistId}`;
             iframe.width = '100%';
@@ -96,6 +98,7 @@ async function getAlbums(token) {
         })
         function createAlbumIframe(albumId) {
             const iframe = document.createElement('iframe');
+            iframe.classList.add('album-iframe');
             iframe.style.borderRadius = '12px';
             iframe.src = `https://open.spotify.com/embed/album/${albumId}`;
             iframe.width = '100%';

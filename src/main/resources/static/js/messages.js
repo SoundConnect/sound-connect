@@ -26,11 +26,13 @@ document.querySelector("#sendButton").addEventListener("click", sendMessage);
 function sendMessage() {
     let messageInput = document.querySelector("#messageInput");
     let message = messageInput.value;
+    let sender = document.querySelector(".profile-username").innerHTML;
 
     let recipientsValue = document.querySelector("#recipientsInput").value;
     let recipients = recipientsValue.split(",").map(recipient => recipient.trim());
     let data = {
         recipients: recipients,
+        sender: sender,
         message: message,
         chat: chatId,
     };
@@ -183,19 +185,17 @@ function loadNewChats() {
             chats = chats.reverse();
 
             chats.forEach(function(chat) {
-                if (chat.participantIds.includes(userId)) { // Replace `userId` with the user's ID
                     let chatElement = document.createElement('h3');
-                    chatElement.textContent = chat.participants;
+                    chatElement.textContent = chat.chatName;
                     chatElement.classList.add('chat');
                     chatElement.setAttribute('data-chatid', chat.id);
 
-                    chatElement.innerHTML = `${chat.participants}`;
+                    chatElement.innerHTML = `${chat.chatName}`;
                     chatElement.addEventListener('click', function() {
                         loadMessages(chat.id);
                     });
 
                     chatsContainer.appendChild(chatElement);
-                }
             });
 
         })

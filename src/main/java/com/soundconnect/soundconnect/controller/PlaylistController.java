@@ -37,7 +37,8 @@ public class PlaylistController {
 
     // show form for creating a playlist
     @GetMapping("/create")
-    public String showCreatePlaylistForm() {
+    public String showCreatePlaylistForm(Model model) {
+        model.addAttribute("isProfileActive", true);
         return "createPlaylist";
     }
 

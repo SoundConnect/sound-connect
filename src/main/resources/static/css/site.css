@@ -25,15 +25,93 @@ label {
     letter-spacing: 1px;
 }
 
-/*****************************Contact Page ********************************/
+/*/------------------FOOTER STYLES-------------------------*!*/
 
-.contact-form{
-    margin-top: 10px;
-    justify-content: center;
+.footer {
     display: flex;
-    flex-direction: column;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center; /* Optional: Align items vertically in the center */
+    margin-bottom: 30px;
+    padding: 20px; /* Optional: Add padding */
 }
 
+.footer-img-wrapper{
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
+}
+
+.footer-desc{
+    width: 60%;
+    font-weight: 100;
+    font-size: 15px;
+}
+.footer-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0;
+}
+
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1100px
+}
+.row .news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.news-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    color: var(--secondary);
+}
+.newsletter-input{
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 40px;
+    width: 300px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    outline: unset;
+    padding: 0 10px;
+    color: var(--secondary);
+}
+
+
+.footer-links:hover{
+    color: blue;
+}
+.info{
+    margin-top: 170px;
+}
+.info-title{
+    font-size: 35px;
+}
+.info-desc{
+    font-size: 20px;
+    font-weight: 100;
+    width: 500px;
+}
+
+/*****************************Contact Page ********************************/
 .contact-input{
     height: 40px;
     background-color: var(--primary);
@@ -44,14 +122,10 @@ label {
     color: var(--secondary);
 }
 
-.contact-label{
-    color: #f5f5f5;
-}
-
 .contact-button{
     background-color: var(--secondary);
     color: var(--primary);
-    border: unset;
+    border: 2px solid var(--secondary);
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -70,20 +144,9 @@ label {
     padding: 10px;
     cursor: pointer;
 }
-
-.contact-section{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.contact-input{
-    margin-bottom: 10px;
-}
-
-.contact-form textarea{
+textarea.contact-input {
     height: 200px;
-    width: 200px;
-    resize: none;
+    padding: 10px;
 }
 
 .contact-container{
@@ -93,10 +156,23 @@ label {
 .hero-scene{
     position: relative;
 }
-
+.mobile-wave-wrapper{
+    display: none;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+}
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+}
 .overlay-text1{
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 15%;
     /*top: 230px;*/
     /*left: 229px;*/
@@ -105,17 +181,11 @@ label {
 
 .overlay-text2{
     position: absolute;
-    top: 40%;
+    top: 65%;
     left: 31%;
     /*top: 325px;*/
     /*left: 448px;*/
     font-size: 35px;
-}
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -129,39 +199,9 @@ label {
     font-size: 2em;
     margin-bottom: 20px;
 }
-
-.about-paragraph0{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
 /*****************************Landing Page********************************/
 .hero-scene{
     position: relative;
-}
-
-.overlay-text1{
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    /*top: 230px;*/
-    /*left: 229px;*/
-    font-size: 35px;
-}
-
-.overlay-text2{
-    position: absolute;
-    top: 40%;
-    left: 31%;
-    /*top: 325px;*/
-    /*left: 448px;*/
-    font-size: 35px;
-}
-.overlay-text3{
-    position: absolute;
-    top: 230px;
-    left: 364px;
-    font-size: 45px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -270,10 +310,12 @@ label {
 
 /*****************************Explore Page********************************/
 
-.overlay-text3 {
+.explore-page-title {
     position: absolute;
-    top: 10%;
-    font-size: 30px;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
 }
 .explore-row-bg{
     position: absolute;
@@ -358,19 +400,20 @@ label {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    top: 0;
+    top: 50%;
     right: -100%;
     width: 100%;
-    height: 150vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
     transition: right 0.3s ease-in-out;
+    overflow-x: scroll;
 }
 
 .overlayContent {
     position: absolute;
     top: 60px;
-    left: 175px;
+    left: 25%;
     transform: translate(-50%, -50%);
     color: #fff;
     padding: 20px;
@@ -416,6 +459,10 @@ label {
     background-color: #c9c9c9;
     color: var(--primary);
     cursor: pointer;
+}
+
+.explore-page-footer {
+    margin-top: 205px;
 }
 /*****************************End Explore Page********************************/
 
@@ -465,13 +512,13 @@ label {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.register-form{
-    padding: 20px;
-    border-radius: 10px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
+/*.register-form{*/
+/*    padding: 20px;*/
+/*    justify-content: center;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap:*/
+/*}*/
 .username_input, .password_input, .email_input, .confirm_password_input{
     height: 40px;
     background-color: var(--primary);
@@ -482,22 +529,16 @@ label {
     color: var(--secondary);
 
 }
-/*Title: Upoad Image;*/
-.profile-img {
+/*Title: Upload Image;*/
+.image-add-profile-picture{
     display: flex;
     justify-content: center;
-}
-.image-add-profile-picture{
-    height: 40px;
-    width: 70%;
-    display: block;
     background-color: var(--primary);
     border-radius: 10px;
     border: 1px solid var(--secondary);
     outline: unset;
-    padding: 0 10px;
+    padding: 10px;
     color: var(--secondary);
-    margin: 15px auto;
     transition: ease-in-out .3s;
     text-align: center;
     cursor: pointer;
@@ -512,61 +553,13 @@ label {
     background-color: transparent;
     border-radius: 10px;
 }
-.register-button{
-    background-color: var(--secondary);
-    color: var(--primary);
-    width: 85px;
-    border: unset;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 10px;
-    margin: 0 5px;
-    transition: ease-in-out .3s;
-    text-align: center;
-    cursor: pointer;
-}
-.register-button:hover{
-    background-color: var(--primary);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
-    border-radius: 10px;
-    font-size: 15px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.register-submit{
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-}
-
-.register-submit .register-button{
-    width: 200px;
-}
-.reg-body{
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto; /* This will allow the footer to be pushed to the bottom */
-}
-.reg-contain{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-    min-height: 100vh; /* Full viewport height */
-}
 .overlay-form {
     max-width: 500px; /* Set max width for better display on larger screens */
     width: 100%;
     margin: 0 auto; /* Center the form on smaller screens */
 }
 
-.footer {
-    flex-shrink: 0; /* Footer will not shrink smaller than its content size */
-}
+
 .reg-row{
     width: 100%;
     max-width: 1100px;
@@ -584,32 +577,45 @@ label {
     justify-content: center;
 
 }
-.joined{
+.joined {
     display: flex;
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
     color: var(--secondary);
     margin-bottom: 20px;
-}
 
+}
 /*****************************End Register Page********************************/
 /*****************************About Page********************************/
+.about-container, .register-container {
+    margin-top: 5%;
+}
 .profiles{
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.about-title {
+    font-size: 2rem;
+    font-weight: 700;
 }
 .about-paragraph{
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 1.5rem;
     padding: 50px;
+    font-weight: normal;
+}
+.separation-line {
+    border-bottom: 1px solid var(--secondary);
+}
+.about-cards-gap {
+    gap: 7%;
 }
 .card {
-    width: 220px;
-    margin: 20px;
+    width: 25%;
     padding: 10px;
-    background-color: #bbbbbb;
-    border-radius: 4px;
-    box-shadow: 2px 2px 7px rgb(255, 255, 255);
+    background-color: var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, .5);
+    border: 3px solid var(--primary);
     text-align: center;
 }
 .card img {
@@ -618,6 +624,8 @@ label {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-content {
@@ -635,10 +643,9 @@ label {
     color: #888;
 }
 .linkedIn-names{
+    font-size: 14px;
     color: var(--primary);
-}
-.about-row{
-    height: 700px;
+    letter-spacing: 2px;
 }
 /*****************************End About Page********************************/
 :root{
@@ -973,7 +980,9 @@ form.create-form {
 .playlist-details-col {
     height: inherit;
 }
-
+.content-section{
+    margin-top: 20px;
+}
 /********** Messages **********/
 .message-container.show{
     display: block;
@@ -1078,6 +1087,11 @@ button {
 /********** End Messages **********/
 
 /********** Feed **********/
+
+.feed-header-container {
+    margin-top: 70px;
+}
+
 .feed-playlist {
     margin-top: 5rem;
     background-color: #9e9e9e;
@@ -1085,7 +1099,9 @@ button {
     height: 30rem;
     position: relative;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 90%;
 }
+
 .playlist-details {
     padding: 1rem;
     background-color: #6e6e6e;
@@ -1120,6 +1136,7 @@ button {
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
+    width: 164px;
 }
 .image1{
     border-bottom-left-radius: unset;
@@ -1154,19 +1171,17 @@ button {
 
 /*
 ======Forms Styles For Login Page======*/
-
-.login-page-row{
-    flex-direction: column;
+.login-container {
+    margin-top: 10rem;
 }
-
-
-.login-form {
+.login-form, .register-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     padding: 20px;
+    gap: 10px;
 }
 
 .login-form > * {
@@ -1184,48 +1199,44 @@ button {
 
 
 .text-input{
-    background-color: #f5f5f5;
-    outline: unset;
-    border: unset;
-    display: flex;
-    flex-direction: column;
-    min-height: 30px;
-    border-radius: 3px;
-    color: black;
-    font-family: inherit;
-    padding:10px;
+    background-color: var(--primary);
+    outline: none;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    color: var(--secondary);
+    padding: 10px;
 }
 
-.text-area {
-    color: #f5f5f5;
+.text-area, .contact-label {
+    color: var(--secondary);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
 }
 
 button.btn.primary {
-    background-color: #060429;
-    min-height: 45px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    justify-content: center;
-    border-radius: 5px;
-    color: #f5f5f5;
+    border: none;
+    outline: none;
+    background-color: var(--secondary);
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 10px;
+    transition: ease-in-out .3s;
+    font-weight: 700;
+    font-size: 1rem;
+}
+button.btn.primary:hover {
+    transform: scale(1.1);
+    background-color: green;
+    color: var(--secondary);
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: unset;
-    border: #1304d2 1px solid;
 }
 
 .login-submit{
     display: flex;
     justify-content: center;
     margin-top: 15px;
-}
-
-/* This should be the container having the hero image */
-.login-page-col {
-    position: relative;  /* Makes it a positioning context */
 }
 
 .background {
@@ -1261,14 +1272,17 @@ button.btn.primary {
     gap: 10px;
     align-items: center;
     justify-content: center;
-    min-height: 10vh;
-    font-size: 20px;
-    color: #f5f5f5;
+    font-size: 14px;
+    color: var(--secondary);
 }
 .reg-highlight {
-    color: greenyellow;
-    font-weight: bold;
+    color: var(--secondary);
     cursor: pointer;
+    transition: ease-in-out .2s;
+    font-weight: 700;
+}
+.reg-highlight:hover {
+    color: green;
 }
 .owner-box {
     position: absolute;
@@ -1317,7 +1331,8 @@ button.btn.primary {
     top: 0;
     z-index: 9;
     width: 100%;
-    background-color: rgba(0, 8, 30, 0.6);
+    background-color: rgba(0, 8, 30, .6);
+    backdrop-filter: blur(5px);
 }
 
 .nav-row{
@@ -1335,18 +1350,18 @@ button.btn.primary {
     align-items: center;
 }
 
-.login-button, .sign-up-button{
+.login-button, .sign-up-button, .logout-button{
     background-color: var(--secondary);
+    border: 2px solid var(--secondary);
     color: var(--primary);
-    border: unset;
     border-radius: 10px;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin: 0 5px;
     transition: ease-in-out .3s;
 }
-.login-button:hover, .sign-up-button:hover {
+.login-button:hover, .sign-up-button:hover, .logout-button:hover {
     background-color: var(--primary);
     color: var(--secondary);
     border: 2px solid var(--secondary);
@@ -1354,7 +1369,7 @@ button.btn.primary {
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    margin: 0px 5px;
+    margin: 0 5px;
     cursor: pointer;
 }
 .logo-header{
@@ -1382,18 +1397,29 @@ nav .underline::before {
 nav a:hover::before, .footer-links:hover::before {
     width: 100%;
 }
+
 /*/------------------FOOTER STYLES-------------------------*!*/
 
 .footer {
     display: flex;
-    width: 100%;
     gap: 20px;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center; /* Optional: Align items vertically in the center */
-    margin-left: 10%;
     margin-bottom: 30px;
     padding: 20px; /* Optional: Add padding */
+}
+.explore-footer{
+    margin-top: 500px;
+}
+
+.row.spacing{
+    gap: 450px;
+}
+
+
+.explore-page-wrapper footer {
+    margin-top: 384px;
 }
 
 .footer-img-wrapper{
@@ -1403,11 +1429,10 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 .footer-desc{
-    width: 60%;
     font-weight: 100;
     font-size: 15px;
 }
-.row .justify-space-between{
+.footer-row{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -1474,62 +1499,8 @@ nav a:hover::before, .footer-links:hover::before {
 /*################ MEDIA QUERIES FOR TABLET ############*/
 /*######################################################*/
 
-@media (max-width: 768px) {
-    /*######################################################*/
-    /*####################### INDEX PAGE ###################*/
-    /*######################################################*/
-    .overlay-text1{
-        top: 30%;
-        left: 10%;
-        font-size: 20px;
-    }
-
-    .overlay-text2 {
-        top:36%;
-        left: 26%;
-        font-size: 20px;
-    }
-}
-
-/*MEDIA QUERIES FOR FOOTER */
-
-@media (max-width: 800px) {
-/*    .logo {*/
-/*        display: flex;*/
-/*        flex-direction: row;*/
-/*        align-self: flex-start;*/
-/*        align-items: start;*/
-/*        color: #f5f5f5;*/
-/*    }*/
-/*    .footer{*/
-/*        flex-direction: column;*/
-/*        align-items: start;*/
-/*    }*/
-/*    .footer-desc{*/
-/*        text-align: start;*/
-/*    }*/
-/*    .footer-links{*/
-/*        margin: 10px 0;*/
-/*    }*/
-/*    .info{*/
-/*        margin-top: 0;*/
-/*    }*/
-/*    .info-title{*/
-/*        font-size: 25px;*/
-/*    }*/
-/*    .info-desc{*/
-/*        font-size: 15px;*/
-/*        width: 300px;*/
-/*    }*/
-/*    .newsletter-input{*/
-/*        width: 200px;*/
-/*    }*/
-
-}
-
-
 /*MEDIA QUERIES FOR NAVBAR */
-@media(max-width: 768px){
+@media(max-width: 768px) and (min-width: 426px){
     nav .mainMenu {
         height: 100vh;
         position: fixed;
@@ -1563,35 +1534,111 @@ nav a:hover::before, .footer-links:hover::before {
         padding: 12px;
     }
 }
-
+/*MEDIA QUERIES FOR EXPLORE*/
+@media (max-width: 768px) and (min-width: 426px) {
+    .row.explore-playlist{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .track-iframe{
+        width: 500px;
+    }
+    .row.explore-artists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .artist-iframe{
+        width: 600px;
+    }
+    .row.explore-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .album-iframe{
+        width: 600px;
+    }
+}
 /*MEDIA QUERIES FOR PROFILE PG*/
-@media (max-width: 768px) {
-    .profile-playlists .playlist, .profile-category .category, .profile-albums .album {
-        max-width: 25%;
-    }
-    .profile-playlists, .profile-category, .profile-albums {
-        display: block;
-        flex-wrap: wrap;
-        margin-right: 100px;
-        padding: 10px;
-        gap: 30px;
-    }
+@media (max-width: 768px) and (min-width: 426px) {
+.container-profile{
+    margin-top: 300px;
+}
     .profile-sidebar {
-        background-color: rgba(19, 4, 210, 0.3);
-        width: 215px;
-        height: 250px;
+        display: unset;
+        background-color: unset;
+        border: unset;
+        width: unset;
         position: absolute;
-        border-radius: 40px;
-        left: 22px;
-        top: 100px;
-        padding: 20px;
+        left: 20%;
+        top: 50%;
+    }
+
+    .sidebar-column{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .profile-sidebar-user-info, .profile-sidebar-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 19px;
+    }
+
+    .profile-sidebar-user-info p {
         color: #f5f5f5;
+    }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .playlist-iframe{
+        width: 600px;
+    }
+    .row.spacing{
+        gap: 230px;
+    }
+    .profile-sidebar-nav{
+        margin-top: 50px;
     }
 
 }
 /*MEDIA QUERIES FOR LOGIN PG*/
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 426px) {
     .join {
         display: flex;
         flex-direction: column;
@@ -1611,8 +1658,9 @@ nav a:hover::before, .footer-links:hover::before {
 }
 
 /*MEDIA QUERIES FOR LANDING PG*/
-@media (max-width: 767px) {
-    /* Add your mobile-specific styles here */
+
+@media (max-width: 425px) {
+
     .hero-scene {
         padding: 20px;
         height: 500px;
@@ -1623,8 +1671,26 @@ nav a:hover::before, .footer-links:hover::before {
         text-align: center;
         margin-top: 10px;
         font-size: 10px;
+        left:15%;
     }
+    .overlay-text2{
+        left: 30%;
+        top: 47%;
+    }
+    .overlay-text1{
+        top: 40%;
 
+    }
+.mobile-img{
+    width: 350px;
+}
+.info-title{
+    font-size: 25px;
+}
+.info-desc{
+    font-size: 15px;
+    width: 353px;
+}
     .service-card-wrapper {
         margin-bottom: 20px;
     }
@@ -1638,5 +1704,159 @@ nav a:hover::before, .footer-links:hover::before {
         align-items: center;
         justify-content: center;
     }
+    .newsletter-input{
+        width: 200px;
+    }
+    .mobile-nav{
+        display: none;
+    }
+    .logo{
+        font-size: 15px;
+    }
+    .mobile-wave-wrapper{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+    }
+    .mobile-wave-wrapper:hover{
+        cursor: pointer;
+        border: 1px solid var(--secondary);
+        border-radius: 50%;
+        padding: 5px;
+    }
 
+
+/*    EXPLORE PAGE MEDIA QUERIES      */
+
+    .explore-row-bg {
+        width: 93%;
+    }
+
+    .explore-playlist{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .explore-artists{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-albums{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .explore-page-footer {
+        margin-top: 1860px;
+    }
+
+    .row.spacing{
+        gap: 30px;
+    }
+
+    .row.explore-playlist, .row.explore-artists, .row.explore-albums, .row.explore-search-results{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-tracks-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .explore-page-title{
+        font-size: 10px;
+    }
+    .openOverlayButton{
+        height: 50px;
+    }
+    .overlayContainer{
+        top: 50%;
+        height: 100%;
+    }
+    .search-artists, .search-tracks, .search-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .overlayContent{
+        left: 50%;
+    }
+
+    .mobile-about-cards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .card{
+        width: 300px;
+    }
+    .content-section{
+        margin-top: 350px;
+    }
+    .profile-sidebar{
+        top: 35%;
+        left: 20%;
+        width: 250px;
+        height: 230px;
+        position: absolute;
+        border-radius: 10px;
+    }
+    .mobile-sidebar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*createPlaylist*/
+
+    .mobile-search-row{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-playlist-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.my-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-playlists{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-category{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .row.profile-albums{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .playlist-iframe{
+        width: 250px;
+    }
 }

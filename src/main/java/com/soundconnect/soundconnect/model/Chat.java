@@ -11,6 +11,7 @@ public class Chat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Column(nullable = false, length = 250)
     private String chatName;
 
@@ -44,6 +45,7 @@ public class Chat {
 
     public void setChatName(String chatName) {
         this.chatName = chatName;
+
     }
 
     public Chat() {
