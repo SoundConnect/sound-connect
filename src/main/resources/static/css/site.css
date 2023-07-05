@@ -825,7 +825,7 @@ form.create-form {
     max-height: 20rem;
 }
 .create-top-container {
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 .search-results-box {
     overflow: scroll;
@@ -1860,3 +1860,15 @@ nav a:hover::before, .footer-links:hover::before {
         width: 250px;
     }
 }
+@media (min-width: 2560px) {
+
+    .overlay-text1{
+        top: 50%;
+        left: 27%;
+    }
+    .overlay-text2{
+        top: 60%;
+        left: 36%;
+    }
+}
+
