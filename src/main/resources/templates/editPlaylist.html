@@ -2,7 +2,7 @@
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{partials/head :: head(title='SoundConnect - Edit')}"></head>
 <body>
-<div class="page-wrapper gap-10">
+<div class="page-wrapper gap-10 edit-page">
     <nav th:replace="~{partials/navbar :: navbar}"></nav>
     <!-- Search input -->
     <section class="container create-top-container">
@@ -29,7 +29,7 @@
     </section>
 
     <!-- Playlist / form card -->
-    <section class="container justify-center grow">
+    <section class="container edit-playlist-card justify-center grow">
         <div class="row grow no-padding gap-30 playlist-box">
             <!-- Left Column: Playlist pic, title, desc -->
             <div class="column gap-10 playlist-details-box">
@@ -76,6 +76,7 @@
             </div>
         </div>
     </section>
+    <footer th:replace="partials/footer :: footer"></footer>
 </div>
 <script src="/js/mobile.js"></script>
 <script src="/js/playlist.js" type="module"></script>

@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head th:replace="partials/head :: head(title='SoundConnect - Profile')"></head>
 <body>
-<div class="page-wrapper profile">
+<div class="page-wrapper profile-page">
     <!-- Header -->
     <header th:replace="~{partials/navbar :: navbar}"></header>
     <!-- Background -->
@@ -43,8 +43,16 @@
                                 <div th:each="playlist : ${playlists}" class="column playlist playlist-col">
                                     <!-- playlist title/edit and delete options -->
                                     <div class="row align-center playlist-details">
-                                        <div class="column justify-center shrink playlist-img-wrapper">
-                                            <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                                        <div th:each="playlist : ${playlist}" class="column shrink playlist-img-wrapper">
+                                            <div th:if="${playlist.tracks.size() < 4}" class="d-flex">
+                                                <img src="/images/default-playlist-logo.png" alt="Playlist Image">
+                                            </div>
+                                            <div class="large-playlist-images" th:if="${playlist.tracks.size() >= 4}">
+                                                <img class="playlist-img image1" th:src="${playlist.tracks[0].album.albumArt}" alt="Playlist Image">
+                                                <img class="playlist-img image2" th:src="${playlist.tracks[1].album.albumArt}" alt="Playlist Image">
+                                                <img class="playlist-img image3" th:src="${playlist.tracks[2].album.albumArt}" alt="Playlist Image">
+                                                <img class="playlist-img image4" th:src="${playlist.tracks[3].album.albumArt}" alt="Playlist Image">
+                                            </div>
                                         </div>
                                         <div class="column playlist-details-col">
                                             <div class="row align-center text-center shrink no-padding gap-5">

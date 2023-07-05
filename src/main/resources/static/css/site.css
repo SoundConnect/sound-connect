@@ -1619,11 +1619,15 @@ nav a:hover::before, .footer-links:hover::before {
     }
     .row.my-playlists{
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 50px;
+        flex-wrap: wrap;
     }
+
+    .my-playlists .playlist-col {
+        max-width: unset;
+    }
+
     .row.profile-category{
         display: flex;
         flex-direction: column;
@@ -1681,6 +1685,34 @@ nav a:hover::before, .footer-links:hover::before {
     .playlist-img{
         height: 101px;
         width: 101px;
+    }
+}
+
+/*  MEDIA QUERIES FOR EDIT  */
+
+@media (max-width: 768px) and (min-width: 426px) {
+    .edit-page nav {
+        margin-bottom: 30px;
+    }
+
+    .create-top-box {
+        width: 93%;
+    }
+
+    .d-flex {
+        align-items: center;
+    }
+
+    .playlist-song-box {
+        width: 54%;
+    }
+
+    .playlist-box {
+        width: 97%
+    }
+
+    .edit-playlist-card {
+        width: 95%;
     }
 }
 
@@ -1838,13 +1870,18 @@ nav a:hover::before, .footer-links:hover::before {
         justify-content: center;
     }
     .card{
-        width: 300px;
+        width: 250px;
     }
+
+    .about-page nav {
+        margin-bottom: 30px;
+    }
+
     .content-section{
         margin-top: 350px;
     }
     .profile-sidebar{
-        top: 35%;
+        top: 24%;
         left: 20%;
         width: 250px;
         height: 230px;
@@ -1874,30 +1911,92 @@ nav a:hover::before, .footer-links:hover::before {
     }
     .row.my-playlists{
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+    .my-playlists .playlist-col {
+        max-width: 85%;
     }
     .row.profile-playlists{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .row.profile-category{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .row.profile-albums{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .playlist-iframe{
-        width: 250px;
+        width: 100%;
+    }
+
+    .profile-page .large-playlist-images {
+        width: 249px;
+        height: 192px;
+    }
+
+    .profile-page .d-flex {
+        width: unset;
+    }
+
+    .profile-page .playlist-img {
+        width: 16vw;
+    }
+
+    .container-playlists{
+        border: unset;
+    }
+
+    .large-playlist-images {
+        width: 179px;
+    }
+
+    .playlist-img {
+        width: 21vw;
+    }
+/*    REGISTER PAGE MOBILE QUERIES   */
+
+    .register-page nav {
+        margin-bottom: 30px;
+    }
+
+
+/*    EDIT PAGE MOBILE QUERIES  */
+
+    .edit-page nav {
+        margin-bottom: 20px;
+    }
+
+    .create-top-box {
+        width: 95%;
+    }
+
+    .d-flex {
+        width: 80%;
+        font-size: 10px;
+    }
+
+    .playlist-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .playlist-song-box {
+        width: 90%;
+    }
+
+    .search-results-container {
+        width: 90%;
+    }
+
+    .search-results-box {
+        width: unset;
     }
 }
 @media (min-width: 2560px) {
