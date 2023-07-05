@@ -53,13 +53,9 @@ public class SecurityConfiguration {
                         "/about",
                         "/contact",
                         "/feed",
-
                         "/editPlaylist",
                         "/profile/messages/**",
                         "/profile/**"
-
-
-
 
                 ).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "https://kit.fontawesome.com/**", "/static/**", "/keys.js").permitAll()
