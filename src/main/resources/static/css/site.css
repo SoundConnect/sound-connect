@@ -914,6 +914,7 @@ form.create-form {
 .container-playlists{
     border: 1px solid #ddd;
     border-radius: 10px;
+    margin-top: 30px;
 }
 .profile-playlists, .profile-category, .profile-albums {
     display: flex;
@@ -1080,14 +1081,14 @@ button {
 }
 .playlist-img {
     width: 8vw;
-    height: 11vh;
     object-fit: cover;
     border-radius: 10px;
 }
 .large-playlist-images{
     display: flex;
     flex-wrap: wrap;
-    width: 164px;
+    width: 231px;
+    min-height: 150px;
 }
 .image1{
     border-bottom-left-radius: unset;
