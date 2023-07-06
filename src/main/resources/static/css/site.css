@@ -172,20 +172,16 @@ textarea.contact-input {
 }
 .overlay-text1{
     position: absolute;
-    top: 50%;
-    left: 15%;
-    /*top: 230px;*/
-    /*left: 229px;*/
-    font-size: 35px;
+    top: 30%;
+    left: 20%;
+    font-size: 29px;
 }
 
 .overlay-text2{
     position: absolute;
-    top: 65%;
-    left: 31%;
-    /*top: 325px;*/
-    /*left: 448px;*/
-    font-size: 35px;
+    top: 41%;
+    left: 25%;
+    font-size: 31px;
 }
 .service-card-wrapper{
     height: 321px;
@@ -248,7 +244,7 @@ textarea.contact-input {
     text-align: center;
     transition: ease-in-out .3s;
 }
-.login-button:hover, .sign-up-button:hover, .logout-button:hover{
+.login-button:hover, .sign-up-button:hover, .logout-button:hover {
     background-color: var(--primary);
     color: var(--secondary);
     border: 2px solid var(--secondary);
@@ -259,52 +255,6 @@ textarea.contact-input {
     margin: 0px 5px;
     cursor: pointer;
 }
-/*.wrapper1{*/
-/*    background-image: url(../images/login-background.jpg);*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*    background-position: center;*/
-/*    z-index: -1;*/
-/*}*/
-/*.heading-1{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
-/*.card-title{*/
-/*    padding: 10px;*/
-/*    font-size: 35px;*/
-/*}*/
-/*.card-description{*/
-/*    padding: 10px;*/
-/*}*/
-/*.row.card-body{*/
-/*    height: 400px;*/
-/*}*/
-
-/*.flex-row {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: space-evenly;*/
-/*}*/
-
-/*.card {*/
-/*    background-color: #202033;*/
-/*    padding: 20px;*/
-/*    margin: 10px;*/
-/*    width: 300px;*/
-/*    height: 300px;*/
-/*    box-sizing: border-box;*/
-/*    text-align: center;*/
-/*    font-size: 2em;*/
-/*    border-radius: 10px;*/
-/*    box-shadow: 2px 2px 10px var(--secondary);*/
-/*    border: 1px solid var(--secondary);*/
-/*}*/
-
-/*.card i {*/
-/*    font-size: 2em;*/
-/*    margin-bottom: 20px;*/
-/*}*/
 
 /*****************************End Landing Page********************************/
 
@@ -882,6 +832,7 @@ form.create-form {
     padding: 20px;
     color: var(--secondary);
 }
+
 .profile-sidebar-user-info, .profile-sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -1499,6 +1450,30 @@ nav a:hover::before, .footer-links:hover::before {
 /*################ MEDIA QUERIES FOR TABLET ############*/
 /*######################################################*/
 
+/*  INDEX PAGE QUERIES      */
+
+@media(max-width: 768px) and (min-width: 426px){
+
+    .overlay-text1 {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        font-size: 29px;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        top: 28%;
+        left: 38%;
+        font-size: 30px;
+    }
+
+    .mobile-card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /*MEDIA QUERIES FOR NAVBAR */
 @media(max-width: 768px) and (min-width: 426px){
     nav .mainMenu {
@@ -1566,6 +1541,14 @@ nav a:hover::before, .footer-links:hover::before {
     .album-iframe{
         width: 600px;
     }
+
+    .explore-row-bg{
+        width: 93%;
+    }
+
+    .search-tracks, .search-artists, .search-albums {
+        width: 260px;
+    }
 }
 /*MEDIA QUERIES FOR PROFILE PG*/
 @media (max-width: 768px) and (min-width: 426px) {
@@ -1594,6 +1577,14 @@ nav a:hover::before, .footer-links:hover::before {
         height: 19px;
     }
 
+    .profile-sidebar-user-info {
+        flex-direction: column-reverse;
+    }
+
+    .mobile-sidebar{
+        gap: unset;
+    }
+
     .profile-sidebar-user-info p {
         color: #f5f5f5;
     }
@@ -1606,11 +1597,15 @@ nav a:hover::before, .footer-links:hover::before {
     }
     .row.my-playlists{
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 50px;
+        flex-wrap: wrap;
     }
+
+    .my-playlists .playlist-col {
+        max-width: unset;
+    }
+
     .row.profile-category{
         display: flex;
         flex-direction: column;
@@ -1657,6 +1652,61 @@ nav a:hover::before, .footer-links:hover::before {
     }
 }
 
+/* MEDIA QUERIES FOR FEED   */
+
+@media (max-width: 768px) and (min-width: 426px) {
+
+    .large-playlist-images {
+        width: 202px;
+    }
+
+    .playlist-img{
+        height: 101px;
+        width: 101px;
+    }
+}
+
+/*  MEDIA QUERIES FOR EDIT  */
+
+@media (max-width: 768px) and (min-width: 426px) {
+    .edit-page nav {
+        margin-bottom: 30px;
+    }
+
+    .create-top-box {
+        width: 93%;
+    }
+
+    .d-flex {
+        align-items: center;
+    }
+
+    .playlist-song-box {
+        width: 54%;
+    }
+
+    .playlist-box {
+        width: 97%
+    }
+
+    .edit-playlist-card {
+        width: 95%;
+    }
+}
+
+/*  MEDIA QUERIES FOR ABOUT PAGE    */
+
+@media (max-width: 768px) and (min-width: 426px) {
+    .about-page nav {
+        margin-bottom: 30px;
+    }
+
+    .card {
+        width: 0%;
+    }
+}
+
+
 /*MEDIA QUERIES FOR LANDING PG*/
 
 @media (max-width: 425px) {
@@ -1671,15 +1721,14 @@ nav a:hover::before, .footer-links:hover::before {
         text-align: center;
         margin-top: 10px;
         font-size: 10px;
-        left:15%;
     }
     .overlay-text2{
-        left: 30%;
-        top: 47%;
+        left: 28%;
+        top: 45%;
     }
     .overlay-text1{
         top: 40%;
-
+        left: 20%;
     }
 .mobile-img{
     width: 350px;
@@ -1698,7 +1747,7 @@ nav a:hover::before, .footer-links:hover::before {
     .info {
         padding: 20px;
     }
-    .row.mobile-card-row{
+    .index-page .row.mobile-card-row {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1798,13 +1847,18 @@ nav a:hover::before, .footer-links:hover::before {
         justify-content: center;
     }
     .card{
-        width: 300px;
+        width: 250px;
     }
+
+    .about-page nav {
+        margin-bottom: 30px;
+    }
+
     .content-section{
         margin-top: 350px;
     }
     .profile-sidebar{
-        top: 35%;
+        top: 24%;
         left: 20%;
         width: 250px;
         height: 230px;
@@ -1834,30 +1888,92 @@ nav a:hover::before, .footer-links:hover::before {
     }
     .row.my-playlists{
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        flex-wrap: wrap;
+        width: 90%;
+    }
+    .my-playlists .playlist-col {
+        max-width: 85%;
     }
     .row.profile-playlists{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .row.profile-category{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .row.profile-albums{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        width: 70%;
     }
     .playlist-iframe{
-        width: 250px;
+        width: 100%;
+    }
+
+    .profile-page .large-playlist-images {
+        width: 249px;
+        height: 192px;
+    }
+
+    .profile-page .d-flex {
+        width: unset;
+    }
+
+    .profile-page .playlist-img {
+        width: 16vw;
+    }
+
+    .container-playlists{
+        border: unset;
+    }
+
+    .large-playlist-images {
+        width: 179px;
+    }
+
+    .playlist-img {
+        width: 21vw;
+    }
+/*    REGISTER PAGE MOBILE QUERIES   */
+
+    .register-page nav {
+        margin-bottom: 30px;
+    }
+
+
+/*    EDIT PAGE MOBILE QUERIES  */
+
+    .edit-page nav {
+        margin-bottom: 20px;
+    }
+
+    .create-top-box {
+        width: 95%;
+    }
+
+    .d-flex {
+        width: 80%;
+        font-size: 10px;
+    }
+
+    .playlist-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .playlist-song-box {
+        width: 90%;
+    }
+
+    .search-results-container {
+        width: 90%;
+    }
+
+    .search-results-box {
+        width: unset;
     }
 }
 @media (min-width: 2560px) {
