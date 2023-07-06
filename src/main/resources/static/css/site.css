@@ -172,15 +172,17 @@ textarea.contact-input {
 }
 .overlay-text1{
     position: absolute;
-    top: 30%;
-    left: 20%;
-    font-size: 29px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
 }
 
 .overlay-text2{
     position: absolute;
-    top: 41%;
-    left: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 31px;
 }
 .service-card-wrapper{
@@ -1281,7 +1283,7 @@ button.btn.primary:hover {
     padding: 10px;
     position: fixed;
     top: 0;
-    z-index: 9;
+    z-index: 25;
     width: 100%;
     background-color: rgba(0, 8, 30, .6);
     backdrop-filter: blur(5px);
@@ -1452,21 +1454,48 @@ nav a:hover::before, .footer-links:hover::before {
 /*######################################################*/
 
 /*  INDEX PAGE QUERIES      */
-
-@media(max-width: 768px) and (min-width: 426px){
-
+@media(max-width: 1440px) and (min-width: 1024px){
     .overlay-text1 {
         position: absolute;
-        top: 15%;
-        left: 15%;
-        font-size: 29px;
+        font-size: 27px;
     }
 
     .overlay-text2 {
         position: absolute;
-        top: 28%;
-        left: 38%;
         font-size: 30px;
+    }
+
+    .mobile-card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media(max-width: 1024px) and (min-width: 769px){
+    .overlay-text1 {
+        position: absolute;
+        font-size: 19px;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        font-size: 19px;
+    }
+
+    .mobile-card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media(max-width: 768px) and (min-width: 426px){
+
+    .overlay-text1 {
+        position: absolute;
+        font-size: 14px;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        font-size: 14px;
     }
 
     .mobile-card-row {
@@ -1721,16 +1750,9 @@ nav a:hover::before, .footer-links:hover::before {
     .overlay-text2 {
         text-align: center;
         margin-top: 10px;
-        font-size: 10px;
+        font-size: 7px;
     }
-    .overlay-text2{
-        left: 28%;
-        top: 45%;
-    }
-    .overlay-text1{
-        top: 40%;
-        left: 20%;
-    }
+
 .mobile-img{
     width: 350px;
 }
@@ -1760,22 +1782,28 @@ nav a:hover::before, .footer-links:hover::before {
     .mobile-nav{
         display: none;
     }
+    .nav-wave{
+        display: inline;
+    }
+    .nav-carrot{
+        display: inline;
+    }
     .logo{
         font-size: 15px;
     }
     .mobile-wave-wrapper{
         display: flex;
         position: relative;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 30px;
+        width: 25px;
+        margin-left: 5px;
+        transition: transform 0.3s;
     }
     .mobile-wave-wrapper:hover{
         cursor: pointer;
-        border: 1px solid var(--secondary);
-        border-radius: 50%;
-        padding: 5px;
+        transform: scale(1.2);
     }
 
 
@@ -1977,15 +2005,5 @@ nav a:hover::before, .footer-links:hover::before {
         width: unset;
     }
 }
-@media (min-width: 2560px) {
 
-    .overlay-text1{
-        top: 50%;
-        left: 27%;
-    }
-    .overlay-text2{
-        top: 60%;
-        left: 36%;
-    }
-}
 
