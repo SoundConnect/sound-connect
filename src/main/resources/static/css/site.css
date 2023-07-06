@@ -1496,6 +1496,30 @@ nav a:hover::before, .footer-links:hover::before {
 /*################ MEDIA QUERIES FOR TABLET ############*/
 /*######################################################*/
 
+/*  INDEX PAGE QUERIES      */
+
+@media(max-width: 768px) and (min-width: 426px){
+
+    .overlay-text1 {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        font-size: 29px;
+    }
+
+    .overlay-text2 {
+        position: absolute;
+        top: 28%;
+        left: 38%;
+        font-size: 30px;
+    }
+
+    .mobile-card-row {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 /*MEDIA QUERIES FOR NAVBAR */
 @media(max-width: 768px) and (min-width: 426px){
     nav .mainMenu {
@@ -1743,15 +1767,14 @@ nav a:hover::before, .footer-links:hover::before {
         text-align: center;
         margin-top: 10px;
         font-size: 10px;
-        left:15%;
     }
     .overlay-text2{
-        left: 30%;
-        top: 47%;
+        left: 28%;
+        top: 45%;
     }
     .overlay-text1{
         top: 40%;
-
+        left: 20%;
     }
 .mobile-img{
     width: 350px;
@@ -1770,7 +1793,7 @@ nav a:hover::before, .footer-links:hover::before {
     .info {
         padding: 20px;
     }
-    .row.mobile-card-row{
+    .index-page .row.mobile-card-row {
         display: flex;
         flex-direction: column;
         align-items: center;
