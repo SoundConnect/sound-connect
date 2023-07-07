@@ -824,7 +824,7 @@ form.create-form {
     background-color: var(--secondary);
     border: 2px solid var(--secondary);
     width: 12vw;
-    height: 60vh;
+    /*height: 60vh;*/
     position: fixed;
     z-index: 100;
     border-radius: 0 10px 10px 0;
@@ -871,6 +871,7 @@ form.create-form {
     color: var(--primary);
 }
 #openButton {
+    display: none;
     cursor: pointer;
     border: none;
     background-color: var(--secondary);
